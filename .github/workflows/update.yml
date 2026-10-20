@@ -1,0 +1,91 @@
+name: Update IPTV Sources
+
+on:
+  schedule:
+    # 每 6 小时跑一次 (UTC)
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/**'
+      - '.github/workflows/**'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: iptv-update
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 环境探测 (出口 IP / 接口可达性)
+        run: |
+          echo "=== 出口 IP ==="
+          curl -s -m 10 https://api.ipify.org || echo "ipify failed"
+          echo
+          echo "=== 频道表接口可达性 ==="
+          curl -s -m 15 -o /tmp/status.json -w "http=%{http_code} time=%{time_total}s\n" \
+            "http://sj.91kds.cn/lb/get_status_91ktv.php" || echo "接口不可达"
+          head -c 300 /tmp/status.json 2>/dev/null || true
+          echo
+
+      - name: 构建订阅
+        id: build
+        run: |
+          python scripts/build.py --out out --jobs 48 --timeout 8 || {
+            echo "验活模式失败, 回退到 --no-probe"
+            python scripts/build.py --out out --no-probe
+          }
+          echo "--- 产物 ---"
+          ls -la out/
+          python -c "
+          import json
+          s=json.load(open('out/stats.json'))
+          print('频道', s.get('totalChannels'), '线路', s.get('totalLines'))
+          print('源版本', s.get('meta',{}).get('sourceVersion'))
+          "
+
+      - name: 合并公开源池 (央视/卫视补全)
+        run: |
+          python scripts/merge_public.py --base out/live.m3u --out out/live.m3u || \
+            echo "合并公开源失败 (非致命)"
+
+      - name: 生成订阅索引页
+        run: python scripts/genindex.py --out out || true
+
+      - name: 提交变更
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add out/
+          if git diff --cached --quiet; then
+            echo "无变更, 跳过提交"
+          else
+            VER=$(python -c "import json;print(json.load(open('out/stats.json')).get('meta',{}).get('sourceVersion'))" 2>/dev/null || echo unknown)
+            git commit -m "chore: update sources (ver=${VER}) $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi
+
+      - name: 部署 Pages
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
+          publish_branch: gh-pages
+          commit_message: "deploy: ${{ github.run_id }}"

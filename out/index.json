@@ -1,0 +1,16 @@
+{
+ "updated": "2026-10-20 07:19 UTC",
+ "sourceVersion": null,
+ "channels": 569,
+ "lines": 685,
+ "byGroup": {
+  "央视": 14,
+  "卫视": 11,
+  "地方": 660
+ },
+ "urls": {
+  "m3u": "https://cdn.jsdelivr.net/gh/USER/REPO@main/out/live.m3u",
+  "tvlist": "https://cdn.jsdelivr.net/gh/USER/REPO@main/out/live.txt",
+  "rawM3u": "https://raw.githubusercontent.com/USER/REPO/main/out/live.m3u"
+ }
+}

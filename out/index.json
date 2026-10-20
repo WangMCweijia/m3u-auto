@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
  "updated": "2026-10-20 07:39 UTC",
  "sourceVersion": null,
  "channels": 594,
@@ -7,6 +8,16 @@
   "央视": 41,
   "卫视": 12,
   "地方": 658
+=======
+ "updated": "2026-10-20 07:37 UTC",
+ "sourceVersion": 20251030,
+ "channels": 426,
+ "lines": 470,
+ "byGroup": {
+  "央视": 17,
+  "卫视": 6,
+  "地方": 447
+>>>>>>> 6673c21f81a717b1bcfc35b0793fda839f9a70de
  },
  "urls": {
   "m3u": "https://cdn.jsdelivr.net/gh/WangMCweijia/m3u-auto@main/out/live.m3u",

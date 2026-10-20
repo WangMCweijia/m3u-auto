@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-合并公开源池 (iptv-org / fanmingming) 到已有订阅
+合并公开源池到已有订阅
 
-用途: 91kds 表里央视与卫视几乎全走已停服的 kdsvod 协议, 存活率低,
-      用公开池补全 CCTV/卫视。
+用途:
+  91kds 表里央视/卫视几乎全走已停服的 kdsvod 协议, 直连线路少;
+  用公开池 (iptv-org / fanmingming ipv4+ipv6) 为每个台补充线路。
+
+归并规则:
+  公开池的频道名先经 channelmeta 归一化成 tvg_id, 再与 base 的 tvg_id 对齐,
+  补充线路并入同一频道。这样播放器里仍是"一个台多条线路"。
 
 用法:
   python merge_public.py --base out/live.m3u --out out/live.m3u
@@ -14,10 +19,14 @@ import argparse
 import concurrent.futures as cf
 import os
 import re
-import ssl
 import sys
+import ssl
 import urllib.parse
 import urllib.request
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import channelmeta as cm  # noqa: E402
+import m3uio as io_  # noqa: E402
 
 CTX = ssl.create_default_context()
 CTX.check_hostname = False
@@ -27,106 +36,79 @@ UA = ('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
       '(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')
 
 POOLS = [
-    ('https://iptv-org.github.io/iptv/countries/cn.m3u', '央视/地方'),
-    ('https://cdn.jsdelivr.net/gh/fanmingming/live@main/tv/m3u/ipv4.m3u', '央视/卫视'),
-    ('https://cdn.jsdelivr.net/gh/fanmingming/live@main/tv/m3u/index.m3u', '央视/卫视'),
+    # iptv-api 每日自动测活的成品池, 质量最好 (含大量可用央视频道)
+    ('https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u', 'guovin'),
+    ('https://cdn.jsdelivr.net/gh/zbefine/iptv@main/iptv.m3u', 'zbefine'),
+    ('https://iptv-org.github.io/iptv/countries/cn.m3u', 'iptv-org'),
+    ('https://cdn.jsdelivr.net/gh/fanmingming/live@main/tv/m3u/index.m3u', 'fm-index'),
+    ('https://cdn.jsdelivr.net/gh/fanmingming/live@main/tv/m3u/ipv4.m3u', 'fm-ipv4'),
+    ('https://cdn.jsdelivr.net/gh/fanmingming/live@main/tv/m3u/ipv6.m3u', 'fm-ipv6'),
+    ('https://cdn.jsdelivr.net/gh/vbskycn/iptv@master/tv/iptv4.m3u', 'vbskycn4'),
 ]
-
-# 公开池里的英文名 -> 中文名
-NAME_MAP = {
-    'CCTV1': 'CCTV-1 综合',
-    'CCTV2': 'CCTV-2 财经',
-    'CCTV3': 'CCTV-3 综艺',
-    'CCTV4': 'CCTV-4 中文国际',
-    'CCTV5': 'CCTV-5 体育',
-    'CCTV5PLUS': 'CCTV-5+ 体育赛事',
-    'CCTV6': 'CCTV-6 电影',
-    'CCTV7': 'CCTV-7 国防军事',
-    'CCTV8': 'CCTV-8 电视剧',
-    'CCTV9': 'CCTV-9 纪录',
-    'CCTV10': 'CCTV-10 科教',
-    'CCTV11': 'CCTV-11 戏曲',
-    'CCTV12': 'CCTV-12 社会与法',
-    'CCTV13': 'CCTV-13 新闻',
-    'CCTV14': 'CCTV-14 少儿',
-    'CCTV15': 'CCTV-15 音乐',
-    'CCTV16': 'CCTV-16 奥林匹克',
-    'CCTV17': 'CCTV-17 农业农村',
-    'CCTV4K': 'CCTV-4K 超高清',
-    'CCTV8K': 'CCTV-8K 超高清',
-    'CCTVBILLIARDS': 'CCTV 台球',
-    'CCTVGOLF&TENNIS': 'CCTV 高尔夫网球',
-    'CCTVHEALTH': 'CCTV 卫生健康',
-    'CCTVNOSTALGIATHEATER': 'CCTV 怀旧剧场',
-    'CCTVSTORMFOOTBALL': 'CCTV 风云足球',
-    'CCTVSTORMMUSIC': 'CCTV 风云音乐',
-    'CCTVSTORMTHEATER': 'CCTV 风云剧场',
-    'CCTVSANDSTORM': 'CCTV 风云剧场',
-    'CCTVTEFIRSTTHEATER': 'CCTV 第一剧场',
-    'CCTTTHEFIRSTTHEATER': 'CCTV 第一剧场',
-    'CCTVWEAPON&TECHNOLOGY': 'CCTV 兵器科技',
-    "CCTVWOMEN'SFASHION": 'CCTV 女性时尚',
-    'CCTVWORLDGEOGRAPHY': 'CCTV 世界地理',
-    'CCTVCULTUREOFQUALITY': 'CCTV 精品文化',
-    'CCTVPLUS1': 'CCTV+ 1 对外',
-    'CCTVPLUS2': 'CCTV+ 2 对外',
-    'CCTVPLUS': 'CCTV+ 对外',
-}
-
-# 名称归一化时丢弃的修饰词
-DROP_WORDS = re.compile(
-    r'\b(HD|SD|FHD|UHD|HEVC|H\.?265|4K|8K|2160p|1080p|1080i|720p|576i|576p|480p)\b',
-    re.I)
-
-
-def norm_name(raw):
-    n = re.sub(r'\s*\(\d{3,4}[pi]\)', '', raw)   # 去分辨率括号
-    n = re.sub(r'\s*\[[^\]]*\]', '', n)           # 去 [Not 24/7] / [Geo-blocked]
-    n = DROP_WORDS.sub('', n)
-    n = re.sub(r'\s+', ' ', n).strip()
-    key = n.replace(' ', '').replace('-', '').replace('_', '').upper()
-    if key in NAME_MAP:
-        return NAME_MAP[key]
-    # 前缀匹配: CCTV-5 体育 / CCTV5Plus ...
-    for k in sorted(NAME_MAP, key=len, reverse=True):
-        if key.startswith(k):
-            return NAME_MAP[k]
-    return n
-
-
-def parse_m3u(text):
-    """返回 [(group, name, url, logo, extinf_raw)]"""
-    out = []
-    lines = text.splitlines()
-    i = 0
-    while i < len(lines):
-        line = lines[i]
-        if line.startswith('#EXTINF'):
-            g = re.search(r'group-title="([^"]*)"', line)
-            group = g.group(1) if g else ''
-            lg = re.search(r'tvg-logo="([^"]*)"', line)
-            logo = lg.group(1) if lg else ''
-            name = line.split(',', 1)[-1].strip() if ',' in line else ''
-            j = i + 1
-            while j < len(lines) and (not lines[j].strip() or lines[j].startswith('#')):
-                j += 1
-            url = lines[j].strip() if j < len(lines) else ''
-            if url.startswith(('http://', 'https://')):
-                out.append((group, name, url, logo, line))
-            i = j + 1
-        else:
-            i += 1
-    return out
 
 
 def probe(url, timeout=7):
+    """返回 (ok, quality)"""
     try:
         req = urllib.request.Request(url, headers={'User-Agent': UA})
         with urllib.request.urlopen(req, timeout=timeout, context=CTX) as r:
-            body = r.read(12000).decode('utf-8', 'replace')
-        return '#EXTM3U' in body
+            body = r.read(40000).decode('utf-8', 'replace')
+            ctype = (r.headers.get('Content-Type') or '').lower()
+        if 'video/' in ctype or 'mp2t' in ctype:
+            return True, (1080, 0)
+        if '#EXTM3U' not in body:
+            return False, (0, 0)
+        q = (0, 0)
+        for m in re.finditer(r'#EXT-X-STREAM-INF:([^\n]*)', body):
+            attr = m.group(1)
+            res = re.search(r'RESOLUTION=(\d+)x(\d+)', attr)
+            bw = re.search(r'BANDWIDTH=(\d+)', attr)
+            h = int(res.group(2)) if res else 0
+            b = int(bw.group(1)) if bw else 0
+            if (h, b) > q:
+                q = (h, b)
+        if '#EXT-X-STREAM-INF' in body:
+            # master 里没写分片, 但拉到一个变体来确认
+            m = re.search(r'#EXT-X-STREAM-INF[^\n]*\n([^\n#]+)', body)
+            if m:
+                vurl = urllib.parse.urljoin(url, m.group(1).strip())
+                try:
+                    req = urllib.request.Request(vurl, headers={'User-Agent': UA})
+                    with urllib.request.urlopen(req, timeout=timeout,
+                                                context=CTX) as r2:
+                        body = r2.read(40000).decode('utf-8', 'replace')
+                except Exception:
+                    return False, q
+        ok = ('#EXTINF' in body or '.ts' in body or '.m4s' in body
+              or '#EXT-X-TARGETDURATION' in body)
+        return ok, q
     except Exception:
-        return False
+        return False, (0, 0)
+
+
+def batch_probe(cands, jobs, timeout, batch=400):
+    """分批验活, 每批硬性超时, 防止 DNS 卡死拖垮整轮"""
+    alive = []
+    for bi in range(0, len(cands), batch):
+        chunk = cands[bi:bi + batch]
+        ex = cf.ThreadPoolExecutor(max_workers=jobs)
+        futs = {ex.submit(probe, c['url'], timeout): c for c in chunk}
+        budget = max(90, len(chunk) / max(jobs, 1) * (timeout + 3) * 3)
+        try:
+            for f in cf.as_completed(futs, timeout=budget):
+                ok, q = f.result()
+                if ok:
+                    c = dict(futs[f])
+                    c['quality'] = q
+                    c['status'] = 'ok'
+                    alive.append(c)
+        except cf.TimeoutError:
+            print('  批次 %d-%d 超时, 放弃 %d 条'
+                  % (bi, bi + len(chunk), sum(1 for f in futs if not f.done())))
+        ex.shutdown(wait=False)
+        print('  ...%d/%d 存活 %d' % (min(bi + batch, len(cands)),
+                                      len(cands), len(alive)), flush=True)
+    return alive
 
 
 def main():
@@ -135,99 +117,75 @@ def main():
     ap.add_argument('--out', required=True)
     ap.add_argument('--no-probe', action='store_true')
     ap.add_argument('--jobs', type=int, default=40)
+    ap.add_argument('--timeout', type=int, default=7)
+    ap.add_argument('--only-cctv-ws', action='store_true',
+                    help='只补央视和卫视 (默认补全池)')
     args = ap.parse_args()
 
-    exists = parse_m3u(open(args.base, encoding='utf-8', errors='replace').read())
-    exist_names = {e[1] for e in exists}
-    exist_urls = {e[2] for e in exists}
-    print('已有: %d 线路 / %d 频道名' % (len(exists), len(exist_names)))
+    base = io_.parse_m3u(open(args.base, encoding='utf-8',
+                              errors='replace').read())
+    print('已有: %d 线路 / %d 频道' % (len(base), len({b['tvg_id'] for b in base})))
+    exist_urls = {b['url'] for b in base}
+    exist_ids = {b['tvg_id'] for b in base}
 
-    # 只补央视和卫视
     want = re.compile(r'^(CCTV|CGTN|.*卫视)')
     cands = []
     seen = set()
     for url, tag in POOLS:
         try:
             req = urllib.request.Request(url, headers={'User-Agent': UA})
-            with urllib.request.urlopen(req, timeout=30, context=CTX) as r:
+            with urllib.request.urlopen(req, timeout=40, context=CTX) as r:
                 text = r.read().decode('utf-8', 'replace')
         except Exception as e:
-            print('  拉取失败 %s: %s' % (url, type(e).__name__))
+            print('  拉取失败 %-10s %s: %s' % (tag, type(e).__name__, url[:50]))
             continue
-        items = parse_m3u(text)
-        print('  %s -> %d 条' % (url.split('/')[-1], len(items)))
-        for group, name, u, logo, raw in items:
-            nm = norm_name(name)
-            if not want.match(nm):
+        items = io_.parse_m3u(text)
+        added = 0
+        for it in items:
+            if not it['tvg_id']:
                 continue
-            if u in exist_urls or u in seen:
+            if args.only_cctv_ws and not want.match(it['name']):
                 continue
-            seen.add(u)
-            grp = '央视' if nm.startswith(('CCTV', 'CGTN')) else '卫视'
-            cands.append((grp, nm, u, logo))
+            # 只要中文台: 央视/卫视/含中文名的地方台
+            if not (want.match(it['name']) or re.search(r'[\u4e00-\u9fa5]', it['name'])):
+                continue
+            if it['url'] in exist_urls or it['url'] in seen:
+                continue
+            seen.add(it['url'])
+            cands.append(it)
+            added += 1
+        print('  %-10s -> 候选 +%d' % (tag, added))
 
     print('候选补充: %d 条' % len(cands))
     if not cands:
-        print('无可补充线路')
-        # 原样复制
+        print('无可补充线路, 原样输出')
         open(args.out, 'w', encoding='utf-8', newline='\n').write(
             open(args.base, encoding='utf-8', errors='replace').read())
         return 0
 
     if not args.no_probe:
-        alive = []
-        with cf.ThreadPoolExecutor(max_workers=args.jobs) as ex:
-            futs = {ex.submit(probe, c[2]): c for c in cands}
-            for f in cf.as_completed(futs):
-                if f.result():
-                    alive.append(futs[f])
+        alive = batch_probe(cands, args.jobs, args.timeout)
         print('  实测存活: %d / %d' % (len(alive), len(cands)))
         cands = alive
+    else:
+        for c in cands:
+            c['quality'] = (0, 0)
+            c['status'] = 'unverified'
 
-    # 统一合并后排序: 央视 -> 卫视 -> 地方
-    merged = []   # (group, name, url, logo)
-    for grp, nm, u, logo in cands:
-        merged.append((grp, nm, u, logo))
-    for group, name, u, logo, raw in exists:
-        g = group if group in ('央视', '卫视') else (
-            '央视' if name.startswith(('CCTV', 'CGTN')) else
-            '卫视' if name.endswith('卫视') else '地方')
-        merged.append((g, name, u, logo))
+    merged = base + cands
+    # 只保留目标频道 (原有频道 + 新补充的央视卫视中文台)
+    result = io_.write_m3u(args.out, merged)
 
-    gor = {'央视': 0, '卫视': 1}
-
-    def sk(t):
-        g, nm, u, _ = t
-        m = re.match(r'CCTV[- ]?(\d+)', nm, re.I)
-        num = int(m.group(1)) if m else (
-            900 if nm.startswith('CCTV') else 999)
-        return (gor.get(g, 2), num, nm)
-
-    merged.sort(key=sk)
-    # 同频道多线路按 url 去重
-    seen2 = set()
-    final = []
-    for t in merged:
-        k = (t[1], t[2])
-        if k in seen2:
-            continue
-        seen2.add(k)
-        final.append(t)
-
-    name_count = {}
-    lines = ['#EXTM3U']
-    for grp, nm, u, logo in final:
-        name_count[nm] = name_count.get(nm, 0) + 1
-        tag = '' if name_count[nm] == 1 else ' #%d' % name_count[nm]
-        lg = (' tvg-logo="%s"' % logo) if logo else ''
-        lines.append('#EXTINF:-1 group-title="%s"%s,%s%s'
-                     % (grp, lg, nm, tag))
-        lines.append(u)
-
-    with open(args.out, 'w', encoding='utf-8', newline='\n') as f:
-        f.write('\n'.join(lines) + '\n')
-    print('合并完成: %d 线路 -> %s' % (len(final), args.out))
-    return 0
+    ids = {r['tvg_id'] for r in result}
+    new_ids = ids - exist_ids
+    print('合并完成: %d 频道 / %d 线路 (新增频道 %d)'
+          % (len(ids), len(result), len(new_ids)))
+    from collections import Counter
+    cnt = Counter(r['tvg_id'] for r in result)
+    multi = sum(1 for v in cnt.values() if v > 1)
+    print('  多线路频道: %d / %d' % (multi, len(ids)))
+    sys.stdout.flush()
+    os._exit(0)
 
 
 if __name__ == '__main__':

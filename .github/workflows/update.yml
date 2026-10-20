@@ -47,7 +47,7 @@ jobs:
       - name: 构建订阅
         id: build
         run: |
-          python scripts/build.py --out out --jobs 48 --timeout 8 || {
+          python scripts/build.py --out out --jobs 40 --timeout 9 --gslb-jobs 4 || {
             echo "验活模式失败, 回退到 --no-probe"
             python scripts/build.py --out out --no-probe
           }
@@ -56,14 +56,15 @@ jobs:
           python -c "
           import json
           s=json.load(open('out/stats.json'))
-          print('频道', s.get('totalChannels'), '线路', s.get('totalLines'))
+          print('频道', s.get('totalChannels'), '线路', s.get('totalLines'),
+                '多线路频道', s.get('multiLineChannels'))
           print('源版本', s.get('meta',{}).get('sourceVersion'))
           "
 
-      - name: 合并公开源池 (央视/卫视补全)
+      - name: 合并公开源池 (为每个台补充备选线路)
         run: |
-          python scripts/merge_public.py --base out/live.m3u --out out/live.m3u || \
-            echo "合并公开源失败 (非致命)"
+          python scripts/merge_public.py --base out/live.m3u --out out/live.m3u \
+            --jobs 48 --timeout 8 || echo "合并公开源失败 (非致命)"
 
       - name: 生成订阅索引页
         run: python scripts/genindex.py --out out || true
@@ -77,16 +78,54 @@ jobs:
             exit 1
           fi
           python - <<'PY'
-          import json, os, sys
+          import json, os, re, sys
+          from collections import defaultdict
+
           for n in ('stats.json', 'index.json', 'channels.json'):
               p = os.path.join('out', n)
               if os.path.exists(p):
                   json.load(open(p, encoding='utf-8'))
                   print('json ok:', n)
+
           m = os.path.getsize('out/live.m3u')
           if m < 1000:
               sys.exit('live.m3u 过小: %d' % m)
           print('live.m3u %d bytes' % m)
+
+          # 回归检查: 同一频道不应出现 " #2" 后缀
+          txt = open('out/live.m3u', encoding='utf-8').read()
+          bad_tag = [l for l in txt.splitlines()
+                     if l.startswith('#EXTINF') and re.search(r',\s*\S+\s#\d+$', l)]
+          if bad_tag:
+              sys.exit('检出线路编号后缀 %d 条, 会把线路显示成新频道: %s'
+                       % (len(bad_tag), bad_tag[0][:80]))
+
+          # 回归检查: 同名频道必须同 tvg-id
+          name2ids = defaultdict(set)
+          ids = defaultdict(int)
+          noid = 0
+          for l in txt.splitlines():
+              if not l.startswith('#EXTINF'):
+                  continue
+              t = re.search(r'tvg-id="([^"]*)"', l)
+              if not t:
+                  noid += 1
+                  continue
+              nm = l.split(',', 1)[-1].strip()
+              name2ids[nm].add(t.group(1))
+              ids[t.group(1)] += 1
+          dup = {n: v for n, v in name2ids.items() if len(v) > 1}
+          if dup:
+              sys.exit('同名频道对应多个 tvg-id: %s' % list(dup.items())[:3])
+          if noid:
+              sys.exit('%d 条 EXTINF 缺少 tvg-id' % noid)
+
+          multi = sum(1 for v in ids.values() if v > 1)
+          print('频道 %d / 线路 %d / 多线路频道 %d'
+                % (len(ids), sum(ids.values()), multi))
+          if len(ids) and multi / len(ids) < 0.10:
+              print('::warning::多线路频道占比偏低 (%.1f%%)'
+                    % (multi / len(ids) * 100))
           PY
 
       - name: 提交变更
@@ -94,7 +133,7 @@ jobs:
           set -e
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add out/
+          git add out/ data/
           if git diff --cached --quiet; then
             echo "无变更, 跳过提交"
             exit 0
@@ -109,7 +148,7 @@ jobs:
             echo "push 被拒, 第 $i 次重试: 合并远端后重推"
             git pull --no-rebase -X ours origin main || true
             git checkout --theirs out/ 2>/dev/null || true
-            git add out/
+            git add out/ data/
             git commit -m "merge: 保留本次构建产物" || true
             sleep 5
           done

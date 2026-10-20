@@ -41,8 +41,9 @@ th{{color:var(--dim);font-weight:500;font-size:12px}}
 <div class="sub">自动构建 · 最近更新 {updated} · 频道表版本 {ver}</div>
 
 <div class="grid">
-  <div class="stat"><b>{channels}</b><span>可用频道</span></div>
+  <div class="stat"><b>{channels}</b><span>频道数</span></div>
   <div class="stat"><b>{lines}</b><span>可用线路</span></div>
+  <div class="stat"><b>{multi}</b><span>多线路频道</span></div>
   <div class="stat"><b>{groups}</b><span>分组</span></div>
 </div>
 
@@ -67,7 +68,9 @@ th{{color:var(--dim);font-weight:500;font-size:12px}}
 <h2>说明</h2>
 <div class="note">
 直播源由公开频道表自动抓取并逐条实测存活，每 6 小时重建一次。<br>
-线路会因源站调整而失效，若某频道失效请稍后刷新订阅；多线路频道已按同名编号保留备选。<br>
+同一频道的多条线路共用 <code style="display:inline;padding:1px 5px">tvg-id</code>，
+在播放器里显示为<b>一个台的多条线路</b>（可按清晰度切换），不会重复成多个台。<br>
+线路会因源站调整而失效，若某条线路不可用请切换到该台的其它线路。<br>
 本页仅索引公开可得的流地址，不托管、不转码、不分发任何音视频内容。
 </div>
 </div>
@@ -76,27 +79,37 @@ th{{color:var(--dim);font-weight:500;font-size:12px}}
 
 
 def recount_from_m3u(m3u_path):
-    """以最终 m3u 为准重算统计, 避免 merge 后 stats 与实际不符"""
+    """以最终 m3u 为准重算统计。
+
+    频道数按 tvg-id 归并计算, 与播放器里看到的台数一致。
+    """
     import re
     from collections import Counter
     if not os.path.exists(m3u_path):
         return None
     groups = Counter()
-    names = Counter()
+    ids = Counter()
+    id2name = {}
     total = 0
-    cur_group = None
     for line in open(m3u_path, encoding='utf-8', errors='replace'):
         line = line.rstrip('\n')
-        if line.startswith('#EXTINF'):
-            total += 1
-            m = re.search(r'group-title="([^"]*)"', line)
-            cur_group = m.group(1) if m else ''
-            groups[cur_group] += 1
-            nm = line.split(',', 1)[-1].strip()
-            nm = re.sub(r'\s*#\d+$', '', nm)   # 去掉多线路编号, 按频道名归并
-            names[nm] += 1
-    return dict(totalLines=total, totalChannels=len(names),
-                byGroup=dict(groups), nameCounter=names)
+        if not line.startswith('#EXTINF'):
+            continue
+        total += 1
+        m = re.search(r'group-title="([^"]*)"', line)
+        g = m.group(1) if m else ''
+        groups[g] += 1
+        tid = re.search(r'tvg-id="([^"]*)"', line)
+        nm = line.split(',', 1)[-1].strip()
+        nm = re.sub(r'\s*#\d+$', '', nm)
+        key = tid.group(1) if tid and tid.group(1) else nm
+        ids[key] += 1
+        id2name.setdefault(key, nm)
+    multi = sum(1 for v in ids.values() if v > 1)
+    return dict(totalLines=total, totalChannels=len(ids),
+                multiLineChannels=multi,
+                byGroup=dict(groups),
+                nameCounter=Counter({id2name[k]: v for k, v in ids.items()}))
 
 
 def main():
@@ -117,11 +130,16 @@ def main():
     if rc:
         stats['totalLines'] = rc['totalLines']
         stats['totalChannels'] = rc['totalChannels']
+        stats['multiLineChannels'] = rc['multiLineChannels']
         stats['byGroup'] = rc['byGroup']
         stats['byChannelTop'] = rc['nameCounter'].most_common(30)
+        stats['avgLinesPerChannel'] = round(
+            rc['totalLines'] / max(rc['totalChannels'], 1), 2)
         with open(stats_path, 'w', encoding='utf-8') as f:
             json.dump(stats, f, ensure_ascii=False, indent=1)
-        print('重算统计: %d 线路 / %d 频道' % (rc['totalLines'], rc['totalChannels']))
+        print('重算统计: %d 频道 / %d 线路 / %d 个多线路频道'
+              % (rc['totalChannels'], rc['totalLines'],
+                 rc['multiLineChannels']))
 
     by_group = stats.get('byGroup', {})
 
@@ -142,6 +160,7 @@ def main():
         ver=meta.get('sourceVersion', '-'),
         channels=stats.get('totalChannels', 0),
         lines=stats.get('totalLines', 0),
+        multi=stats.get('multiLineChannels', 0),
         groups=len(by_group),
         m3u=m3u, txt=txt, rows=rows)
 
@@ -155,6 +174,8 @@ def main():
         sourceVersion=meta.get('sourceVersion'),
         channels=stats.get('totalChannels', 0),
         lines=stats.get('totalLines', 0),
+        multiLineChannels=stats.get('multiLineChannels', 0),
+        avgLinesPerChannel=stats.get('avgLinesPerChannel', 0),
         byGroup=by_group,
         urls=dict(m3u=m3u, tvlist=txt,
                   rawM3u='https://raw.githubusercontent.com/%s/%s/out/live.m3u'

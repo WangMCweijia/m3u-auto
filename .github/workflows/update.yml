@@ -111,7 +111,7 @@ jobs:
               if not t:
                   noid += 1
                   continue
-              nm = l.split(',', 1)[-1].strip()
+              nm = l.rsplit(',', 1)[-1].strip()
               name2ids[nm].add(t.group(1))
               ids[t.group(1)] += 1
           dup = {n: v for n, v in name2ids.items() if len(v) > 1}
@@ -119,6 +119,17 @@ jobs:
               sys.exit('同名频道对应多个 tvg-id: %s' % list(dup.items())[:3])
           if noid:
               sys.exit('%d 条 EXTINF 缺少 tvg-id' % noid)
+
+          # 回归检查: 纯数字 tvg-id 会把一批不相干的台塌成一个台
+          numid = [k for k in ids if re.fullmatch(r'\d+', k)]
+          if numid:
+              sys.exit('检出纯数字 tvg-id, 会吞掉整批频道: %s' % numid[:5])
+
+          # 回归检查: 单台线路数异常膨胀 (= 多个台被误并成一个)
+          huge = {k: v for k, v in ids.items() if v > 40}
+          if huge:
+              print('::warning::疑似过度归并: %s'
+                    % list(sorted(huge.items(), key=lambda x: -x[1]))[:5])
 
           multi = sum(1 for v in ids.values() if v > 1)
           print('频道 %d / 线路 %d / 多线路频道 %d'

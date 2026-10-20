@@ -190,10 +190,13 @@ def id_from_name(name):
             return 'cctv5p' if num == '5' else 'cctv%s' % num
         return 'cctv%s' % num
 
-    # 中文卫视: 取地名前缀匹配置信度最高 (按长度倒序, 避免 '山东' 抢 '山东教育')
-    short = n.replace('卫视', '').replace(' ', '')
+    # 中文卫视: 只有名称里带「卫视」才允许前缀匹配。
+    # 否则「浙江新闻」「钱江都市」会被前缀 '浙江' 吃掉, 全部塌进浙江卫视,
+    # 地方台成批丢失 —— 这是最危险的一类过归并。
+    has_ws = '卫视' in n
+    short = n.replace('卫视', '').replace('4K', '').replace('8K', '').replace(' ', '').strip()
     for k in sorted(WS_ID, key=len, reverse=True):
-        if short.startswith(k):
+        if short == k or (has_ws and short.startswith(k)):
             return WS_ID[k]
 
     # 英文台名
@@ -231,6 +234,11 @@ def canonical(ename, raw_name, group_hint=''):
     """
     e = (ename or '').strip().lower()
     raw = (raw_name or '').strip()
+
+    # 公开源池里有拿纯数字当 tvg-id 的 ("1"/"3"), 会把一批毫不相干的台
+    # 全部塌进同一个 id, 显示成一个台。这类 id 一律丢弃, 改按名称推断。
+    if re.fullmatch(r'\d{1,4}', e or ''):
+        e = ''
 
     if e:
         # 央视付费频道别名

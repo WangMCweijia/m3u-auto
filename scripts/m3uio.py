@@ -36,7 +36,8 @@ def parse_m3u(text):
         logo = lg.group(1) if lg else ''
         tid = re.search(r'tvg-id="([^"]*)"', line)
         tvg_id_raw = tid.group(1) if tid else ''
-        name = line.split(',', 1)[-1].strip() if ',' in line else ''
+        # 从最后一个逗号切: tvg-logo 的 URL 里含逗号时, 用第一个逗号会切坏名字
+        name = line.rsplit(',', 1)[-1].strip() if ',' in line else ''
         # 去掉历史遗留的 " #2" 后缀
         name = re.sub(r'\s*#\d+$', '', name).strip()
         j = i + 1

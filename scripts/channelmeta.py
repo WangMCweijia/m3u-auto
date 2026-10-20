@@ -145,6 +145,22 @@ def _norm(s):
     return re.sub(r'[\s\-_.]', '', s or '').replace('+', 'PLUS').upper()
 
 
+def name_key(name):
+    """归并用的名称键: 剥掉纯泛称后缀
+
+    不同源池对同一个地方台叫法不同: 乐至综合 / 乐至综合频道, 邢台综合 / 邢台综合频道。
+    这类后缀只是"频道/综合/高清"这种泛称, 剥掉后是同一个台。
+    但 CGTN纪录 / CGTN英语 的差异是真实的不同频道, 因此只认白名单后缀,
+    绝不做任意前缀匹配。
+    """
+    n = re.sub(r'\s+', '', name or '')
+    for suf in ('综合频道', '高清频道', '频道', '综合', '高清'):
+        if n.endswith(suf) and len(n) - len(suf) >= 3:
+            n = n[:-len(suf)]
+            break
+    return n
+
+
 def strip_quality(ename):
     """cctv1hd -> cctv1 ; hnwshd/hnws4k -> hnws ; cctv4k 保持不变
 
@@ -203,10 +219,16 @@ def id_from_name(name):
         if short == k or (has_ws and short.startswith(k)):
             return WS_ID[k]
 
-    # 英文台名
+    # CGTN 家族: 纪录/英语/西语/阿语/俄语 是各自独立的台, 不能用前缀一把抓
     key = _norm(n)
+    if key.startswith('CGTN'):
+        rest = key[4:].replace('记录', '纪录')
+        rest = {'JL': '纪录', 'JLP': '纪录', 'DOC': '纪录'}.get(rest, rest)
+        return 'cgtn' if not rest else 'cgtn_' + rest.lower()
+
+    # 英文台名: 必须整体相等 —— 用 startswith 会把 Hunan TV 系列全部吃掉
     for k in sorted(EN_ID, key=len, reverse=True):
-        if key.startswith(k):
+        if key == k:
             return EN_ID[k]
     return ''
 
@@ -262,7 +284,10 @@ def canonical(ename, raw_name, group_hint=''):
         if e in ('cctv4o', 'cctv4m'):
             return e, CCTV_NAME[e], '央视'
         if re.fullmatch(r'cgtn\w*', e):
-            return 'cgtn', 'CGTN', '央视'
+            if e == 'cgtn':
+                return 'cgtn', 'CGTN', '央视'
+            # cgtnrecord / cgtnenglish 等是独立频道, 各自成台
+            return 'cgtn_' + e[4:], raw or 'CGTN', '央视'
         # 前缀兜底: 处理 cctv2.cn@sd / cctv9.cn@sd 这类第三方 id
         m = re.match(r'^(cctv\d{1,2})(?:[.\-_@]|$)', base)
         if m:

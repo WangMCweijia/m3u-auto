@@ -66,7 +66,33 @@ def dedupe_ids_by_name(items):
     91kds 数据里有少量重复条目 (如 潍坊新闻综合 = sdwftv1 / sdwfzw01,
     东方影视 = shdsj / shdsjhd), 不合并的话播放器会显示成两个同名台。
     优先保留不带 hd 后缀、更短的 id。
+
+    另外把「乐至综合」与「乐至综合频道」这类只差泛称后缀的叫法统一成同一个显示名
+    (见 channelmeta.name_key), 否则同一个台会以两个名字各出现一次。
     """
+    # 先做泛称后缀归一: key 相同的多个名字, 统一成最短的那个
+    by_key = {}
+    for it in items:
+        nm = (it.get('name') or '').strip()
+        if nm:
+            k = cm.name_key(nm)
+            lst = by_key.setdefault(k, [])
+            if nm not in lst:
+                lst.append(nm)
+    alias = {}
+    for k, nms in by_key.items():
+        if len(nms) < 2:
+            continue
+        canon = min(nms, key=len)
+        for nm in nms:
+            if nm != canon:
+                alias[nm] = canon
+    if alias:
+        for it in items:
+            nm = (it.get('name') or '').strip()
+            if nm in alias:
+                it['name'] = alias[nm]
+
     best = {}
     for it in items:
         nm = (it.get('name') or '').strip()

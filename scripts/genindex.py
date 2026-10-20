@@ -75,6 +75,30 @@ th{{color:var(--dim);font-weight:500;font-size:12px}}
 """
 
 
+def recount_from_m3u(m3u_path):
+    """以最终 m3u 为准重算统计, 避免 merge 后 stats 与实际不符"""
+    import re
+    from collections import Counter
+    if not os.path.exists(m3u_path):
+        return None
+    groups = Counter()
+    names = Counter()
+    total = 0
+    cur_group = None
+    for line in open(m3u_path, encoding='utf-8', errors='replace'):
+        line = line.rstrip('\n')
+        if line.startswith('#EXTINF'):
+            total += 1
+            m = re.search(r'group-title="([^"]*)"', line)
+            cur_group = m.group(1) if m else ''
+            groups[cur_group] += 1
+            nm = line.split(',', 1)[-1].strip()
+            nm = re.sub(r'\s*#\d+$', '', nm)   # 去掉多线路编号, 按频道名归并
+            names[nm] += 1
+    return dict(totalLines=total, totalChannels=len(names),
+                byGroup=dict(groups), nameCounter=names)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--out', default='out')
@@ -87,6 +111,18 @@ def main():
     if os.path.exists(stats_path):
         stats = json.load(open(stats_path, encoding='utf-8'))
     meta = stats.get('meta', {})
+
+    # 以最终 m3u 重算
+    rc = recount_from_m3u(os.path.join(args.out, 'live.m3u'))
+    if rc:
+        stats['totalLines'] = rc['totalLines']
+        stats['totalChannels'] = rc['totalChannels']
+        stats['byGroup'] = rc['byGroup']
+        stats['byChannelTop'] = rc['nameCounter'].most_common(30)
+        with open(stats_path, 'w', encoding='utf-8') as f:
+            json.dump(stats, f, ensure_ascii=False, indent=1)
+        print('重算统计: %d 线路 / %d 频道' % (rc['totalLines'], rc['totalChannels']))
+
     by_group = stats.get('byGroup', {})
 
     repo = args.repo or 'USER/REPO'

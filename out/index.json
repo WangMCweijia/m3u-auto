@@ -1,16 +1,16 @@
 {
- "updated": "2026-10-20 07:19 UTC",
+ "updated": "2026-10-20 07:39 UTC",
  "sourceVersion": null,
- "channels": 569,
- "lines": 685,
+ "channels": 594,
+ "lines": 711,
  "byGroup": {
-  "央视": 14,
-  "卫视": 11,
-  "地方": 660
+  "央视": 41,
+  "卫视": 12,
+  "地方": 658
  },
  "urls": {
-  "m3u": "https://cdn.jsdelivr.net/gh/USER/REPO@main/out/live.m3u",
-  "tvlist": "https://cdn.jsdelivr.net/gh/USER/REPO@main/out/live.txt",
-  "rawM3u": "https://raw.githubusercontent.com/USER/REPO/main/out/live.m3u"
+  "m3u": "https://cdn.jsdelivr.net/gh/WangMCweijia/m3u-auto@main/out/live.m3u",
+  "tvlist": "https://cdn.jsdelivr.net/gh/WangMCweijia/m3u-auto@main/out/live.txt",
+  "rawM3u": "https://raw.githubusercontent.com/WangMCweijia/m3u-auto/main/out/live.m3u"
  }
 }

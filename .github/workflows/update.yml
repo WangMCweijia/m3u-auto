@@ -68,18 +68,51 @@ jobs:
       - name: 生成订阅索引页
         run: python scripts/genindex.py --out out || true
 
+      - name: 产物校验
+        run: |
+          set -e
+          # 防止把 git 冲突标记当成正常产物发布
+          if grep -rl "^<<<<<<<" out/ 2>/dev/null; then
+            echo "::error::产物中检出冲突标记, 中止发布"
+            exit 1
+          fi
+          python - <<'PY'
+          import json, os, sys
+          for n in ('stats.json', 'index.json', 'channels.json'):
+              p = os.path.join('out', n)
+              if os.path.exists(p):
+                  json.load(open(p, encoding='utf-8'))
+                  print('json ok:', n)
+          m = os.path.getsize('out/live.m3u')
+          if m < 1000:
+              sys.exit('live.m3u 过小: %d' % m)
+          print('live.m3u %d bytes' % m)
+          PY
+
       - name: 提交变更
         run: |
+          set -e
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add out/
           if git diff --cached --quiet; then
             echo "无变更, 跳过提交"
-          else
-            VER=$(python -c "import json;print(json.load(open('out/stats.json')).get('meta',{}).get('sourceVersion'))" 2>/dev/null || echo unknown)
-            git commit -m "chore: update sources (ver=${VER}) $(date -u +%Y-%m-%dT%H:%MZ)"
-            git push
+            exit 0
           fi
+          VER=$(python -c "import json;print(json.load(open('out/stats.json')).get('meta',{}).get('sourceVersion'))" 2>/dev/null || echo unknown)
+          git commit -m "chore: update sources (ver=${VER}) $(date -u +%Y-%m-%dT%H:%MZ)"
+          # 远端可能已被手动推送更新, 合并时以本次构建产物为准
+          for i in 1 2 3; do
+            if git push origin HEAD:main 2>/dev/null; then
+              echo "push ok"; break
+            fi
+            echo "push 被拒, 第 $i 次重试: 合并远端后重推"
+            git pull --no-rebase -X ours origin main || true
+            git checkout --theirs out/ 2>/dev/null || true
+            git add out/
+            git commit -m "merge: 保留本次构建产物" || true
+            sleep 5
+          done
 
       - name: 部署 Pages
         if: github.ref == 'refs/heads/main'

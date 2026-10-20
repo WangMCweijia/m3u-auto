@@ -149,23 +149,27 @@ def strip_quality(ename):
     """cctv1hd -> cctv1 ; hnwshd/hnws4k -> hnws ; cctv4k 保持不变
 
     注意 cctv4k / cctv8k 结尾的 'k' 不是清晰度后缀, 必须原样保留。
+    md / sd 同样是清晰度变体 (网关的 cctv1md 与 cctv1hd 是同一个台)。
     """
     e = (ename or '').strip().lower()
     if not e:
         return e
-    # 央视: cctv<数字> + 可选 hd
-    m = re.fullmatch(r'(cctv\d{1,2})hd', e)
+    # cctv4k / cctv8k 是独立频道, 不能剥
+    if e in ('cctv4k', 'cctv8k'):
+        return e
+    # 央视: cctv<数字> + 可选清晰度
+    m = re.fullmatch(r'(cctv\d{1,2})(?:hd|md|sd)', e)
     if m:
         return m.group(1)
-    # 卫视: xxxws / 特色频道 + hd|4k
-    m = re.fullmatch(r'(.+?)ws(hd|4k)', e)
+    # 卫视: xxxws / 特色频道 + hd|md|sd|4k
+    m = re.fullmatch(r'(.+?)ws(?:hd|md|sd|4k)', e)
     if m:
         return m.group(1) + 'ws'
-    m = re.fullmatch(r'(.+?)(hd)', e)
+    m = re.fullmatch(r'(.+?)(?:hd|md|sd)', e)
     if m and m.group(1) in WS_ID.values():
         return m.group(1)
-    # 通用: 地方台的 xxxhd 视为同频道的 HD 版
-    m = re.fullmatch(r'(.{2,})hd', e)
+    # 通用: 地方台的 xxxhd / xxxmd 视为同频道的 HD / MD 版
+    m = re.fullmatch(r'(.{2,})(?:hd|md|sd)', e)
     if m:
         return m.group(1)
     return e

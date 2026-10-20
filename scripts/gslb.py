@@ -155,7 +155,7 @@ def _prune(cache, days=CACHE_TTL_DAYS):
 
 
 def collect(data, jobs=4, timeout=8, gateways=None, verbose=True,
-            only='priority', cache_path=None):
+            only='priority', cache_path=None, also_md=True):
     """从频道表数据生成 gslb 线路
 
     返回 items 列表 (已带 status='ok' / quality), 结构与 build.iter_sources 一致。
@@ -163,6 +163,10 @@ def collect(data, jobs=4, timeout=8, gateways=None, verbose=True,
 
     网关会限流 —— 短时间内重复全量扫描时命中数会从 96 掉到 24。
     因此命中结果写入 cache_path, 本次没扫到的频道沿用缓存里的线路作备选。
+
+    also_md=True 时补扫 <base>md 变体。频道表里只有 hd / 无后缀,
+    但网关实际同时提供 md 流 (cctv1md / zjwsmd), 多这一条等于多一条兜底线路,
+    清晰度 720p 会被排在 HD 之后, 不影响优先播放。
     """
     import datetime
     gws = gateways or GATEWAYS
@@ -174,6 +178,21 @@ def collect(data, jobs=4, timeout=8, gateways=None, verbose=True,
     enames = list(idx)
     if only == 'priority':
         enames = [e for e in enames if is_priority(e, idx[e])]
+
+    if also_md:
+        qre = re.compile(r'(hd|4k|8k|sd)$', re.I)
+        extra = {}
+        for e in enames:
+            m = qre.sub('', e) + 'md'
+            if m.lower() != e.lower() and m not in idx and m not in extra:
+                extra[m] = idx[e]
+        for m, ch in extra.items():
+            idx[m] = ch
+        if extra:
+            enames = enames + list(extra)
+            if verbose:
+                print('  补扫 md 变体 %d 个' % len(extra), flush=True)
+
     if verbose:
         print('  候选 ename %d 个 (only=%s)' % (len(enames), only), flush=True)
 

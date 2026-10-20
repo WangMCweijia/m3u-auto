@@ -1,14 +1,14 @@
 {
- "updated": "2026-10-20 16:19 UTC",
+ "updated": "2026-10-20 21:23 UTC",
  "sourceVersion": 20251030,
- "channels": 914,
- "lines": 1614,
- "multiLineChannels": 253,
- "avgLinesPerChannel": 1.77,
+ "channels": 917,
+ "lines": 1901,
+ "multiLineChannels": 274,
+ "avgLinesPerChannel": 2.07,
  "byGroup": {
-  "央视": 246,
-  "卫视": 272,
-  "地方": 1096
+  "央视": 343,
+  "卫视": 402,
+  "地方": 1156
  },
  "urls": {
   "m3u": "https://cdn.jsdelivr.net/gh/WangMCweijia/m3u-auto@main/out/live.m3u",

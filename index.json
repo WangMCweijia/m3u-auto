@@ -1,0 +1,16 @@
+{
+ "updated": "2026-10-20 07:37 UTC",
+ "sourceVersion": 20251030,
+ "channels": 426,
+ "lines": 470,
+ "byGroup": {
+  "央视": 17,
+  "卫视": 6,
+  "地方": 447
+ },
+ "urls": {
+  "m3u": "https://cdn.jsdelivr.net/gh/WangMCweijia/m3u-auto@main/out/live.m3u",
+  "tvlist": "https://cdn.jsdelivr.net/gh/WangMCweijia/m3u-auto@main/out/live.txt",
+  "rawM3u": "https://raw.githubusercontent.com/WangMCweijia/m3u-auto/main/out/live.m3u"
+ }
+}

@@ -250,6 +250,9 @@ def display_for(tvg_id, fallback=''):
             return short + '卫视'
     if tvg_id.startswith('cctv_'):
         return fallback
+    # CGTN 子频道: 显示名由 id 反推, 保证「记录/纪录」两种写法落到同一个名字
+    if tvg_id.startswith('cgtn_'):
+        return 'CGTN' + tvg_id[5:]
     return fallback
 
 

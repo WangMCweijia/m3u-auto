@@ -6,12 +6,12 @@
 
 | 格式 | 地址 |
 |---|---|
-| M3U（推荐） | `https://cdn.jsdelivr.net/gh/<owner>/<repo>@main/out/live.m3u` |
-| TVLIST | `https://cdn.jsdelivr.net/gh/<owner>/<repo>@main/out/live.txt` |
-| 索引页 | `https://cdn.jsdelivr.net/gh/<owner>/<repo>@main/out/index.html` |
+| M3U（推荐） | `https://cdn.jsdelivr.net/gh/WangMCweijia/m3u-auto@main/out/live.m3u` |
+| TVLIST | `https://cdn.jsdelivr.net/gh/WangMCweijia/m3u-auto@main/out/live.txt` |
+| 索引页 | `https://cdn.jsdelivr.net/gh/WangMCweijia/m3u-auto@main/out/index.html` |
 
 备用（无 CDN 缓存，可能较慢）：
-`https://raw.githubusercontent.com/<owner>/<repo>/main/out/live.m3u`
+`https://raw.githubusercontent.com/WangMCweijia/m3u-auto/main/out/live.m3u`
 
 ## 数据来源
 

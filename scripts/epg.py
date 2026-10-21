@@ -14,7 +14,9 @@ EPG (节目单) 对齐
   3. CCTV5+ 这类带后缀的         -> 单独处理
   4. 其余保持原样 (EPG 没这个台, 加了 x-tvg-url 也不影响播放)
 
-EPG 文件很大 (6MB+), 因此映射结果落盘缓存 7 天, 不是每次构建都拉。
+EPG 文件很大 (6MB+), 因此缓存的是**EPG 的 id 集合**, 不是算好的映射 ——
+映射每次现场按当前频道表推导, 否则新增的台 (比如卫视) 会一直漏掉:
+早期版本缓存了映射, 本地 40 条冒烟跑出来的只有央视, CI 就沿用了那份残缺表。
 """
 import json
 import os
@@ -80,61 +82,39 @@ def _fresh(path, days=REFRESH_DAYS):
 
 
 def cached(path='data/epg_map.json'):
-    """读现成的缓存, 返回 (url, map); 没有就返回 ('', {})"""
+    """读现成的缓存, 返回 (url, ids); 没有就返回 ('', set())"""
     d = load(path)
-    if d.get('map'):
-        return d.get('url') or DEFAULT_SOURCE, d['map']
-    return '', {}
+    ids = d.get('ids') or []
+    if ids:
+        return d.get('url') or DEFAULT_SOURCE, set(ids)
+    return '', set()
 
 
 def load(path):
-    """返回 {'url':..., 'map': {tvg_id: epg_id}, 'ts':...}"""
+    """返回 {'url':..., 'ids': [...], 'ts':...}"""
     try:
         with open(path, encoding='utf-8') as f:
             d = json.load(f)
-        if isinstance(d, dict) and isinstance(d.get('map'), dict):
+        if isinstance(d, dict):
             return d
     except Exception:
         pass
-    return {'url': '', 'map': {}, 'ts': ''}
+    return {'url': '', 'ids': [], 'ts': ''}
 
 
-def save(path, url, mapping):
+def save(path, url, ids):
     d = os.path.dirname(os.path.abspath(path))
     os.makedirs(d, exist_ok=True)
     payload = {'url': url, 'ts': time.strftime('%Y-%m-%d %H:%M'),
-               'map': mapping}
+               'ids': sorted(ids)}
     tmp = path + '.tmp'
     with open(tmp, 'w', encoding='utf-8') as f:
         json.dump(payload, f, ensure_ascii=False, indent=0, sort_keys=True)
     os.replace(tmp, path)
 
 
-def prepare(items, cache_path='data/epg_map.json', verbose=True,
-            force=False):
-    """确保有可用的映射; 返回 (url, {tvg_id: epg_id})
-
-    缓存新鲜就直接用; 过期才重新拉 EPG。拉不到时退回旧缓存, 全都没有就放弃
-    EPG (不影响订阅本身)。
-    """
-    cached = load(cache_path)
-    if not force and cached['map'] and _fresh(cache_path):
-        if verbose:
-            print('  EPG 映射: 缓存 %d 个频道 (源 %s)'
-                  % (len(cached['map']), cached.get('url') or '?'), flush=True)
-        return cached.get('url') or DEFAULT_SOURCE, cached['map']
-
-    ids, url = fetch_ids()
-    if not ids:
-        if cached['map']:
-            if verbose:
-                print('  EPG 拉取失败, 沿用缓存 %d 个频道' % len(cached['map']),
-                      flush=True)
-            return cached.get('url') or DEFAULT_SOURCE, cached['map']
-        if verbose:
-            print('  EPG 拉取失败, 本次不带节目单', flush=True)
-        return '', {}
-
+def _derive(items, ids):
+    """按当前频道表现场推导映射"""
     mapping = {}
     for it in items:
         tid = it.get('tvg_id') or ''
@@ -143,14 +123,37 @@ def prepare(items, cache_path='data/epg_map.json', verbose=True,
         m = map_one(tid, it.get('name') or '', ids)
         if m:
             mapping[tid] = m
-    try:
-        save(cache_path, url, mapping)
-    except Exception:
-        pass
+    return mapping
+
+
+def prepare(items, cache_path='data/epg_map.json', verbose=True,
+            force=False):
+    """确保有可用的 EPG id 集合; 返回 (url, {tvg_id: epg_id})
+
+    缓存新鲜就只读 id 集合, 映射本身每次重算 —— 这样频道表变了 (新加卫视、
+    新加地方台) 也能立刻用上, 不会沿用上次那份不含它们的旧映射。
+    """
+    url, ids = cached(cache_path)
+    if not ids or force or not _fresh(cache_path):
+        got, gurl = fetch_ids()
+        if got:
+            ids, url = got, gurl
+            try:
+                save(cache_path, url, ids)
+            except Exception:
+                pass
+        elif verbose:
+            print('  EPG 拉取失败, %s'
+                  % ('沿用缓存 %d 个 id' % len(ids) if ids else '本次不带节目单'),
+                  flush=True)
+
+    if not ids:
+        return '', {}
+    mapping = _derive(items, ids)
     if verbose:
         print('  EPG 映射: %d 个频道可显示节目单 (EPG 共 %d 个 id)'
               % (len(mapping), len(ids)), flush=True)
-    return url, mapping
+    return url or DEFAULT_SOURCE, mapping
 
 
 if __name__ == '__main__':

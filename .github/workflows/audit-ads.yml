@@ -1,0 +1,77 @@
+name: 广告线路审计
+
+# 只做「找可疑线路 + 出联系表」, 不直接改订阅。
+# 确认过的广告主机请手工写进 data/ad_blocklist.json, 构建时才会生效。
+on:
+  workflow_dispatch:
+    inputs:
+      channels:
+        description: '审计范围 (priority=央视+卫视 / all)'
+        default: 'priority'
+        required: false
+  schedule:
+    # 每周一 03:00 UTC
+    - cron: '0 3 * * 1'
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 安装解码依赖
+        run: pip install --quiet av pillow
+
+      - name: 画面聚类找可疑线路
+        run: |
+          python scripts/adcheck.py \
+            --m3u out/live.m3u \
+            --out data/ad_candidates.json \
+            --only "${{ github.event.inputs.channels || 'priority' }}" \
+            --jobs 8 --timeout 10
+          echo "--- 候选 ---"
+          python -c "
+          import json
+          d = json.load(open('data/ad_candidates.json', encoding='utf-8'))
+          print('累计候选 %d 条' % len(d))
+          for u, v in list(d.items())[:20]:
+              print(' ', v.get('channel'), u[:90])
+          "
+
+      - name: 生成重点频道联系表
+        run: |
+          mkdir -p sheets
+          for ch in "CCTV-1 综合" "CCTV-2 财经" "CCTV-5 体育" "CCTV-6 电影" \
+                    "湖南卫视" "浙江卫视" "江苏卫视" "东方卫视"; do
+            python scripts/audit.py out/live.m3u "$ch" "sheets/${ch}.png" 12 || true
+          done
+          ls -la sheets/ || true
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ad-audit-sheets
+          path: sheets/
+          if-no-files-found: ignore
+
+      - name: 提交候选清单
+        run: |
+          set -e
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ad_candidates.json
+          if git diff --cached --quiet; then
+            echo "无变更"
+            exit 0
+          fi
+          git commit -m "chore: 广告线路候选 $(date -u +%Y-%m-%d)"
+          for i in 1 2 3; do
+            git push origin HEAD:main && break || (git pull --no-rebase -X ours origin main; sleep 5)
+          done

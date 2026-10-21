@@ -26,6 +26,8 @@ import urllib.request
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import channelmeta as cm  # noqa: E402
+import adfilter  # noqa: E402
+import hlslive  # noqa: E402
 import m3uio as io_  # noqa: E402
 
 CTX = ssl.create_default_context()
@@ -48,42 +50,13 @@ POOLS = [
 
 
 def probe(url, timeout=7):
-    """返回 (ok, quality)"""
-    try:
-        req = urllib.request.Request(url, headers={'User-Agent': UA})
-        with urllib.request.urlopen(req, timeout=timeout, context=CTX) as r:
-            body = r.read(40000).decode('utf-8', 'replace')
-            ctype = (r.headers.get('Content-Type') or '').lower()
-        if 'video/' in ctype or 'mp2t' in ctype:
-            return True, (1080, 0)
-        if '#EXTM3U' not in body:
-            return False, (0, 0)
-        q = (0, 0)
-        for m in re.finditer(r'#EXT-X-STREAM-INF:([^\n]*)', body):
-            attr = m.group(1)
-            res = re.search(r'RESOLUTION=(\d+)x(\d+)', attr)
-            bw = re.search(r'BANDWIDTH=(\d+)', attr)
-            h = int(res.group(2)) if res else 0
-            b = int(bw.group(1)) if bw else 0
-            if (h, b) > q:
-                q = (h, b)
-        if '#EXT-X-STREAM-INF' in body:
-            # master 里没写分片, 但拉到一个变体来确认
-            m = re.search(r'#EXT-X-STREAM-INF[^\n]*\n([^\n#]+)', body)
-            if m:
-                vurl = urllib.parse.urljoin(url, m.group(1).strip())
-                try:
-                    req = urllib.request.Request(vurl, headers={'User-Agent': UA})
-                    with urllib.request.urlopen(req, timeout=timeout,
-                                                context=CTX) as r2:
-                        body = r2.read(40000).decode('utf-8', 'replace')
-                except Exception:
-                    return False, q
-        ok = ('#EXTINF' in body or '.ts' in body or '.m4s' in body
-              or '#EXT-X-TARGETDURATION' in body)
-        return ok, q
-    except Exception:
-        return False, (0, 0)
+    """返回 (ok, quality)
+
+    与 build.probe 一致: 必须真的取到一个分片。只回 m3u8 而分片 404 的
+    空壳线路不算活 (否则会把「能播但其实是垫片广告」的线路当成好线路)。
+    """
+    ok, detail, q = hlslive.probe_live(url, {}, timeout)
+    return (ok, q or (0, 0))
 
 
 def batch_probe(cands, jobs, timeout, batch=400):
@@ -121,6 +94,9 @@ def main():
     ap.add_argument('--only-cctv-ws', action='store_true',
                     help='只补央视和卫视 (默认补全池)')
     args = ap.parse_args()
+
+    # 省份前缀映射: build 阶段从频道表生成, 这里载入后公开池条目也能按省份分组
+    cm.load_prov_map('data/prov_map.json')
 
     base = io_.parse_m3u(open(args.base, encoding='utf-8',
                               errors='replace').read())
@@ -162,6 +138,9 @@ def main():
         open(args.out, 'w', encoding='utf-8', newline='\n').write(
             open(args.base, encoding='utf-8', errors='replace').read())
         return 0
+
+    # 公开池里也混着广告站, 先按黑名单剔掉再验活, 省时间
+    adfilter.apply(cands)
 
     if not args.no_probe:
         alive = batch_probe(cands, args.jobs, args.timeout)

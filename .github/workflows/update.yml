@@ -23,7 +23,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 55
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -137,6 +137,29 @@ jobs:
           if len(ids) and multi / len(ids) < 0.10:
               print('::warning::多线路频道占比偏低 (%.1f%%)'
                     % (multi / len(ids) * 100))
+          PY
+
+      - name: 抽查线路是否真能出分片
+        run: |
+          python - <<'PY'
+          import random, sys
+          sys.path.insert(0, 'scripts')
+          import hlslive
+
+          urls = [l.strip() for l in open('out/live.m3u', encoding='utf-8')
+                  if l.strip() and not l.startswith('#')]
+          random.seed(20251021)
+          sample = random.sample(urls, min(8, len(urls)))
+          bad = []
+          for u in sample:
+              ok, detail, _ = hlslive.probe_live(u, {}, 7)
+              print(('OK  ' if ok else 'FAIL') + ' ' + detail + ' ' + u[:90])
+              if not ok:
+                  bad.append(u)
+          print('抽查 %d 条, 失败 %d 条' % (len(sample), len(bad)))
+          if bad and len(bad) / len(sample) >= 0.4:
+              sys.exit('抽查失败率过高 (%d/%d), 疑似又混入空壳线路'
+                       % (len(bad), len(sample)))
           PY
 
       - name: 提交变更

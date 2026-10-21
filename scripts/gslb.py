@@ -30,7 +30,8 @@ import urllib.error
 import urllib.request
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import channelmeta as cm  # noqa: E402
+import channelmeta as cm
+import hlslive  # noqa: E402
 
 CTX = ssl.create_default_context()
 CTX.check_hostname = False
@@ -47,38 +48,42 @@ GATEWAYS = [
 ]
 
 
+def _quality_of_url(url):
+    """从 ename 或分片目录名推断清晰度"""
+    tag = ''
+    m = re.search(r'[?&]id=([a-z0-9]+)', url)
+    if m:
+        tag = m.group(1)
+    else:
+        m = re.search(r'/([a-z0-9]+)\.m3u8', url)
+        if m:
+            tag = m.group(1)
+    if tag.endswith('4k'):
+        return (2160, 0)
+    if tag.endswith('hd'):
+        return (1080, 0)
+    if tag.endswith('md'):
+        return (720, 0)
+    return (720, 0)
+
+
 def check(url, timeout=8, retry=2, gap=0.6):
     """返回 (ok, quality)
 
-    网关是多节点集群, 单次请求有一定概率落到坏节点, 因此失败重试几次。
-    但并发不能高: 实测 20 并发全量扫描会触发限流, 命中数从 310 掉到 34。
+    必须是**真能下到分片**才算可用。网关会返回播放列表合法、分片却 404 的
+    空壳响应, 只看 m3u8 会把这类线路当成活的, 用户点了就是黑屏/垫片广告。
     """
     import time
-    last = (False, (0, 0))
     for attempt in range(retry + 1):
-        try:
-            req = urllib.request.Request(url, headers={'User-Agent': UA})
-            with urllib.request.urlopen(req, timeout=timeout, context=CTX) as r:
-                body = r.read(8000)
-        except Exception:
-            if attempt < retry:
-                time.sleep(gap)
-            continue
-        if body[:7] != b'#EXTM3U':
+        ok, detail, q = hlslive.probe_live(url, {}, timeout)
+        if ok:
+            return True, (q if q and q[0] else _quality_of_url(url))
+        # 4xx/5xx 是确定性失败, 不值得重试
+        if 'HTTP' in detail or 'http4' in detail:
             return False, (0, 0)
-        if b'#EXTINF' not in body and b'.ts' not in body:
-            return False, (0, 0)
-        # 网关一般是单码率, 用目录名推断清晰度 (xxxmd / xxxhd / xxxsd)
-        m = re.search(rb'\n([A-Za-z0-9_]+)/segment_', body)
-        if m:
-            tag = m.group(1).decode().lower()
-            q = (2160 if tag.endswith('4k') else
-                 1080 if tag.endswith('hd') else
-                 720 if tag.endswith('md') else 576, 0)
-        else:
-            q = (720, 0)
-        return True, q
-    return last
+        if attempt < retry:
+            time.sleep(gap)
+    return False, (0, 0)
 
 
 def scan_enames(enames, template, jobs=20, timeout=8):
@@ -240,8 +245,8 @@ def collect(data, jobs=4, timeout=8, gateways=None, verbose=True,
         name = (ch.get('name') or '').strip()
         prov = (ch.get('prov') or '').strip()
         tvg_id, disp, group = cm.canonical(e, name)
-        if group == '地方' and prov:
-            group = prov if prov in cm.GROUP_ORDER else '地方'
+        if group in ('地方', '', cm.OTHER_GROUP):
+            group = cm.prov_of(name, prov)
         icon = ch.get('icon') or ''
         lst.sort(key=lambda x: -x[1][0])
         for gw, q in lst:
@@ -256,8 +261,8 @@ def collect(data, jobs=4, timeout=8, gateways=None, verbose=True,
         name = (ch.get('name') or '').strip()
         prov = (ch.get('prov') or '').strip()
         tvg_id, disp, group = cm.canonical(e, name)
-        if group == '地方' and prov:
-            group = prov if prov in cm.GROUP_ORDER else '地方'
+        if group in ('地方', '', cm.OTHER_GROUP):
+            group = cm.prov_of(name, prov)
         icon = ch.get('icon') or ''
         for u in urls:
             if u in seen_url:

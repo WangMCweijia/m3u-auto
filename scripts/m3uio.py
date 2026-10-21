@@ -112,21 +112,26 @@ def dedupe_ids_by_name(items):
     return items
 
 
-GROUP_ORDER = {'央视': 0, '卫视': 1, '地方': 2}
+GROUP_ORDER = cm.GROUP_ORDER
 
 
-def normalize_group(tvg_id, name):
-    """统一成 央视 / 卫视 / 地方
+def normalize_group(tvg_id, name, hint=''):
+    """统一分组: 央视 / 卫视 / 省份 / 其他
 
     公开源池自带 emoji 分组 (📡卫视频道 / 💰央视付费频道 / ☘️浙江频道 ...),
-    混在一起会让人找不到台, 因此在写出前统一归类。
+    混在一起会让人找不到台; 而 91kds 的 prov 字段能给出真实省份。
+    这里优先级: 央视 > 卫视 > 已知 hint(省份) > 按名称/前缀推断。
     """
     tid = tvg_id or ''
     if tid.startswith(('cctv', 'cgtn')):
         return '央视'
-    if (name or '').endswith('卫视'):
+    nm = name or ''
+    if nm.endswith('卫视') or nm in ('凤凰卫视',):
         return '卫视'
-    return '地方'
+    h = (hint or '').strip()
+    if h in cm.GROUP_ORDER and h not in ('央视', '卫视'):
+        return h
+    return cm.prov_of(nm)
 
 
 def group_and_sort(items):
@@ -158,7 +163,7 @@ def group_and_sort(items):
             seen.add(it['url'])
             uniq.append(it)
         rep = uniq[0]
-        grp = normalize_group(rep['tvg_id'], rep['name'])
+        grp = normalize_group(rep['tvg_id'], rep['name'], rep.get('group'))
         for it in uniq:
             d = dict(it)
             d['name'] = rep['name']
@@ -167,8 +172,12 @@ def group_and_sort(items):
             out.append(d)
 
     def sk(it):
-        return (cm.sort_key_of(it['tvg_id'], it['name'])
-                + (GROUP_ORDER.get(it['group'], 9),))
+        """先按分组(央视/卫视/各省/其他), 组内央视按台号, 其余按名称"""
+        g = GROUP_ORDER.get(it['group'], 99)
+        tid = it['tvg_id']
+        m = re.match(r'cctv(\d{1,2})', tid)
+        num = int(m.group(1)) if m else (900 if tid.startswith('cgtn') else 950)
+        return (g, num, len(it['name']), it['name'])
 
     out.sort(key=sk)
     return out

@@ -18,6 +18,7 @@
 M3U 的归并规则是: tvg-id 相同 或 显示名完全相同 => 同一频道的不同线路。
 本模块负责把以上各种写法压到同一个 (tvg_id, display_name)。
 """
+import json
 import re
 
 # ---------------------------------------------------------------- 央视
@@ -87,8 +88,82 @@ WS_ID = {
     '大湾区': 'nfws', '农林': 'snnl', '安多': 'qhzy', '山东教育': 'sdjy',
 }
 
-GROUP_ORDER = {'央视': 0, '卫视': 1, '地方': 2, '影视': 3, '体育': 4,
-               '少儿': 5, '纪录': 6, '港澳台': 7, '网络': 8}
+# ---------------------------------------------------------------- 省份分组
+
+# 播放器侧的分组顺序: 央视 -> 卫视 -> 各省 -> 其他
+PROVINCES = [
+    '北京', '天津', '河北', '山西', '内蒙古', '辽宁', '吉林', '黑龙江',
+    '上海', '江苏', '浙江', '安徽', '福建', '江西', '山东', '河南',
+    '湖北', '湖南', '广东', '广西', '海南', '重庆', '四川', '贵州',
+    '云南', '西藏', '陕西', '甘肃', '青海', '宁夏', '新疆',
+]
+TOP_GROUPS = ['央视', '卫视']
+OTHER_GROUP = '其他'
+
+GROUP_ORDER = {g: i for i, g in enumerate(TOP_GROUPS + PROVINCES + [OTHER_GROUP])}
+
+# 频道名首 2~3 字 -> 省份, 由频道表(带 prov 字段)自动生成, 存 data/prov_map.json
+PROV_MAP = {}
+
+
+def load_prov_map(path):
+    """载入 name_prefix -> 省份 映射 (缺失则忽略)"""
+    global PROV_MAP
+    try:
+        with open(path, encoding='utf-8') as f:
+            PROV_MAP = {k: v for k, v in json.load(f).items() if v in PROVINCES}
+    except Exception:
+        pass                      # 文件缺失时保留内存里已有的映射
+    return PROV_MAP
+
+
+def build_prov_map(data):
+    """从频道表生成 前缀->省份 映射
+
+    频道表的 prov 字段只覆盖 91kds 自己的条目, 公开源池没有。
+    但公开池的地方台名字通常以城市/地区开头 (潍坊新闻综合、青岛新闻),
+    因此用已知 prov 的条目反推「前缀 -> 省份」, 再套到公开池条目上。
+    """
+    votes = {}
+    for ch in data:
+        prov = (ch.get('prov') or '').strip()
+        if prov not in PROVINCES:
+            continue
+        name = re.sub(r'[\s\-_]', '', (ch.get('name') or ''))
+        for n in (2, 3):
+            if len(name) >= n:
+                votes.setdefault(name[:n], {}).setdefault(prov, 0)
+                votes[name[:n]][prov] += 1
+    mapping = {}
+    for prefix, cnt in votes.items():
+        prov, c = max(cnt.items(), key=lambda kv: kv[1])
+        if c >= 2:                       # 至少两条支持, 避免个案噪声
+            mapping[prefix] = prov
+    global PROV_MAP
+    PROV_MAP = mapping
+    return mapping
+
+
+def prov_of(name, prov=''):
+    """判定一个频道属于哪个分组
+
+    返回省份名 / 其他。央视、卫视由调用方先行拦截。
+    """
+    p = (prov or '').strip()
+    if p in PROVINCES:
+        return p
+    n = re.sub(r'[\s\-_]', '', name or '')
+    if not n:
+        return OTHER_GROUP
+    # 称号即省名: 山东新闻 / 北京文艺
+    for x in PROVINCES:
+        if n.startswith(x):
+            return x
+    # 城市/地区前缀查表, 先用 3 字再用 2 字
+    for ln in (3, 2):
+        if len(n) >= ln and n[:ln] in PROV_MAP:
+            return PROV_MAP[n[:ln]]
+    return OTHER_GROUP
 
 
 # ---------------------------------------------------------------- 工具

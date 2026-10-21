@@ -41,6 +41,8 @@ import zipfile
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import channelmeta as cm  # noqa: E402
 import gslb as _gslb  # noqa: E402
+import adfilter
+import hlslive
 import m3uio as io_  # noqa: E402
 gslb = _gslb
 
@@ -57,8 +59,7 @@ SOURCE_BASE = 'http://sj.91kds.cn/lb/'
 SKIP_PROTO = ('kdsvod://', 'htmlplay://', 'kdslbk://', 'mitv://', 'sop://',
               'rtsp://', 'rtp://', 'igmp://', 'p3p://')
 
-GROUP_ORDER = {'央视': 0, '卫视': 1, '地方': 2, '影视': 3, '体育': 4,
-               '少儿': 5, '纪录': 6, '港澳台': 7, '网络': 8, '虎牙': 9}
+GROUP_ORDER = cm.GROUP_ORDER      # 央视/卫视/各省/其他
 
 # ename 里有这些关键字的归到卫视组
 WEISHI_HINT = re.compile(r'(weishi|ws|satellite)', re.I)
@@ -148,7 +149,7 @@ def guess_group(ch):
     if re.search(r'CCTV|央视|中央', name, re.I):
         return '央视'
     if prov:
-        return '地方'
+        return cm.OTHER_GROUP
     return '网络'
 
 
@@ -167,8 +168,8 @@ def iter_sources(data):
         prov = (ch.get('prov') or '').strip()
         tvg_id, disp, group = cm.canonical(ename, name, guess_group(ch))
         # 地方台分组用省份, 更贴近用户的找台习惯
-        if group == '地方' and prov and prov not in ('央视', '卫视'):
-            group = prov if prov in GROUP_ORDER else '地方'
+        if group in ('地方', '', cm.OTHER_GROUP):
+            group = cm.prov_of(name, prov)
         icon = ch.get('icon') or ''
         for raw in (ch.get('urls') or '').split('#@'):
             raw = raw.strip()
@@ -190,68 +191,20 @@ def iter_sources(data):
 # ---------------------------------------------------------------- 验活
 
 def probe(item, timeout=8):
-    """返回 (status, detail, quality)。
+    """返回 (status, detail, quality)
 
-    quality = (height, bandwidth), 用于同频道内按清晰度排序。
-    ok   = 能取到含分片的播放列表
-    playlist-only = 播放列表合法但当前无分片 (时段性, 作兜底线路)
+    判定标准已收紧到**分片级** (见 hlslive): 只回 m3u8、分片却 404 的
+    "空壳线路" 一律判死 —— 那类线路播放器拿不到画面, 用户看到的是
+    App 自己的垫片广告, 也就是「CCTV-1 全是假的」的直接原因。
     """
-    h = {'User-Agent': UA}
-    h.update(item['headers'])
-    url = item['url']
-    best = (0, 0)
-    try:
-        req = urllib.request.Request(url, headers=h)
-        with urllib.request.urlopen(req, timeout=timeout, context=CTX) as r:
-            body = r.read(60000)
-            ctype = (r.headers.get('Content-Type') or '').lower()
-    except urllib.error.HTTPError as e:
-        return 'dead', 'HTTP%d' % e.code, best
-    except Exception as e:
-        return 'err', type(e).__name__, best
-
-    # 直接是媒体分片
-    if 'video/' in ctype or 'mp2t' in ctype:
-        return 'ok', 'raw-media', (1080, 0)
-
-    txt = body.decode('utf-8', 'replace')
-    if '#EXTM3U' not in txt:
-        return 'dead', 'not-m3u8:' + ctype[:20], best
-
-    def scan(s):
-        """从一个 m3u8 里提取最高清晰度"""
-        q = (0, 0)
-        for m in re.finditer(r'#EXT-X-STREAM-INF:([^\n]*)', s):
-            attr = m.group(1)
-            r = re.search(r'RESOLUTION=(\d+)x(\d+)', attr)
-            b = re.search(r'BANDWIDTH=(\d+)', attr)
-            hgt = int(r.group(2)) if r else 0
-            bw = int(b.group(1)) if b else 0
-            if (hgt, bw) > q:
-                q = (hgt, bw)
-        return q
-
-    best = scan(txt)
-
-    # master -> 拉变体
-    if '#EXT-X-STREAM-INF' in txt:
-        m = re.search(r'#EXT-X-STREAM-INF[^\n]*\n([^\n#]+)', txt)
-        if m:
-            vurl = urllib.parse.urljoin(url, m.group(1).strip())
-            try:
-                req = urllib.request.Request(vurl, headers=h)
-                with urllib.request.urlopen(req, timeout=timeout, context=CTX) as r2:
-                    txt = r2.read(60000).decode('utf-8', 'replace')
-                url = vurl
-            except Exception:
-                pass
-
-    if ('#EXTINF' in txt or '.ts' in txt or '.m4s' in txt
-            or '#EXT-X-TARGETDURATION' in txt or '#EXT-X-MEDIA-SEQUENCE' in txt):
-        return 'ok', 'hls', best
-
-    # 合法空列表 (直播尚未开播/时段性)
-    return 'playlist-only', 'no-segments', best
+    h = dict(item.get('headers') or {})
+    ok, detail, q = hlslive.probe_live(item['url'], h, timeout)
+    if ok:
+        return 'ok', detail, q or (0, 0)
+    # 超时/域名解析失败留到下一轮重试, 其余都是确定性失败
+    if detail in ('TimeoutError', 'URLError', 'timeout', 'socket.timeout'):
+        return 'err', detail, (0, 0)
+    return 'dead', detail, (0, 0)
 
 
 def _probe_chunk(chunk, jobs, timeout):
@@ -436,6 +389,16 @@ def main():
     print('  频道 %d 个, 源版本 %s' % (len(data), meta.get('sourceVersion')),
           flush=True)
 
+    # 用频道表自带的 prov 反推「地名前缀 -> 省份」, 供公开源池的条目套用
+    prov_map = cm.build_prov_map(data)
+    try:
+        os.makedirs('data', exist_ok=True)
+        with open('data/prov_map.json', 'w', encoding='utf-8') as f:
+            json.dump(prov_map, f, ensure_ascii=False, indent=0, sort_keys=True)
+        print('  省份前缀映射 %d 条' % len(prov_map), flush=True)
+    except Exception as e:
+        print('  省份映射写出失败: %s' % e, flush=True)
+
     print('[2/4] 解析直连线路', flush=True)
     items = list(iter_sources(data))
     if args.limit:
@@ -454,6 +417,9 @@ def main():
             print('  合计线路 %d 条 (含 gslb %d)' % (len(items), len(g)), flush=True)
         except Exception as e:
             print('  gslb 采集失败: %s: %s' % (type(e).__name__, e), flush=True)
+
+    # 广告黑名单: 能播但内容是广告的站 (人工看画面确认过的)
+    adfilter.apply(items)
 
     if not items:
         print('  没有可用的直连线路, 退出', flush=True)

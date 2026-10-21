@@ -208,11 +208,34 @@ python scripts/gslb.py --list                # 单独看 gslb 可用频道
 python scripts/merge_public.py --base out/live.m3u --out out/live.m3u
 ```
 
+## 改代码前先同步（重要）
+
+CI 每 6 小时会把重建产物（`out/`、`data/`）**自己提交并推到 main**。
+本地改完代码直接 push 必然撞车 —— 尤其是 `data/verify_state.json`、`data/gslb_cache.json`
+这两个状态文件，CI 每次都在写。
+
+```bash
+git fetch origin main
+git merge --no-edit origin/main        # 合并, 不要用 --rebase
+```
+
+或者用仓库内置的别名，一条命令搞定：
+
+```bash
+git sync        # = git fetch origin main && git merge --no-edit origin/main
+```
+
+- 本地改动只碰 `scripts/`、`tests/`、`README`，CI 只碰 `out/`、`data/`，正常不会真冲突。
+- 万一 `out/` 或 `data/` 冲突：产物是机器生成的，**以远端为准**（`git checkout --theirs <file>`），
+  本地这批产物下次 CI 会重新生成。
+- **不要用 `git pull --rebase`**：CI 产物提交与本地提交是两条并行线，rebase 会逐条重放、必冲突。
+- push 前确认 `git status -sb` 里没有 `[behind N]`。
+
 ## 防回归
 
 过归并的坑（一个台变多个台 / 多个台塌成一个）连续踩过三轮，所以现在有两道闸：
 
-1. **单元测试** `tests/`（24 个用例）覆盖：CCTV-4K 不等于 CCTV-4、`浙江新闻` 不能被
+1. **单元测试** `tests/`（25 个用例）覆盖：CCTV-4K 不等于 CCTV-4、`浙江新闻` 不能被
    `浙江` 前缀吞进浙江卫视、纯数字 tvg-id 必须丢弃、`EXTINF` 与 URL 之间的
    `#EXTVLCOPT` 不能被当成分片、带 `[1080P]` 的名字回读后仍归到卫视……
    每一条都对应一次真实事故。

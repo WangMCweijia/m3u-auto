@@ -235,6 +235,8 @@ def write_m3u(path, items, header='#EXTM3U', epg=None, epg_url=''):
     这样播放器才找得到节目单。
     """
     items = group_and_sort(items)
+    if not isinstance(epg, dict):
+        epg = {}                  # 传错类型不该让整条流水线崩掉
     if epg_url:
         header = '#EXTM3U x-tvg-url="%s" url-tvg="%s"' % (epg_url, epg_url)
     lines = [header]

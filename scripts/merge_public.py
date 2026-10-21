@@ -157,9 +157,9 @@ def main():
     epg_url, epg_map = '', {}
     try:
         import epg as _epg
-        epg_url, epg_map = _epg.cached('data/epg_map.json')
-    except Exception:
-        pass
+        epg_url, epg_map = _epg.for_items(merged, 'data/epg_map.json')
+    except Exception as e:
+        print('  EPG 映射跳过: %s: %s' % (type(e).__name__, e))
     result = io_.write_m3u(args.out, merged, epg=epg_map, epg_url=epg_url)
 
     ids = {r['tvg_id'] for r in result}

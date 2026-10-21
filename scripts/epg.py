@@ -126,6 +126,17 @@ def _derive(items, ids):
     return mapping
 
 
+def for_items(items, path='data/epg_map.json'):
+    """用现成缓存给一批条目算映射; 没有缓存就返回空 (不联网)
+
+    merge_public 这类"二次写盘"的环节用这个, 免得为了一个映射再去拉 6MB。
+    """
+    url, ids = cached(path)
+    if not ids:
+        return '', {}
+    return url or DEFAULT_SOURCE, _derive(items, ids)
+
+
 def prepare(items, cache_path='data/epg_map.json', verbose=True,
             force=False):
     """确保有可用的 EPG id 集合; 返回 (url, {tvg_id: epg_id})

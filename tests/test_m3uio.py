@@ -100,6 +100,16 @@ class TestWrite(unittest.TestCase):
         self.assertIn('tvg-id="CCTV1"', txt)
         self.assertIn('tvg-id="zjws"', txt, '没有 EPG 映射的台保持原 id')
 
+    def test_bad_epg_type_does_not_crash(self):
+        """epg 传成 set 曾把 merge_public 整条打挂 (set 没有 .get)"""
+        import tempfile
+        d = tempfile.mkdtemp()
+        p = os.path.join(d, 'x.m3u')
+        io_.write_m3u(p, [dict(x) for x in self._items()],
+                      epg={'CCTV1'}, epg_url='http://epg/e.xml')
+        txt = _read(p)
+        self.assertIn('tvg-id="cctv1"', txt, '类型不对应退回内部 id, 而不是崩')
+
     def test_tvlist_quality_tag(self):
         import tempfile
         d = tempfile.mkdtemp()

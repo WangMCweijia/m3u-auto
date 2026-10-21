@@ -114,6 +114,10 @@ def probe_live(url, headers=None, timeout=8, depth=0, quality=(0, 0)):
     txt = body.decode('utf-8', 'replace')
     if '#EXT-X-ENDLIST' in txt:
         return False, 'vod-endlist', quality
+    if 'PLAYLIST-TYPE:VOD' in txt:
+        return False, 'vod-type', quality
+    if txt.count('#EXTINF') == 0 and '#EXT-X-STREAM-INF' not in txt:
+        return False, 'no-extinf', quality
 
     q = _quality_of(txt) or quality
 
@@ -131,21 +135,39 @@ def probe_live(url, headers=None, timeout=8, depth=0, quality=(0, 0)):
     if not segs:
         return False, 'no-segment', q
 
-    seg = urllib.parse.urljoin(final, segs[-1])
-    try:
-        st, sbody, sct, _ = _get(seg, h, timeout, max_bytes=SEG_SNIFF,
-                                 rng='bytes=0-%d' % (SEG_SNIFF - 1))
-    except urllib.error.HTTPError as e:
-        return False, 'seg-http%d' % e.code, q
-    except Exception as e:
-        return False, 'seg-' + type(e).__name__, q
-
-    if sbody.startswith(b'#EXTM3U'):
-        return probe_live(seg, h, timeout, depth + 1, q)   # 嵌套播放列表
-    if _is_media_bytes(sbody):
-        return True, 'segment:%d' % len(sbody), q
-    if len(sbody) >= 1024:
-        return True, 'segment:%d?' % len(sbody), q
-    if len(sbody) == 0:
-        return False, 'seg-empty', q
-    return False, 'seg-tiny:%d' % len(sbody), q
+    # 采样首尾两个分片:
+    # 网关是**间歇性** 404 —— 只测最后一个分片时, 恰好撞上畸形响应也照样判活;
+    # 反过来偶尔 404 一条也不该整条判死, 所以要求「至少一个分片是真媒体」。
+    picks = [segs[-1]]
+    if len(segs) >= 3 and segs[0] != segs[-1]:
+        picks.append(segs[0])
+    reasons = []
+    for raw in picks:
+        seg = urllib.parse.urljoin(final, raw)
+        try:
+            st, sbody, sct, _ = _get(seg, h, timeout, max_bytes=SEG_SNIFF,
+                                     rng='bytes=0-%d' % (SEG_SNIFF - 1))
+        except urllib.error.HTTPError as e:
+            reasons.append('seg-http%d' % e.code)
+            continue
+        except Exception as e:
+            reasons.append('seg-' + type(e).__name__)
+            continue
+        if sbody.startswith(b'#EXTM3U'):
+            return probe_live(seg, h, timeout, depth + 1, q)   # 嵌套播放列表
+        if _is_media_bytes(sbody):
+            return True, 'segment:%d' % len(sbody), q
+        # 兜底: 明确是媒体类型且够大 (个别 CDN 的分片不带标准魔数)
+        if len(sbody) >= 1024 and sct.startswith(
+                ('video/', 'audio/', 'application/octet-stream',
+                 'application/mp2t')):
+            return True, 'segment-ct:%d' % len(sbody), q
+        # 到这里说明拿到的不是媒体: HTML 错误页 / 占位图 / 空壳
+        if sbody.startswith(b'#') or b'<html' in sbody[:600].lower() \
+                or b'<?xml' in sbody[:200] or sct.startswith('text/html'):
+            reasons.append('seg-not-media:' + (sct[:20] or 'unknown'))
+        elif len(sbody) == 0:
+            reasons.append('seg-empty')
+        else:
+            reasons.append('seg-tiny:%d' % len(sbody))
+    return False, '|'.join(dict.fromkeys(reasons)) or 'seg-none', q

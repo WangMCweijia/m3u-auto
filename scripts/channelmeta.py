@@ -99,8 +99,11 @@ PROVINCES = [
 ]
 TOP_GROUPS = ['央视', '卫视']
 OTHER_GROUP = '其他'
+# 「其他」里混着大量影视轮播台 (电影/剧场), 单独拎出来更好找
+VOD_GROUP = '影视轮播'
 
-GROUP_ORDER = {g: i for i, g in enumerate(TOP_GROUPS + PROVINCES + [OTHER_GROUP])}
+GROUP_ORDER = {g: i for i, g in
+               enumerate(TOP_GROUPS + PROVINCES + [VOD_GROUP, OTHER_GROUP])}
 
 # 频道名首 2~3 字 -> 省份, 由频道表(带 prov 字段)自动生成, 存 data/prov_map.json
 PROV_MAP = {}
@@ -163,7 +166,17 @@ def prov_of(name, prov=''):
     for ln in (3, 2):
         if len(n) >= ln and n[:ln] in PROV_MAP:
             return PROV_MAP[n[:ln]]
-    return OTHER_GROUP
+    return VOD_GROUP if is_vod(name) else OTHER_GROUP
+
+
+# 影视轮播/点播台的特征词 (公开源池里大量这类台, 没有地域属性)
+_VOD_WORDS = ('电影', '剧场', '影院', '轮播', '热播', '经典', '连续剧',
+              '电视剧', '美剧', '韩剧', '动漫', '赛事', '演唱会')
+
+
+def is_vod(name):
+    n = name or ''
+    return any(w in n for w in _VOD_WORDS)
 
 
 # ---------------------------------------------------------------- 工具

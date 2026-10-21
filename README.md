@@ -43,8 +43,10 @@
 `group-title` 不再笼统地写「地方」，而是按省份分开：
 
 ```
-央视 / 卫视 / 北京 / 天津 / … / 山东 / 河南 / … / 新疆 / 其他
+央视 / 卫视 / 北京 / 天津 / … / 山东 / 河南 / … / 新疆 / 影视轮播 / 其他
 ```
+
+影视轮播（电影、剧场、热播这类没有地域属性的台）从「其他」里单独拎出来了。
 
 省份来源分两级：
 
@@ -54,6 +56,27 @@
    `青岛新闻` → 山东、`新疆少儿` → 新疆
 
 两级都判不出来的（如 `电影丧尸片`、`乐至综合`）归入 **其他**，不会被硬塞进某个省。
+
+## 节目单（EPG）
+
+`live.m3u` 头部带 `x-tvg-url` / `url-tvg`，指向 fanmingming 的公开 EPG：
+
+```
+#EXTM3U x-tvg-url="https://cdn.jsdelivr.net/gh/fanmingming/live@main/e.xml"
+```
+
+播放器只按 `tvg-id` 去 xmltv 里找节目单，所以内部 id（`cctv1` / `zjws`）在写出时
+会换成 EPG 的 channel id（`CCTV1` / `浙江卫视`）。映射规则是确定性的，不用人工维护：
+
+| 情况 | 结果 |
+|---|---|
+| 显示名正好等于某个 EPG id | 用它（`浙江卫视` → `浙江卫视`） |
+| `tvg_id` 形如 `cctv<数字>` | `CCTV<数字>`（`cctv1` → `CCTV1`） |
+| `CCTV5+` 这类带后缀的 | 单独匹配 |
+| EPG 里没有这个台 | 保持原 id，不影响播放 |
+
+映射结果缓存在 `data/epg_map.json`（7 天刷新一次，EPG 文件有 6MB+，不必每次拉）。
+当前覆盖 17 个央视 + 40 多个卫视及特色频道。
 
 ## 数据来源
 
@@ -74,9 +97,22 @@
 `scripts/hlslive.py` 的做法：
 
 1. 取播放列表；master 则下钻到 media playlist，自引（`a.m3u8` 里指向 `a.m3u8`）直接判死
-2. 取最后一个分片，用 `Range: bytes=0-4095` 只拉前 4KB
-3. 拿到 TS 同步字节 `0x47` / fMP4 `styp|moof` / ≥1KB 有效数据，才算 `ok`
-4. 带 `#EXT-X-ENDLIST`（点播）的也判死 —— 直播订阅里放点播没有意义
+2. **采样首尾两个分片**，各用 `Range: bytes=0-4095` 拉前 4KB
+3. 必须拿到 TS 同步字节 `0x47` / fMP4 `styp|moof` 这类**真媒体魔数**；
+   `text/html`、XML、纯文本一律判死（早期版本有「≥1KB 就算活」的兜底，
+   HTML 错误页会被误判成好线路，已删掉）
+4. 带 `#EXT-X-ENDLIST` 或 `PLAYLIST-TYPE:VOD`（点播）的判死 —— 直播订阅里放点播没有意义
+
+采样两个点是为了对付网关的**间歇性 404**：只测一个分片时撞上畸形响应就漏了。
+只要有一个分片是真媒体就算这条线路可播（另一个偶发失败属正常，播放器会重试）。
+
+### 缓存线路也必须重验
+
+gslb 网关会限流，命中结果因此落盘缓存 7 天兜底。但缓存里**陈旧地址不能直接当成活的**：
+早期实现把缓存条目直接标成 `ok`，而 `run_probe` 会跳过已带结论的条目，
+结果是灰掉一周的死链照样进订阅，还以为「每条都验过」。
+
+现在缓存条目带 `status='cached'`，**必须重新验活**，最多带 60 个频道进队列（控制构建时长）。
 
 ### gslb 网关（央视/卫视线路的主要来源）
 
@@ -108,10 +144,16 @@ scripts/gslb.py           gslb 网关采集 (央视/卫视线路主力)
 scripts/build.py          拉频道表 -> 解析 -> 验活 -> 生成订阅
 scripts/merge_public.py   合并公开源池补充线路
 scripts/genindex.py       生成索引页
+scripts/epg.py            EPG 频道表拉取 + tvg-id 对齐
+scripts/verifystate.py    验活历史 (稳定性排序 / 主机熔断)
+scripts/local_run.py      本地一键跑完整流水线 (Actions 兜底)
+tests/                    单元测试 (24 个用例, CI 每次跑)
 data/gslb_cache.json      gslb 命中缓存
 data/prov_map.json        地名前缀 -> 省份 (构建时自动生成)
 data/ad_blocklist.json    已确认的广告主机黑名单
 data/ad_candidates.json   画面聚类出的可疑线路 (仅候选, 不生效)
+data/epg_map.json         内部 tvg-id -> EPG channel id (7 天刷新)
+data/verify_state.json    每条线路的连续成功次数 (排序 + 熔断依据)
 .github/workflows/update.yml   每 6 小时构建
 .github/workflows/audit-ads.yml 每周广告审计 (出联系表)
 
@@ -153,6 +195,10 @@ python scripts/adcheck.py --m3u out/live.m3u --only priority    # 出候选清�
 ## 本地运行
 
 ```bash
+python scripts/local_run.py                  # 一键: 构建 + 合并 + 索引页
+python scripts/local_run.py --push           # 再提交并推回远端
+python -m unittest discover -s tests -v      # 单元测试
+
 python scripts/build.py --out out            # 拉表 + gslb + 验活
 python scripts/build.py --local table.zip    # 用本地频道表
 python scripts/build.py --no-probe           # 跳过验活，快速生成
@@ -160,6 +206,17 @@ python scripts/build.py --no-gslb            # 跳过 gslb 网关
 python scripts/gslb.py --list                # 单独看 gslb 可用频道
 python scripts/merge_public.py --base out/live.m3u --out out/live.m3u
 ```
+
+## 防回归
+
+过归并的坑（一个台变多个台 / 多个台塌成一个）连续踩过三轮，所以现在有两道闸：
+
+1. **单元测试** `tests/`（24 个用例）覆盖：CCTV-4K 不等于 CCTV-4、`浙江新闻` 不能被
+   `浙江` 前缀吞进浙江卫视、纯数字 tvg-id 必须丢弃、`EXTINF` 与 URL 之间的
+   `#EXTVLCOPT` 不能被当成分片、带 `[1080P]` 的名字回读后仍归到卫视……
+   每一条都对应一次真实事故。
+2. **CI 环比门禁**：与上一版 `out/stats.json` 对比，频道数或线路数跌超 30% 直接中止发布；
+   单个 gslb 网关命中数腰斩会打 warning（多半是 auth 过期或限流）。
 
 ## 已知限制
 
@@ -174,3 +231,9 @@ python scripts/merge_public.py --base out/live.m3u --out out/live.m3u
 
 本项目只做公开流地址的索引与可用性测试，不托管、不转码、不分发任何音视频内容。
 所有内容版权归原权利人所有。
+
+代码以 MIT 许可发布（见 `LICENSE`），但**许可证不覆盖 `out/` 下的频道数据** ——
+那些数据来自公开网络接口，本项目不对其主张任何权利。
+
+本仓库是自用工具，不提供任何形式的可用性保证。订阅地址没有访问控制，
+知道链接的人都能取用，请勿对外传播。若权利人认为内容不当，提 issue 即可删除相关条目。

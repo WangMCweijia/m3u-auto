@@ -40,6 +40,9 @@ def parse_m3u(text):
         name = line.rsplit(',', 1)[-1].strip() if ',' in line else ''
         # 去掉历史遗留的 " #2" 后缀
         name = re.sub(r'\s*#\d+$', '', name).strip()
+        # 去掉清晰度标记 (浙江卫视 [1080P] -> 浙江卫视), 否则回读时
+        # endswith('卫视') 判不出来, 卫视会被当成地方台
+        name = re.sub(r'\s*\[(?:4K|8K|\d{3,4}[Pp])\]\s*$', '', name).strip()
         j = i + 1
         while j < len(lines) and (not lines[j].strip()
                                   or lines[j].lstrip().startswith('#')):
@@ -122,7 +125,7 @@ def normalize_group(tvg_id, name, hint=''):
     混在一起会让人找不到台; 而 91kds 的 prov 字段能给出真实省份。
     这里优先级: 央视 > 卫视 > 已知 hint(省份) > 按名称/前缀推断。
     """
-    tid = tvg_id or ''
+    tid = (tvg_id or '').lower()
     if tid.startswith(('cctv', 'cgtn')):
         return '央视'
     nm = name or ''
@@ -150,8 +153,9 @@ def group_and_sort(items):
             # 从 m3u 读回的条目没有清晰度信息, 保持原文件中的顺序
             # (原文件已按清晰度排好, 重排反而会把高清线路挤到后面)
             return (0, 0, 0, it.get('order', 0))
+        # 同清晰度里, 连续多次验活都通过的排前面
         return (0 if it.get('status') in ('ok', 'unverified', None) else 1,
-                -q[0], -q[1], it.get('order', 0))
+                -q[0], -q[1], -int(it.get('steady') or 0), it.get('order', 0))
 
     out = []
     for tid, lst in groups.items():
@@ -175,7 +179,7 @@ def group_and_sort(items):
         """先按分组(央视/卫视/各省/其他), 组内央视按台号, 其余按名称"""
         g = GROUP_ORDER.get(it['group'], 99)
         tid = it['tvg_id']
-        m = re.match(r'cctv(\d{1,2})', tid)
+        m = re.match(r'cctv(\d{1,2})', tid.lower())
         num = int(m.group(1)) if m else (900 if tid.startswith('cgtn') else 950)
         return (g, num, len(it['name']), it['name'])
 
@@ -183,9 +187,25 @@ def group_and_sort(items):
     return out
 
 
-def extinf(it):
+def quality_tag(it):
+    """把 quality=(height, bandwidth) 转成 4K/1080P/720P"""
+    q = it.get('quality') or (0, 0)
+    try:
+        h = int(q[0] or 0)
+    except Exception:
+        return ''
+    if h >= 2160:
+        return '4K'
+    if h >= 1080:
+        return '1080P'
+    if h >= 720:
+        return '720P'
+    return ''
+
+
+def extinf(it, tid=None):
     bits = ['#EXTINF:-1',
-            'tvg-id="%s"' % it['tvg_id'],
+            'tvg-id="%s"' % (tid or it['tvg_id']),
             'tvg-name="%s"' % it['name'],
             'group-title="%s"' % it['group']]
     if it.get('logo'):
@@ -193,11 +213,35 @@ def extinf(it):
     return ' '.join(bits) + ',' + it['name']
 
 
-def write_m3u(path, items, header='#EXTM3U'):
+def _opt_lines(it):
+    """需要 Referer/UA 的线路: 不写出来播放器就播不了
+
+    验活时是带着这些头测通的, 产物里丢掉等于白测。
+    """
+    out = []
+    for k, v in (it.get('headers') or {}).items():
+        kl = (k or '').lower()
+        if kl in ('referer', 'referrer'):
+            out.append('#EXTVLCOPT:http-referrer=%s' % v)
+        elif kl in ('user-agent', 'ua'):
+            out.append('#EXTVLCOPT:http-user-agent=%s' % v)
+    return out
+
+
+def write_m3u(path, items, header='#EXTM3U', epg=None, epg_url=''):
+    """epg: {内部 tvg_id: EPG channel id}; epg_url: xmltv 地址
+
+    内部 id 保持小写 (归并/分组/排序都靠它), 只在 EXTINF 里换成 EPG 的 id,
+    这样播放器才找得到节目单。
+    """
     items = group_and_sort(items)
+    if epg_url:
+        header = '#EXTM3U x-tvg-url="%s" url-tvg="%s"' % (epg_url, epg_url)
     lines = [header]
     for it in items:
-        lines.append(extinf(it))
+        tid = (epg or {}).get(it['tvg_id'])
+        lines.append(extinf(it, tid))
+        lines.extend(_opt_lines(it))
         lines.append(it['url'])
     with open(path, 'w', encoding='utf-8', newline='\n') as f:
         f.write('\n'.join(lines) + '\n')
@@ -206,7 +250,11 @@ def write_m3u(path, items, header='#EXTM3U'):
 
 def write_tvlist(path, items):
     items = group_and_sort(items)
-    lines = ['%s|%s,%s' % (it['group'], it['name'], it['url']) for it in items]
+    lines = []
+    for it in items:
+        tag = quality_tag(it)
+        nm = it['name'] + (' [%s]' % tag if tag else '')
+        lines.append('%s|%s,%s' % (it['group'], nm, it['url']))
     with open(path, 'w', encoding='utf-8', newline='\n') as f:
         f.write('\n'.join(lines) + '\n')
     return items

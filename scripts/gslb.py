@@ -128,6 +128,8 @@ def is_priority(ename, ch):
 
 
 CACHE_TTL_DAYS = 7
+# 缓存兜底最多带多少个频道的线路进验活队列 (控制构建时长)
+CACHE_FALLBACK_MAX = 60
 
 
 def load_cache(path):
@@ -153,7 +155,7 @@ def save_cache(path, cache):
 
 def _prune(cache, days=CACHE_TTL_DAYS):
     import datetime
-    cutoff = (datetime.datetime.utcnow()
+    cutoff = (datetime.datetime.now(datetime.timezone.utc)
               - datetime.timedelta(days=days)).strftime('%Y-%m-%d')
     return {e: v for e, v in cache.items()
             if (v.get('lastSeen') or '') >= cutoff}
@@ -225,7 +227,7 @@ def collect(data, jobs=4, timeout=8, gateways=None, verbose=True,
             used.setdefault(e, []).append((name, q))
 
     # ---- 缓存合并
-    now = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M')
+    now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d %H:%M')
     today = now[:10]
     cache = _prune(load_cache(cache_path))
     gwtpl = dict((n, t) for n, t in gws)
@@ -234,7 +236,7 @@ def collect(data, jobs=4, timeout=8, gateways=None, verbose=True,
         cache[e] = dict(urls=[gwtpl[g] % e for g, _ in lst], lastSeen=now)
     for e, v in cache.items():
         if e not in used and e in idx:
-            from_cache[e] = v.get('urls') or []
+            from_cache[e] = v          # 整个条目, 后面还要按 lastSeen 排序
     save_cache(cache_path, cache)
     if verbose and from_cache:
         print('  缓存补充 %d 个频道 (本次未扫到)' % len(from_cache), flush=True)
@@ -254,9 +256,14 @@ def collect(data, jobs=4, timeout=8, gateways=None, verbose=True,
                             group=group, icon=icon, logo=icon,
                             url=gwtpl[gw] % e, headers={},
                             status='ok', quality=q, via='gslb:' + gw))
-    # 缓存里本次没验到的, 作为低优先级备选
+    # 缓存里本次没验到的, 作为**待验**备选 (status='cached')
+    # 注意: 绝不能直接标 ok —— build.run_probe 会跳过已带结论的条目,
+    # 那样灰掉 7 天的死链会一路进订阅, 而我们以为「每条都验过」。
     seen_url = {o['url'] for o in out}
-    for e, urls in from_cache.items():
+    order = sorted(from_cache.items(),
+                   key=lambda kv: (kv[1] or {}).get('lastSeen') or '',
+                   reverse=True)[:CACHE_FALLBACK_MAX]
+    for e, urls in order:
         ch = idx[e]
         name = (ch.get('name') or '').strip()
         prov = (ch.get('prov') or '').strip()
@@ -264,18 +271,19 @@ def collect(data, jobs=4, timeout=8, gateways=None, verbose=True,
         if group in ('地方', '', cm.OTHER_GROUP):
             group = cm.prov_of(name, prov)
         icon = ch.get('icon') or ''
-        for u in urls:
+        for u in ((urls or {}).get('urls') or []):
             if u in seen_url:
                 continue
             seen_url.add(u)
             out.append(dict(ename=e, tvg_id=tvg_id, name=disp, raw_name=name,
                             group=group, icon=icon, logo=icon,
                             url=u, headers={},
-                            status='ok', quality=(0, 0), via='gslb:cache'))
+                            status='cached', quality=(0, 0),
+                            via='gslb:cache'))
+    n_cached = sum(1 for o in out if o.get('via') == 'gslb:cache')
     if verbose:
-        print('  gslb 线路合计 %d (%d 个频道, 其中缓存 %d)'
-              % (len(out), len(used) + len(from_cache), len(from_cache)),
-              flush=True)
+        print('  gslb 线路合计 %d (%d 个频道命中, 待验缓存 %d 个频道 / %d 条)'
+              % (len(out), len(used), len(order), n_cached), flush=True)
     return out
 
 

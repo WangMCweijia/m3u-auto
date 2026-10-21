@@ -234,20 +234,42 @@ def _probe_chunk(chunk, jobs, timeout):
     return res
 
 
-def run_probe(items, jobs=40, timeout=8, retry=1, batch=400):
+def run_probe(items, jobs=40, timeout=8, retry=1, batch=400,
+              state_path=None, breaker_min=8):
     """多轮批量验活。
 
     重试必须批量做 —— 若在 as_completed 循环体里同步重试,
     每条超时条目都会阻塞 timeout 秒, 几十条就把整轮拖成几十分钟。
+
+    主机熔断: 同一主机已经验了 breaker_min 条以上且一条都没活,
+    后面的批次直接跳过它。3000 个候选里大量是同一个死站的不同频道,
+    不熔断就有大半时间耗在必然失败的请求上。
     """
-    total = len(items)
-    status = {}
-    # 已带验活结论的(如 gslb 采集)直接计入, 不重复测
+    import verifystate as vs
+
+    # 已带验活结论的直接计入, 不重复测。注意 'cached' 不在其中 ——
+    # 缓存线路必须重验, 否则 7 天前的死链会一路进订阅。
     pre = [it for it in items if it.get('status') in ('ok', 'playlist-only')]
     items = [it for it in items
              if it.get('status') not in ('ok', 'playlist-only')]
     total = len(items)
     pending = list(range(total))
+
+    st = vs.load(state_path) if state_path else {}
+    try:
+        import datetime
+        now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d %H:%M')
+    except Exception:
+        now = ''
+
+    def host_of(it):
+        try:
+            return urllib.parse.urlparse(it['url']).netloc.lower()
+        except Exception:
+            return ''
+
+    host_ok, host_fail, broken = {}, {}, set()
+    status = {}
 
     for rnd in range(retry + 1):
         if not pending:
@@ -257,46 +279,80 @@ def run_probe(items, jobs=40, timeout=8, retry=1, batch=400):
         still = []
         for bi in range(0, len(pending), batch):
             idxs = pending[bi:bi + batch]
-            chunk = [items[i] for i in idxs]
+            chunk, keep = [], []
+            for i in idxs:
+                h = host_of(items[i])
+                if h and h in broken:
+                    status[i] = ('dead', 'breaker', (0, 0))
+                    continue
+                chunk.append(items[i])
+                keep.append(i)
+            if not chunk:
+                continue
             res = _probe_chunk(chunk, jobs, timeout)
-            for k, i in enumerate(idxs):
+            for k, i in enumerate(keep):
                 if k in res:
                     status[i] = res[k]
                 else:
                     still.append(i)       # 批次超时未测到
             # err 的留到下一轮再来一次
-            for k in range(len(idxs)):
+            for k in range(len(keep)):
                 if k in res and res[k][0] == 'err':
-                    still.append(idxs[k])
+                    still.append(keep[k])
+            # 累计每主机战绩, 决定是否熔断
+            for k, i in enumerate(keep):
+                if k not in res:
+                    continue
+                h = host_of(items[i])
+                if not h:
+                    continue
+                if res[k][0] in ('ok', 'playlist-only'):
+                    host_ok[h] = host_ok.get(h, 0) + 1
+                elif res[k][0] == 'dead':
+                    host_fail[h] = host_fail.get(h, 0) + 1
+                if (h not in broken
+                        and host_ok.get(h, 0) == 0
+                        and host_fail.get(h, 0) >= breaker_min):
+                    broken.add(h)
             done = sum(1 for v in status.values()
                        if v[0] in ('ok', 'playlist-only'))
-            print('  ...已测 %d/%d, 存活 %d'
-                  % (len(status), total, done), flush=True)
+            print('  ...已测 %d/%d, 存活 %d, 熔断主机 %d'
+                  % (len(status), total, done, len(broken)), flush=True)
         pending = list(dict.fromkeys(still))
 
     out = list(pre)
-    for i, (st, detail, q) in status.items():
-        if st in ('ok', 'playlist-only'):
-            it = dict(items[i])
-            it['status'] = st
+    for i, (r, detail, q) in status.items():
+        it = items[i]
+        if state_path:
+            vs.mark(st, it['url'], r in ('ok', 'playlist-only'), now)
+            it['steady'] = vs.steady(st, it['url'])
+        if r in ('ok', 'playlist-only'):
+            it = dict(it)
+            it['status'] = r
             it['quality'] = q
             out.append(it)
+    if state_path:
+        try:
+            vs.save(state_path, st)
+        except Exception as e:
+            print('  验活状态写入失败: %s' % e, flush=True)
     ok = sum(1 for v in status.values() if v[0] == 'ok') + len(pre)
-    print('  存活 %d (其中可取分片 %d) / %d'
-          % (len(out), ok, total + len(pre)), flush=True)
+    print('  存活 %d (其中可取分片 %d) / %d, 熔断 %d 个主机'
+          % (len(out), ok, total + len(pre), len(broken)), flush=True)
     return out
 
 
 # ---------------------------------------------------------------- 输出
 
-def write_outputs(items, meta, outdir):
+def write_outputs(items, meta, outdir, epg_map=None, epg_url=''):
     os.makedirs(outdir, exist_ok=True)
     # 统一字段名给 m3uio
     for it in items:
         it['logo'] = it.get('logo') or it.get('icon') or ''
     items = io_.group_and_sort(items)
 
-    io_.write_m3u(os.path.join(outdir, 'live.m3u'), items)
+    io_.write_m3u(os.path.join(outdir, 'live.m3u'), items,
+                  epg=epg_map, epg_url=epg_url)
     io_.write_tvlist(os.path.join(outdir, 'live.txt'), items)
 
     # json: 按频道聚合, urls 保留顺序(清晰度降序)
@@ -334,6 +390,10 @@ def write_outputs(items, meta, outdir):
         byChannelTop=sorted(
             ((c['name'], len(c['urls'])) for c in chans.values()),
             key=lambda x: -x[1])[:30],
+        bySource=dict(Counter(
+            ('gslb:' + (it.get('via') or '').split(':')[1])
+            if (it.get('via') or '').startswith('gslb:') else 'direct'
+            for it in items)),
     )
     with open(os.path.join(outdir, 'stats.json'), 'w', encoding='utf-8') as f:
         json.dump(stats, f, ensure_ascii=False, indent=1)
@@ -362,6 +422,13 @@ def main():
                     help='gslb 扫描全部 ename (默认只扫央视/卫视)')
     ap.add_argument('--gslb-cache', default='data/gslb_cache.json',
                     help='gslb 命中结果缓存 (网关限流时的兜底)')
+    ap.add_argument('--verify-state', default='data/verify_state.json',
+                    help='线路验活历史 (稳定性排序 + 主机熔断依据)')
+    ap.add_argument('--no-epg', dest='epg', action='store_false',
+                    help='不处理节目单')
+    ap.add_argument('--epg-cache', default='data/epg_map.json')
+    ap.add_argument('--epg-refresh', action='store_true',
+                    help='强制重新拉取 EPG 频道表')
     args = ap.parse_args()
 
     print('[1/4] 获取频道表', flush=True)
@@ -435,11 +502,20 @@ def main():
         alive = items
     else:
         print('[3/4] 验活 (%d 并发)' % args.jobs, flush=True)
-        alive = run_probe(items, jobs=args.jobs, timeout=args.timeout)
+        alive = run_probe(items, jobs=args.jobs, timeout=args.timeout,
+                          state_path=args.verify_state)
         print('  存活 %d / %d' % (len(alive), len(items)), flush=True)
 
     print('[4/4] 生成订阅', flush=True)
-    stats = write_outputs(alive, meta, args.out)
+    epg_map, epg_url = {}, ''
+    if args.epg:
+        try:
+            import epg as _epg
+            epg_url, epg_map = _epg.prepare(alive, args.epg_cache,
+                                            force=args.epg_refresh)
+        except Exception as e:
+            print('  EPG 处理失败: %s: %s' % (type(e).__name__, e), flush=True)
+    stats = write_outputs(alive, meta, args.out, epg_map, epg_url)
 
     print('\n完成. 分组分布:')
     for g, n in sorted(stats['byGroup'].items(),

@@ -44,9 +44,14 @@ jobs:
           head -c 300 /tmp/status.json 2>/dev/null || true
           echo
 
+      - name: 单元测试
+        run: python -m unittest discover -s tests -v
+
       - name: 构建订阅
         id: build
         run: |
+          # 留一份上一版统计, 后面做环比 (跌太多说明上游/网关出问题)
+          git show HEAD:out/stats.json > /tmp/prev_stats.json 2>/dev/null || true
           python scripts/build.py --out out --jobs 40 --timeout 9 --gslb-jobs 4 || {
             echo "验活模式失败, 回退到 --no-probe"
             python scripts/build.py --out out --no-probe
@@ -137,6 +142,52 @@ jobs:
           if len(ids) and multi / len(ids) < 0.10:
               print('::warning::多线路频道占比偏低 (%.1f%%)'
                     % (multi / len(ids) * 100))
+          PY
+
+      - name: 环比门禁 (防上游挂掉时发一版残缺订阅)
+        run: |
+          python - <<'PY'
+          import json, os, sys
+
+          def load(p):
+              try:
+                  return json.load(open(p, encoding='utf-8'))
+              except Exception:
+                  return {}
+
+          cur = load('out/stats.json')
+          prev = load('/tmp/prev_stats.json')
+          if not prev or not prev.get('totalChannels'):
+              print('没有上一版统计, 跳过环比 (首次运行)')
+              raise SystemExit(0)
+
+          def pct(a, b):
+              return (a - b) / b * 100 if b else 0
+
+          ch, pc = cur.get('totalChannels', 0), prev.get('totalChannels', 0)
+          ln, pl = cur.get('totalLines', 0), prev.get('totalLines', 0)
+          print('频道 %d -> %d (%+.1f%%)' % (pc, ch, pct(ch, pc)))
+          print('线路 %d -> %d (%+.1f%%)' % (pl, ln, pct(ln, pl)))
+
+          if ch and pct(ch, pc) < -30:
+              sys.exit('频道数暴跌 %.0f%%, 上游或网关异常, 拒绝发布'
+                       % pct(ch, pc))
+          # 线路数阈值放宽到 40%: 验活标准收紧后线路会自然减少,
+          # 真正的上游挂掉是掉到接近 0, 40% 足够区分
+          if ln and pct(ln, pl) < -40:
+              sys.exit('线路数暴跌 %.0f%%, 拒绝发布' % pct(ln, pl))
+
+          # 各 gslb 网关命中数: 单个网关掉一半以上说明 auth 或限流出问题
+          cs = cur.get('bySource') or {}
+          ps = prev.get('bySource') or {}
+          for k, v in sorted(cs.items()):
+              if not k.startswith('gslb:'):
+                  continue
+              pv = ps.get(k, 0)
+              if pv >= 20 and v < pv * 0.5:
+                  print('::warning::%s 命中 %d -> %d, 疑似网关限流或 auth 失效'
+                        % (k, pv, v))
+          print('来源统计: %s' % cs)
           PY
 
       - name: 抽查线路是否真能出分片

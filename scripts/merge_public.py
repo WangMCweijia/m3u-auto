@@ -153,7 +153,14 @@ def main():
 
     merged = base + cands
     # 只保留目标频道 (原有频道 + 新补充的央视卫视中文台)
-    result = io_.write_m3u(args.out, merged)
+    # 第二次写盘也要带 EPG 映射, 否则 build 阶段刚换上的 tvg-id 会被打回小写
+    epg_url, epg_map = '', {}
+    try:
+        import epg as _epg
+        epg_url, epg_map = _epg.cached('data/epg_map.json')
+    except Exception:
+        pass
+    result = io_.write_m3u(args.out, merged, epg=epg_map, epg_url=epg_url)
 
     ids = {r['tvg_id'] for r in result}
     new_ids = ids - exist_ids

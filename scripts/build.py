@@ -201,8 +201,10 @@ def probe(item, timeout=8):
     ok, detail, q = hlslive.probe_live(item['url'], h, timeout)
     if ok:
         return 'ok', detail, q or (0, 0)
-    # 超时/域名解析失败留到下一轮重试, 其余都是确定性失败
-    if detail in ('TimeoutError', 'URLError', 'timeout', 'socket.timeout'):
+    # 超时/域名解析失败留到下一轮重试; 网关偶尔会回 HTML 错误页(限流),
+    # 这类也按可重试处理, 否则会把好线路误判成死链
+    if (detail in ('TimeoutError', 'URLError', 'timeout', 'socket.timeout')
+            or detail.startswith('not-m3u8:text/html')):
         return 'err', detail, (0, 0)
     return 'dead', detail, (0, 0)
 

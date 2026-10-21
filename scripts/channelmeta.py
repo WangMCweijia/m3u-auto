@@ -137,7 +137,7 @@ def build_prov_map(data):
     mapping = {}
     for prefix, cnt in votes.items():
         prov, c = max(cnt.items(), key=lambda kv: kv[1])
-        if c >= 2:                       # 至少两条支持, 避免个案噪声
+        if c >= 1:                       # 县级台常常只出现一次, 不能卡票数
             mapping[prefix] = prov
     global PROV_MAP
     PROV_MAP = mapping

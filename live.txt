@@ -40,12 +40,14 @@
 央视|CCTV-5 体育 [720P],http://38.75.136.137:98/gslb/dsdqpub/cctv5md.m3u8?auth=testpub
 央视|CCTV-6 电影 [1080P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv6hd
 央视|CCTV-6 电影 [1080P],http://38.75.136.137:98/gslb/dsdqbv/cctv6hd.m3u8?auth=test20251009
+央视|CCTV-6 电影 [720P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv6
 央视|CCTV-6 电影 [720P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv6md
 央视|CCTV-6 电影 [720P],http://38.75.136.137:98/gslb/dsdqbv/cctv6md.m3u8?auth=test20251009
 央视|CCTV-6 电影 [720P],http://38.75.136.137:98/gslb/dsdqpub/cctv6md.m3u8?auth=testpub
 央视|CCTV-7 国防军事 [1080P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv7hd
 央视|CCTV-7 国防军事 [1080P],http://38.75.136.137:98/gslb/dsdqbv/cctv7hd.m3u8?auth=test20251009
 央视|CCTV-7 国防军事 [1080P],http://38.75.136.137:98/gslb/dsdqpub/cctv7hd.m3u8?auth=testpub
+央视|CCTV-7 国防军事 [720P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv7
 央视|CCTV-7 国防军事 [720P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv7md
 央视|CCTV-7 国防军事 [720P],http://38.75.136.137:98/gslb/dsdqbv/cctv7md.m3u8?auth=test20251009
 央视|CCTV-7 国防军事 [720P],http://38.75.136.137:98/gslb/dsdqpub/cctv7md.m3u8?auth=testpub
@@ -88,7 +90,6 @@
 央视|CCTV-12 社会与法 [720P],http://38.75.136.137:98/gslb/dsdqbv/cctv12md.m3u8?auth=test20251009
 央视|CCTV-12 社会与法 [720P],http://38.75.136.137:98/gslb/dsdqpub/cctv12md.m3u8?auth=testpub
 央视|CCTV-12 社会与法,http://play.kankanlive.com/live/1698423511884917.m3u8
-央视|CCTV-12 社会与法,http://38.75.136.137:98/gslb/dsdqbv/cctv12.m3u8?auth=test20251009
 央视|CCTV-13 新闻 [1080P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv13hd
 央视|CCTV-13 新闻 [1080P],http://38.75.136.137:98/gslb/dsdqbv/cctv13hd.m3u8?auth=test20251009
 央视|CCTV-13 新闻 [1080P],http://38.75.136.137:98/gslb/dsdqpub/cctv13hd.m3u8?auth=testpub
@@ -118,6 +119,7 @@
 央视|CCTV-17 农业农村 [720P],http://38.75.136.137:98/gslb/dsdqbv/cctv17md.m3u8?auth=test20251009
 央视|CCTV-17 农业农村 [720P],http://38.75.136.137:98/gslb/dsdqpub/cctv17md.m3u8?auth=testpub
 央视|CCTV-17 农业农村,http://play.kankanlive.com/live/1698423272597921.m3u8
+央视|CGTN [720P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvnewsmd
 央视|CGTN,https://english-liveali.cgtn.com/hls/yypdyyctzb/yypdyyctzbcd/playlist.m3u8
 央视|CGTN,https://english-liveali.cgtn.com/hls/yypdyyctzb/yypdyyctzbhd/playlist.m3u8
 央视|CGTN,https://english-liveali.cgtn.com/hls/yypdyyctzb/playlist.m3u8
@@ -190,6 +192,8 @@
 卫视|厦门卫视 [720P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=xmws
 卫视|厦门卫视 [720P],http://38.75.136.137:98/gslb/dsdqbv/xmws.m3u8?auth=test20251009
 卫视|厦门卫视 [720P],http://38.75.136.137:98/gslb/dsdqpub/xmws.m3u8?auth=testpub
+卫视|厦门卫视 [720P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=xmwsmd
+卫视|厦门卫视,http://63.141.230.178:82/gslb/zbdq5.m3u8?id=xmwshd
 卫视|吉林卫视 [1080P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jlwshd
 卫视|吉林卫视 [1080P],http://38.75.136.137:98/gslb/dsdqbv/jlwshd.m3u8?auth=test20251009
 卫视|吉林卫视 [1080P],http://38.75.136.137:98/gslb/dsdqpub/jlwshd.m3u8?auth=testpub
@@ -206,6 +210,7 @@
 卫视|宁夏卫视 [720P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=nxws
 卫视|宁夏卫视 [720P],http://38.75.136.137:98/gslb/dsdqbv/nxws.m3u8?auth=test20251009
 卫视|宁夏卫视 [720P],http://38.75.136.137:98/gslb/dsdqpub/nxws.m3u8?auth=testpub
+卫视|安多卫视 [720P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=qhzymd
 卫视|安徽卫视 [1080P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ahwshd
 卫视|安徽卫视 [1080P],http://38.75.136.137:98/gslb/dsdqbv/ahwshd.m3u8?auth=test20251009
 卫视|安徽卫视 [1080P],http://38.75.136.137:98/gslb/dsdqpub/ahwshd.m3u8?auth=testpub
@@ -224,6 +229,7 @@
 卫视|广西卫视 [1080P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gxwshd
 卫视|广西卫视 [1080P],http://38.75.136.137:98/gslb/dsdqbv/gxwshd.m3u8?auth=test20251009
 卫视|广西卫视 [1080P],http://38.75.136.137:98/gslb/dsdqpub/gxwshd.m3u8?auth=testpub
+卫视|延边卫视 [720P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ybws
 卫视|新疆卫视 [720P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=xjws
 卫视|新疆卫视 [720P],http://38.75.136.137:98/gslb/dsdqbv/xjws.m3u8?auth=test20251009
 卫视|新疆卫视 [720P],http://38.75.136.137:98/gslb/dsdqpub/xjws.m3u8?auth=testpub
@@ -236,12 +242,13 @@
 卫视|江西卫视 [1080P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jxwshd
 卫视|江西卫视 [1080P],http://38.75.136.137:98/gslb/dsdqbv/jxwshd.m3u8?auth=test20251009
 卫视|江西卫视 [1080P],http://38.75.136.137:98/gslb/dsdqpub/jxwshd.m3u8?auth=testpub
-卫视|河北卫视 [1080P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hewshd
-卫视|河北卫视 [1080P],http://38.75.136.137:98/gslb/dsdqbv/hewshd.m3u8?auth=test20251009
-卫视|河北卫视 [1080P],http://38.75.136.137:98/gslb/dsdqpub/hewshd.m3u8?auth=testpub
+卫视|河北卫视,http://38.75.136.137:98/gslb/dsdqbv/hewshd.m3u8?auth=test20251009
+卫视|河北卫视,http://38.75.136.137:98/gslb/dsdqpub/hewshd.m3u8?auth=testpub
+卫视|河北卫视,http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hewshd
 卫视|河南卫视 [1080P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hawshd
 卫视|河南卫视 [1080P],http://38.75.136.137:98/gslb/dsdqbv/hawshd.m3u8?auth=test20251009
 卫视|河南卫视 [1080P],http://38.75.136.137:98/gslb/dsdqpub/hawshd.m3u8?auth=testpub
+卫视|河南卫视 [720P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hawsmd
 卫视|浙江卫视 [4K],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zjws4k
 卫视|浙江卫视 [4K],http://38.75.136.137:98/gslb/dsdqbv/zjws4k.m3u8?auth=test20251009
 卫视|浙江卫视 [4K],http://38.75.136.137:98/gslb/dsdqpub/zjws4k.m3u8?auth=testpub
@@ -286,9 +293,11 @@
 卫视|辽宁卫视 [1080P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=lnwshd
 卫视|辽宁卫视 [1080P],http://38.75.136.137:98/gslb/dsdqbv/lnwshd.m3u8?auth=test20251009
 卫视|辽宁卫视 [1080P],http://38.75.136.137:98/gslb/dsdqpub/lnwshd.m3u8?auth=testpub
+卫视|辽宁卫视 [720P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=lnws
 卫视|重庆卫视 [1080P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cqwshd
 卫视|重庆卫视 [1080P],http://38.75.136.137:98/gslb/dsdqbv/cqwshd.m3u8?auth=test20251009
 卫视|重庆卫视 [1080P],http://38.75.136.137:98/gslb/dsdqpub/cqwshd.m3u8?auth=testpub
+卫视|重庆卫视,http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cqws
 卫视|陕西卫视 [1080P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=snwshd
 卫视|陕西卫视 [1080P],http://38.75.136.137:98/gslb/dsdqbv/snwshd.m3u8?auth=test20251009
 卫视|陕西卫视 [1080P],http://38.75.136.137:98/gslb/dsdqpub/snwshd.m3u8?auth=testpub
@@ -310,7 +319,6 @@
 北京|中国天气 [720P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zgqx
 北京|中国天气 [720P],http://38.75.136.137:98/gslb/dsdqbv/zgqx.m3u8?auth=test20251009
 北京|中国天气 [720P],http://38.75.136.137:98/gslb/dsdqpub/zgqx.m3u8?auth=testpub
-北京|环球购物,http://38.75.136.137:98/gslb/dsdqpub/hqgwmd.m3u8?auth=testpub
 北京|中国教育1 [1080P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cetv1hd
 北京|中国教育1 [1080P],http://38.75.136.137:98/gslb/dsdqbv/cetv1hd.m3u8?auth=test20251009
 北京|中国教育1 [1080P],http://38.75.136.137:98/gslb/dsdqpub/cetv1hd.m3u8?auth=testpub
@@ -326,7 +334,7 @@
 北京|中国国际教育4,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8
 天津|津南一套,https://play.jinnantv.top/live/JNTV1.flv
 天津|津南一套,https://play.jinnantv.top/live/JNTV1/playlist.m3u8
-天津|滨海新闻,http://traffic.jbh.tjbh.com/live/bhtv10/playlist.m3u8
+天津|滨海综艺,http://traffic.jbh.tjbh.com/live/bhtv20/playlist.m3u8
 河北|任丘综合,https://jwcdnqx.hebyun.com.cn/live/rqtv1/1500k/tzwj_video.m3u8
 河北|枣强综合,http://hbzqdb.chinashadt.com:1937/live/zqzh.stream_360p/playlist.m3u8
 河北|肃宁一套,http://jwplay.hebyun.com.cn/live/sndst01/1500k/tzwj_video.m3u8
@@ -356,17 +364,25 @@
 山西|古县综合,https://l2fpdktp.live.sxmty.com/live/hls/e4c3b363cc4549788e2d983f403e07db/d99ce1eb686e41b9afc888110bd95aa7.m3u8
 山西|娄烦综合,https://d2lp2ch2.live.sxmty.com/live/hls/dd05b3d63074444abe815913a24d3a35/4c59b61fb67f4a45b7fa1f8416b9fffb-1.m3u8
 山西|安泽综合,https://qnwjgp6u.live.sxmty.com/live/hls/dbc13d75496d4203ae47dbefbc4ecec2/f6f863a0944346819c63bb413b5bd35c.m3u8
+山西|定襄综合,http://lbyzztfe.live.sxmty.com/live/hls/645ff4c60e0a49f0a203abbd73dd8be9/0720e665f10f48e98c9639f4f492fb4a-1.m3u8
+山西|平顺综合,http://player4.juyun.tv/tv/149466149.m3u8
 山西|晋城新闻,http://live.jinnews.com.cn/xwzh/sd/live.m3u8
+山西|汾西综合,https://qmmqvzoz.live.sxmty.com/live/hls/f24f8a390c084386a564074c9260100c/be3fdf07606145739ab2c4b80fe0136a.m3u8
 山西|阳曲综合,https://83awgyp5.live.sxmty.com/live/hls/6f6f4b36f9bd42628b718b595ba507ed/724b7e8907a8414d873eb2a2f69bfa18.m3u8
 山西|霍州综合,https://iwlbdjk7.live.sxmty.com/live/hls/768ce7880a2545daac8d20a1910a399b/72b4712ef0224990ab744552c190f28c.m3u8
+山西|壶关电视台,http://zmjp3jin.live.sxmty.com/live/hls/268fe96f955d496db37fb10bb887cda9/fc196029d289449ea524a94a95379a0d.m3u8
+山西|左云电视台,https://wu31afbh.live.sxmty.com/live/hls/c5a0ebd3e73b4c4cbc91ea3b9abf1f54/51859030f2384070bf5bedce43126f6b-1.m3u8
 山西|万荣综合频道,http://60.222.246.220:19433/hls1.m3u8
+山西|上党区电视台,http://zhibo.czmarathon.net/cdd/TVLive.m3u8?auth_key=1724143889-0-0-929d4ecd8b7700822ec202b14ebc6c3c
 山西|垣曲综合频道,https://media.yqrmt.com/hls/hd-live.m3u8
 山西|屯留综合频道,https://f3jok3az.live.sxmty.com/live/hls/ebaa2bf2e7f94dc79d4e642ac76d2415/0d97361a940348729fbd0ee3f4eb9e47.m3u8
 山西|平遥新闻综合,https://tntgjhjb.live.sxmty.com/live/hls/3a4585ac11ec4e1bb07b419101b370c3/baf63e2b313440c2a25d7859f9b73b05-1.m3u8
+山西|平鲁综合频道,http://player4.juyun.tv/tv/167019161.m3u8
 山西|怀仁综合频道,http://1yp7hc5p.live.sxmty.com/live/hls/bff8529922344209985b6e49baa9555a/efa2543628fc4a7ea93d3d6c975f77dc.m3u8
 山西|晋城文化生活,http://live.jinnews.com.cn/ggpd/sd/live.m3u8
 山西|闻喜综合频道,https://www.wxhcgbds.com:8081/channelTv/WXTV_1.flv
 山西|闻喜综合频道,https://www.wxhcgbds.com:8081/channelTv/WXTV_1.m3u8
+山西|隰县新闻综合,https://fpsfgptf.live.sxmty.com/live/hls/b41fb247f68048f893a7a1d320044ce8/790f46c0807048bf82894eaf4c88ccdb.m3u8
 内蒙古|乌海新闻综合,http://play1-qk.nmtv.cn/live/1735546358166026.m3u8
 内蒙古|乌海新闻综合,http://live.wuhainews.org.cn/xwzh/sd/live.m3u8
 内蒙古|乌海都市生活,http://live.wuhainews.org.cn/dssh/sd/live.m3u8
@@ -436,7 +452,6 @@
 江苏|徐州新闻综合,http://stream3.huaihai.tv/xwzh1t/sd/live.m3u8
 江苏|徐州经济生活,http://stream3.huaihai.tv/xz2t/sd/live.m3u8
 江苏|无锡移动电视,http://m.m3u8.wifiwx.com/live/wifiwx-494.m3u8
-江苏|武进新闻频道,https://live.wjyanghu.com/live/CH1.m3u8
 江苏|武进生活频道,https://live.wjyanghu.com/live/CH2.m3u8
 江苏|泰州影视娱乐,http://stream1.mytaizhou.net/ysylnew/playlist.m3u8
 江苏|泰州新闻综合,http://stream1.mytaizhou.net/xwzhnew/sd/live.m3u8
@@ -450,6 +465,7 @@
 江苏|苏州生活资讯,https://live-auth.51kandianshi.com/szgd/csztv5.m3u8
 江苏|苏州生活资讯,http://36.137.190.15:5021/live_hls/4/playlist.m3u8
 江苏|苏州社会经济,https://live-auth.51kandianshi.com/szgd/csztv2.m3u8
+江苏|苏州社会经济,http://36.137.190.15:5021/live_hls/2/playlist.m3u8
 江苏|邳州综合频道,https://liveplus.pznews.com/pzzhpd/sd/live.m3u8
 江苏|镇江新闻时政,http://zjtv-wshls.homecdn.com/live/2aa50.m3u8
 江苏|镇江民生频道,http://zjtv-wshls.homecdn.com/live/2aa16.m3u8
@@ -466,10 +482,7 @@
 浙江|东阳新闻综合,http://play-sh13.quklive.com/live/1681113308206040.m3u8?auth_key=2028413158-ad2723c5e94045f393c4ccc595b573f9-0-c75b8d81f4470e67519c154e85115a4e
 浙江|丽水新闻综合,https://l.cztvcloud.com/channels/lantian/sxchannel09/1080p.m3u8
 浙江|义乌公共文艺,https://44911.hlsplay.aodianyun.com/tv_radio_44911/tv_channel_3090.m3u8?auth_key=4830667771-0-0-4d788b80bdc1fa13522a2d10511a62d4&extra_key=2fk3HCWcAsUB_ZsuI_rrUP3hdTqEFaFPai_ZFKXo5njEPrgmFlIRA9tmB7xb-zLryaZ4y-4A5GYToA82EpN6NdveoFiv45QQP6qp6ZHI1kOJff_5KHtRvRocR3iFRzq6k1eIMRcEcYBzpX3_T595uQ9-UVygOh1Sd_dXnlNCAKoSeP5mtY226hlsTAI9rbgN
-浙江|义乌商贸频道,https://44911.hlsplay.aodianyun.com/tv_radio_44911/tv_channel_2133.m3u8?auth_key=4830674369-0-0-792c50b6dbb1f212177ee413838c9d34&extra_key=MhCFdbXNI70ZdkebtW5Way43jpzFEOtNAkun-0XCgWwdfGQyDYjGaLOvaQkG4p4ahsRmKWH3euwpK_-6AzTj-NsrVKt9WX6WKnoTmOLcKhXuM68iO_FXB63j8Avfm_P7SLv_nrzGAup7gYxtTu4IpKilWBeWfflJTVwXfos8VFTWL_xtZEURqWRFF3AtLaqe&ali_ffmpeg_version=mpengine
-浙江|义乌新闻综合,https://44911.hlsplay.aodianyun.com/tv_radio_44911/tv_channel_1796.m3u8?auth_key=4830573978-0-0-92824c2c03f95906a3c49a4aa28f1709&extra_key=Yc1XsmxOKy2UBoPM4Wy5vCPsEYqnj06taCR2SRB2Xrg2w28NPilH03KdIbbM5wgSql-VBohSnoO9AOKl94q2t2DWMftz-XB-2qUX-UjXcS80StcSZahBFjrKLivXaRjiY5r2NOMKWMKFbv-S0Bz2G6iEXgCK8yGjtrFHDcPfAQEE0pvXq0Bwy34b7We8zARN&ali_ffmpeg_version=mpengine
 浙江|云和新闻综合,http://l.cztvcloud.com/channels/lantian/SXyunhe1/720p.m3u8
-浙江|余杭综合频道,https://29371.hlsplay.aodianyun.com/lms_29371/slow_channel_master_seat_1445826801.m3u8?auth_key=3300411293-0-0-273f15e1d217965ba192be222ea38b2d&extra_key=V8uEmh_EXr1eVHhCsqQdCb2KQpy3kbF4Lfrf1S8rAZfBbea83rMZ6uqfZL74iDr9sfX_YL2E_25HrvU_mbtZh3ifdtd3R0IP_tWpoeTaMP3EUgp-m3whWwmoBhHzmq7QlJkExjuwjfwj_lLUpyUtp6oiMrocqaUoGIgnjsNh9WM
 浙江|台州新闻综合,https://l.cztvcloud.com/channels/lantian/sxchannel10/1080p.m3u8
 浙江|嘉兴新闻综合,https://l.cztvcloud.com/channels/lantian/sxchannel06/1080p.m3u8
 浙江|嘉善新闻综合,https://p2hs.vzan.com/slowlive/633251673265558519/live.m3u8
@@ -547,6 +560,7 @@
 山东|菏泽新闻综合,http://live.hznet.tv:1935/live/live1/500K/tzwj_video.m3u8
 山东|菏泽经济生活,http://live.hznet.tv:1935/live/live2/500K/tzwj_video.m3u8
 河南|河南新闻,https://hngd-cdn-hls-pull-tx-1.hntv.tv/saas_live/6b74358e0b514f8bbe95640403a91445/playlist.m3u8?wsSecret=f0f60173cd9c52c693cc5aec0f98138d&wsTime=1978133090
+河南|项城新闻,https://play-hsbj.vzan.com/978354/446938712125478466/live.m3u8
 河南|郑州教育频道,https://livezzutv.chinamcache.com/zb02/zb02.m3u8?auth_key=1694413413-0-0-fdccf5824fa42b4a2e285f73e7d2d12b
 河南|驻马店公共频道,https://p2hs.vzan.com/slowlive/692736859757132846/live.m3u8
 河南|驻马店新闻综合,https://p2hs.vzan.com/slowlive/856224149274600377/live.m3u8
@@ -600,6 +614,7 @@
 广东|大湾区卫视(国际版) [720P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gdgj
 广东|大湾区卫视(国际版) [720P],http://38.75.136.137:98/gslb/dsdqbv/gdgj.m3u8?auth=test20251009
 广东|大湾区卫视(国际版) [720P],http://38.75.136.137:98/gslb/dsdqpub/gdgj.m3u8?auth=testpub
+广东|大湾区卫视(国际版) [720P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gdgjmd
 广西|凌云综合,https://lives.myun.tv/live/lnp683z5.m3u8
 广西|凌云综合,https://rtmp.gdlive.gdmain.com/live/lnp683z5.m3u8
 广西|那坡综合,https://lives.myun.tv/live/ljkp2890.m3u8
@@ -611,7 +626,6 @@
 广西|南宁新闻综合,https://hls.nntv.cn/nnlive/XWZH_24.m3u8
 广西|来宾新闻荟萃,http://zb.gxlbamc.com:1935/live/xwhc.stream/playlist.m3u8
 广西|来宾综合频道,http://zb.gxlbamc.com:1935/live/lbzh.stream/playlist.m3u8
-广西|玉林新闻综合,http://51742.hlsplay.aodianyun.com/tv_radio_51742/tv_channel_3289.m3u8?auth_key=4846965841-0-0-9764667fa15da8675d9343a9d685e93b&extra_key=3G7phQNujucfjDfVZX7XtFsfMjeELWIZpjNRADdYpRWOUdAykIw7RkxbAmiF9U934MKf8LNlRPUVp9ooT4UEvKJQlaJrZuMqJnw-UvayII5G4kw7jFgAqhhjpD4DC7gyZEtynT7zMnF8xzE3J1g6soaagSkmkag_tsjqRTH1zeM
 重庆|巴南综合频道,http://live.cqbntv.com/bnmc/tv0709.m3u8
 重庆|江津新闻综合,http://222.179.155.21:1935/ch1.m3u8
 重庆|璧山综合频道,http://222.179.42.129:8181/hls1.m3u8
@@ -663,6 +677,7 @@
 四川|泸州科教生活,http://m3u8.channel.luzhoubs.com/nmip-media/channellive/channel103074/playlist.m3u8
 四川|泸州科教生活,http://tvdrs.luzhoubs.com:8100/channellive/lztv3.flv
 四川|洪雅新闻综合,https://dg1sy-livehls.migucloud.com/live/TIMV9AKA_C0/playlist.m3u8
+四川|渠县新闻综合,http://183.222.248.153:81/hls/cfp2p8m3.m3u8
 四川|珙县综合频道,http://m3u8.chuanqigongxian.cn/nmip-media/channellive/channel100449/playlist.m3u8
 四川|盐边综合频道,http://live.ybrmt.cn/ybtv/sd/live.m3u8
 四川|石棉综合频道,https://m3u8channel-sm.yunxya.com/nmip-media/channellive/channel100420/playlist.m3u8
@@ -677,6 +692,7 @@
 四川|雅安文化生活,https://play.yunxya.com/channellive/whsh.m3u8
 四川|雅安新闻综合,https://play.yunxya.com/channellive/xinwen.m3u8
 四川|雅安雨城频道,https://m3u8channel-yc.yunxya.com/nmip-media/channellive/channel100103/playlist.m3u8
+四川|雷波综合频道,https://lbplay.lbxww.gov.cn/Leiboshijie/Leiboshijie.m3u8?auth_key=1702544056-0-0-48584d0e0ebae2ea300c95882210f3ba
 四川|青川新闻综合,http://qcfile.qcrmt.com/nmip-media/channellive/channel100933/playlist.m3u8
 四川|黑水新闻综合,http://live.schstv.com:90/live/xwzh.m3u8
 四川|金口河综合频道,http://pili-live-hls.227.i2863.com/i2863-227/live_227_687291.m3u8
@@ -696,6 +712,8 @@
 云南|昭通三套,https://hwapi.yntv.net/9nwc4s/y7445b.m3u8
 云南|楚雄新闻,https://hwapi.yntv.net/ew265l/848y54.m3u8
 云南|江川综合,https://zb-live.ynurl.com/jiangchuan/ad8dc86f-f35a-4203-85f0-dfd0eef52d18.m3u8
+云南|玉溪综合,https://hwapi.yntv.net/r5fc3f/4kzlat_hd.m3u8
+云南|玉溪综合,https://hwapi.yntv.net/r5fc3f/4kzlat.m3u8
 云南|耿马综合,https://hwapi.yntv.net/48td74/1t0g2n.m3u8
 云南|陆良新闻,https://hwapi.yntv.net/9327b6/v8i7rf.m3u8
 云南|广南电视台,https://zb-live.ynurl.com/guangnan/31407c0a-ec07-4b5f-8a89-c26fbcc1fcf9.m3u8
@@ -723,6 +741,8 @@
 甘肃|古浪综合频道,https://play.kankanlive.com/live/1711282408137964.m3u8
 甘肃|天水文旅频道,https://play.kankanlive.com/live/1728352652939293.m3u8
 甘肃|天祝综合频道,https://play.kankanlive.com/live/1656487214793905.m3u8
+甘肃|定西文旅生活,https://play.kankanlive.com/live/1745232082475287.m3u8
+甘肃|定西综合频道,https://play.kankanlive.com/live/1745232061100288.m3u8
 甘肃|平凉新闻综合,https://play.kankanlive.com/live/1694661314645984.m3u8
 甘肃|平川综合频道,https://play.kankanlive.com/live/1756258234024340.m3u8
 甘肃|庆阳文体旅游,https://play.kankanlive.com/live/1704770893271981.m3u8
@@ -731,6 +751,7 @@
 甘肃|张掖新闻综合,https://play.kankanlive.com/live/1720583434627241.m3u8
 甘肃|敦煌综合频道,https://play.kankanlive.com/live/1698234808271963.m3u8
 甘肃|永昌综合频道,https://play.kankanlive.com/live/1652755738635915.m3u8
+甘肃|甘南藏语频道,https://play.kankanlive.com/live/1711955770173989.m3u8
 甘肃|白银文化教育,http://play.kankanlive.com/live/1720408280309109.m3u8
 甘肃|白银综合频道,http://play.kankanlive.com/live/1720408089419110.m3u8
 甘肃|西峰综合频道,https://play.kankanlive.com/live/1683944827526991.m3u8
@@ -771,12 +792,19 @@
 影视轮播|CHC影迷电影 [1080P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=chchd
 影视轮播|CHC影迷电影 [1080P],http://38.75.136.137:98/gslb/dsdqbv/chchd.m3u8?auth=test20251009
 影视轮播|CHC影迷电影 [1080P],http://38.75.136.137:98/gslb/dsdqpub/chchd.m3u8?auth=testpub
+影视轮播|CHC影迷电影 [720P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=chcmd
+其他|书画频道 [720P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=shpdmd
+其他|百姓健康,http://63.141.230.178:82/gslb/zbdq5.m3u8?id=bxjk
 其他|中央新影-中学生 [720P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zxs
 其他|中央新影-中学生 [720P],http://38.75.136.137:98/gslb/dsdqbv/zxs.m3u8?auth=test20251009
 其他|中央新影-中学生 [720P],http://38.75.136.137:98/gslb/dsdqpub/zxs.m3u8?auth=testpub
+其他|中央新影-中学生 [720P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zxsmd
 其他|中央新影-老故事 [720P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=lgs
 其他|中央新影-老故事 [720P],http://38.75.136.137:98/gslb/dsdqbv/lgs.m3u8?auth=test20251009
 其他|中央新影-老故事 [720P],http://38.75.136.137:98/gslb/dsdqpub/lgs.m3u8?auth=testpub
+其他|CCTV-兵器科技,http://38.75.136.137:98/gslb/dsdqbv/gfjsmd.m3u8?auth=test20251009
+其他|CCTV-女性时尚 [720P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=nxssmd
 其他|中央新影-发现之旅 [720P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=fxzl
 其他|中央新影-发现之旅 [720P],http://38.75.136.137:98/gslb/dsdqbv/fxzl.m3u8?auth=test20251009
 其他|中央新影-发现之旅 [720P],http://38.75.136.137:98/gslb/dsdqpub/fxzl.m3u8?auth=testpub
+其他|CCTV-高尔夫网球 [720P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gefwqmd

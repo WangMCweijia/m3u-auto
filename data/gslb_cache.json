@@ -1,12 +1,12 @@
 {
  "ahws": {
-  "lastSeen": "2026-10-23 10:38",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ahws"
   ]
  },
  "ahwshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ahwshd",
    "http://38.75.136.137:98/gslb/dsdqbv/ahwshd.m3u8?auth=test20251009",
@@ -14,26 +14,25 @@
   ]
  },
  "ahwsmd": {
-  "lastSeen": "2026-10-24 02:13",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ahwsmd",
-   "http://38.75.136.137:98/gslb/dsdqbv/ahwsmd.m3u8?auth=test20251009"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ahwsmd"
   ]
  },
  "bjws": {
-  "lastSeen": "2026-10-24 02:13",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=bjws"
   ]
  },
  "bjws4k": {
-  "lastSeen": "2026-10-25 10:18",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=bjws4k"
   ]
  },
  "bjwshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=bjwshd",
    "http://38.75.136.137:98/gslb/dsdqbv/bjwshd.m3u8?auth=test20251009",
@@ -41,14 +40,14 @@
   ]
  },
  "bjwsmd": {
-  "lastSeen": "2026-10-24 02:13",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=bjwsmd",
    "http://38.75.136.137:98/gslb/dsdqpub/bjwsmd.m3u8?auth=testpub"
   ]
  },
  "btws": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=btws",
    "http://38.75.136.137:98/gslb/dsdqbv/btws.m3u8?auth=test20251009",
@@ -56,39 +55,38 @@
   ]
  },
  "btwsmd": {
-  "lastSeen": "2026-10-20 20:59",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=btwsmd"
   ]
  },
  "bxjk": {
-  "lastSeen": "2026-10-21 16:13",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=bxjk"
   ]
  },
  "bxjkmd": {
-  "lastSeen": "2026-10-24 19:55",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=bxjkmd"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=bxjkmd",
+   "http://38.75.136.137:98/gslb/dsdqpub/bxjkmd.m3u8?auth=testpub"
   ]
  },
  "cctv1": {
-  "lastSeen": "2026-10-22 02:09",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv1"
   ]
  },
  "cctv10": {
-  "lastSeen": "2026-10-20 20:59",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv10",
-   "http://38.75.136.137:98/gslb/dsdqbv/cctv10.m3u8?auth=test20251009",
-   "http://38.75.136.137:98/gslb/dsdqpub/cctv10.m3u8?auth=testpub"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv10"
   ]
  },
  "cctv10hd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv10hd",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv10hd.m3u8?auth=test20251009",
@@ -96,7 +94,7 @@
   ]
  },
  "cctv10md": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv10md",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv10md.m3u8?auth=test20251009",
@@ -104,13 +102,13 @@
   ]
  },
  "cctv11": {
-  "lastSeen": "2026-10-21 10:44",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv11"
   ]
  },
  "cctv11hd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv11hd",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv11hd.m3u8?auth=test20251009",
@@ -118,7 +116,7 @@
   ]
  },
  "cctv11md": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv11md",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv11md.m3u8?auth=test20251009",
@@ -126,14 +124,13 @@
   ]
  },
  "cctv12": {
-  "lastSeen": "2026-10-22 16:12",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv12",
-   "http://38.75.136.137:98/gslb/dsdqbv/cctv12.m3u8?auth=test20251009"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv12"
   ]
  },
  "cctv12hd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv12hd",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv12hd.m3u8?auth=test20251009",
@@ -141,7 +138,7 @@
   ]
  },
  "cctv12md": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv12md",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv12md.m3u8?auth=test20251009",
@@ -149,15 +146,14 @@
   ]
  },
  "cctv13": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv13",
-   "http://38.75.136.137:98/gslb/dsdqbv/cctv13.m3u8?auth=test20251009",
    "http://38.75.136.137:98/gslb/dsdqpub/cctv13.m3u8?auth=testpub"
   ]
  },
  "cctv13hd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv13hd",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv13hd.m3u8?auth=test20251009",
@@ -165,7 +161,7 @@
   ]
  },
  "cctv13md": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv13md",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv13md.m3u8?auth=test20251009",
@@ -173,20 +169,20 @@
   ]
  },
  "cctv14": {
-  "lastSeen": "2026-10-24 09:56",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv14"
   ]
  },
  "cctv14hd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv14hd",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv14hd.m3u8?auth=test20251009"
   ]
  },
  "cctv14md": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv14md",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv14md.m3u8?auth=test20251009",
@@ -194,21 +190,20 @@
   ]
  },
  "cctv15": {
-  "lastSeen": "2026-10-20 20:59",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv15",
-   "http://38.75.136.137:98/gslb/dsdqbv/cctv15.m3u8?auth=test20251009"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv15"
   ]
  },
  "cctv15hd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv15hd",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv15hd.m3u8?auth=test20251009"
   ]
  },
  "cctv15md": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv15md",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv15md.m3u8?auth=test20251009",
@@ -216,10 +211,10 @@
   ]
  },
  "cctv16": {
-  "lastSeen": "2026-10-24 02:13",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv16",
-   "http://38.75.136.137:98/gslb/dsdqpub/cctv16.m3u8?auth=testpub"
+   "http://38.75.136.137:98/gslb/dsdqbv/cctv16.m3u8?auth=test20251009"
   ]
  },
  "cctv16hd": {
@@ -231,7 +226,7 @@
   ]
  },
  "cctv16md": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv16md",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv16md.m3u8?auth=test20251009",
@@ -239,13 +234,13 @@
   ]
  },
  "cctv17": {
-  "lastSeen": "2026-10-25 10:18",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv17"
   ]
  },
  "cctv17hd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv17hd",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv17hd.m3u8?auth=test20251009",
@@ -253,7 +248,7 @@
   ]
  },
  "cctv17md": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv17md",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv17md.m3u8?auth=test20251009",
@@ -261,14 +256,14 @@
   ]
  },
  "cctv1hd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv1hd",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv1hd.m3u8?auth=test20251009"
   ]
  },
  "cctv1md": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv1md",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv1md.m3u8?auth=test20251009",
@@ -276,20 +271,21 @@
   ]
  },
  "cctv2": {
-  "lastSeen": "2026-10-25 10:18",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv2"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv2",
+   "http://38.75.136.137:98/gslb/dsdqbv/cctv2.m3u8?auth=test20251009"
   ]
  },
  "cctv2hd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv2hd",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv2hd.m3u8?auth=test20251009"
   ]
  },
  "cctv2md": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv2md",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv2md.m3u8?auth=test20251009",
@@ -297,13 +293,13 @@
   ]
  },
  "cctv3": {
-  "lastSeen": "2026-10-21 06:45",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv3"
   ]
  },
  "cctv3hd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv3hd",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv3hd.m3u8?auth=test20251009",
@@ -311,21 +307,20 @@
   ]
  },
  "cctv3md": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv3md",
-   "http://38.75.136.137:98/gslb/dsdqbv/cctv3md.m3u8?auth=test20251009",
-   "http://38.75.136.137:98/gslb/dsdqpub/cctv3md.m3u8?auth=testpub"
+   "http://38.75.136.137:98/gslb/dsdqbv/cctv3md.m3u8?auth=test20251009"
   ]
  },
  "cctv4": {
-  "lastSeen": "2026-10-23 16:01",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv4"
   ]
  },
  "cctv4hd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv4hd",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv4hd.m3u8?auth=test20251009",
@@ -333,7 +328,7 @@
   ]
  },
  "cctv4k": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv4k",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv4k.m3u8?auth=test20251009",
@@ -341,7 +336,7 @@
   ]
  },
  "cctv4m": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv4m",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv4m.m3u8?auth=test20251009",
@@ -349,7 +344,7 @@
   ]
  },
  "cctv4md": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv4md",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv4md.m3u8?auth=test20251009",
@@ -357,13 +352,13 @@
   ]
  },
  "cctv4mmd": {
-  "lastSeen": "2026-10-22 02:09",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv4mmd"
   ]
  },
  "cctv4o": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv4o",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv4o.m3u8?auth=test20251009",
@@ -371,15 +366,13 @@
   ]
  },
  "cctv4omd": {
-  "lastSeen": "2026-10-20 20:59",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv4omd",
-   "http://38.75.136.137:98/gslb/dsdqbv/cctv4omd.m3u8?auth=test20251009",
-   "http://38.75.136.137:98/gslb/dsdqpub/cctv4omd.m3u8?auth=testpub"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv4omd"
   ]
  },
  "cctv5": {
-  "lastSeen": "2026-10-24 09:56",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv5"
   ]
@@ -391,7 +384,7 @@
   ]
  },
  "cctv5md": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv5md",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv5md.m3u8?auth=test20251009",
@@ -407,7 +400,7 @@
   ]
  },
  "cctv5pmd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv5pmd",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv5pmd.m3u8?auth=test20251009",
@@ -415,20 +408,20 @@
   ]
  },
  "cctv6": {
-  "lastSeen": "2026-10-23 10:38",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv6"
   ]
  },
  "cctv6hd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv6hd",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv6hd.m3u8?auth=test20251009"
   ]
  },
  "cctv6md": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv6md",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv6md.m3u8?auth=test20251009",
@@ -436,14 +429,13 @@
   ]
  },
  "cctv7": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv7",
-   "http://38.75.136.137:98/gslb/dsdqpub/cctv7.m3u8?auth=testpub"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv7"
   ]
  },
  "cctv7hd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv7hd",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv7hd.m3u8?auth=test20251009",
@@ -451,7 +443,7 @@
   ]
  },
  "cctv7md": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv7md",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv7md.m3u8?auth=test20251009",
@@ -459,20 +451,20 @@
   ]
  },
  "cctv8": {
-  "lastSeen": "2026-10-25 10:18",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv8"
   ]
  },
  "cctv8hd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv8hd",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv8hd.m3u8?auth=test20251009"
   ]
  },
  "cctv8k": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv8k",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv8k.m3u8?auth=test20251009",
@@ -480,7 +472,7 @@
   ]
  },
  "cctv8md": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv8md",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv8md.m3u8?auth=test20251009",
@@ -495,7 +487,7 @@
   ]
  },
  "cctv9hd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv9hd",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv9hd.m3u8?auth=test20251009",
@@ -503,7 +495,7 @@
   ]
  },
  "cctv9md": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv9md",
    "http://38.75.136.137:98/gslb/dsdqbv/cctv9md.m3u8?auth=test20251009",
@@ -511,123 +503,118 @@
   ]
  },
  "cctv9y": {
-  "lastSeen": "2026-10-21 06:45",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv9y"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv9y",
+   "http://38.75.136.137:98/gslb/dsdqpub/cctv9y.m3u8?auth=testpub"
   ]
  },
  "cctv9ymd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv9ymd",
-   "http://38.75.136.137:98/gslb/dsdqpub/cctv9ymd.m3u8?auth=testpub"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv9ymd"
   ]
  },
  "cctva": {
-  "lastSeen": "2026-10-22 02:09",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctva",
-   "http://38.75.136.137:98/gslb/dsdqbv/cctva.m3u8?auth=test20251009"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctva"
   ]
  },
  "cctvamd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvamd"
   ]
  },
  "cctve": {
-  "lastSeen": "2026-10-20 20:59",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctve",
-   "http://38.75.136.137:98/gslb/dsdqbv/cctve.m3u8?auth=test20251009",
-   "http://38.75.136.137:98/gslb/dsdqpub/cctve.m3u8?auth=testpub"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctve"
   ]
  },
  "cctvemd": {
-  "lastSeen": "2026-10-24 19:55",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvemd"
   ]
  },
  "cctvf": {
-  "lastSeen": "2026-10-24 02:13",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvf"
   ]
  },
  "cctvfmd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvfmd"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvfmd",
+   "http://38.75.136.137:98/gslb/dsdqbv/cctvfmd.m3u8?auth=test20251009"
   ]
  },
  "cctvmd": {
-  "lastSeen": "2026-10-22 02:09",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvmd",
-   "http://38.75.136.137:98/gslb/dsdqbv/cctvmd.m3u8?auth=test20251009",
-   "http://38.75.136.137:98/gslb/dsdqpub/cctvmd.m3u8?auth=testpub"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvmd"
   ]
  },
  "cctvnews": {
-  "lastSeen": "2026-10-22 02:09",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvnews"
   ]
  },
  "cctvnewsmd": {
-  "lastSeen": "2026-10-25 10:18",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvnewsmd",
-   "http://38.75.136.137:98/gslb/dsdqbv/cctvnewsmd.m3u8?auth=test20251009"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvnewsmd"
   ]
  },
  "cctvr": {
-  "lastSeen": "2026-10-23 16:01",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvr"
   ]
  },
  "cctvrmd": {
-  "lastSeen": "2026-10-24 14:59",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvrmd",
-   "http://38.75.136.137:98/gslb/dsdqbv/cctvrmd.m3u8?auth=test20251009"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvrmd"
   ]
  },
  "cctvxq": {
-  "lastSeen": "2026-10-23 10:38",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvxq"
   ]
  },
  "cctvxqmd": {
-  "lastSeen": "2026-10-25 10:18",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvxqmd"
   ]
  },
  "cctvyl": {
-  "lastSeen": "2026-10-21 16:13",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvyl"
   ]
  },
  "cctvylmd": {
-  "lastSeen": "2026-10-22 16:12",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvylmd"
   ]
  },
  "cetv1": {
-  "lastSeen": "2026-10-24 14:59",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cetv1"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cetv1",
+   "http://38.75.136.137:98/gslb/dsdqpub/cetv1.m3u8?auth=testpub"
   ]
  },
  "cetv1hd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cetv1hd",
    "http://38.75.136.137:98/gslb/dsdqbv/cetv1hd.m3u8?auth=test20251009",
@@ -635,14 +622,13 @@
   ]
  },
  "cetv1md": {
-  "lastSeen": "2026-10-25 10:18",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cetv1md",
-   "http://38.75.136.137:98/gslb/dsdqpub/cetv1md.m3u8?auth=testpub"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cetv1md"
   ]
  },
  "cetv2": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cetv2",
    "http://38.75.136.137:98/gslb/dsdqbv/cetv2.m3u8?auth=test20251009",
@@ -650,27 +636,26 @@
   ]
  },
  "cetv2md": {
-  "lastSeen": "2026-10-24 02:13",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cetv2md"
   ]
  },
  "cetv3": {
-  "lastSeen": "2026-10-20 20:59",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cetv3",
-   "http://38.75.136.137:98/gslb/dsdqbv/cetv3.m3u8?auth=test20251009",
-   "http://38.75.136.137:98/gslb/dsdqpub/cetv3.m3u8?auth=testpub"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cetv3"
   ]
  },
  "cetv3md": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cetv3md"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cetv3md",
+   "http://38.75.136.137:98/gslb/dsdqpub/cetv3md.m3u8?auth=testpub"
   ]
  },
  "cetv4": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cetv4",
    "http://38.75.136.137:98/gslb/dsdqbv/cetv4.m3u8?auth=test20251009",
@@ -678,13 +663,13 @@
   ]
  },
  "cetv4md": {
-  "lastSeen": "2026-10-24 02:13",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cetv4md"
   ]
  },
  "chcdz": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=chcdz",
    "http://38.75.136.137:98/gslb/dsdqbv/chcdz.m3u8?auth=test20251009",
@@ -692,26 +677,25 @@
   ]
  },
  "chcdzmd": {
-  "lastSeen": "2026-10-21 06:45",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=chcdzmd",
-   "http://38.75.136.137:98/gslb/dsdqpub/chcdzmd.m3u8?auth=testpub"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=chcdzmd"
   ]
  },
  "chchc": {
-  "lastSeen": "2026-10-25 10:18",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=chchc"
   ]
  },
  "chchcmd": {
-  "lastSeen": "2026-10-23 10:38",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=chchcmd"
   ]
  },
  "chchd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=chchd",
    "http://38.75.136.137:98/gslb/dsdqbv/chchd.m3u8?auth=test20251009",
@@ -719,7 +703,7 @@
   ]
  },
  "chcjt": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=chcjt",
    "http://38.75.136.137:98/gslb/dsdqbv/chcjt.m3u8?auth=test20251009",
@@ -727,25 +711,27 @@
   ]
  },
  "chcjtmd": {
-  "lastSeen": "2026-10-25 10:18",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=chcjtmd"
   ]
  },
  "chcmd": {
-  "lastSeen": "2026-10-24 02:13",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=chcmd"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=chcmd",
+   "http://38.75.136.137:98/gslb/dsdqbv/chcmd.m3u8?auth=test20251009"
   ]
  },
  "cqws": {
-  "lastSeen": "2026-10-22 02:09",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cqws"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cqws",
+   "http://38.75.136.137:98/gslb/dsdqpub/cqws.m3u8?auth=testpub"
   ]
  },
  "cqwshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cqwshd",
    "http://38.75.136.137:98/gslb/dsdqbv/cqwshd.m3u8?auth=test20251009",
@@ -753,14 +739,13 @@
   ]
  },
  "cqwsmd": {
-  "lastSeen": "2026-10-24 02:13",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cqwsmd",
-   "http://38.75.136.137:98/gslb/dsdqbv/cqwsmd.m3u8?auth=test20251009"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cqwsmd"
   ]
  },
  "cwjd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cwjd",
    "http://38.75.136.137:98/gslb/dsdqbv/cwjd.m3u8?auth=test20251009",
@@ -768,21 +753,20 @@
   ]
  },
  "cwjdmd": {
-  "lastSeen": "2026-10-25 10:18",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cwjdmd",
-   "http://38.75.136.137:98/gslb/dsdqbv/cwjdmd.m3u8?auth=test20251009",
-   "http://38.75.136.137:98/gslb/dsdqpub/cwjdmd.m3u8?auth=testpub"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cwjdmd"
   ]
  },
  "dfws": {
-  "lastSeen": "2026-10-21 10:44",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=dfws"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=dfws",
+   "http://38.75.136.137:98/gslb/dsdqbv/dfws.m3u8?auth=test20251009"
   ]
  },
  "dfws4k": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=dfws4k",
    "http://38.75.136.137:98/gslb/dsdqbv/dfws4k.m3u8?auth=test20251009",
@@ -790,7 +774,7 @@
   ]
  },
  "dfwshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=dfwshd",
    "http://38.75.136.137:98/gslb/dsdqbv/dfwshd.m3u8?auth=test20251009",
@@ -798,20 +782,19 @@
   ]
  },
  "dfwsmd": {
-  "lastSeen": "2026-10-21 10:44",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=dfwsmd",
-   "http://38.75.136.137:98/gslb/dsdqpub/dfwsmd.m3u8?auth=testpub"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=dfwsmd"
   ]
  },
  "dnws": {
-  "lastSeen": "2026-10-24 02:13",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=dnws"
   ]
  },
  "dnwshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=dnwshd",
    "http://38.75.136.137:98/gslb/dsdqbv/dnwshd.m3u8?auth=test20251009",
@@ -819,13 +802,13 @@
   ]
  },
  "dnwsmd": {
-  "lastSeen": "2026-10-22 02:09",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=dnwsmd"
   ]
  },
  "dszn": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=dszn",
    "http://38.75.136.137:98/gslb/dsdqbv/dszn.m3u8?auth=test20251009",
@@ -833,13 +816,13 @@
   ]
  },
  "dsznmd": {
-  "lastSeen": "2026-10-24 02:13",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=dsznmd"
   ]
  },
  "dyjc": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=dyjc",
    "http://38.75.136.137:98/gslb/dsdqbv/dyjc.m3u8?auth=test20251009",
@@ -847,13 +830,13 @@
   ]
  },
  "dyjcmd": {
-  "lastSeen": "2026-10-24 02:13",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=dyjcmd"
   ]
  },
  "fxzl": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=fxzl",
    "http://38.75.136.137:98/gslb/dsdqbv/fxzl.m3u8?auth=test20251009",
@@ -861,13 +844,13 @@
   ]
  },
  "fxzlmd": {
-  "lastSeen": "2026-10-23 10:38",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=fxzlmd"
   ]
  },
  "fyjc": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=fyjc",
    "http://38.75.136.137:98/gslb/dsdqbv/fyjc.m3u8?auth=test20251009",
@@ -875,13 +858,13 @@
   ]
  },
  "fyjcmd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=fyjcmd"
   ]
  },
  "fyyy": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=fyyy",
    "http://38.75.136.137:98/gslb/dsdqbv/fyyy.m3u8?auth=test20251009",
@@ -889,21 +872,28 @@
   ]
  },
  "fyyymd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=fyyymd"
   ]
  },
  "fyzq": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=fyzq",
    "http://38.75.136.137:98/gslb/dsdqbv/fyzq.m3u8?auth=test20251009",
    "http://38.75.136.137:98/gslb/dsdqpub/fyzq.m3u8?auth=testpub"
   ]
  },
+ "fyzqmd": {
+  "lastSeen": "2026-10-25 20:07",
+  "urls": [
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=fyzqmd",
+   "http://38.75.136.137:98/gslb/dsdqpub/fyzqmd.m3u8?auth=testpub"
+  ]
+ },
  "gdgj": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gdgj",
    "http://38.75.136.137:98/gslb/dsdqbv/gdgj.m3u8?auth=test20251009",
@@ -911,19 +901,19 @@
   ]
  },
  "gdgjmd": {
-  "lastSeen": "2026-10-23 02:14",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gdgjmd"
   ]
  },
  "gdws": {
-  "lastSeen": "2026-10-24 09:56",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gdws"
   ]
  },
  "gdwshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gdwshd",
    "http://38.75.136.137:98/gslb/dsdqbv/gdwshd.m3u8?auth=test20251009",
@@ -931,14 +921,14 @@
   ]
  },
  "gdwsmd": {
-  "lastSeen": "2026-10-24 09:56",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gdwsmd",
-   "http://38.75.136.137:98/gslb/dsdqpub/gdwsmd.m3u8?auth=testpub"
+   "http://38.75.136.137:98/gslb/dsdqbv/gdwsmd.m3u8?auth=test20251009"
   ]
  },
  "gefwq": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gefwq",
    "http://38.75.136.137:98/gslb/dsdqbv/gefwq.m3u8?auth=test20251009",
@@ -946,13 +936,13 @@
   ]
  },
  "gefwqmd": {
-  "lastSeen": "2026-10-23 02:14",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gefwqmd"
   ]
  },
  "gfjs": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gfjs",
    "http://38.75.136.137:98/gslb/dsdqbv/gfjs.m3u8?auth=test20251009",
@@ -960,19 +950,20 @@
   ]
  },
  "gfjsmd": {
-  "lastSeen": "2026-10-24 09:56",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gfjsmd"
   ]
  },
  "gsws": {
-  "lastSeen": "2026-10-24 09:56",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gsws"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gsws",
+   "http://38.75.136.137:98/gslb/dsdqpub/gsws.m3u8?auth=testpub"
   ]
  },
  "gswshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gswshd",
    "http://38.75.136.137:98/gslb/dsdqbv/gswshd.m3u8?auth=test20251009",
@@ -980,19 +971,19 @@
   ]
  },
  "gswsmd": {
-  "lastSeen": "2026-10-24 14:59",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gswsmd"
   ]
  },
  "gxws": {
-  "lastSeen": "2026-10-22 10:46",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gxws"
   ]
  },
  "gxwshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gxwshd",
    "http://38.75.136.137:98/gslb/dsdqbv/gxwshd.m3u8?auth=test20251009",
@@ -1000,20 +991,19 @@
   ]
  },
  "gxwsmd": {
-  "lastSeen": "2026-10-22 02:09",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gxwsmd",
-   "http://38.75.136.137:98/gslb/dsdqbv/gxwsmd.m3u8?auth=test20251009"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gxwsmd"
   ]
  },
  "gzws": {
-  "lastSeen": "2026-10-22 02:09",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gzws"
   ]
  },
  "gzwshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gzwshd",
    "http://38.75.136.137:98/gslb/dsdqbv/gzwshd.m3u8?auth=test20251009",
@@ -1021,22 +1011,19 @@
   ]
  },
  "gzwsmd": {
-  "lastSeen": "2026-10-20 20:59",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gzwsmd",
-   "http://38.75.136.137:98/gslb/dsdqbv/gzwsmd.m3u8?auth=test20251009",
-   "http://38.75.136.137:98/gslb/dsdqpub/gzwsmd.m3u8?auth=testpub"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gzwsmd"
   ]
  },
  "haws": {
-  "lastSeen": "2026-10-25 10:18",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=haws",
-   "http://38.75.136.137:98/gslb/dsdqbv/haws.m3u8?auth=test20251009"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=haws"
   ]
  },
  "hawshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hawshd",
    "http://38.75.136.137:98/gslb/dsdqbv/hawshd.m3u8?auth=test20251009",
@@ -1044,20 +1031,19 @@
   ]
  },
  "hawsmd": {
-  "lastSeen": "2026-10-23 02:14",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hawsmd"
   ]
  },
  "hbws": {
-  "lastSeen": "2026-10-24 09:56",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hbws",
-   "http://38.75.136.137:98/gslb/dsdqpub/hbws.m3u8?auth=testpub"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hbws"
   ]
  },
  "hbwshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hbwshd",
    "http://38.75.136.137:98/gslb/dsdqbv/hbwshd.m3u8?auth=test20251009",
@@ -1065,21 +1051,20 @@
   ]
  },
  "hbwsmd": {
-  "lastSeen": "2026-10-21 03:53",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hbwsmd",
-   "http://38.75.136.137:98/gslb/dsdqpub/hbwsmd.m3u8?auth=testpub"
+   "http://38.75.136.137:98/gslb/dsdqbv/hbwsmd.m3u8?auth=test20251009"
   ]
  },
  "hews": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hews",
-   "http://38.75.136.137:98/gslb/dsdqpub/hews.m3u8?auth=testpub"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hews"
   ]
  },
  "hewshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hewshd",
    "http://38.75.136.137:98/gslb/dsdqbv/hewshd.m3u8?auth=test20251009",
@@ -1087,13 +1072,14 @@
   ]
  },
  "hewsmd": {
-  "lastSeen": "2026-10-22 10:46",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hewsmd"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hewsmd",
+   "http://38.75.136.137:98/gslb/dsdqpub/hewsmd.m3u8?auth=testpub"
   ]
  },
  "hjjc": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hjjc",
    "http://38.75.136.137:98/gslb/dsdqbv/hjjc.m3u8?auth=test20251009",
@@ -1101,20 +1087,20 @@
   ]
  },
  "hjjcmd": {
-  "lastSeen": "2026-10-23 16:01",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hjjcmd",
-   "http://38.75.136.137:98/gslb/dsdqbv/hjjcmd.m3u8?auth=test20251009"
+   "http://38.75.136.137:98/gslb/dsdqpub/hjjcmd.m3u8?auth=testpub"
   ]
  },
  "hljws": {
-  "lastSeen": "2026-10-24 09:56",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hljws"
   ]
  },
  "hljwshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hljwshd",
    "http://38.75.136.137:98/gslb/dsdqbv/hljwshd.m3u8?auth=test20251009",
@@ -1122,19 +1108,20 @@
   ]
  },
  "hljwsmd": {
-  "lastSeen": "2026-10-20 20:59",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hljwsmd"
   ]
  },
  "hnws": {
-  "lastSeen": "2026-10-23 16:01",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hnws"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hnws",
+   "http://38.75.136.137:98/gslb/dsdqpub/hnws.m3u8?auth=testpub"
   ]
  },
  "hnws4k": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hnws4k",
    "http://38.75.136.137:98/gslb/dsdqbv/hnws4k.m3u8?auth=test20251009",
@@ -1142,7 +1129,7 @@
   ]
  },
  "hnwshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hnwshd",
    "http://38.75.136.137:98/gslb/dsdqbv/hnwshd.m3u8?auth=test20251009",
@@ -1150,7 +1137,7 @@
   ]
  },
  "hnwsmd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hnwsmd",
    "http://38.75.136.137:98/gslb/dsdqbv/hnwsmd.m3u8?auth=test20251009",
@@ -1158,33 +1145,33 @@
   ]
  },
  "hqgw": {
-  "lastSeen": "2026-10-21 10:44",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hqgw",
-   "http://38.75.136.137:98/gslb/dsdqbv/hqgw.m3u8?auth=test20251009",
-   "http://38.75.136.137:98/gslb/dsdqpub/hqgw.m3u8?auth=testpub"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hqgw"
   ]
  },
  "hqgwmd": {
-  "lastSeen": "2026-10-24 19:55",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hqgwmd"
   ]
  },
  "hqqg": {
-  "lastSeen": "2026-10-23 10:38",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hqqg"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hqqg",
+   "http://38.75.136.137:98/gslb/dsdqpub/hqqg.m3u8?auth=testpub"
   ]
  },
  "hqqgmd": {
-  "lastSeen": "2026-10-24 09:56",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hqqgmd"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hqqgmd",
+   "http://38.75.136.137:98/gslb/dsdqpub/hqqgmd.m3u8?auth=testpub"
   ]
  },
  "hxws": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hxws",
    "http://38.75.136.137:98/gslb/dsdqbv/hxws.m3u8?auth=test20251009",
@@ -1192,21 +1179,19 @@
   ]
  },
  "hxwsmd": {
-  "lastSeen": "2026-10-24 14:59",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hxwsmd",
-   "http://38.75.136.137:98/gslb/dsdqpub/hxwsmd.m3u8?auth=testpub"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hxwsmd"
   ]
  },
  "jlws": {
-  "lastSeen": "2026-10-24 09:56",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jlws",
-   "http://38.75.136.137:98/gslb/dsdqpub/jlws.m3u8?auth=testpub"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jlws"
   ]
  },
  "jlwshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jlwshd",
    "http://38.75.136.137:98/gslb/dsdqbv/jlwshd.m3u8?auth=test20251009",
@@ -1214,19 +1199,19 @@
   ]
  },
  "jlwsmd": {
-  "lastSeen": "2026-10-24 02:13",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jlwsmd"
   ]
  },
  "jsws": {
-  "lastSeen": "2026-10-21 03:24",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jsws"
   ]
  },
  "jsws4k": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jsws4k",
    "http://38.75.136.137:98/gslb/dsdqbv/jsws4k.m3u8?auth=test20251009",
@@ -1234,7 +1219,7 @@
   ]
  },
  "jswshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jswshd",
    "http://38.75.136.137:98/gslb/dsdqbv/jswshd.m3u8?auth=test20251009",
@@ -1242,20 +1227,20 @@
   ]
  },
  "jswsmd": {
-  "lastSeen": "2026-10-20 20:59",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jswsmd",
-   "http://38.75.136.137:98/gslb/dsdqpub/jswsmd.m3u8?auth=testpub"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jswsmd"
   ]
  },
  "jxws": {
-  "lastSeen": "2026-10-21 03:53",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jxws"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jxws",
+   "http://38.75.136.137:98/gslb/dsdqbv/jxws.m3u8?auth=test20251009"
   ]
  },
  "jxwshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jxwshd",
    "http://38.75.136.137:98/gslb/dsdqbv/jxwshd.m3u8?auth=test20251009",
@@ -1263,25 +1248,27 @@
   ]
  },
  "jxwsmd": {
-  "lastSeen": "2026-10-22 10:46",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jxwsmd"
   ]
  },
  "kbws": {
-  "lastSeen": "2026-10-23 16:01",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=kbws"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=kbws",
+   "http://38.75.136.137:98/gslb/dsdqbv/kbws.m3u8?auth=test20251009"
   ]
  },
  "kbwsmd": {
-  "lastSeen": "2026-10-24 02:13",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=kbwsmd"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=kbwsmd",
+   "http://38.75.136.137:98/gslb/dsdqbv/kbwsmd.m3u8?auth=test20251009"
   ]
  },
  "lgs": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=lgs",
    "http://38.75.136.137:98/gslb/dsdqbv/lgs.m3u8?auth=test20251009",
@@ -1289,20 +1276,21 @@
   ]
  },
  "lgsmd": {
-  "lastSeen": "2026-10-24 09:56",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=lgsmd",
-   "http://38.75.136.137:98/gslb/dsdqbv/lgsmd.m3u8?auth=test20251009"
+   "http://38.75.136.137:98/gslb/dsdqbv/lgsmd.m3u8?auth=test20251009",
+   "http://38.75.136.137:98/gslb/dsdqpub/lgsmd.m3u8?auth=testpub"
   ]
  },
  "lnws": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=lnws"
   ]
  },
  "lnwshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=lnwshd",
    "http://38.75.136.137:98/gslb/dsdqbv/lnwshd.m3u8?auth=test20251009",
@@ -1310,21 +1298,19 @@
   ]
  },
  "lnwsmd": {
-  "lastSeen": "2026-10-20 20:59",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=lnwsmd",
-   "http://38.75.136.137:98/gslb/dsdqbv/lnwsmd.m3u8?auth=test20251009",
-   "http://38.75.136.137:98/gslb/dsdqpub/lnwsmd.m3u8?auth=testpub"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=lnwsmd"
   ]
  },
  "lyws": {
-  "lastSeen": "2026-10-24 19:55",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=lyws"
   ]
  },
  "lywshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=lywshd",
    "http://38.75.136.137:98/gslb/dsdqbv/lywshd.m3u8?auth=test20251009",
@@ -1332,13 +1318,13 @@
   ]
  },
  "lywsmd": {
-  "lastSeen": "2026-10-25 10:18",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=lywsmd"
   ]
  },
  "nfws": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=nfws",
    "http://38.75.136.137:98/gslb/dsdqbv/nfws.m3u8?auth=test20251009",
@@ -1346,13 +1332,14 @@
   ]
  },
  "nfwsmd": {
-  "lastSeen": "2026-10-23 10:38",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=nfwsmd"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=nfwsmd",
+   "http://38.75.136.137:98/gslb/dsdqbv/nfwsmd.m3u8?auth=test20251009"
   ]
  },
  "nmgws": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=nmgws",
    "http://38.75.136.137:98/gslb/dsdqbv/nmgws.m3u8?auth=test20251009",
@@ -1360,14 +1347,13 @@
   ]
  },
  "nmgwsmd": {
-  "lastSeen": "2026-10-21 06:45",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=nmgwsmd",
-   "http://38.75.136.137:98/gslb/dsdqpub/nmgwsmd.m3u8?auth=testpub"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=nmgwsmd"
   ]
  },
  "nxss": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=nxss",
    "http://38.75.136.137:98/gslb/dsdqbv/nxss.m3u8?auth=test20251009",
@@ -1375,13 +1361,13 @@
   ]
  },
  "nxssmd": {
-  "lastSeen": "2026-10-25 10:18",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=nxssmd"
   ]
  },
  "nxws": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=nxws",
    "http://38.75.136.137:98/gslb/dsdqbv/nxws.m3u8?auth=test20251009",
@@ -1389,13 +1375,13 @@
   ]
  },
  "nxwsmd": {
-  "lastSeen": "2026-10-21 10:44",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=nxwsmd"
   ]
  },
  "qhws": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=qhws",
    "http://38.75.136.137:98/gslb/dsdqbv/qhws.m3u8?auth=test20251009",
@@ -1403,31 +1389,31 @@
   ]
  },
  "qhwsmd": {
-  "lastSeen": "2026-10-24 19:55",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=qhwsmd"
   ]
  },
  "qhzy": {
-  "lastSeen": "2026-10-24 09:56",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=qhzy"
   ]
  },
  "qhzymd": {
-  "lastSeen": "2026-10-23 02:14",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=qhzymd"
   ]
  },
  "scws": {
-  "lastSeen": "2026-10-23 16:01",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=scws"
   ]
  },
  "scws4k": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=scws4k",
    "http://38.75.136.137:98/gslb/dsdqbv/scws4k.m3u8?auth=test20251009",
@@ -1435,7 +1421,7 @@
   ]
  },
  "scwshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=scwshd",
    "http://38.75.136.137:98/gslb/dsdqbv/scwshd.m3u8?auth=test20251009",
@@ -1443,13 +1429,14 @@
   ]
  },
  "scwsmd": {
-  "lastSeen": "2026-10-21 02:13",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=scwsmd"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=scwsmd",
+   "http://38.75.136.137:98/gslb/dsdqbv/scwsmd.m3u8?auth=test20251009"
   ]
  },
  "sdjy": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sdjy",
    "http://38.75.136.137:98/gslb/dsdqbv/sdjy.m3u8?auth=test20251009",
@@ -1457,22 +1444,19 @@
   ]
  },
  "sdjymd": {
-  "lastSeen": "2026-10-20 20:59",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sdjymd",
-   "http://38.75.136.137:98/gslb/dsdqbv/sdjymd.m3u8?auth=test20251009",
-   "http://38.75.136.137:98/gslb/dsdqpub/sdjymd.m3u8?auth=testpub"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sdjymd"
   ]
  },
  "sdws": {
-  "lastSeen": "2026-10-24 14:59",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sdws",
-   "http://38.75.136.137:98/gslb/dsdqbv/sdws.m3u8?auth=test20251009"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sdws"
   ]
  },
  "sdws4k": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sdws4k",
    "http://38.75.136.137:98/gslb/dsdqbv/sdws4k.m3u8?auth=test20251009",
@@ -1480,7 +1464,7 @@
   ]
  },
  "sdwshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sdwshd",
    "http://38.75.136.137:98/gslb/dsdqbv/sdwshd.m3u8?auth=test20251009",
@@ -1488,25 +1472,25 @@
   ]
  },
  "sdwsmd": {
-  "lastSeen": "2026-10-24 09:56",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sdwsmd"
   ]
  },
  "shpd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=shpd"
   ]
  },
  "shpdmd": {
-  "lastSeen": "2026-10-24 19:55",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=shpdmd"
   ]
  },
  "sjdl": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sjdl",
    "http://38.75.136.137:98/gslb/dsdqbv/sjdl.m3u8?auth=test20251009",
@@ -1514,13 +1498,13 @@
   ]
  },
  "sjdlmd": {
-  "lastSeen": "2026-10-21 03:53",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sjdlmd"
   ]
  },
  "snnl": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=snnl",
    "http://38.75.136.137:98/gslb/dsdqbv/snnl.m3u8?auth=test20251009",
@@ -1528,19 +1512,20 @@
   ]
  },
  "snnlmd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=snnlmd"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=snnlmd",
+   "http://38.75.136.137:98/gslb/dsdqbv/snnlmd.m3u8?auth=test20251009"
   ]
  },
  "snws": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=snws"
   ]
  },
  "snwshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=snwshd",
    "http://38.75.136.137:98/gslb/dsdqbv/snwshd.m3u8?auth=test20251009",
@@ -1548,14 +1533,13 @@
   ]
  },
  "snwsmd": {
-  "lastSeen": "2026-10-23 16:01",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=snwsmd",
-   "http://38.75.136.137:98/gslb/dsdqpub/snwsmd.m3u8?auth=testpub"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=snwsmd"
   ]
  },
  "ssws": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ssws",
    "http://38.75.136.137:98/gslb/dsdqbv/ssws.m3u8?auth=test20251009",
@@ -1563,19 +1547,20 @@
   ]
  },
  "sswsmd": {
-  "lastSeen": "2026-10-21 06:45",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sswsmd"
   ]
  },
  "sxws": {
-  "lastSeen": "2026-10-21 10:44",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sxws"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sxws",
+   "http://38.75.136.137:98/gslb/dsdqbv/sxws.m3u8?auth=test20251009"
   ]
  },
  "sxwshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sxwshd",
    "http://38.75.136.137:98/gslb/dsdqbv/sxwshd.m3u8?auth=test20251009",
@@ -1583,21 +1568,19 @@
   ]
  },
  "sxwsmd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sxwsmd"
   ]
  },
  "szws": {
-  "lastSeen": "2026-10-20 20:59",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=szws",
-   "http://38.75.136.137:98/gslb/dsdqbv/szws.m3u8?auth=test20251009",
-   "http://38.75.136.137:98/gslb/dsdqpub/szws.m3u8?auth=testpub"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=szws"
   ]
  },
  "szws4k": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=szws4k",
    "http://38.75.136.137:98/gslb/dsdqbv/szws4k.m3u8?auth=test20251009",
@@ -1605,7 +1588,7 @@
   ]
  },
  "szwshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=szwshd",
    "http://38.75.136.137:98/gslb/dsdqbv/szwshd.m3u8?auth=test20251009",
@@ -1613,20 +1596,20 @@
   ]
  },
  "szwsmd": {
-  "lastSeen": "2026-10-24 09:56",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=szwsmd",
-   "http://38.75.136.137:98/gslb/dsdqbv/szwsmd.m3u8?auth=test20251009"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=szwsmd"
   ]
  },
  "tjws": {
-  "lastSeen": "2026-10-25 10:18",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=tjws"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=tjws",
+   "http://38.75.136.137:98/gslb/dsdqbv/tjws.m3u8?auth=test20251009"
   ]
  },
  "tjwshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=tjwshd",
    "http://38.75.136.137:98/gslb/dsdqbv/tjwshd.m3u8?auth=test20251009",
@@ -1634,13 +1617,13 @@
   ]
  },
  "tjwsmd": {
-  "lastSeen": "2026-10-24 02:13",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=tjwsmd"
   ]
  },
  "wsjk": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=wsjk",
    "http://38.75.136.137:98/gslb/dsdqbv/wsjk.m3u8?auth=test20251009",
@@ -1648,13 +1631,13 @@
   ]
  },
  "wsjkmd": {
-  "lastSeen": "2026-10-24 02:13",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=wsjkmd"
   ]
  },
  "xjws": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=xjws",
    "http://38.75.136.137:98/gslb/dsdqbv/xjws.m3u8?auth=test20251009",
@@ -1662,14 +1645,14 @@
   ]
  },
  "xjwsmd": {
-  "lastSeen": "2026-10-22 16:12",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=xjwsmd",
-   "http://38.75.136.137:98/gslb/dsdqpub/xjwsmd.m3u8?auth=testpub"
+   "http://38.75.136.137:98/gslb/dsdqbv/xjwsmd.m3u8?auth=test20251009"
   ]
  },
  "xmws": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=xmws",
    "http://38.75.136.137:98/gslb/dsdqbv/xmws.m3u8?auth=test20251009",
@@ -1677,19 +1660,19 @@
   ]
  },
  "xmwshd": {
-  "lastSeen": "2026-10-22 10:46",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=xmwshd"
   ]
  },
  "xmwsmd": {
-  "lastSeen": "2026-10-23 16:01",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=xmwsmd"
   ]
  },
  "xzws": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=xzws",
    "http://38.75.136.137:98/gslb/dsdqbv/xzws.m3u8?auth=test20251009",
@@ -1697,45 +1680,43 @@
   ]
  },
  "xzwsmd": {
-  "lastSeen": "2026-10-20 20:59",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=xzwsmd",
-   "http://38.75.136.137:98/gslb/dsdqbv/xzwsmd.m3u8?auth=test20251009",
-   "http://38.75.136.137:98/gslb/dsdqpub/xzwsmd.m3u8?auth=testpub"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=xzwsmd"
   ]
  },
  "ybws": {
-  "lastSeen": "2026-10-23 02:14",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ybws"
   ]
  },
  "ybwsmd": {
-  "lastSeen": "2026-10-25 10:18",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ybwsmd"
   ]
  },
  "yggw": {
-  "lastSeen": "2026-10-24 14:59",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=yggw"
   ]
  },
  "yggwmd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=yggwmd"
   ]
  },
  "ynws": {
-  "lastSeen": "2026-10-22 02:09",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ynws"
   ]
  },
  "ynwshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ynwshd",
    "http://38.75.136.137:98/gslb/dsdqbv/ynwshd.m3u8?auth=test20251009",
@@ -1743,13 +1724,14 @@
   ]
  },
  "ynwsmd": {
-  "lastSeen": "2026-10-22 10:46",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ynwsmd"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ynwsmd",
+   "http://38.75.136.137:98/gslb/dsdqbv/ynwsmd.m3u8?auth=test20251009"
   ]
  },
  "ysjp": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ysjp",
    "http://38.75.136.137:98/gslb/dsdqbv/ysjp.m3u8?auth=test20251009",
@@ -1757,13 +1739,13 @@
   ]
  },
  "ysjpmd": {
-  "lastSeen": "2026-10-25 10:18",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ysjpmd"
   ]
  },
  "ystq": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ystq",
    "http://38.75.136.137:98/gslb/dsdqbv/ystq.m3u8?auth=test20251009",
@@ -1771,26 +1753,26 @@
   ]
  },
  "ystqmd": {
-  "lastSeen": "2026-10-22 16:12",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ystqmd",
-   "http://38.75.136.137:98/gslb/dsdqpub/ystqmd.m3u8?auth=testpub"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ystqmd"
   ]
  },
  "zgdy": {
-  "lastSeen": "2026-10-24 02:13",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zgdy"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zgdy",
+   "http://38.75.136.137:98/gslb/dsdqpub/zgdy.m3u8?auth=testpub"
   ]
  },
  "zgdymd": {
-  "lastSeen": "2026-10-21 16:13",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zgdymd"
   ]
  },
  "zgqx": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zgqx",
    "http://38.75.136.137:98/gslb/dsdqbv/zgqx.m3u8?auth=test20251009",
@@ -1798,19 +1780,19 @@
   ]
  },
  "zgqxmd": {
-  "lastSeen": "2026-10-23 10:38",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zgqxmd"
   ]
  },
  "zjws": {
-  "lastSeen": "2026-10-22 02:09",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zjws"
   ]
  },
  "zjws4k": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zjws4k",
    "http://38.75.136.137:98/gslb/dsdqbv/zjws4k.m3u8?auth=test20251009",
@@ -1818,7 +1800,7 @@
   ]
  },
  "zjwshd": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zjwshd",
    "http://38.75.136.137:98/gslb/dsdqbv/zjwshd.m3u8?auth=test20251009",
@@ -1826,38 +1808,39 @@
   ]
  },
  "zjwsmd": {
-  "lastSeen": "2026-10-22 16:12",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zjwsmd"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zjwsmd",
+   "http://38.75.136.137:98/gslb/dsdqpub/zjwsmd.m3u8?auth=testpub"
   ]
  },
  "zqjy": {
-  "lastSeen": "2026-10-24 14:59",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zqjy",
-   "http://38.75.136.137:98/gslb/dsdqpub/zqjy.m3u8?auth=testpub"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zqjy"
   ]
  },
  "zqjymd": {
-  "lastSeen": "2026-10-24 14:59",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zqjymd"
   ]
  },
  "zsgw": {
-  "lastSeen": "2026-10-21 02:13",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zsgw"
   ]
  },
  "zsgwmd": {
-  "lastSeen": "2026-10-25 10:18",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
-   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zsgwmd"
+   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zsgwmd",
+   "http://38.75.136.137:98/gslb/dsdqpub/zsgwmd.m3u8?auth=testpub"
   ]
  },
  "zxs": {
-  "lastSeen": "2026-10-25 15:10",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zxs",
    "http://38.75.136.137:98/gslb/dsdqbv/zxs.m3u8?auth=test20251009",
@@ -1865,7 +1848,7 @@
   ]
  },
  "zxsmd": {
-  "lastSeen": "2026-10-23 02:14",
+  "lastSeen": "2026-10-25 20:07",
   "urls": [
    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zxsmd"
   ]

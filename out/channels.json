@@ -2,11 +2,11 @@
  "meta": {
   "sourceVersion": 20251030,
   "sourceName": "channel_ktvjsnd-20251030.zip",
-  "serTime": 1793036698,
+  "serTime": 1793051927,
   "channelCount": 2976
  },
- "channelCount": 492,
- "lineCount": 805,
+ "channelCount": 510,
+ "lineCount": 1233,
  "channels": [
   {
    "tvgId": "cctv1",
@@ -17,6 +17,10 @@
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv1hd",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv1hd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv1hd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv1",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctv1.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv1.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv1md",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv1md.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/cctv1md.m3u8?auth=testpub",
@@ -31,7 +35,13 @@
    "ename": "cctv2",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv2hd",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctv2hd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv2hd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv2",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctv2.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv2.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv2md",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctv2md.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/cctv2md.m3u8?auth=testpub",
     "http://play.kankanlive.com/live/1698234898628961.m3u8"
    ]
@@ -41,11 +51,14 @@
    "name": "CCTV-3 综艺",
    "group": "央视",
    "logo": "http://tb.91kds.cn/tb/cctv.png",
-   "ename": "cctv3hd",
+   "ename": "cctv3",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv3hd",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv3hd.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/cctv3hd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv3",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctv3.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv3.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv3md",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv3md.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/cctv3md.m3u8?auth=testpub"
@@ -61,9 +74,11 @@
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv4hd",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv4hd.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/cctv4hd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv4",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctv4.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv4.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv4md",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv4md.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/cctv4md.m3u8?auth=testpub",
     "http://play.kankanlive.com/live/1698234936258960.m3u8"
    ]
   },
@@ -76,7 +91,10 @@
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv4o",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv4o.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/cctv4o.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv4o.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv4omd",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctv4omd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv4omd.m3u8?auth=testpub"
    ]
   },
   {
@@ -88,7 +106,10 @@
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv4m",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv4m.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/cctv4m.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv4m.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv4mmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctv4mmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv4mmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -96,11 +117,13 @@
    "name": "CCTV-5+",
    "group": "央视",
    "logo": "http://tb.91kds.cn/tb/cctv.png",
-   "ename": "cctv5pmd",
+   "ename": "cctv5p",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv5pmd",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv5pmd.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/cctv5pmd.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv5pmd.m3u8?auth=testpub",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctv5p.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv5p.m3u8?auth=testpub"
    ]
   },
   {
@@ -108,8 +131,11 @@
    "name": "CCTV-5 体育",
    "group": "央视",
    "logo": "http://tb.91kds.cn/tb/cctv.png",
-   "ename": "cctv5md",
+   "ename": "cctv5",
    "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv5",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctv5.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv5.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv5md",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv5md.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/cctv5md.m3u8?auth=testpub"
@@ -120,10 +146,13 @@
    "name": "CCTV-6 电影",
    "group": "央视",
    "logo": "http://tb.91kds.cn/tb/cctv.png",
-   "ename": "cctv6hd",
+   "ename": "cctv6",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv6hd",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv6hd.m3u8?auth=test20251009",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv6",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctv6.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv6.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv6md",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv6md.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/cctv6md.m3u8?auth=testpub"
@@ -134,11 +163,14 @@
    "name": "CCTV-7 国防军事",
    "group": "央视",
    "logo": "http://tb.91kds.cn/tb/cctv.png",
-   "ename": "cctv7hd",
+   "ename": "cctv7",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv7hd",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv7hd.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/cctv7hd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv7",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctv7.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv7.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv7md",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv7md.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/cctv7md.m3u8?auth=testpub"
@@ -153,8 +185,10 @@
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv8hd",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv8hd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv8hd.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv8",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv8.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv8.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv8md",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv8md.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/cctv8md.m3u8?auth=testpub"
@@ -179,6 +213,12 @@
    "logo": "http://tb.91kds.cn/tb/cgtn.jpg",
    "ename": "cctv9y",
    "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv9y",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctv9y.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv9y.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv9ymd",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctv9ymd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv9ymd.m3u8?auth=testpub",
     "https://english-liveali.cgtn.com/hls/yypdjlctzb/yypdjlctzbcd/playlist.m3u8",
     "https://english-liveali.cgtn.com/hls/yypdjlctzb/yypdjlctzbhd/playlist.m3u8",
     "https://english-liveali.cgtn.com/hls/yypdjlctzb/playlist.m3u8"
@@ -195,6 +235,8 @@
     "http://38.75.136.137:98/gslb/dsdqbv/cctv9hd.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/cctv9hd.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv9",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctv9.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv9.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv9md",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv9md.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/cctv9md.m3u8?auth=testpub",
@@ -211,11 +253,13 @@
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv10hd",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv10hd.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/cctv10hd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv10",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctv10.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv10.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv10md",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv10md.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/cctv10md.m3u8?auth=testpub",
-    "http://play.kankanlive.com/live/1698423445959919.m3u8",
-    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv10"
+    "http://play.kankanlive.com/live/1698423445959919.m3u8"
    ]
   },
   {
@@ -228,6 +272,9 @@
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv11hd",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv11hd.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/cctv11hd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv11",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctv11.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv11.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv11md",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv11md.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/cctv11md.m3u8?auth=testpub",
@@ -244,6 +291,9 @@
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv12hd",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv12hd.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/cctv12hd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv12",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctv12.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv12.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv12md",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv12md.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/cctv12md.m3u8?auth=testpub",
@@ -260,11 +310,13 @@
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv13hd",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv13hd.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/cctv13hd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv13",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctv13.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv13.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv13md",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv13md.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/cctv13md.m3u8?auth=testpub",
-    "http://play.kankanlive.com/live/1698423543275916.m3u8",
-    "http://38.75.136.137:98/gslb/dsdqbv/cctv13.m3u8?auth=test20251009"
+    "http://play.kankanlive.com/live/1698423543275916.m3u8"
    ]
   },
   {
@@ -276,6 +328,9 @@
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv14hd",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv14hd.m3u8?auth=test20251009",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv14",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctv14.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv14.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv14md",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv14md.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/cctv14md.m3u8?auth=testpub",
@@ -291,6 +346,10 @@
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv15hd",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv15hd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv15hd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv15",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctv15.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv15.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv15md",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv15md.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/cctv15md.m3u8?auth=testpub",
@@ -305,9 +364,13 @@
    "ename": "cctv16",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv16",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctv16.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv16.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv16md",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv16md.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/cctv16md.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv16md.m3u8?auth=testpub",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctv16hd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv16hd.m3u8?auth=testpub"
    ]
   },
   {
@@ -320,6 +383,9 @@
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv17hd",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv17hd.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/cctv17hd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv17",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctv17.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctv17.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv17md",
     "http://38.75.136.137:98/gslb/dsdqbv/cctv17md.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/cctv17md.m3u8?auth=testpub",
@@ -333,12 +399,33 @@
    "logo": "http://tb.91kds.cn/tb/cgtn.jpg",
    "ename": "cctvnews",
    "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvnews",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctvnews.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctvnews.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvnewsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctvnewsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctvnewsmd.m3u8?auth=testpub",
     "https://english-liveali.cgtn.com/hls/yypdyyctzb/yypdyyctzbcd/playlist.m3u8",
     "https://english-liveali.cgtn.com/hls/yypdyyctzb/yypdyyctzbhd/playlist.m3u8",
     "https://english-liveali.cgtn.com/hls/yypdyyctzb/playlist.m3u8",
     "https://english-livetx.cgtn.com/hls/yypdyyctzb_hd.m3u8",
     "https://english-livetx.cgtn.com/hls/yypdyyctzb/playlist.m3u8",
     "http://play.kankanlive.com/live/1698423645566913.m3u8"
+   ]
+  },
+  {
+   "tvgId": "cctvf",
+   "name": "CGTN法语",
+   "group": "央视",
+   "logo": "http://tb.91kds.cn/tb/cgtn.jpg",
+   "ename": "cctvf",
+   "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvf",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctvf.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctvf.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvfmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctvfmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctvfmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -360,7 +447,9 @@
    "logo": "http://tb.91kds.cn/tb/cctv.png",
    "ename": "cctvyl",
    "urls": [
-    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvyl"
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvyl",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctvyl.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctvyl.m3u8?auth=testpub"
    ]
   },
   {
@@ -370,7 +459,33 @@
    "logo": "http://tb.91kds.cn/tb/cctv.png",
    "ename": "cctvxq",
    "urls": [
-    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvxq"
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvxq",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctvxq.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctvxq.m3u8?auth=testpub"
+   ]
+  },
+  {
+   "tvgId": "cctvyl",
+   "name": "CCTV-娱乐",
+   "group": "央视",
+   "logo": "http://tb.91kds.cn/tb/cctv.png",
+   "ename": "cctvylmd",
+   "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvylmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctvylmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctvylmd.m3u8?auth=testpub"
+   ]
+  },
+  {
+   "tvgId": "cctvxq",
+   "name": "CCTV-戏曲",
+   "group": "央视",
+   "logo": "http://tb.91kds.cn/tb/cctv.png",
+   "ename": "cctvxqmd",
+   "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvxqmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctvxqmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctvxqmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -380,7 +495,27 @@
    "logo": "http://tb.91kds.cn/tb/cgtn.jpg",
    "ename": "cctvr",
    "urls": [
-    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvr"
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvr",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctvr.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctvr.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvrmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctvrmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctvrmd.m3u8?auth=testpub"
+   ]
+  },
+  {
+   "tvgId": "cctve",
+   "name": "CGTN西班牙语",
+   "group": "央视",
+   "logo": "http://tb.91kds.cn/tb/cgtn.jpg",
+   "ename": "cctve",
+   "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctve",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctve.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctve.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvemd",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctvemd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctvemd.m3u8?auth=testpub"
    ]
   },
   {
@@ -390,7 +525,12 @@
    "logo": "http://tb.91kds.cn/tb/cgtn.jpg",
    "ename": "cctva",
    "urls": [
-    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctva"
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctva",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctva.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctva.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctvamd",
+    "http://38.75.136.137:98/gslb/dsdqbv/cctvamd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cctvamd.m3u8?auth=testpub"
    ]
   },
   {
@@ -403,6 +543,18 @@
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sjdl",
     "http://38.75.136.137:98/gslb/dsdqbv/sjdl.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/sjdl.m3u8?auth=testpub"
+   ]
+  },
+  {
+   "tvgId": "cctv_zsgw",
+   "name": "CCTV 中视购物",
+   "group": "央视",
+   "logo": "http://tb.91kds.cn/tb/cctv.png",
+   "ename": "zsgw",
+   "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zsgw",
+    "http://38.75.136.137:98/gslb/dsdqbv/zsgw.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/zsgw.m3u8?auth=testpub"
    ]
   },
   {
@@ -559,7 +711,10 @@
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ssws",
     "http://38.75.136.137:98/gslb/dsdqbv/ssws.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/ssws.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/ssws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sswsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/sswsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/sswsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -567,11 +722,17 @@
    "name": "东南卫视",
    "group": "卫视",
    "logo": "http://tb.91kds.cn/tb/dnws.jpg",
-   "ename": "dnwshd",
+   "ename": "dnws",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=dnwshd",
     "http://38.75.136.137:98/gslb/dsdqbv/dnwshd.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/dnwshd.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/dnwshd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=dnws",
+    "http://38.75.136.137:98/gslb/dsdqbv/dnws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/dnws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=dnwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/dnwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/dnwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -579,14 +740,20 @@
    "name": "东方卫视",
    "group": "卫视",
    "logo": "http://tb.91kds.cn/tb/dfws.jpg",
-   "ename": "dfws4k",
+   "ename": "dfws",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=dfws4k",
     "http://38.75.136.137:98/gslb/dsdqbv/dfws4k.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/dfws4k.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=dfwshd",
     "http://38.75.136.137:98/gslb/dsdqbv/dfwshd.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/dfwshd.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/dfwshd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=dfws",
+    "http://38.75.136.137:98/gslb/dsdqbv/dfws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/dfws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=dfwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/dfwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/dfwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -594,11 +761,17 @@
    "name": "云南卫视",
    "group": "卫视",
    "logo": "http://tb.91kds.cn/tb/ynws.jpg",
-   "ename": "ynwshd",
+   "ename": "ynws",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ynwshd",
     "http://38.75.136.137:98/gslb/dsdqbv/ynwshd.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/ynwshd.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/ynwshd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ynws",
+    "http://38.75.136.137:98/gslb/dsdqbv/ynws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/ynws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ynwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/ynwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/ynwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -611,7 +784,9 @@
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=btws",
     "http://38.75.136.137:98/gslb/dsdqbv/btws.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/btws.m3u8?auth=testpub",
-    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=btwsmd"
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=btwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/btwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/btwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -624,7 +799,9 @@
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=snnl",
     "http://38.75.136.137:98/gslb/dsdqbv/snnl.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/snnl.m3u8?auth=testpub",
-    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=snnlmd"
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=snnlmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/snnlmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/snnlmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -632,11 +809,20 @@
    "name": "北京卫视",
    "group": "卫视",
    "logo": "http://tb.91kds.cn/tb/bjws.jpg",
-   "ename": "bjwshd",
+   "ename": "bjws",
    "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=bjws4k",
+    "http://38.75.136.137:98/gslb/dsdqbv/bjws4k.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/bjws4k.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=bjwshd",
     "http://38.75.136.137:98/gslb/dsdqbv/bjwshd.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/bjwshd.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/bjwshd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=bjws",
+    "http://38.75.136.137:98/gslb/dsdqbv/bjws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/bjws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=bjwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/bjwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/bjwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -646,10 +832,15 @@
    "logo": "http://tb.91kds.cn/tb/xmws.jpg",
    "ename": "xmws",
    "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=xmwshd",
+    "http://38.75.136.137:98/gslb/dsdqbv/xmwshd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/xmwshd.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=xmws",
     "http://38.75.136.137:98/gslb/dsdqbv/xmws.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/xmws.m3u8?auth=testpub",
-    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=xmwsmd"
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=xmwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/xmwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/xmwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -657,11 +848,17 @@
    "name": "吉林卫视",
    "group": "卫视",
    "logo": "http://tb.91kds.cn/tb/jlws.jpg",
-   "ename": "jlwshd",
+   "ename": "jlws",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jlwshd",
     "http://38.75.136.137:98/gslb/dsdqbv/jlwshd.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/jlwshd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jlws",
+    "http://38.75.136.137:98/gslb/dsdqbv/jlws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/jlws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jlwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/jlwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/jlwsmd.m3u8?auth=testpub",
     "http://stream4.jlntv.cn/jlwshd/sd/live.m3u8"
    ]
   },
@@ -670,14 +867,20 @@
    "name": "四川卫视",
    "group": "卫视",
    "logo": "http://tb.91kds.cn/tb/scws.jpg",
-   "ename": "scws4k",
+   "ename": "scws",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=scws4k",
     "http://38.75.136.137:98/gslb/dsdqbv/scws4k.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/scws4k.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=scwshd",
     "http://38.75.136.137:98/gslb/dsdqbv/scwshd.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/scwshd.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/scwshd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=scws",
+    "http://38.75.136.137:98/gslb/dsdqbv/scws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/scws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=scwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/scwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/scwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -685,12 +888,17 @@
    "name": "天津卫视",
    "group": "卫视",
    "logo": "http://tb.91kds.cn/tb/tjws.jpg",
-   "ename": "tjwshd",
+   "ename": "tjws",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=tjwshd",
     "http://38.75.136.137:98/gslb/dsdqbv/tjwshd.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/tjwshd.m3u8?auth=testpub",
-    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=tjwsmd"
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=tjws",
+    "http://38.75.136.137:98/gslb/dsdqbv/tjws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/tjws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=tjwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/tjwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/tjwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -702,7 +910,25 @@
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=nxws",
     "http://38.75.136.137:98/gslb/dsdqbv/nxws.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/nxws.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/nxws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=nxwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/nxwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/nxwsmd.m3u8?auth=testpub"
+   ]
+  },
+  {
+   "tvgId": "qhzy",
+   "name": "安多卫视",
+   "group": "卫视",
+   "logo": "http://tb.91kds.cn/tb/qhws.jpg",
+   "ename": "qhzy",
+   "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=qhzy",
+    "http://38.75.136.137:98/gslb/dsdqbv/qhzy.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/qhzy.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=qhzymd",
+    "http://38.75.136.137:98/gslb/dsdqbv/qhzymd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/qhzymd.m3u8?auth=testpub"
    ]
   },
   {
@@ -710,11 +936,17 @@
    "name": "安徽卫视",
    "group": "卫视",
    "logo": "http://tb.91kds.cn/tb/ahws.jpg",
-   "ename": "ahwshd",
+   "ename": "ahws",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ahwshd",
     "http://38.75.136.137:98/gslb/dsdqbv/ahwshd.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/ahwshd.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/ahwshd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ahws",
+    "http://38.75.136.137:98/gslb/dsdqbv/ahws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/ahws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ahwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/ahwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/ahwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -722,14 +954,20 @@
    "name": "山东卫视",
    "group": "卫视",
    "logo": "http://tb.91kds.cn/tb/sdws.jpg",
-   "ename": "sdws4k",
+   "ename": "sdws",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sdws4k",
     "http://38.75.136.137:98/gslb/dsdqbv/sdws4k.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/sdws4k.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sdwshd",
     "http://38.75.136.137:98/gslb/dsdqbv/sdwshd.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/sdwshd.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/sdwshd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sdws",
+    "http://38.75.136.137:98/gslb/dsdqbv/sdws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/sdws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sdwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/sdwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/sdwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -742,7 +980,12 @@
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sxwshd",
     "http://38.75.136.137:98/gslb/dsdqbv/sxwshd.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/sxwshd.m3u8?auth=testpub",
-    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sxws"
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sxws",
+    "http://38.75.136.137:98/gslb/dsdqbv/sxws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/sxws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sxwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/sxwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/sxwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -750,11 +993,17 @@
    "name": "广东卫视",
    "group": "卫视",
    "logo": "http://tb.91kds.cn/tb/gdws.jpg",
-   "ename": "gdwshd",
+   "ename": "gdws",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gdwshd",
     "http://38.75.136.137:98/gslb/dsdqbv/gdwshd.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/gdwshd.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/gdwshd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gdws",
+    "http://38.75.136.137:98/gslb/dsdqbv/gdws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/gdws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gdwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/gdwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/gdwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -762,12 +1011,32 @@
    "name": "广西卫视",
    "group": "卫视",
    "logo": "http://tb.91kds.cn/tb/gxws.png",
-   "ename": "gxwshd",
+   "ename": "gxws",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gxwshd",
     "http://38.75.136.137:98/gslb/dsdqbv/gxwshd.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/gxwshd.m3u8?auth=testpub",
-    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gxwsmd"
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gxws",
+    "http://38.75.136.137:98/gslb/dsdqbv/gxws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/gxws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gxwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/gxwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/gxwsmd.m3u8?auth=testpub"
+   ]
+  },
+  {
+   "tvgId": "kbws",
+   "name": "康巴卫视",
+   "group": "卫视",
+   "logo": "http://tb.91kds.cn/tb/scws.png",
+   "ename": "kbws",
+   "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=kbws",
+    "http://38.75.136.137:98/gslb/dsdqbv/kbws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/kbws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=kbwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/kbwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/kbwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -775,9 +1044,14 @@
    "name": "延边卫视",
    "group": "卫视",
    "logo": "http://tb.91kds.cn/tb/ybws.jpg",
-   "ename": "ybwsmd",
+   "ename": "ybws",
    "urls": [
-    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ybwsmd"
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ybws",
+    "http://38.75.136.137:98/gslb/dsdqbv/ybws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/ybws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ybwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/ybwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/ybwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -790,7 +1064,9 @@
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=xjws",
     "http://38.75.136.137:98/gslb/dsdqbv/xjws.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/xjws.m3u8?auth=testpub",
-    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=xjwsmd"
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=xjwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/xjwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/xjwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -798,14 +1074,20 @@
    "name": "江苏卫视",
    "group": "卫视",
    "logo": "http://tb.91kds.cn/tb/jsws.jpg",
-   "ename": "jsws4k",
+   "ename": "jsws",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jsws4k",
     "http://38.75.136.137:98/gslb/dsdqbv/jsws4k.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/jsws4k.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jswshd",
     "http://38.75.136.137:98/gslb/dsdqbv/jswshd.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/jswshd.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/jswshd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jsws",
+    "http://38.75.136.137:98/gslb/dsdqbv/jsws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/jsws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jswsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/jswsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/jswsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -813,12 +1095,17 @@
    "name": "江西卫视",
    "group": "卫视",
    "logo": "http://tb.91kds.cn/tb/jxws.jpg",
-   "ename": "jxwshd",
+   "ename": "jxws",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jxwshd",
     "http://38.75.136.137:98/gslb/dsdqbv/jxwshd.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/jxwshd.m3u8?auth=testpub",
-    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jxwsmd"
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jxws",
+    "http://38.75.136.137:98/gslb/dsdqbv/jxws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/jxws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jxwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/jxwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/jxwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -826,11 +1113,17 @@
    "name": "河北卫视",
    "group": "卫视",
    "logo": "http://tb.91kds.cn/tb/hews.png",
-   "ename": "hewshd",
+   "ename": "hews",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hewshd",
     "http://38.75.136.137:98/gslb/dsdqbv/hewshd.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/hewshd.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/hewshd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hews",
+    "http://38.75.136.137:98/gslb/dsdqbv/hews.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/hews.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hewsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/hewsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/hewsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -838,11 +1131,17 @@
    "name": "河南卫视",
    "group": "卫视",
    "logo": "http://tb.91kds.cn/tb/haws.jpg",
-   "ename": "hawshd",
+   "ename": "haws",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hawshd",
     "http://38.75.136.137:98/gslb/dsdqbv/hawshd.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/hawshd.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/hawshd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=haws",
+    "http://38.75.136.137:98/gslb/dsdqbv/haws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/haws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hawsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/hawsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/hawsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -859,7 +1158,11 @@
     "http://38.75.136.137:98/gslb/dsdqbv/zjwshd.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/zjwshd.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zjws",
+    "http://38.75.136.137:98/gslb/dsdqbv/zjws.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/zjws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zjwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/zjwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/zjwsmd.m3u8?auth=testpub",
     "http://ali-m-l.cztv.com/channels/lantian/channel001/1080p.m3u8",
     "http://ali-m-l.cztv.com/channels/lantian/channel001/540p.m3u8"
    ]
@@ -869,11 +1172,17 @@
    "name": "海南卫视",
    "group": "卫视",
    "logo": "http://tb.91kds.cn/tb/hiws.jpg",
-   "ename": "lywshd",
+   "ename": "lyws",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=lywshd",
     "http://38.75.136.137:98/gslb/dsdqbv/lywshd.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/lywshd.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/lywshd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=lyws",
+    "http://38.75.136.137:98/gslb/dsdqbv/lyws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/lyws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=lywsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/lywsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/lywsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -885,7 +1194,10 @@
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hxws",
     "http://38.75.136.137:98/gslb/dsdqbv/hxws.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/hxws.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/hxws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hxwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/hxwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/hxwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -902,7 +1214,11 @@
     "http://38.75.136.137:98/gslb/dsdqbv/szwshd.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/szwshd.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=szws",
-    "http://38.75.136.137:98/gslb/dsdqbv/szws.m3u8?auth=test20251009"
+    "http://38.75.136.137:98/gslb/dsdqbv/szws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/szws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=szwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/szwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/szwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -915,7 +1231,12 @@
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hbwshd",
     "http://38.75.136.137:98/gslb/dsdqbv/hbwshd.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/hbwshd.m3u8?auth=testpub",
-    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hbws"
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hbws",
+    "http://38.75.136.137:98/gslb/dsdqbv/hbws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/hbws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hbwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/hbwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/hbwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -923,7 +1244,7 @@
    "name": "湖南卫视",
    "group": "卫视",
    "logo": "http://tb.91kds.cn/tb/hnws.jpg",
-   "ename": "hnws4k",
+   "ename": "hnws",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hnws4k",
     "http://38.75.136.137:98/gslb/dsdqbv/hnws4k.m3u8?auth=test20251009",
@@ -931,6 +1252,9 @@
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hnwshd",
     "http://38.75.136.137:98/gslb/dsdqbv/hnwshd.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/hnwshd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hnws",
+    "http://38.75.136.137:98/gslb/dsdqbv/hnws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/hnws.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hnwsmd",
     "http://38.75.136.137:98/gslb/dsdqbv/hnwsmd.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/hnwsmd.m3u8?auth=testpub"
@@ -941,11 +1265,17 @@
    "name": "甘肃卫视",
    "group": "卫视",
    "logo": "http://tb.91kds.cn/tb/gsws.jpg",
-   "ename": "gswshd",
+   "ename": "gsws",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gswshd",
     "http://38.75.136.137:98/gslb/dsdqbv/gswshd.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/gswshd.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/gswshd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gsws",
+    "http://38.75.136.137:98/gslb/dsdqbv/gsws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/gsws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gswsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/gswsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/gswsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -957,7 +1287,10 @@
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=xzws",
     "http://38.75.136.137:98/gslb/dsdqbv/xzws.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/xzws.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/xzws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=xzwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/xzwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/xzwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -965,11 +1298,17 @@
    "name": "贵州卫视",
    "group": "卫视",
    "logo": "http://tb.91kds.cn/tb/gzws.jpg",
-   "ename": "gzwshd",
+   "ename": "gzws",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gzwshd",
     "http://38.75.136.137:98/gslb/dsdqbv/gzwshd.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/gzwshd.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/gzwshd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gzws",
+    "http://38.75.136.137:98/gslb/dsdqbv/gzws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/gzws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gzwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/gzwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/gzwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -983,7 +1322,11 @@
     "http://38.75.136.137:98/gslb/dsdqbv/lnwshd.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/lnwshd.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=lnws",
-    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=lnwsmd"
+    "http://38.75.136.137:98/gslb/dsdqbv/lnws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/lnws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=lnwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/lnwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/lnwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -991,11 +1334,17 @@
    "name": "重庆卫视",
    "group": "卫视",
    "logo": "http://tb.91kds.cn/tb/cqws.jpg",
-   "ename": "cqwshd",
+   "ename": "cqws",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cqwshd",
     "http://38.75.136.137:98/gslb/dsdqbv/cqwshd.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/cqwshd.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/cqwshd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cqws",
+    "http://38.75.136.137:98/gslb/dsdqbv/cqws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cqws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cqwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/cqwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cqwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -1003,11 +1352,17 @@
    "name": "陕西卫视",
    "group": "卫视",
    "logo": "http://tb.91kds.cn/tb/snws.jpg",
-   "ename": "snwshd",
+   "ename": "snws",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=snwshd",
     "http://38.75.136.137:98/gslb/dsdqbv/snwshd.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/snwshd.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/snwshd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=snws",
+    "http://38.75.136.137:98/gslb/dsdqbv/snws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/snws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=snwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/snwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/snwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -1021,7 +1376,8 @@
     "http://38.75.136.137:98/gslb/dsdqbv/qhws.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/qhws.m3u8?auth=testpub",
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=qhwsmd",
-    "http://38.75.136.137:98/gslb/dsdqbv/qhwsmd.m3u8?auth=test20251009"
+    "http://38.75.136.137:98/gslb/dsdqbv/qhwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/qhwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -1033,7 +1389,10 @@
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=nmgws",
     "http://38.75.136.137:98/gslb/dsdqbv/nmgws.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/nmgws.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/nmgws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=nmgwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/nmgwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/nmgwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -1045,7 +1404,10 @@
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=nfws",
     "http://38.75.136.137:98/gslb/dsdqbv/nfws.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/nfws.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/nfws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=nfwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/nfwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/nfwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -1053,11 +1415,17 @@
    "name": "黑龙江卫视",
    "group": "卫视",
    "logo": "http://tb.91kds.cn/tb/hljws.jpg",
-   "ename": "hljwshd",
+   "ename": "hljws",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hljwshd",
     "http://38.75.136.137:98/gslb/dsdqbv/hljwshd.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/hljwshd.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/hljwshd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hljws",
+    "http://38.75.136.137:98/gslb/dsdqbv/hljws.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/hljws.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hljwsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/hljwsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/hljwsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -1069,7 +1437,10 @@
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sdjy",
     "http://38.75.136.137:98/gslb/dsdqbv/sdjy.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/sdjy.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/sdjy.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sdjymd",
+    "http://38.75.136.137:98/gslb/dsdqbv/sdjymd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/sdjymd.m3u8?auth=testpub"
    ]
   },
   {
@@ -1081,7 +1452,55 @@
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zgqx",
     "http://38.75.136.137:98/gslb/dsdqbv/zgqx.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/zgqx.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/zgqx.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zgqxmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/zgqxmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/zgqxmd.m3u8?auth=testpub"
+   ]
+  },
+  {
+   "tvgId": "zgdy",
+   "name": "中国电影",
+   "group": "北京",
+   "logo": "http://tb.91kds.cn/tb/cctv.png",
+   "ename": "zgdy",
+   "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zgdy",
+    "http://38.75.136.137:98/gslb/dsdqbv/zgdy.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/zgdy.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zgdymd",
+    "http://38.75.136.137:98/gslb/dsdqbv/zgdymd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/zgdymd.m3u8?auth=testpub"
+   ]
+  },
+  {
+   "tvgId": "hqqg",
+   "name": "环球奇观",
+   "group": "北京",
+   "logo": "http://tb.91kds.cn/tb/bjhqqg.jpg",
+   "ename": "hqqg",
+   "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hqqg",
+    "http://38.75.136.137:98/gslb/dsdqbv/hqqg.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/hqqg.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hqqgmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/hqqgmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/hqqgmd.m3u8?auth=testpub"
+   ]
+  },
+  {
+   "tvgId": "hqgw",
+   "name": "环球购物",
+   "group": "北京",
+   "logo": "http://tb.91kds.cn/tb/qthqgw.jpg",
+   "ename": "hqgw",
+   "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hqgw",
+    "http://38.75.136.137:98/gslb/dsdqbv/hqgw.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/hqgw.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hqgwmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/hqgwmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/hqgwmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -1089,11 +1508,17 @@
    "name": "中国教育1",
    "group": "北京",
    "logo": "http://tb.91kds.cn/tb/cctv-zgjy.jpg",
-   "ename": "cetv1hd",
+   "ename": "cetv1",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cetv1hd",
     "http://38.75.136.137:98/gslb/dsdqbv/cetv1hd.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/cetv1hd.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/cetv1hd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cetv1",
+    "http://38.75.136.137:98/gslb/dsdqbv/cetv1.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cetv1.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cetv1md",
+    "http://38.75.136.137:98/gslb/dsdqbv/cetv1md.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cetv1md.m3u8?auth=testpub"
    ]
   },
   {
@@ -1105,7 +1530,25 @@
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cetv2",
     "http://38.75.136.137:98/gslb/dsdqbv/cetv2.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/cetv2.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/cetv2.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cetv2md",
+    "http://38.75.136.137:98/gslb/dsdqbv/cetv2md.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cetv2md.m3u8?auth=testpub"
+   ]
+  },
+  {
+   "tvgId": "cetv3",
+   "name": "中国教育3",
+   "group": "北京",
+   "logo": "http://tb.91kds.cn/tb/cctv-zgjy.jpg",
+   "ename": "cetv3",
+   "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cetv3",
+    "http://38.75.136.137:98/gslb/dsdqbv/cetv3.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cetv3.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cetv3md",
+    "http://38.75.136.137:98/gslb/dsdqbv/cetv3md.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cetv3md.m3u8?auth=testpub"
    ]
   },
   {
@@ -1117,7 +1560,10 @@
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cetv4",
     "http://38.75.136.137:98/gslb/dsdqbv/cetv4.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/cetv4.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/cetv4.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cetv4md",
+    "http://38.75.136.137:98/gslb/dsdqbv/cetv4md.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cetv4md.m3u8?auth=testpub"
    ]
   },
   {
@@ -1442,6 +1888,26 @@
    ]
   },
   {
+   "tvgId": "sxlfgx1",
+   "name": "古县综合",
+   "group": "山西",
+   "logo": "http://tb.91kds.cn/tb/sxlfgx.jpg",
+   "ename": "sxlfgx1",
+   "urls": [
+    "https://l2fpdktp.live.sxmty.com/live/hls/e4c3b363cc4549788e2d983f403e07db/d99ce1eb686e41b9afc888110bd95aa7.m3u8"
+   ]
+  },
+  {
+   "tvgId": "sxtylf1",
+   "name": "娄烦综合",
+   "group": "山西",
+   "logo": "http://tb.91kds.cn/tb/sxtylf.jpg",
+   "ename": "sxtylf1",
+   "urls": [
+    "https://d2lp2ch2.live.sxmty.com/live/hls/dd05b3d63074444abe815913a24d3a35/4c59b61fb67f4a45b7fa1f8416b9fffb-1.m3u8"
+   ]
+  },
+  {
    "tvgId": "sxlfaz1",
    "name": "安泽综合",
    "group": "山西",
@@ -1509,16 +1975,6 @@
    "ename": "sxlfhz1",
    "urls": [
     "https://iwlbdjk7.live.sxmty.com/live/hls/768ce7880a2545daac8d20a1910a399b/72b4712ef0224990ab744552c190f28c.m3u8"
-   ]
-  },
-  {
-   "tvgId": "sxczhg1",
-   "name": "壶关电视台",
-   "group": "山西",
-   "logo": "http://tb.91kds.cn/tb/sxczhg.jpg",
-   "ename": "sxczhg1",
-   "urls": [
-    "http://zmjp3jin.live.sxmty.com/live/hls/268fe96f955d496db37fb10bb887cda9/fc196029d289449ea524a94a95379a0d.m3u8"
    ]
   },
   {
@@ -2255,26 +2711,6 @@
    ]
   },
   {
-   "tvgId": "jsczwj1",
-   "name": "武进新闻频道",
-   "group": "江苏",
-   "logo": "http://tb.91kds.cn/tb/jswjtv.jpg",
-   "ename": "jsczwj1",
-   "urls": [
-    "https://live.wjyanghu.com/live/CH1.m3u8"
-   ]
-  },
-  {
-   "tvgId": "jsczwj2",
-   "name": "武进生活频道",
-   "group": "江苏",
-   "logo": "http://tb.91kds.cn/tb/jswjtv.jpg",
-   "ename": "jsczwj2",
-   "urls": [
-    "https://live.wjyanghu.com/live/CH2.m3u8"
-   ]
-  },
-  {
    "tvgId": "jstztv3",
    "name": "泰州影视娱乐",
    "group": "江苏",
@@ -2364,7 +2800,8 @@
    "logo": "http://tb.91kds.cn/tb/jssztv.jpg",
    "ename": "jssztv2",
    "urls": [
-    "https://live-auth.51kandianshi.com/szgd/csztv2.m3u8"
+    "https://live-auth.51kandianshi.com/szgd/csztv2.m3u8",
+    "http://36.137.190.15:5021/live_hls/2/playlist.m3u8"
    ]
   },
   {
@@ -2525,36 +2962,6 @@
    "ename": "zjjhyw3",
    "urls": [
     "https://44911.hlsplay.aodianyun.com/tv_radio_44911/tv_channel_3090.m3u8?auth_key=4830667771-0-0-4d788b80bdc1fa13522a2d10511a62d4&extra_key=2fk3HCWcAsUB_ZsuI_rrUP3hdTqEFaFPai_ZFKXo5njEPrgmFlIRA9tmB7xb-zLryaZ4y-4A5GYToA82EpN6NdveoFiv45QQP6qp6ZHI1kOJff_5KHtRvRocR3iFRzq6k1eIMRcEcYBzpX3_T595uQ9-UVygOh1Sd_dXnlNCAKoSeP5mtY226hlsTAI9rbgN"
-   ]
-  },
-  {
-   "tvgId": "zjjhyw2",
-   "name": "义乌商贸频道",
-   "group": "浙江",
-   "logo": "http://tb.91kds.cn/tb/zjywtv.jpg",
-   "ename": "zjjhyw2",
-   "urls": [
-    "https://44911.hlsplay.aodianyun.com/tv_radio_44911/tv_channel_2133.m3u8?auth_key=4830674369-0-0-792c50b6dbb1f212177ee413838c9d34&extra_key=MhCFdbXNI70ZdkebtW5Way43jpzFEOtNAkun-0XCgWwdfGQyDYjGaLOvaQkG4p4ahsRmKWH3euwpK_-6AzTj-NsrVKt9WX6WKnoTmOLcKhXuM68iO_FXB63j8Avfm_P7SLv_nrzGAup7gYxtTu4IpKilWBeWfflJTVwXfos8VFTWL_xtZEURqWRFF3AtLaqe&ali_ffmpeg_version=mpengine"
-   ]
-  },
-  {
-   "tvgId": "zjjhyw1",
-   "name": "义乌新闻综合",
-   "group": "浙江",
-   "logo": "http://tb.91kds.cn/tb/zjywtv.jpg",
-   "ename": "zjjhyw1",
-   "urls": [
-    "https://44911.hlsplay.aodianyun.com/tv_radio_44911/tv_channel_1796.m3u8?auth_key=4830573978-0-0-92824c2c03f95906a3c49a4aa28f1709&extra_key=Yc1XsmxOKy2UBoPM4Wy5vCPsEYqnj06taCR2SRB2Xrg2w28NPilH03KdIbbM5wgSql-VBohSnoO9AOKl94q2t2DWMftz-XB-2qUX-UjXcS80StcSZahBFjrKLivXaRjiY5r2NOMKWMKFbv-S0Bz2G6iEXgCK8yGjtrFHDcPfAQEE0pvXq0Bwy34b7We8zARN&ali_ffmpeg_version=mpengine"
-   ]
-  },
-  {
-   "tvgId": "zjlsyh1",
-   "name": "云和新闻综合",
-   "group": "浙江",
-   "logo": "http://tb.91kds.cn/tb/zjlsyh.jpg",
-   "ename": "zjlsyh1",
-   "urls": [
-    "http://l.cztvcloud.com/channels/lantian/SXyunhe1/720p.m3u8"
    ]
   },
   {
@@ -2810,16 +3217,6 @@
    ]
   },
   {
-   "tvgId": "zjlsjy1",
-   "name": "缙云综合频道",
-   "group": "浙江",
-   "logo": "http://tb.91kds.cn/tb/zjlsjy.jpg",
-   "ename": "zjlsjy1",
-   "urls": [
-    "http://l.cztvcloud.com/channels/lantian/SXjinyun1/720p.m3u8"
-   ]
-  },
-  {
    "tvgId": "zjzstv1",
    "name": "舟山新闻综合",
    "group": "浙江",
@@ -2858,26 +3255,6 @@
    "ename": "zjqzqj1",
    "urls": [
     "http://l.cztvcloud.com/channels/lantian/SXqujiang1/720p.m3u8"
-   ]
-  },
-  {
-   "tvgId": "zjsxzj1",
-   "name": "诸暨新闻综合",
-   "group": "浙江",
-   "logo": "http://tb.91kds.cn/tb/zjzjtv.jpg",
-   "ename": "zjsxzj1",
-   "urls": [
-    "http://l.cztvcloud.com/channels/lantian/SXzhuji3/720p.m3u8"
-   ]
-  },
-  {
-   "tvgId": "zjnbxs1",
-   "name": "象山新闻综合",
-   "group": "浙江",
-   "logo": "http://tb.91kds.cn/tb/zjxistv.jpg",
-   "ename": "zjnbxs1",
-   "urls": [
-    "http://l.cztvcloud.com/channels/lantian/SXxiangshan1/720p.m3u8"
    ]
   },
   {
@@ -3094,6 +3471,16 @@
    ]
   },
   {
+   "tvgId": "ahfytv3",
+   "name": "阜阳生活频道",
+   "group": "安徽",
+   "logo": "http://tb.91kds.cn/tb/ahfytv.jpg",
+   "ename": "ahfytv3",
+   "urls": [
+    "http://41007.hlsplay.aodianyun.com/tv_radio_41007/tv_channel_2853.m3u8?auth_key=4835990486-0-0-dcdb6cc0aee871a664044ee7a3e83308&extra_key=jiEx28IYtuWJ1_w9kBTIOKIb4qAj8AdUpC907-3A-1heP_ZkcC9shKy2LFM4R9AiQLgQILrQJL1arILWCMAAizwLLRfZ5JckaokxNmuSv2KZs6SyYxsEki45eCNOFysmPiq_XKQRYYjgnOQiBte9knM20QVSjr7_kfGY0ZMQJoKWXhwFqOC7MaahYRl6X9Bv"
+   ]
+  },
+  {
    "tvgId": "ahmastv2",
    "name": "马鞍山科教生活",
    "group": "安徽",
@@ -3214,6 +3601,16 @@
    ]
   },
   {
+   "tvgId": "sdlytv1",
+   "name": "临沂综合频道",
+   "group": "山东",
+   "logo": "http://tb.91kds.cn/tb/sdlytv.jpg",
+   "ename": "sdlytv1",
+   "urls": [
+    "https://m3u8-channel.lytv.tv/nmip-media/channellive/channel111841/playlist.m3u8"
+   ]
+  },
+  {
    "tvgId": "hatv6",
    "name": "河南新闻",
    "group": "河南",
@@ -3294,17 +3691,6 @@
    ]
   },
   {
-   "tvgId": "hbestv2",
-   "name": "恩施文旅",
-   "group": "湖北",
-   "logo": "http://tb.91kds.cn/tb/hbestv.jpg",
-   "ename": "hbestv2",
-   "urls": [
-    "https://46240.hlsplay.aodianyun.com/tv_radio_46240/tv_channel_1811.m3u8?auth_key=4857760464-0-0-ecabcbf26d39dc20cde584db2fa2a053&extra_key=D1dJezG95YTkYytoe8tr2Qhf-jhFFJmJpij9JNzLnfjYgxE5Q69rjZT1b2VrOxeb2zvhRo107e0Ze_h5agVjcLhNxl4RzjBShtdz-pQKUqaNbHnJMUJaS637QCoHNkKlJAb5i0lkR8MlxmIB6LIGojFm8kqvpZp_pI7SG10olDg",
-    "https://46240.hlsplay.aodianyun.com/tv_radio_46240/tv_channel_1811.m3u8?auth_key=3319694126-0-0-1ba863f6b32d03b00e53bd9ec9d9df5d&extra_key=wAQ9vlCHeL4fzuS3VjIlG2QJKgNspzImYTSsqRkepGDZZXn6UrGPU5kHyU7VOGAGcL13G9UT61GYPrlBgj7-SDOEE_ASvl968tOCgOiZgNlhxgba89zK3AuKiTxpo7LTKXpwh5eNw_LobzUelMLOUg"
-   ]
-  },
-  {
    "tvgId": "hbhgmc1",
    "name": "麻城综合",
    "group": "湖北",
@@ -3322,16 +3708,6 @@
    "ename": "hbsyjj",
    "urls": [
     "https://p8.vzan.com/slowlive/701367497774448672/live.m3u8"
-   ]
-  },
-  {
-   "tvgId": "hbesxf1",
-   "name": "咸丰新闻综合",
-   "group": "湖北",
-   "logo": "http://tb.91kds.cn/tb/hbesxf.jpg",
-   "ename": "hbesxf1",
-   "urls": [
-    "https://46240.hlsplay.aodianyun.com/tv_radio_46240/tv_channel_3567.m3u8?auth_key=4867549325-0-0-cc7ce201270f1bfda8bd5c54e0e5739c&extra_key=hKfYhS2z6614oV0yCs-AFVt7IpvlJJgoGCHOij1q2onFz-Yr5Us2Cd41rIlv4l1XjWrMXCVgYMdOmrNAgjF2W_2a6vxf1HxtHHoYEC6BCIqSeo4VGtaHFxadD2xtzAtmsjFPKB3DP_Ev_ci_KC8TQllAks-AnwmJWoohc4XLA6Q"
    ]
   },
   {
@@ -3725,7 +4101,9 @@
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gdgj",
     "http://38.75.136.137:98/gslb/dsdqbv/gdgj.m3u8?auth=test20251009",
     "http://38.75.136.137:98/gslb/dsdqpub/gdgj.m3u8?auth=testpub",
-    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gdgjmd"
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gdgjmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/gdgjmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/gdgjmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -4209,16 +4587,6 @@
    "ename": "scybgx1",
    "urls": [
     "http://m3u8.chuanqigongxian.cn/nmip-media/channellive/channel100449/playlist.m3u8"
-   ]
-  },
-  {
-   "tvgId": "scpzhyb1",
-   "name": "盐边综合频道",
-   "group": "四川",
-   "logo": "http://tb.91kds.cn/tb/scpzhyb.png",
-   "ename": "scpzhyb1",
-   "urls": [
-    "http://live.ybrmt.cn/ybtv/sd/live.m3u8"
    ]
   },
   {
@@ -4956,17 +5324,6 @@
    ]
   },
   {
-   "tvgId": "xjjmse1",
-   "name": "吉木萨尔综合",
-   "group": "新疆",
-   "logo": "http://tb.91kds.cn/tb/xjjmse.jpg",
-   "ename": "xjjmse1",
-   "urls": [
-    "http://218.31.201.189:9000/shiping1/prog_index.m3u8",
-    "http://218.31.201.189:9000/api/material/local/mnt/shiping1/prog_index.m3u8"
-   ]
-  },
-  {
    "tvgId": "xjcjqt1",
    "name": "奇台综合频道",
    "group": "新疆",
@@ -5077,6 +5434,16 @@
    ]
   },
   {
+   "tvgId": "xjshtv2",
+   "name": "兵团五师双河影视",
+   "group": "新疆",
+   "logo": "http://tb.91kds.cn/tb/xjshtv.jpg",
+   "ename": "xjshtv2",
+   "urls": [
+    "https://liveout.btzx.com.cn/62ds9e/6o77s4.m3u8"
+   ]
+  },
+  {
    "tvgId": "xjbatv3",
    "name": "巴音郭楞州维吾尔语",
    "group": "新疆",
@@ -5084,6 +5451,16 @@
    "ename": "xjbatv3",
    "urls": [
     "http://file.loulannews.cn/nmip-media/channellive/channel103824/playlist.m3u8"
+   ]
+  },
+  {
+   "tvgId": "xjshtv1",
+   "name": "兵团五师双河新闻综合",
+   "group": "新疆",
+   "logo": "http://tb.91kds.cn/tb/xjshtv.jpg",
+   "ename": "xjshtv1",
+   "urls": [
+    "https://liveout.btzx.com.cn/62ds9e/4nxdih.m3u8"
    ]
   },
   {
@@ -5115,7 +5492,10 @@
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cwjd",
     "http://38.75.136.137:98/gslb/dsdqbv/cwjd.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/cwjd.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/cwjd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cwjdmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/cwjdmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/cwjdmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -5127,7 +5507,10 @@
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=chcdz",
     "http://38.75.136.137:98/gslb/dsdqbv/chcdz.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/chcdz.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/chcdz.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=chcdzmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/chcdzmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/chcdzmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -5139,7 +5522,10 @@
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=chcjt",
     "http://38.75.136.137:98/gslb/dsdqbv/chcjt.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/chcjt.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/chcjt.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=chcjtmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/chcjtmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/chcjtmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -5151,7 +5537,34 @@
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=chchd",
     "http://38.75.136.137:98/gslb/dsdqbv/chchd.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/chchd.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/chchd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=chcmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/chcmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/chcmd.m3u8?auth=testpub"
+   ]
+  },
+  {
+   "tvgId": "hjjc",
+   "name": "CCTV-怀旧剧场",
+   "group": "影视轮播",
+   "logo": "http://tb.91kds.cn/tb/cctv.png",
+   "ename": "hjjcmd",
+   "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hjjcmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/hjjcmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/hjjcmd.m3u8?auth=testpub"
+   ]
+  },
+  {
+   "tvgId": "dyjc",
+   "name": "CCTV-第一剧场",
+   "group": "影视轮播",
+   "logo": "http://tb.91kds.cn/tb/cctv.png",
+   "ename": "dyjcmd",
+   "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=dyjcmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/dyjcmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/dyjcmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -5161,7 +5574,9 @@
    "logo": "http://tb.91kds.cn/tb/cctv.png",
    "ename": "fyjcmd",
    "urls": [
-    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=fyjcmd"
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=fyjcmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/fyjcmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/fyjcmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -5172,7 +5587,71 @@
    "ename": "shpd",
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=shpd",
-    "http://38.75.136.137:98/gslb/dsdqpub/shpd.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqbv/shpd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/shpd.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=shpdmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/shpdmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/shpdmd.m3u8?auth=testpub"
+   ]
+  },
+  {
+   "tvgId": "yggw",
+   "name": "央广购物",
+   "group": "其他",
+   "logo": "http://tb.91kds.cn/tb/qtyggw.jpg",
+   "ename": "yggw",
+   "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=yggw",
+    "http://38.75.136.137:98/gslb/dsdqbv/yggw.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/yggw.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=yggwmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/yggwmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/yggwmd.m3u8?auth=testpub"
+   ]
+  },
+  {
+   "tvgId": "zqjy",
+   "name": "早期教育",
+   "group": "其他",
+   "logo": "http://tb.91kds.cn/tb/cctv-zgjy.jpg",
+   "ename": "zqjy",
+   "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zqjy",
+    "http://38.75.136.137:98/gslb/dsdqbv/zqjy.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/zqjy.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zqjymd",
+    "http://38.75.136.137:98/gslb/dsdqbv/zqjymd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/zqjymd.m3u8?auth=testpub"
+   ]
+  },
+  {
+   "tvgId": "bxjk",
+   "name": "百姓健康",
+   "group": "其他",
+   "logo": "http://tb.91kds.cn/tb/bjbxjk.jpg",
+   "ename": "bxjk",
+   "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=bxjk",
+    "http://38.75.136.137:98/gslb/dsdqbv/bxjk.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/bxjk.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=bxjkmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/bxjkmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/bxjkmd.m3u8?auth=testpub"
+   ]
+  },
+  {
+   "tvgId": "chchc",
+   "name": "CHC华诚影视",
+   "group": "其他",
+   "logo": "http://tb.91kds.cn/tb/bjchc.jpg",
+   "ename": "chchc",
+   "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=chchc",
+    "http://38.75.136.137:98/gslb/dsdqbv/chchc.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/chchc.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=chchcmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/chchcmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/chchcmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -5184,7 +5663,10 @@
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zxs",
     "http://38.75.136.137:98/gslb/dsdqbv/zxs.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/zxs.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/zxs.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zxsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/zxsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/zxsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -5196,7 +5678,46 @@
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=lgs",
     "http://38.75.136.137:98/gslb/dsdqbv/lgs.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/lgs.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/lgs.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=lgsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/lgsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/lgsmd.m3u8?auth=testpub"
+   ]
+  },
+  {
+   "tvgId": "sjdl",
+   "name": "CCTV-世界地理",
+   "group": "其他",
+   "logo": "http://tb.91kds.cn/tb/cctv.png",
+   "ename": "sjdlmd",
+   "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sjdlmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/sjdlmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/sjdlmd.m3u8?auth=testpub"
+   ]
+  },
+  {
+   "tvgId": "zsgw",
+   "name": "CCTV-中视购物",
+   "group": "其他",
+   "logo": "http://tb.91kds.cn/tb/cctv.png",
+   "ename": "zsgwmd",
+   "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zsgwmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/zsgwmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/zsgwmd.m3u8?auth=testpub"
+   ]
+  },
+  {
+   "tvgId": "gfjs",
+   "name": "CCTV-兵器科技",
+   "group": "其他",
+   "logo": "http://tb.91kds.cn/tb/cctv.png",
+   "ename": "gfjsmd",
+   "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gfjsmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/gfjsmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/gfjsmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -5206,7 +5727,21 @@
    "logo": "http://tb.91kds.cn/tb/cctv.png",
    "ename": "wsjkmd",
    "urls": [
-    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=wsjkmd"
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=wsjkmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/wsjkmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/wsjkmd.m3u8?auth=testpub"
+   ]
+  },
+  {
+   "tvgId": "ystq",
+   "name": "CCTV-央视台球",
+   "group": "其他",
+   "logo": "http://tb.91kds.cn/tb/cctv.png",
+   "ename": "ystqmd",
+   "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ystqmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/ystqmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/ystqmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -5216,7 +5751,9 @@
    "logo": "http://tb.91kds.cn/tb/cctv.png",
    "ename": "nxssmd",
    "urls": [
-    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=nxssmd"
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=nxssmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/nxssmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/nxssmd.m3u8?auth=testpub"
    ]
   },
   {
@@ -5226,7 +5763,33 @@
    "logo": "http://tb.91kds.cn/tb/cctv.png",
    "ename": "dsznmd",
    "urls": [
-    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=dsznmd"
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=dsznmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/dsznmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/dsznmd.m3u8?auth=testpub"
+   ]
+  },
+  {
+   "tvgId": "fyzq",
+   "name": "CCTV-风云足球",
+   "group": "其他",
+   "logo": "http://tb.91kds.cn/tb/cctv.png",
+   "ename": "fyzqmd",
+   "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=fyzqmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/fyzqmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/fyzqmd.m3u8?auth=testpub"
+   ]
+  },
+  {
+   "tvgId": "fyyy",
+   "name": "CCTV-风云音乐",
+   "group": "其他",
+   "logo": "http://tb.91kds.cn/tb/cctv.png",
+   "ename": "fyyymd",
+   "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=fyyymd",
+    "http://38.75.136.137:98/gslb/dsdqbv/fyyymd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/fyyymd.m3u8?auth=testpub"
    ]
   },
   {
@@ -5238,7 +5801,34 @@
    "urls": [
     "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=fxzl",
     "http://38.75.136.137:98/gslb/dsdqbv/fxzl.m3u8?auth=test20251009",
-    "http://38.75.136.137:98/gslb/dsdqpub/fxzl.m3u8?auth=testpub"
+    "http://38.75.136.137:98/gslb/dsdqpub/fxzl.m3u8?auth=testpub",
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=fxzlmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/fxzlmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/fxzlmd.m3u8?auth=testpub"
+   ]
+  },
+  {
+   "tvgId": "gefwq",
+   "name": "CCTV-高尔夫网球",
+   "group": "其他",
+   "logo": "http://tb.91kds.cn/tb/cctv.png",
+   "ename": "gefwqmd",
+   "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gefwqmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/gefwqmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/gefwqmd.m3u8?auth=testpub"
+   ]
+  },
+  {
+   "tvgId": "ysjp",
+   "name": "CCTV-央视文化精品",
+   "group": "其他",
+   "logo": "http://tb.91kds.cn/tb/cctv.png",
+   "ename": "ysjpmd",
+   "urls": [
+    "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ysjpmd",
+    "http://38.75.136.137:98/gslb/dsdqbv/ysjpmd.m3u8?auth=test20251009",
+    "http://38.75.136.137:98/gslb/dsdqpub/ysjpmd.m3u8?auth=testpub"
    ]
   }
  ]

@@ -41,6 +41,12 @@
   "lastSeen": "2026-10-26",
   "seen": "2026-10-26"
  },
+ "http://192.151.150.154/live/cctv9hd.m3u8": {
+  "channel": "CCTV-9 纪录",
+  "hits": 1,
+  "lastSeen": "2026-11-09",
+  "seen": "2026-11-09"
+ },
  "http://198.204.228.26/live/cctv14hd.m3u8": {
   "channel": "CCTV-14 少儿",
   "hits": 1,
@@ -601,20 +607,20 @@
  },
  "http://ali-m-l.cztv.com/channels/lantian/channel001/540p.m3u8": {
   "channel": "浙江卫视",
-  "hits": 2,
-  "lastSeen": "2026-11-02",
+  "hits": 3,
+  "lastSeen": "2026-11-09",
   "seen": "2026-10-26"
  },
  "http://ali-m-l.cztv.com/channels/lantian/channel01/1080p.m3u8": {
   "channel": "浙江卫视",
-  "hits": 2,
-  "lastSeen": "2026-11-02",
+  "hits": 3,
+  "lastSeen": "2026-11-09",
   "seen": "2026-10-26"
  },
  "http://ali-m-l.cztv.com/channels/lantian/channel21/1080p.m3u8": {
   "channel": "CCTV-13 新闻",
-  "hits": 2,
-  "lastSeen": "2026-11-02",
+  "hits": 3,
+  "lastSeen": "2026-11-09",
   "seen": "2026-10-26"
  },
  "http://bp-resource-dfl.bestv.cn/148/3/video.m3u8": {
@@ -691,8 +697,8 @@
  },
  "http://play.kankanlive.com/live/1698234898628961.m3u8": {
   "channel": "CCTV-2 财经",
-  "hits": 2,
-  "lastSeen": "2026-11-02",
+  "hits": 3,
+  "lastSeen": "2026-11-09",
   "seen": "2026-10-26"
  },
  "http://play.kankanlive.com/live/1698234936258960.m3u8": {
@@ -751,8 +757,8 @@
  },
  "http://play.kankanlive.com/live/1698423645566913.m3u8": {
   "channel": "CGTN",
-  "hits": 2,
-  "lastSeen": "2026-11-02",
+  "hits": 3,
+  "lastSeen": "2026-11-09",
   "seen": "2026-10-26"
  },
  "http://play1-qk.nmtv.cn/live/1769652018126032.m3u8": {
@@ -791,6 +797,24 @@
   "lastSeen": "2026-10-26",
   "seen": "2026-10-26"
  },
+ "https://english-liveali.cgtn.com/hls/yypdyyctzb/playlist.m3u8": {
+  "channel": "CGTN",
+  "hits": 1,
+  "lastSeen": "2026-11-09",
+  "seen": "2026-11-09"
+ },
+ "https://english-liveali.cgtn.com/hls/yypdyyctzb/yypdyyctzbcd/playlist.m3u8": {
+  "channel": "CGTN",
+  "hits": 1,
+  "lastSeen": "2026-11-09",
+  "seen": "2026-11-09"
+ },
+ "https://english-liveali.cgtn.com/hls/yypdyyctzb/yypdyyctzbhd/playlist.m3u8": {
+  "channel": "CGTN",
+  "hits": 1,
+  "lastSeen": "2026-11-09",
+  "seen": "2026-11-09"
+ },
  "https://english-livetx.cgtn.com/hls/yypdyyctzb/playlist.m3u8": {
   "channel": "CGTN",
   "hits": 1,
@@ -811,8 +835,8 @@
  },
  "https://restream.pdtvhd.com/memfs/c1cd2ed0-3b2b-4c25-af98-a7fb0b1eb130.m3u8": {
   "channel": "安徽卫视",
-  "hits": 2,
-  "lastSeen": "2026-11-02",
+  "hits": 3,
+  "lastSeen": "2026-11-09",
   "seen": "2026-10-26"
  },
  "https://test1.live.sdetv.com.cn/live/dianshizhibo/playlist.m3u8": {

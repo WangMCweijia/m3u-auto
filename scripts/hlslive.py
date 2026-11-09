@@ -83,10 +83,13 @@ def _segments(txt):
     return out
 
 
-def probe_live(url, headers=None, timeout=8, depth=0, quality=(0, 0)):
+def probe_live(url, headers=None, timeout=8, depth=0, quality=(0, 0), ctx=None):
     """返回 (ok, detail, quality)
 
     ok=True 仅当真的取到一个可解码分片。
+
+    ctx: 可选 dict, 传了就把 302 之后的最终地址写进 ctx['final']。
+         sharedstream 靠它识别"多频道共用一个流"的广告池。
     """
     if depth > 3:
         return False, 'too-deep', quality
@@ -98,6 +101,14 @@ def probe_live(url, headers=None, timeout=8, depth=0, quality=(0, 0)):
         return False, 'HTTP%d' % e.code, quality
     except Exception as e:
         return False, type(e).__name__, quality
+
+    if ctx is not None and depth == 0 and final:
+        ctx['final'] = final
+
+    # 点播文件: 农场站会用 error_account_pirated.mp4 之类顶替直播
+    if urllib.parse.urlparse(final or url).path.lower().endswith(
+            ('.mp4', '.mkv', '.flv', '.avi')):
+        return False, 'vod-file', quality
 
     # 直连流
     if ('video/' in ctype or 'mp2t' in ctype or 'octet-stream' in ctype) and \

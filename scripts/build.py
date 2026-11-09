@@ -198,7 +198,11 @@ def probe(item, timeout=8):
     App 自己的垫片广告, 也就是「CCTV-1 全是假的」的直接原因。
     """
     h = dict(item.get('headers') or {})
-    ok, detail, q = hlslive.probe_live(item['url'], h, timeout)
+    ctx = {}
+    ok, detail, q = hlslive.probe_live(item['url'], h, timeout, ctx=ctx)
+    if ctx.get('final'):
+        # 302 之后的真实地址, sharedstream 用它识别"多频道共用一个流"
+        item['final'] = ctx['final']
     if ok:
         return 'ok', detail, q or (0, 0)
     # 超时/域名解析失败留到下一轮重试; 网关偶尔会回 HTML 错误页(限流),
@@ -507,6 +511,13 @@ def main():
         print('  存活 %d / %d' % (len(alive), len(items)), flush=True)
 
     print('[4/4] 生成订阅', flush=True)
+
+    # 广告池: 多个不相干的频道 302 到同一个流 —— 农场站的大杂烩池,
+    # 里面轮播保健品广告。抽帧会漏(广告轮播), 但流的结构不会变。
+    import sharedstream
+    n_pool = sharedstream.apply(alive)
+    meta['poolDropped'] = n_pool
+
     epg_map, epg_url = {}, ''
     if args.epg:
         try:

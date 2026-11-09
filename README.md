@@ -140,7 +140,8 @@ http://38.75.136.137:98/gslb/dsdqpub/cctv1hd.m3u8?auth=testpub
 scripts/channelmeta.py    频道标识归一化 (tvg-id / 规范中文名 / 省份)
 scripts/m3uio.py          M3U 读写 + 按 tvg-id 聚合排序
 scripts/hlslive.py        直播性判定 (必须取到分片才算活)
-scripts/adfilter.py       广告主机黑名单过滤
+scripts/adfilter.py       广告主机黑名单过滤 (url/host/channel 三级)
+scripts/sharedstream.py   广告池识别 (多频道共用一个流 -> 整组剔除)
 scripts/gslb.py           gslb 网关采集 (央视/卫视线路主力)
 scripts/build.py          拉频道表 -> 解析 -> 验活 -> 生成订阅
 scripts/merge_public.py   合并公开源池补充线路
@@ -148,7 +149,9 @@ scripts/genindex.py       生成索引页
 scripts/epg.py            EPG 频道表拉取 + tvg-id 对齐
 scripts/verifystate.py    验活历史 (稳定性排序 / 主机熔断)
 scripts/local_run.py      本地一键跑完整流水线 (Actions 兜底)
-tests/                    单元测试 (24 个用例, CI 每次跑)
+scripts/probeurls.py      按线路连抽多帧的时序联系表 (查间歇插播)
+scripts/chansheet.py      按频道出全部线路联系表 (查整台广告)
+tests/                    单元测试 (47 个用例, CI 每次跑)
 data/gslb_cache.json      gslb 命中缓存
 data/prov_map.json        地名前缀 -> 省份 (构建时自动生成)
 data/ad_blocklist.json    已确认的广告主机黑名单
@@ -167,33 +170,67 @@ scripts/loopcheck.py      判断是否循环垫片
 
 ## 广告线路怎么处理
 
-能播但有广告的线路分三类，处理方式不同：
+能播但有广告的线路分四类，前三类**全自动**，第四类需要人工看画面：
 
 | 类型 | 特征 | 处理 |
 |---|---|---|
-| 空壳 | m3u8 正常、分片 404 | `hlslive.py` 自动判死，不需人工 |
-| 广告插播 | 分片正常、画面是广告 | 人工看联系表确认 → 写进 `data/ad_blocklist.json` |
-| 整台被顶 | 该频道**所有**线路都是广告，一个真源都没有 | 按频道名拉黑，整台不发布 |
+| 空壳 | m3u8 正常、分片 404 | `hlslive.py` 判死，不需人工 |
+| 点播顶替 | 302 跳到 `xxx.mp4` 之类的文件 | `hlslive.py` 判死（`vod-file`） |
+| **广告池** | 几十个不相干的频道 302 到**同一个流** | `sharedstream.py` 自动剔除，不需人工 |
+| 广告插播 | 单条线路画面是广告，流是独占的 | 人工看联系表确认 → `data/ad_blocklist.json` |
 
-第三类是 2026-10-27 发现的：`大湾区卫视` 13 条线路分属 3 个主机，逐条抽帧后
-7 条能解码的**全是**药品/保健品广告（`400-878-3066` 丹药、`020-22625388`
-便秘、`400-138-6299` 保健品三个号码轮播），没有任何真信号。这种台留着只会让
-用户每次点开都吃一嘴广告，不如不发布。
+### 广告池：靠「流的结构」自动识别
 
-这类没法靠代码自动判定：这些站**间歇插播**，同一主机这次抓到真节目、下次抓
-到广告；而且对热播频道塞广告、对其它频道照常转发，按「主机」一刀切必然误伤。
-所以流程是人工看画面确认：
+2026-11 抓到 CCTV-6 混进广告源，顺着 302 追下去发现根因：农场站把几十个频道
+**全部导向同一个大杂烩流池**。实测 `204.12.234.154:88/applive/{102,yss,mkt}.m3u8`
+三个流分别被 **71 / 61 / 51 个不同频道**共用 —— CCTV-1、CCTV-6、内蒙古卫视、
+高尔夫网球全在同一个流上。抽帧看画面，是 `400-066-2600`、`400-689-3979`、
+`400-788-3916` 三个号码的保健品/糖尿病/中风药轮播。
+
+正常的电视信号是「一个频道一路流」，除了同频道的不同码率（md/hd/4K），不可能
+出现十几个不相干的频道共用一路流。**所以这条判据是结构性的，不依赖抽帧**：
+
+- 抽帧会漏 —— 广告是轮播的，同一条线路连抽 6 次可能 3 次是真节目、3 次是广告；
+- 但「多频道共用一个流」这个事实不会变。
+
+`scripts/sharedstream.py` 的实现要点：
+
+- 验活时把 302 之后的最终地址记进 `item['final']`（`hlslive.probe_live(ctx=...)`）；
+- 归一化成「流标识」：丢掉 `?t=&k=` 签名、丢掉码率段（`1500k`/`720p`）和通用
+  文件名（`index`/`playlist`/`tzwj_video`），**也丢掉主机** —— 因为广告池会轮换
+  边缘 IP（同一个 `applive/yss` 出现在 69.197.181.106 / 142.54.178.42 /
+  204.12.234.154 上），带主机就会被拆成好几组，每组都凑不够阈值；
+- 但主机不能无条件丢：`/live/index.m3u8`、`/live/1.m3u8` 这种到处都有，丢了会把
+  **不同站点**混成一个流。所以只有「带辨识度的路径段」才配当 key；
+- 阈值：同一个流被 **≥4 个不同频道** 且 **≥6 条线路** 共用 → 判广告池，整组剔除。
+  真联播不会超过 3 个频道，实测的池子是 51~71 个，余量很大。
+
+踩过的坑（都写进了 `tests/test_sharedstream.py`）：
+
+- 河北县级台是 `.../live/<台代号>/1500k/tzwj_video.m3u8`，不剔掉码率段就会把
+  22 个**不同的县台**塌成一个"广告池"；
+- 各城市的「新闻综合」是 `.../xwzh/live.m3u8`，主机不同，`live` 段必须当噪声。
+
+### 人工确认的部分（广告插播）
+
+有些站是**间歇插播**：这次抓到真节目、下次抓到广告，而且对热播频道塞广告、
+对其它频道照常转发，按「主机」一刀切必然误伤。它不满足广告池的阈值条件
+（流是独占的），所以只能人工看画面：
 
 ```bash
 pip install av pillow
-python scripts/chansheet.py out/live.m3u "大湾区卫视" sheet.png   # 逐条看, 不去重
-python scripts/audit.py out/live.m3u "CCTV-1 综合" sheet.png     # 按主机去重
-python scripts/adcheck.py --m3u out/live.m3u --only priority     # 出候选清单
+python scripts/chansheet.py out/live.m3u "CCTV-6 电影" sheet.png   # 逐条看, 不去重
+python scripts/probeurls.py out/live.m3u sheet.png --match "CCTV-6" --rounds 3 --gap 7
+python scripts/audit.py out/live.m3u "CCTV-1 综合" sheet.png       # 按主机去重
+python scripts/adcheck.py --m3u out/live.m3u --only priority       # 出候选清单
 ```
 
 `chansheet.py` 与 `audit.py` 的区别很关键：`audit.py` 按主机去重，遇到「整台
 被顶成广告」时只会抽 3 条，看着像"只有几条是广告"；`chansheet.py` 不去重，
 13 条全抽，才能看出「这些线路其实没有一个是真的」。
+
+`probeurls.py` 是**时序**联系表：每条线路隔几秒连抽 N 帧，能看出"这一次是真
+节目、下一次是广告"的切换，单帧抽样看不出来。
 
 确认后写进 `data/ad_blocklist.json`，三级匹配 `url > host > channel`：
 
@@ -209,8 +246,10 @@ python scripts/adcheck.py --m3u out/live.m3u --only priority     # 出候选清�
 - `url` 用于「同一个台只有某几条线路被顶」，保留其余真线路；
 - `channel` 用于「整个台没救」，注意它会连带丢掉该台的真线路（如果有的话）。
 
-已知广告主机（2026-10-21 画面实测）：`74.91.26.218:82`、`107.150.60.122`、
-`207.56.13.146:81`。
+已知广告主机（画面实测）：`74.91.26.218:82`、`107.150.60.122`、
+`207.56.13.146:81`；已知广告池：`applive/{102,yss,mkt}`、
+`status/error_account_pirated`（占位视频）。
+
 
 ## 本地运行
 
@@ -254,7 +293,7 @@ git sync        # = git fetch origin main && git merge --no-edit origin/main
 
 过归并的坑（一个台变多个台 / 多个台塌成一个）连续踩过三轮，所以现在有两道闸：
 
-1. **单元测试** `tests/`（25 个用例）覆盖：CCTV-4K 不等于 CCTV-4、`浙江新闻` 不能被
+1. **单元测试** `tests/`（47 个用例）覆盖：CCTV-4K 不等于 CCTV-4、`浙江新闻` 不能被
    `浙江` 前缀吞进浙江卫视、纯数字 tvg-id 必须丢弃、`EXTINF` 与 URL 之间的
    `#EXTVLCOPT` 不能被当成分片、带 `[1080P]` 的名字回读后仍归到卫视……
    每一条都对应一次真实事故。

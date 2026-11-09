@@ -49,31 +49,39 @@ POOLS = [
 ]
 
 
-def probe(url, timeout=7):
+def probe(url, timeout=7, ctx=None):
     """返回 (ok, quality)
 
     与 build.probe 一致: 必须真的取到一个分片。只回 m3u8 而分片 404 的
     空壳线路不算活 (否则会把「能播但其实是垫片广告」的线路当成好线路)。
     """
-    ok, detail, q = hlslive.probe_live(url, {}, timeout)
+    ok, detail, q = hlslive.probe_live(url, {}, timeout, ctx=ctx)
     return (ok, q or (0, 0))
 
 
 def batch_probe(cands, jobs, timeout, batch=400):
     """分批验活, 每批硬性超时, 防止 DNS 卡死拖垮整轮"""
     alive = []
+
+    def work(c):
+        ctx = {}
+        ok, q = probe(c['url'], timeout, ctx)
+        return ok, q, ctx.get('final')
+
     for bi in range(0, len(cands), batch):
         chunk = cands[bi:bi + batch]
         ex = cf.ThreadPoolExecutor(max_workers=jobs)
-        futs = {ex.submit(probe, c['url'], timeout): c for c in chunk}
+        futs = {ex.submit(work, c): c for c in chunk}
         budget = max(90, len(chunk) / max(jobs, 1) * (timeout + 3) * 3)
         try:
             for f in cf.as_completed(futs, timeout=budget):
-                ok, q = f.result()
+                ok, q, final = f.result()
                 if ok:
                     c = dict(futs[f])
                     c['quality'] = q
                     c['status'] = 'ok'
+                    if final:
+                        c['final'] = final
                     alive.append(c)
         except cf.TimeoutError:
             print('  批次 %d-%d 超时, 放弃 %d 条'
@@ -152,6 +160,9 @@ def main():
             c['status'] = 'unverified'
 
     merged = base + cands
+    # 公开池里同样有「多频道共用一个流」的广告池, 合并后再过一遍
+    import sharedstream
+    sharedstream.apply(merged)
     # 只保留目标频道 (原有频道 + 新补充的央视卫视中文台)
     # 第二次写盘也要带 EPG 映射, 否则 build 阶段刚换上的 tvg-id 会被打回小写
     epg_url, epg_map = '', {}

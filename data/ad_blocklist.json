@@ -53,5 +53,26 @@
    "seen": "2026-10-27"
   }
  },
- "_note": "只放人工看过画面、确认是广告的条目。三级匹配 url > host > channel: host 用于整站换广告的农场, url/channel 用于「单个频道被顶成广告」。这些站会间歇插播(同一主机这次真节目下次广告)。新条目先用 scripts/audit.py 抽帧确认画面, 别凭猜测加。"
+ "_note": "只放人工看过画面、确认是广告的条目。三级匹配 url > host > channel: host 用于整站换广告的农场, url/channel 用于「单个频道被顶成广告」。这些站会间歇插播(同一主机这次真节目下次广告)。新条目先用 scripts/audit.py 抽帧确认画面, 别凭猜测加。 四级匹配 url > host > channel > stream: stream 是按 302 后最终地址归一化的流标识 (见 sharedstream.py), 用于「几十个频道共用一个流」的广告池, 不依赖频道数阈值。",
+ "stream": {
+  "applive/102": {
+   "reason": "广告池: 实测 71 个不同频道共用此流, 画面 400-066-2600/400-689-3979/400-788-3916 保健品轮播 (2026-11-09 真机 WebHomeTV 确认)",
+   "seen": "2026-11-09"
+  },
+  "applive/yss": {
+   "reason": "广告池: 61 个频道共用, 同批广告素材",
+   "seen": "2026-11-09"
+  },
+  "applive/mkt": {
+   "reason": "广告池: 51 个频道共用, 同批广告素材",
+   "seen": "2026-11-09"
+  },
+  "status/error_account_pirated": {
+   "reason": "占位错误视频 error_account_pirated.mp4, 18 个频道被导到这里",
+   "seen": "2026-11-09"
+  }
+ },
+ "url_contains": [
+  "/gslb/"
+ ]
 }

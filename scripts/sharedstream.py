@@ -21,6 +21,8 @@
 
 每个 item 需要 `final` 字段(302 后的最终地址)或 `url`。
 """
+import json
+import os
 import re
 import urllib.parse
 from collections import defaultdict
@@ -85,8 +87,36 @@ def stream_key(url):
     return parent + '/' + tail
 
 
-def analyze(items):
+def _blocklist_candidates(path):
+    """按 cwd / 仓库根 依次找, 与 adfilter 的查找顺序一致"""
+    yield path
+    here = os.path.dirname(os.path.abspath(__file__))
+    yield os.path.join(here, '..', 'data', 'ad_blocklist.json')
+
+
+def load_blocked(path='data/ad_blocklist.json'):
+    """读黑名单的 stream 段: {流标识: {reason, seen}}
+
+    这里是「直接点名」的流, 不依赖频道数阈值 —— 用于确认过的固定广告池
+    (如 applive/{102,yss,mkt}), 以及只挂了两三个频道、数量上够不到阈值的小池。
+    """
+    for p in _blocklist_candidates(path):
+        try:
+            with open(p, encoding='utf-8') as f:
+                d = json.load(f)
+        except Exception:
+            continue
+        out = {}
+        for k, v in (d.get('stream') or {}).items():
+            key = stream_key(k) or k
+            out[key] = v or {}
+        return out
+    return {}
+
+
+def analyze(items, blocked=None):
     """返回 [(key, 频道数, 线路数, [items])], 只含判定为广告池的组"""
+    blocked = load_blocked() if blocked is None else blocked
     groups = defaultdict(list)
     for it in items:
         k = stream_key(it.get('final') or it.get('url'))
@@ -96,15 +126,19 @@ def analyze(items):
     bad = []
     for k, lst in groups.items():
         chans = {it.get('tvg_id') or it.get('name') for it in lst}
-        if len(chans) >= MIN_CHANNELS and len(lst) >= MIN_LINES:
+        named = k in blocked
+        if named or (len(chans) >= MIN_CHANNELS and len(lst) >= MIN_LINES):
             bad.append((k, len(chans), len(lst), lst))
     bad.sort(key=lambda x: -x[2])
     return bad
 
 
-def apply(items, verbose=True):
-    """就地剔除广告池线路, 返回剔除条数"""
-    bad = analyze(items)
+def apply(items, verbose=True, blocked=None):
+    """就地剔除广告池线路, 返回剔除条数
+
+    blocked: 直接点名的流标识集合/dict; 不传则从 data/ad_blocklist.json 读
+    """
+    bad = analyze(items, blocked)
     if not bad:
         return 0
     drop = set()

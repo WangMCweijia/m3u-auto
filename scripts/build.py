@@ -153,6 +153,31 @@ def guess_group(ch):
     return '网络'
 
 
+def load_extras(path='data/extra_sources.txt'):
+    """人工确认过的优质源: 每行 `频道名|URL`
+
+    公开池每天都在变, 关键频道(如 CCTV-6)偶尔会整台消失。这些是逐帧看过
+    画面、确认是真频道的线路, 无条件并入候选, 用来钉住它们。
+    """
+    out = []
+    if not path or not os.path.exists(path):
+        return out
+    for line in open(path, encoding='utf-8', errors='replace'):
+        line = line.strip()
+        if not line or line.startswith('#'):
+            continue
+        name, sep, url = line.partition('|')
+        name, url = name.strip(), url.strip()
+        if not sep or not url.startswith(('http://', 'https://')):
+            continue
+        tvg_id, disp, group = cm.canonical('', name)
+        if group in ('地方', '', cm.OTHER_GROUP):
+            group = cm.prov_of(name)
+        out.append(dict(ename='', tvg_id=tvg_id, name=disp, raw_name=name,
+                        group=group, icon='', logo='', url=url, headers={}))
+    return out
+
+
 def iter_sources(data):
     """展开为线路列表。
 
@@ -474,6 +499,12 @@ def main():
 
     print('[2/4] 解析直连线路', flush=True)
     items = list(iter_sources(data))
+    ex = load_extras()
+    if ex:
+        have = {i['url'] for i in items}
+        ex = [e for e in ex if e['url'] not in have]
+        items = items + ex
+        print('  人工确认源 %d 条' % len(ex), flush=True)
     if args.limit:
         items = items[:args.limit]
     print('  直连线路 %d 条' % len(items), flush=True)

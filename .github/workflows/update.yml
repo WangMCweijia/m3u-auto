@@ -53,9 +53,12 @@ jobs:
         run: |
           # 留一份上一版统计, 后面做环比 (跌太多说明上游/网关出问题)
           git show HEAD:out/stats.json > /tmp/prev_stats.json 2>/dev/null || true
-          python scripts/build.py --out out --jobs 40 --timeout 9 --gslb-jobs 4 || {
+          # 注意 --no-gslb: gslb 网关 (zbdq5/dsdqbv/dsdqpub) 现在是**轮盘** ——
+          # 同一条 url 连取 8 次, 6~7 次 302 到 applive 广告池, 只有 1~2 次给真源。
+          # 采集它们等于给订阅灌广告, 详见 data/ad_blocklist.json 的 url_contains。
+          python scripts/build.py --out out --jobs 40 --timeout 9 --no-gslb || {
             echo "验活模式失败, 回退到 --no-probe"
-            python scripts/build.py --out out --no-probe
+            python scripts/build.py --out out --no-probe --no-gslb
           }
           echo "--- 产物 ---"
           ls -la out/

@@ -10,13 +10,18 @@
 所以按主机整站拉黑, 不做「这条看着还行就留着」的豁免。
 
 黑名单存 data/ad_blocklist.json:
-    {"host":    {"74.91.26.218:82": {"reason": "...", "seen": "2026-10-21"}},
-     "url":     {"http://...":      {"reason": "...", "seen": "..."}},
-     "channel": {"大湾区卫视":        {"reason": "...", "seen": "..."}}}
+    {"host":         {"74.91.26.218:82": {"reason": "...", "seen": "2026-10-21"}},
+     "url":          {"http://...":      {"reason": "...", "seen": "..."}},
+     "channel":      {"大湾区卫视":        {"reason": "...", "seen": "..."}},
+     "url_contains": ["/gslb/"]}
 
-三级优先: url > host > channel。channel 用于「整个台都拿不到真信号、所有线路都是
-垫片广告」的情况 (实测大湾区卫视 13 条线路 100% 是广告, 一个真源都没有), 这种台
-留着只会让用户每次点开都看到药品广告, 不如整台不发布。
+四级优先: url > url_contains > host > channel。channel 用于「整个台都拿不到真信号、
+所有线路都是垫片广告」的情况 (实测大湾区卫视 13 条线路 100% 是广告, 一个真源都没有),
+这种台留着只会让用户每次点开都看到药品广告, 不如整台不发布。
+
+url_contains 是给「整类地址都不可信」用的 —— 实测 `.../gslb/<ename>.m3u8` 这套网关
+是**轮盘**: 同一条 url 连取 8 次, 6~7 次 302 到 applive 广告池, 只有 1~2 次给真源。
+验活时恰好撞上真源就通过, 用户播放时大概率吃广告, 单条线路的黑名单管不住。
 
 新发现的主机用 scripts/audit.py 抽样看画面确认后再加, 不要凭猜测写。
 """
@@ -38,16 +43,19 @@ def load(path='data/ad_blocklist.json'):
             with open(p, encoding='utf-8') as f:
                 d = json.load(f)
             return ((d.get('host') or {}), (d.get('url') or {}),
-                    (d.get('channel') or {}))
+                    (d.get('channel') or {}), list(d.get('url_contains') or []))
         except Exception:
             continue
-    return {}, {}, {}
+    return {}, {}, {}, []
 
 
-def should_block(url, host_map, url_map, name='', ch_map=None):
+def should_block(url, host_map, url_map, name='', ch_map=None, patterns=None):
     """返回 (是否拉黑, 原因)"""
     if url in url_map:
         return True, url_map[url].get('reason') or 'url-blocklist'
+    for pat in (patterns or []):
+        if pat and pat in url:
+            return True, 'url-contains:%s' % pat
     try:
         host = urllib.parse.urlparse(url).netloc
     except Exception:
@@ -61,13 +69,13 @@ def should_block(url, host_map, url_map, name='', ch_map=None):
 
 def apply(items, path='data/ad_blocklist.json', verbose=True):
     """就地剔除命中黑名单的线路, 返回被剔除的条数"""
-    host_map, url_map, ch_map = load(path)
-    if not host_map and not url_map and not ch_map:
+    host_map, url_map, ch_map, patterns = load(path)
+    if not host_map and not url_map and not ch_map and not patterns:
         return 0
     keep, dropped = [], []
     for it in items:
         hit, reason = should_block(it.get('url') or '', host_map, url_map,
-                                   it.get('name') or '', ch_map)
+                                   it.get('name') or '', ch_map, patterns)
         if hit:
             dropped.append((it, reason))
         else:

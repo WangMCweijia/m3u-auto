@@ -19,6 +19,7 @@
 """
 import re
 import ssl
+import time
 import urllib.parse
 import urllib.request
 
@@ -57,6 +58,30 @@ def _is_media_bytes(b):
     if b[:4] == b'\x00\x00\x00\x01' or b[:4] == b'\x00\x00\x00\x0c':
         return True
     return False
+
+
+def sample_redirects(url, headers=None, timeout=8, n=3):
+    """连续请求 n 次, 收集 302 之后的最终地址。
+
+    gslb 这类网关是"轮盘": 同一条 url 每次请求可能给真源, 也可能给广告池。
+    2026-11-09 实测 `dsdqbv/cctv6hd` 连取 8 次 —— 7 次落到
+    `applive/{102,yss,mkt}`, 只有 1 次是真的 cctv6md。验活时恰好撞上真源
+    就判活, 用户播放时大概率吃到广告。所以只能看"指向是否稳定"。
+
+    稳定(每次都同一个流)才可信; 指向多个不同流说明是轮盘, 该判死。
+    """
+    h = dict(headers or {})
+    h.setdefault('User-Agent', UA)
+    out = []
+    for i in range(max(1, n)):
+        try:
+            _st, _body, _ctype, final = _get(url, h, timeout)
+            out.append(final or url)
+        except Exception as e:
+            out.append('ERR:' + type(e).__name__)
+        if i != n - 1:
+            time.sleep(0.4)
+    return out
 
 
 def _quality_of(txt):

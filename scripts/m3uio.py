@@ -237,6 +237,9 @@ def write_m3u(path, items, header='#EXTM3U', epg=None, epg_url=''):
     items = group_and_sort(items)
     if not isinstance(epg, dict):
         epg = {}                  # 传错类型不该让整条流水线崩掉
+    d = os.path.dirname(path)
+    if d:
+        os.makedirs(d, exist_ok=True)
     if epg_url:
         header = '#EXTM3U x-tvg-url="%s" url-tvg="%s"' % (epg_url, epg_url)
     lines = [header]

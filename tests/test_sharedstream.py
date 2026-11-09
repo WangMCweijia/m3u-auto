@@ -93,19 +93,19 @@ class ApplyTest(unittest.TestCase):
 
     def test_pool_is_dropped(self):
         items = self._pool(5, per=2)   # 5 频道 / 10 条
-        n = sharedstream.apply(items, verbose=False)
+        n = sharedstream.apply(items, verbose=False, blocked={})
         self.assertEqual(n, 10)
         self.assertEqual(items, [])
 
     def test_below_channel_threshold_kept(self):
         items = self._pool(3)          # 3 频道, 未达 MIN_CHANNELS=4
-        self.assertEqual(sharedstream.apply(items, verbose=False), 0)
+        self.assertEqual(sharedstream.apply(items, verbose=False, blocked={}), 0)
         self.assertEqual(len(items), 3)
 
     def test_below_line_threshold_kept(self):
         """4 个频道但只有 4 条线路, 未达 MIN_LINES=6"""
         items = self._pool(4)
-        self.assertEqual(sharedstream.apply(items, verbose=False), 0)
+        self.assertEqual(sharedstream.apply(items, verbose=False, blocked={}), 0)
         self.assertEqual(len(items), 4)
 
     def test_same_channel_multi_bitrate_kept(self):
@@ -114,7 +114,7 @@ class ApplyTest(unittest.TestCase):
         for k in range(8):
             items.append(mk('CCTV-1 综合', 'CCTV1', 'http://gw/%d.m3u8' % k,
                             'http://h:88/live/cctv1.m3u8'))
-        self.assertEqual(sharedstream.apply(items, verbose=False), 0)
+        self.assertEqual(sharedstream.apply(items, verbose=False, blocked={}), 0)
         self.assertEqual(len(items), 8)
 
     def test_mixed_pool_drops_only_pool(self):
@@ -122,18 +122,33 @@ class ApplyTest(unittest.TestCase):
         good = [mk('真台', 'good', 'http://x/live/cctv6md.m3u8',
                    'http://204.12.241.18:82/live/cctv6md.m3u8')]
         items = pool + good
-        n = sharedstream.apply(items, verbose=False)
+        n = sharedstream.apply(items, verbose=False, blocked={})
         self.assertEqual(n, 10)
         self.assertEqual([i['tvg_id'] for i in items], ['good'])
 
     def test_falls_back_to_url_without_final(self):
         items = [mk('CH%d' % c, 'ch%d' % c, 'http://h:88/applive/yss.m3u8')
                  for c in range(6)]
-        n = sharedstream.apply(items, verbose=False)
+        n = sharedstream.apply(items, verbose=False, blocked={})
         self.assertEqual(n, 6)
 
+    def test_named_stream_blocked_without_threshold(self):
+        """黑名单点名的流直接剔, 不看频道数"""
+        items = [mk('CCTV-6 电影', 'CCTV6', 'http://a/x.m3u8',
+                    'http://69.197.181.106:88/applive/102.m3u8?t=1&k=2')]
+        n = sharedstream.apply(items, verbose=False,
+                               blocked={'applive/102': {'reason': 'ad pool'}})
+        self.assertEqual(n, 1)
+        self.assertEqual(items, [])
+
+    def test_load_blocked_reads_stream_section(self):
+        b = sharedstream.load_blocked(
+            os.path.join(os.path.dirname(__file__), '..', 'data', 'ad_blocklist.json'))
+        self.assertIn('applive/102', b)
+        self.assertIn('applive/yss', b)
+
     def test_analyze_reports_counts(self):
-        bad = sharedstream.analyze(self._pool(6))
+        bad = sharedstream.analyze(self._pool(6), blocked={})
         self.assertEqual(len(bad), 1)
         key, nch, nline, lst = bad[0]
         self.assertEqual(nch, 6)

@@ -70,12 +70,25 @@ class AdFilterTest(unittest.TestCase):
         adfilter.apply(items, self.path, verbose=False)
         self.assertIn('CCTV-1 综合', [i['name'] for i in items])
 
+    def test_url_contains_pattern(self):
+        """整类地址不可信时按子串拉黑 (gslb 轮盘网关)"""
+        bl = {'url_contains': ['/gslb/']}
+        with open(self.path, 'w', encoding='utf-8') as f:
+            json.dump(bl, f)
+        items = [
+            {'name': 'A', 'url': 'http://h:98/gslb/dsdqbv/cctv6hd.m3u8?auth=x'},
+            {'name': 'B', 'url': 'http://h/live/cctv6.m3u8'},
+        ]
+        n = adfilter.apply(items, self.path, verbose=False)
+        self.assertEqual(n, 1)
+        self.assertEqual([i['name'] for i in items], ['B'])
+
     def test_missing_channel_key_is_fine(self):
         """老版本黑名单只有 host/url 两个键, 不能因为少 channel 就崩"""
         bl = {'host': {}, 'url': {}}
         with open(self.path, 'w', encoding='utf-8') as f:
             json.dump(bl, f)
-        host_map, url_map, ch_map = adfilter.load(self.path)
+        host_map, url_map, ch_map, pats = adfilter.load(self.path)
         self.assertEqual(ch_map, {})
         items = self._items()
         self.assertEqual(adfilter.apply(items, self.path, verbose=False), 0)

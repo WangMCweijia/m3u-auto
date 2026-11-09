@@ -9,6 +9,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/**'
+      - 'tests/**'
       - '.github/workflows/**'
 
 permissions:

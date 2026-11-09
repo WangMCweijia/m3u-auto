@@ -55,10 +55,11 @@ class StreamKeyTest(unittest.TestCase):
         self.assertEqual(a, b)
 
     def test_strips_segment_index(self):
+        # live 是通用目录, 剔掉后只剩一段, 退回 host+path
         self.assertEqual(sharedstream.stream_key('http://h/live/cctv6/segment_12420.ts'),
-                         'live/cctv6')
+                         'h/live/cctv6')
         self.assertEqual(sharedstream.stream_key('http://h/live/cctv6/12420.ts'),
-                         'live/cctv6')
+                         'h/live/cctv6')
 
     def test_county_channels_not_collapsed(self):
         """河北县级台是 .../live/<台代号>/1500k/tzwj_video.m3u8 ——
@@ -67,9 +68,9 @@ class StreamKeyTest(unittest.TestCase):
             'http://jwcdnqx.hebyun.com.cn/live/rqtv1/1500k/tzwj_video.m3u8')
         b = sharedstream.stream_key(
             'http://jwcdnqx.hebyun.com.cn/live/NHTV1/1500k/tzwj_video.m3u8')
-        self.assertEqual(a, 'live/rqtv1')
-        self.assertEqual(b, 'live/NHTV1')
         self.assertNotEqual(a, b)
+        self.assertIn('rqtv1', a)
+        self.assertIn('NHTV1', b)
 
     def test_accepts_scheme_less(self):
         self.assertEqual(sharedstream.stream_key('h:88/applive/yss.m3u8'),

@@ -57,7 +57,7 @@ def one_frame(url, timeout):
     seg = ac._last_segment(url, {}, timeout)
     if not seg:
         return None, 'noseg'
-    data, _ = ac._get(seg, {}, timeout, 600000, 'bytes=0-599999')
+    data, _ = ac._get(seg, {}, timeout, 300000, 'bytes=0-299999')
     if not data:
         return None, 'nosegdata'
     if data[:1] == b'\x47':

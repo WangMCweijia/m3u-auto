@@ -181,5 +181,20 @@ class TestVerifyState(unittest.TestCase):
         out = m3uio.group_and_sort(items)
         self.assertEqual(out[0]['url'], 'http://x.test/cctv7.m3u8')
 
+    def test_gslb_demoted_after_m3u_roundtrip(self):
+        """m3u 读回会丢 via, 仍要认得出网关线路并排到后面"""
+        import m3uio
+        head = ('#EXTINF:-1 tvg-id="CCTV1" tvg-name="CCTV-1 综合" '
+                'group-title="央视",CCTV-1 综合')
+        txt = '\n'.join([
+            '#EXTM3U',
+            head,
+            'http://38.75.136.137:98/gslb/dsdqbv/cctv1hd.m3u8?auth=x',
+            head,
+            'http://198.204.228.26/live/cctv1hd.m3u8',
+        ]) + '\n'
+        out = m3uio.group_and_sort(m3uio.parse_m3u(txt))
+        self.assertNotIn('/gslb/', out[0]['url'])
+
 if __name__ == '__main__':
     unittest.main()

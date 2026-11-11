@@ -152,7 +152,7 @@ scripts/verifystate.py    验活历史 (稳定性排序 / 主机熔断)
 scripts/local_run.py      本地一键跑完整流水线 (Actions 兜底)
 scripts/probeurls.py      按线路连抽多帧的时序联系表 (查间歇插播)
 scripts/chansheet.py      按频道出全部线路联系表 (查整台广告)
-tests/                    单元测试 (59 个用例, CI 每次跑)
+tests/                    单元测试 (64 个用例, CI 每次跑)
 data/gslb_cache.json      gslb 命中缓存
 data/gslb_gate.json       gslb 门禁结论 (pass 1 天 / deny 30 天)
 data/prov_map.json        地名前缀 -> 省份 (构建时自动生成)
@@ -221,8 +221,9 @@ scripts/loopcheck.py      判断是否循环垫片
   但**点了名的 url / channel 仍然优先**，人工确认的黑名单永远不会被门禁翻案。
 
 代价是构建多 5–8 分钟，以及残存风险：某天网关临时改比例、6 轮全抽到好分支，
-播放时仍可能落广告。所以还有两道保险：同台有直连源时**网关线路一律排在后面**（`m3uio.line_key` 的第一位
-`gw`，比 `status` 和清晰度都优先），以及 `data/extra_sources.txt` 里那几条人工源继续保留。
+播放时仍可能落广告。所以还有两道保险：同台有直连源时**网关线路一律排在后面**（`m3uio.line_key` 的第一位 `gw`，比 `status` 和清晰度都优先；
+  按 URL 里的 `/gslb/` 判定而不是看 `via` —— m3u 读回会丢 `via`，只认 `via` 的话
+  最后一道写盘就把顺序还原成原样了），以及 `data/extra_sources.txt` 里那几条人工源继续保留。
 
 ### 人工确认源：`data/extra_sources.txt`
 
@@ -351,7 +352,7 @@ git sync        # = git fetch origin main && git merge --no-edit origin/main
 
 过归并的坑（一个台变多个台 / 多个台塌成一个）连续踩过三轮，所以现在有两道闸：
 
-1. **单元测试** `tests/`（59 个用例）覆盖：CCTV-4K 不等于 CCTV-4、`浙江新闻` 不能被
+1. **单元测试** `tests/`（64 个用例）覆盖：CCTV-4K 不等于 CCTV-4、`浙江新闻` 不能被
    `浙江` 前缀吞进浙江卫视、纯数字 tvg-id 必须丢弃、`EXTINF` 与 URL 之间的
    `#EXTVLCOPT` 不能被当成分片、带 `[1080P]` 的名字回读后仍归到卫视……
    每一条都对应一次真实事故。

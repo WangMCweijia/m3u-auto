@@ -167,5 +167,19 @@ class TestVerifyState(unittest.TestCase):
         out = m3uio.group_and_sort(items)
         self.assertEqual(out[0]['url'], 'http://play.kankanlive.com/live/1.m3u8')
 
+    def test_gslb_after_unverified_direct(self):
+        """待重验的直连也排在网关线路之前"""
+        import m3uio
+        items = [
+            dict(tvg_id='CCTV7', name='CCTV-7 国防军事', group='央视',
+                 url='http://38.75.136.137:98/gslb/dsdqbv/cctv7hd.m3u8',
+                 quality=(1080, 0), status='ok', via='gslb:dsdqbv'),
+            dict(tvg_id='CCTV7', name='CCTV-7 国防军事', group='央视',
+                 url='http://x.test/cctv7.m3u8',
+                 quality=(720, 0), status='cached', via='direct'),
+        ]
+        out = m3uio.group_and_sort(items)
+        self.assertEqual(out[0]['url'], 'http://x.test/cctv7.m3u8')
+
 if __name__ == '__main__':
     unittest.main()

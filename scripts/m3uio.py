@@ -153,12 +153,14 @@ def group_and_sort(items):
             # 从 m3u 读回的条目没有清晰度信息, 保持原文件中的顺序
             # (原文件已按清晰度排好, 重排反而会把高清线路挤到后面)
             return (0, 0, 0, it.get('order', 0))
-        # 直连优先于 gslb 网关: 网关是轮盘, 即便过了抽样门禁也有小概率插广告,
-        # 有直连源的频道不能让播放器第一条就落在网关线路上。
+        # 直连优先于 gslb 网关: 网关是轮盘, 即便过了抽样门禁, 播放时仍可能撞上
+        # 它插广告的时间窗。这里把 gw 放在 status 之前 —— 宁可让播放器先试一条
+        # 待重验(cached)的直连, 也不要把网关线路排在默认第一条。
         gw = 1 if (it.get('via') or '').startswith('gslb:') else 0
         # 同清晰度里, 连续多次验活都通过的排前面
-        return (0 if it.get('status') in ('ok', 'unverified', None) else 1,
-                gw, -q[0], -q[1], -int(it.get('steady') or 0), it.get('order', 0))
+        return (gw,
+                0 if it.get('status') in ('ok', 'unverified', None) else 1,
+                -q[0], -q[1], -int(it.get('steady') or 0), it.get('order', 0))
 
     out = []
     for tid, lst in groups.items():

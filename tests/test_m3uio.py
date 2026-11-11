@@ -153,5 +153,19 @@ class TestVerifyState(unittest.TestCase):
         self.assertEqual(vs.steady(st, 'u1'), 0)
 
 
+    def test_direct_line_before_gslb_even_if_lower_quality(self):
+        """网关线路即便更高清也排在直连之后 —— 它有小概率插广告"""
+        import m3uio
+        items = [
+            dict(tvg_id='CCTV1', name='CCTV-1 综合', group='央视',
+                 url='http://38.75.136.137:98/gslb/dsdqbv/cctv1hd.m3u8',
+                 quality=(1080, 0), status='ok', via='gslb:dsdqbv'),
+            dict(tvg_id='CCTV1', name='CCTV-1 综合', group='央视',
+                 url='http://play.kankanlive.com/live/1.m3u8',
+                 quality=(720, 0), status='ok', via='direct'),
+        ]
+        out = m3uio.group_and_sort(items)
+        self.assertEqual(out[0]['url'], 'http://play.kankanlive.com/live/1.m3u8')
+
 if __name__ == '__main__':
     unittest.main()

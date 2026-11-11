@@ -536,6 +536,7 @@ def main():
         if args.gslb_gate and pre_ok:
             try:
                 import gslbgate
+                n_cand = len(pre_ok)
                 gate_pass = gslbgate.gate(pre_ok, path=args.gslb_gate_store,
                                           rounds=args.gslb_rounds,
                                           jobs=args.gslb_gate_jobs,
@@ -545,7 +546,10 @@ def main():
                 items = [it for it in items
                          if '/gslb/' not in (it.get('url') or '')
                          or it.get('url') in gate_pass]
-                meta['gslbGate'] = dict(total=len(pre_ok), passed=len(gate_pass))
+                # gate() 是就地裁剪, pre_ok 已被改, 所以候选数要在调用前取
+                meta['gslbGate'] = dict(candidates=n_cand,
+                                        passed=len(gate_pass),
+                                        dropped=n_cand - len(gate_pass))
             except Exception as e:
                 print('  gslb 门禁失败, 整批丢弃: %s: %s'
                       % (type(e).__name__, e), flush=True)

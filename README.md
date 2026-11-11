@@ -154,7 +154,7 @@ scripts/probeurls.py      按线路连抽多帧的时序联系表 (查间歇插�
 scripts/chansheet.py      按频道出全部线路联系表 (查整台广告)
 tests/                    单元测试 (59 个用例, CI 每次跑)
 data/gslb_cache.json      gslb 命中缓存
-data/gslb_gate.json       gslb 门禁结论 (pass 1 天 / deny 14 天)
+data/gslb_gate.json       gslb 门禁结论 (pass 1 天 / deny 30 天)
 data/prov_map.json        地名前缀 -> 省份 (构建时自动生成)
 data/ad_blocklist.json    已确认的广告主机黑名单
 data/ad_candidates.json   画面聚类出的可疑线路 (仅候选, 不生效)
@@ -202,7 +202,7 @@ scripts/loopcheck.py      判断是否循环垫片
 现在改成 `scripts/gslbgate.py` 的多轮抽样门禁，判据是**稳定性**：
 
 ```
-连续 N 轮 (=4)，每轮都必须
+连续 N 轮 (=6, 间隔 1s)，每轮都必须
   1. 真的取到可解码分片        (hlslive.probe_live，分片级)
   2. 302 后的流不属于广告池     (applive/* / status/* / 黑名单 stream 段)
   3. 最终流的 path 形状一致     (只比路径，不比主机——网关会在多个边缘 IP 间轮换)
@@ -211,14 +211,15 @@ scripts/loopcheck.py      判断是否循环垫片
 
 - 判稳时**必须去主机**：`/live/cctv6md` 会在 `142.54.162.26` / `204.12.241.18` /
   `63.141.250.98` 之间轮换，带主机比会把正常轮换误判成 unstable。
-- 命中广告或指向不稳的 URL 记进 `data/gslb_gate.json` 的 `deny`，**14 天内不再重测**；
+- 命中广告或指向不稳的 URL 记进 `data/gslb_gate.json` 的 `deny`，**30 天内不再重测**；
   通过的记录 1 天内沿用。既省请求，也避免"这次撞上真源就放进来"的反复试探。
 - 死链（错误 JSON / HTTP 404）不记 deny——那只是这轮没通，下轮构建还会再试。
 - 门禁放行的 URL 走 `adfilter.apply(items, allow=...)` 穿过 `url_contains`；
   但**点了名的 url / channel 仍然优先**，人工确认的黑名单永远不会被门禁翻案。
 
-代价是构建多 3–5 分钟，以及残存风险：某天网关临时改比例、4 轮全抽到好分支，
-播放时仍可能落广告。所以 `data/extra_sources.txt` 里那几条人工源继续保留。
+代价是构建多 5–8 分钟，以及残存风险：某天网关临时改比例、6 轮全抽到好分支，
+播放时仍可能落广告。所以还有两道保险：同台有直连源时**网关线路一律排在后面**（`m3uio.line_key` 里
+`gw` 位，即便它更高清），以及 `data/extra_sources.txt` 里那几条人工源继续保留。
 
 ### 人工确认源：`data/extra_sources.txt`
 

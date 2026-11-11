@@ -43,12 +43,13 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import hlslive
 import sharedstream
 
-# 每条 URL 抽几轮 (4 轮 = 至少 4 次独立 302 + 分片下载)。
-# 若广告出现概率 7%, 4 轮全干净约 75%; 抽中广告即 deny 14 天, 反复构建会把
-# "脏"的 URL 逐个筛出去, 长期比单轮严得多。
-ROUNDS = 4
-GAP = 0.3
-DENY_TTL_DAYS = 14
+# 每条 URL 抽几轮。6 轮 = 至少 6 次独立 302 + 分片下载。
+# 实测网关插广告是按时间窗的: 4 轮的版本上线后复核 10 条, 仍有 2 条在第 5 轮
+# 和第 1 轮抽中 applive —— 所以要抽得更久、间隔更开 (GAP 1s, 覆盖不同时间窗),
+# 而不是挤在 1 秒内问 4 次。
+ROUNDS = 6
+GAP = 1.0
+DENY_TTL_DAYS = 30
 PASS_TTL_DAYS = 1
 DEFAULT_STORE = 'data/gslb_gate.json'
 

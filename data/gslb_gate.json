@@ -112,6 +112,10 @@
    "ts": "2026-11-11",
    "why": "round1:ad:applive/mkt"
   },
+  "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=bxjk": {
+   "ts": "2026-11-11",
+   "why": "round1:ad:applive/yss"
+  },
   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv11hd": {
    "ts": "2026-11-11",
    "why": "round1:ad:applive/cctv11md"
@@ -260,6 +264,10 @@
    "ts": "2026-11-11",
    "why": "round1:ad:applive/yss"
   },
+  "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=yggwmd": {
+   "ts": "2026-11-11",
+   "why": "round1:ad:applive/102"
+  },
   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=ystq": {
    "ts": "2026-11-11",
    "why": "round1:ad:applive/ystq"
@@ -271,10 +279,6 @@
   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zjwshd": {
    "ts": "2026-11-11",
    "why": "round1:ad:applive/zjws"
-  },
-  "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zjwsmd": {
-   "ts": "2026-11-11",
-   "why": "round1:ad:applive/mkt"
   },
   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zxs": {
    "ts": "2026-11-11",
@@ -659,6 +663,13 @@
   "http://38.75.136.137:98/gslb/dsdqbv/hnws4k.m3u8?auth=test20251009": {
    "final": "http://63.141.226.98:82/live/hnws4k.m3u8?jsbt=1794363883&jsbk=55791fe45748249a137f78d0751e75cb",
    "key": "live/hnws4k",
+   "rounds": 4,
+   "ts": "2026-11-11"
+  },
+  "http://38.75.136.137:98/gslb/dsdqbv/hnwshd.m3u8?auth=test20251009": {
+   "final": "http://69.197.146.146:82/live/hnws.m3u8?jsbt=1794402423&jsbk=ce29ed2419b3a3fa346ca71a18384893",
+   "hits": 1,
+   "key": "live/hnws",
    "rounds": 4,
    "ts": "2026-11-11"
   },
@@ -1211,6 +1222,13 @@
   "http://38.75.136.137:98/gslb/dsdqpub/hnws4k.m3u8?auth=testpub": {
    "final": "http://63.141.226.98:82/live/hnws4k.m3u8?jsbt=1794363883&jsbk=55791fe45748249a137f78d0751e75cb",
    "key": "live/hnws4k",
+   "rounds": 4,
+   "ts": "2026-11-11"
+  },
+  "http://38.75.136.137:98/gslb/dsdqpub/hnwshd.m3u8?auth=testpub": {
+   "final": "http://69.197.146.146:82/live/hnws.m3u8?jsbt=1794402423&jsbk=ce29ed2419b3a3fa346ca71a18384893",
+   "hits": 1,
+   "key": "live/hnws",
    "rounds": 4,
    "ts": "2026-11-11"
   },

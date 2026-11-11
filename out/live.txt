@@ -229,6 +229,8 @@
 卫视|湖南卫视 [4K],http://38.75.136.137:98/gslb/dsdqbv/hnws4k.m3u8?auth=test20251009
 卫视|湖南卫视 [4K],http://38.75.136.137:98/gslb/dsdqpub/hnws4k.m3u8?auth=testpub
 卫视|湖南卫视 [1080P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hnwshd
+卫视|湖南卫视 [1080P],http://38.75.136.137:98/gslb/dsdqbv/hnwshd.m3u8?auth=test20251009
+卫视|湖南卫视 [1080P],http://38.75.136.137:98/gslb/dsdqpub/hnwshd.m3u8?auth=testpub
 卫视|湖南卫视 [720P],http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hnwsmd
 卫视|湖南卫视 [720P],http://38.75.136.137:98/gslb/dsdqbv/hnwsmd.m3u8?auth=test20251009
 卫视|湖南卫视 [720P],http://38.75.136.137:98/gslb/dsdqpub/hnwsmd.m3u8?auth=testpub
@@ -267,6 +269,7 @@
 北京|中国国际教育3,http://play.cec-tv.com.cn/channel/cec-tv3.m3u8
 北京|中国国际教育4,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8
 天津|津南一套,https://play.jinnantv.top/live/JNTV1/playlist.m3u8
+天津|滨海新闻,http://traffic.jbh.tjbh.com/live/bhtv10/playlist.m3u8
 河北|任丘综合,https://jwcdnqx.hebyun.com.cn/live/rqtv1/1500k/tzwj_video.m3u8
 河北|枣强综合,http://hbzqdb.chinashadt.com:1937/live/zqzh.stream_360p/playlist.m3u8
 河北|肃宁一套,http://jwplay.hebyun.com.cn/live/sndst01/1500k/tzwj_video.m3u8
@@ -294,19 +297,18 @@
 河北|邯郸新闻综合,https://jwcdnqx.hebyun.com.cn/live/hdxwzh/1500k/tzwj_video.m3u8
 河北|邯郸科技教育,https://jwcdnqx.hebyun.com.cn/live/hdkj/1500k/tzwj_video.m3u8
 山西|古交综合,http://pili-live-hls.189.i2863.com/i2863-189/live_189_170656.m3u8
+山西|古县综合,https://l2fpdktp.live.sxmty.com/live/hls/e4c3b363cc4549788e2d983f403e07db/d99ce1eb686e41b9afc888110bd95aa7.m3u8
 山西|娄烦综合,https://d2lp2ch2.live.sxmty.com/live/hls/dd05b3d63074444abe815913a24d3a35/4c59b61fb67f4a45b7fa1f8416b9fffb-1.m3u8
-山西|安泽综合,https://qnwjgp6u.live.sxmty.com/live/hls/dbc13d75496d4203ae47dbefbc4ecec2/f6f863a0944346819c63bb413b5bd35c.m3u8
-山西|定襄综合,http://lbyzztfe.live.sxmty.com/live/hls/645ff4c60e0a49f0a203abbd73dd8be9/0720e665f10f48e98c9639f4f492fb4a-1.m3u8
 山西|平顺综合,http://player4.juyun.tv/tv/149466149.m3u8
 山西|晋城新闻,http://live.jinnews.com.cn/xwzh/sd/live.m3u8
 山西|汾西综合,https://qmmqvzoz.live.sxmty.com/live/hls/f24f8a390c084386a564074c9260100c/be3fdf07606145739ab2c4b80fe0136a.m3u8
 山西|阳曲综合,https://83awgyp5.live.sxmty.com/live/hls/6f6f4b36f9bd42628b718b595ba507ed/724b7e8907a8414d873eb2a2f69bfa18.m3u8
 山西|霍州综合,https://iwlbdjk7.live.sxmty.com/live/hls/768ce7880a2545daac8d20a1910a399b/72b4712ef0224990ab744552c190f28c.m3u8
 山西|壶关电视台,http://zmjp3jin.live.sxmty.com/live/hls/268fe96f955d496db37fb10bb887cda9/fc196029d289449ea524a94a95379a0d.m3u8
-山西|左云电视台,https://wu31afbh.live.sxmty.com/live/hls/c5a0ebd3e73b4c4cbc91ea3b9abf1f54/51859030f2384070bf5bedce43126f6b-1.m3u8
 山西|万荣综合频道,http://60.222.246.220:19433/hls1.m3u8
 山西|上党区电视台,http://zhibo.czmarathon.net/cdd/TVLive.m3u8?auth_key=1724143889-0-0-929d4ecd8b7700822ec202b14ebc6c3c
 山西|垣曲综合频道,https://media.yqrmt.com/hls/hd-live.m3u8
+山西|屯留综合频道,https://f3jok3az.live.sxmty.com/live/hls/ebaa2bf2e7f94dc79d4e642ac76d2415/0d97361a940348729fbd0ee3f4eb9e47.m3u8
 山西|平遥新闻综合,https://tntgjhjb.live.sxmty.com/live/hls/3a4585ac11ec4e1bb07b419101b370c3/baf63e2b313440c2a25d7859f9b73b05-1.m3u8
 山西|平鲁综合频道,http://player4.juyun.tv/tv/167019161.m3u8
 山西|怀仁综合频道,http://1yp7hc5p.live.sxmty.com/live/hls/bff8529922344209985b6e49baa9555a/efa2543628fc4a7ea93d3d6c975f77dc.m3u8
@@ -382,7 +384,6 @@
 江苏|徐州文艺影视,http://stream3.huaihai.tv/xz3t/sd/live.m3u8
 江苏|徐州新闻综合,http://stream3.huaihai.tv/xwzh1t/sd/live.m3u8
 江苏|徐州经济生活,http://stream3.huaihai.tv/xz2t/sd/live.m3u8
-江苏|无锡移动电视,http://m.m3u8.wifiwx.com/live/wifiwx-494.m3u8
 江苏|武进新闻频道,https://live.wjyanghu.com/live/CH1.m3u8
 江苏|武进生活频道,https://live.wjyanghu.com/live/CH2.m3u8
 江苏|泰州影视娱乐,http://stream1.mytaizhou.net/ysylnew/playlist.m3u8
@@ -409,7 +410,6 @@
 浙江|东阳新闻综合,http://play-sh13.quklive.com/live/1681113308206040.m3u8?auth_key=2028413158-ad2723c5e94045f393c4ccc595b573f9-0-c75b8d81f4470e67519c154e85115a4e
 浙江|丽水新闻综合,https://l.cztvcloud.com/channels/lantian/sxchannel09/1080p.m3u8
 浙江|义乌公共文艺,https://44911.hlsplay.aodianyun.com/tv_radio_44911/tv_channel_3090.m3u8?auth_key=4830667771-0-0-4d788b80bdc1fa13522a2d10511a62d4&extra_key=2fk3HCWcAsUB_ZsuI_rrUP3hdTqEFaFPai_ZFKXo5njEPrgmFlIRA9tmB7xb-zLryaZ4y-4A5GYToA82EpN6NdveoFiv45QQP6qp6ZHI1kOJff_5KHtRvRocR3iFRzq6k1eIMRcEcYBzpX3_T595uQ9-UVygOh1Sd_dXnlNCAKoSeP5mtY226hlsTAI9rbgN
-浙江|义乌商贸频道,https://44911.hlsplay.aodianyun.com/tv_radio_44911/tv_channel_2133.m3u8?auth_key=4830674369-0-0-792c50b6dbb1f212177ee413838c9d34&extra_key=MhCFdbXNI70ZdkebtW5Way43jpzFEOtNAkun-0XCgWwdfGQyDYjGaLOvaQkG4p4ahsRmKWH3euwpK_-6AzTj-NsrVKt9WX6WKnoTmOLcKhXuM68iO_FXB63j8Avfm_P7SLv_nrzGAup7gYxtTu4IpKilWBeWfflJTVwXfos8VFTWL_xtZEURqWRFF3AtLaqe&ali_ffmpeg_version=mpengine
 浙江|云和新闻综合,http://l.cztvcloud.com/channels/lantian/SXyunhe1/720p.m3u8
 浙江|余杭综合频道,https://29371.hlsplay.aodianyun.com/lms_29371/slow_channel_master_seat_1445826801.m3u8?auth_key=3300411293-0-0-273f15e1d217965ba192be222ea38b2d&extra_key=V8uEmh_EXr1eVHhCsqQdCb2KQpy3kbF4Lfrf1S8rAZfBbea83rMZ6uqfZL74iDr9sfX_YL2E_25HrvU_mbtZh3ifdtd3R0IP_tWpoeTaMP3EUgp-m3whWwmoBhHzmq7QlJkExjuwjfwj_lLUpyUtp6oiMrocqaUoGIgnjsNh9WM
 浙江|台州新闻综合,https://l.cztvcloud.com/channels/lantian/sxchannel10/1080p.m3u8
@@ -465,6 +465,7 @@
 安徽|涡阳新闻综合,http://220.180.124.18:888/live/ch0.m3u8
 安徽|淮北新闻频道,https://vms-x.hbnews.net/video/xwzh/index.m3u8
 安徽|淮北经济生活,https://vms-x.hbnews.net/video/JJSH/index.m3u8
+安徽|祁门综合频道,http://file.qmxrmt.com/nmip-media/channellive/channel108622/playlist.m3u8
 安徽|蒙城新闻频道,https://p2hs.vzan.com/200263/698384284379943742/live.m3u8?zbid=200263&tpid=1914190744
 安徽|蒙城新闻频道,https://play-hsbj.vzan.com/200263/698384284379943742/live.m3u8
 安徽|阜南新闻综合,https://xhmm-new-live.media.xinhuamm.net/liveNoRecord/a42bf9ee9c224a44a393aafc33990c78_111ae5a842ff4b32ab277ed1d9e216c5.m3u8?auth_key=2017017629-3866c768f70a4b47a2352f7b746e7bc1-0-1470ba4cbd641cbe479da8838d3396da
@@ -558,7 +559,7 @@
 四川|中江新闻综合,https://bl.zjtvrm.cn/live/zjrmzxzb.m3u8?timestamp=20250617174454&encrypt=7759375eb83dccfe26811155bff1c4be
 四川|乐山新闻综合,http://pwpull.leshan.cn/live/21609091019110008654ed1a00000000/playlist.m3u8
 四川|乐至综合频道,http://175.155.106.72:89/live1/live1.m3u8
-四川|井研综合频道,http://tvfile.jyrmt.cn/nmip-media/channellive/channel104452/playlist.m3u8
+四川|仁寿综合频道,https://play.scrstv.com.cn/TV/xwzh.m3u8?auth_key=1724660870-0-0-a245e661caf0188f84e8e486754a80ce
 四川|仪陇综合频道,https://live.yilongnews.com/live/ylzhpd.m3u8?auth_key=1741134122-0-0-fbf8d764c05b0a2547234f0f9f64e4b6
 四川|会东综合频道,http://exfile.schdxww.com/nmip-media/channellive/channel100055/playlist.m3u8
 四川|内江科教生活,https://www.scnj.tv/hls_njtv_direct/9.m3u8

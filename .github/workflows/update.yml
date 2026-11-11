@@ -53,11 +53,13 @@ jobs:
         run: |
           # 留一份上一版统计, 后面做环比 (跌太多说明上游/网关出问题)
           git show HEAD:out/stats.json > /tmp/prev_stats.json 2>/dev/null || true
-          # 注意 --no-gslb: gslb 网关 (zbdq5/dsdqbv/dsdqpub) 现在是**轮盘** ——
-          # 同一条 url 连取 8 次, 6~7 次 302 到 applive 广告池, 只有 1~2 次给真源。
-          # 采集它们等于给订阅灌广告, 详见 data/ad_blocklist.json 的 url_contains。
-          python scripts/build.py --out out --jobs 40 --timeout 9 --no-gslb || {
-            echo "验活模式失败, 回退到 --no-probe"
+          # gslb 网关 (zbdq5/dsdqbv/dsdqpub) 是**轮盘**: 同一条 url 每次请求可能
+          # 给真源 / applive 广告池 / 错误 JSON。所以不能整批停用(那样央视只剩
+          # 1~2 条), 也不能直接采集(等于灌广告), 必须过 gslbgate 多轮抽样门禁:
+          # 连续 N 轮同源、且一次广告池都没撞上, 才准进订阅。
+          python scripts/build.py --out out --jobs 40 --timeout 9 \
+            --gslb-rounds 4 --gslb-gate-jobs 6 || {
+            echo "验活模式失败, 回退到 --no-probe (gslb 一并跳过)"
             python scripts/build.py --out out --no-probe --no-gslb
           }
           echo "--- 产物 ---"
@@ -68,6 +70,8 @@ jobs:
           print('频道', s.get('totalChannels'), '线路', s.get('totalLines'),
                 '多线路频道', s.get('multiLineChannels'))
           print('源版本', s.get('meta',{}).get('sourceVersion'))
+          print('gslb 门禁', s.get('meta',{}).get('gslbGate'))
+          print('来源', s.get('bySource'))
           "
 
       - name: 合并公开源池 (为每个台补充备选线路)

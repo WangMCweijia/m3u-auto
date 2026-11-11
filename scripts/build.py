@@ -444,6 +444,14 @@ def main():
     ap.add_argument('--limit', type=int, default=0, help='限制线路数, 调试用')
     ap.add_argument('--no-gslb', dest='gslb', action='store_false',
                     help='跳过 gslb 网关采集')
+    ap.add_argument('--no-gslb-gate', dest='gslb_gate', action='store_false',
+                    help='关掉 gslb 抽样门禁 (危险: /gslb/ 线路会全被黑名单挡掉)')
+    ap.add_argument('--gslb-rounds', type=int, default=4,
+                    help='门禁每条 URL 抽几轮 (默认 4)')
+    ap.add_argument('--gslb-gate-jobs', type=int, default=6,
+                    help='门禁并发 (网关限流, 别开太大)')
+    ap.add_argument('--gslb-gate-store', default='data/gslb_gate.json',
+                    help='门禁结论存档 (通过 1 天 / deny 14 天内复用)')
     ap.add_argument('--gslb-jobs', type=int, default=4,
                     help='gslb 探测并发 (实测 >20 会被网关限流)')
     ap.add_argument('--gslb-all', dest='gslb_only', action='store_const',
@@ -510,7 +518,10 @@ def main():
     print('  直连线路 %d 条' % len(items), flush=True)
 
     # gslb 网关: 救回 kdsvod 里那批已失效域名承载的频道 (央视/卫视为主)
+    # 网关是**轮盘** —— 同一条 URL 每次可能给真源 / 广告池 / 死链, 所以必须过
+    # gslbgate 的多轮抽样门禁: 连续 N 轮同源且非广告池才收录。
     pre_ok = []
+    gate_pass = set()
     if args.gslb:
         print('[2.5/4] 采集 gslb 网关线路', flush=True)
         try:
@@ -522,8 +533,29 @@ def main():
         except Exception as e:
             print('  gslb 采集失败: %s: %s' % (type(e).__name__, e), flush=True)
 
+        if args.gslb_gate and pre_ok:
+            try:
+                import gslbgate
+                gate_pass = gslbgate.gate(pre_ok, path=args.gslb_gate_store,
+                                          rounds=args.gslb_rounds,
+                                          jobs=args.gslb_gate_jobs,
+                                          timeout=args.timeout)
+                # collect 给了 status='ok', run_probe 会跳过它们不再重验;
+                # 门禁已连抽 N 轮, 跳过是合理的, 但线路必须已带 final
+                items = [it for it in items
+                         if '/gslb/' not in (it.get('url') or '')
+                         or it.get('url') in gate_pass]
+                meta['gslbGate'] = dict(total=len(pre_ok), passed=len(gate_pass))
+            except Exception as e:
+                print('  gslb 门禁失败, 整批丢弃: %s: %s'
+                      % (type(e).__name__, e), flush=True)
+                gate_pass = set()
+                items = [it for it in items
+                         if '/gslb/' not in (it.get('url') or '')]
+
     # 广告黑名单: 能播但内容是广告的站 (人工看画面确认过的)
-    adfilter.apply(items)
+    # gate_pass 里的 URL 穿过 url_contains/host 宽判据 (逐条抽过 N 轮才放行)
+    adfilter.apply(items, allow=gate_pass)
 
     if not items:
         print('  没有可用的直连线路, 退出', flush=True)

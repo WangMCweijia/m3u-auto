@@ -143,6 +143,7 @@ scripts/hlslive.py        直播性判定 (必须取到分片才算活)
 scripts/adfilter.py       广告主机黑名单过滤 (url/host/channel 三级)
 scripts/sharedstream.py   广告池识别 (多频道共用一个流 -> 整组剔除)
 scripts/gslb.py           gslb 网关采集 (央视/卫视线路主力)
+scripts/gslbgate.py       gslb 轮盘抽样门禁 (连续 N 轮同源才算数)
 scripts/build.py          拉频道表 -> 解析 -> 验活 -> 生成订阅
 scripts/merge_public.py   合并公开源池补充线路
 scripts/genindex.py       生成索引页
@@ -151,8 +152,9 @@ scripts/verifystate.py    验活历史 (稳定性排序 / 主机熔断)
 scripts/local_run.py      本地一键跑完整流水线 (Actions 兜底)
 scripts/probeurls.py      按线路连抽多帧的时序联系表 (查间歇插播)
 scripts/chansheet.py      按频道出全部线路联系表 (查整台广告)
-tests/                    单元测试 (47 个用例, CI 每次跑)
+tests/                    单元测试 (59 个用例, CI 每次跑)
 data/gslb_cache.json      gslb 命中缓存
+data/gslb_gate.json       gslb 门禁结论 (pass 1 天 / deny 14 天)
 data/prov_map.json        地名前缀 -> 省份 (构建时自动生成)
 data/ad_blocklist.json    已确认的广告主机黑名单
 data/ad_candidates.json   画面聚类出的可疑线路 (仅候选, 不生效)
@@ -177,32 +179,46 @@ scripts/loopcheck.py      判断是否循环垫片
 | 空壳 | m3u8 正常、分片 404 | `hlslive.py` 判死，不需人工 |
 | 点播顶替 | 302 跳到 `xxx.mp4` 之类的文件 | `hlslive.py` 判死（`vod-file`） |
 | **广告池** | 几十个不相干的频道 302 到**同一个流** | `sharedstream.py` 自动剔除，不需人工 |
-| **轮盘网关** | 同一条 url 每次 302 指向不同流 | `ad_blocklist.json` 的 `url_contains` 按前缀拉黑 |
+| **轮盘网关** | 同一条 url 每次 302 指向不同流 | `gslbgate.py` 多轮抽样门禁（见下） |
 | 广告插播 | 单条线路画面是广告，流是独占的 | 人工看联系表确认 → `data/ad_blocklist.json` |
 
-### 轮盘网关：为什么 `--no-gslb`
+### 轮盘网关：多轮抽样门禁
 
 `63.141.230.178:82/gslb/zbdq5.m3u8?id=<ename>` 和
-`38.75.136.137:98/gslb/{dsdqbv,dsdqpub}/<ename>.m3u8` 这三个网关曾经是央视/卫视的
-主力源，2026-11 起变成**轮盘**：
+`38.75.136.137:98/gslb/{dsdqbv,dsdqpub}/<ename>.m3u8` 这三个网关是央视/卫视线路的
+主力来源，但它们是**轮盘**——同一条 url 每次请求落到哪里是随机的：
 
 ```
-同一条 dsdqbv/cctv6hd.m3u8 连取 8 次
+同一条 dsdqbv/cctv6hd.m3u8 连取 8 次 (2026-11-09)
   → applive/102 ×1   applive/yss ×3   applive/mkt ×3   真源 live/cctv6md ×1
+2026-11-11 抽 25 条 URL × 5 轮: 真源 ~70% / 错误 JSON ~23% / 广告池 ~7%
 ```
 
-75~87% 的请求被导向 applive 广告池，只有偶尔给真源。验活那一刻恰好撞上真源就
-判定「可播」，用户点开时大概率是广告 —— 这就是「修了还是广告」的原因，单看一条
-线路的抽帧根本抓不住。
+比例天天变、结构不变。单次验活必然被骗：撞上真源就判活，用户点开大概率是广告。
+2026-11-09 的处置是整批停用（`--no-gslb` + `url_contains:["/gslb/"]`），
+结果是**央视从 205 条掉到 39 条**——因为那 205 条里 179 条（87%）都出自这个网关，
+一个台 8 条"线路"其实是同一个入口的 8 个分支，真正独立的源只有 26 条。
 
-所以现在 CI 直接 `--no-gslb` 不采集，同时黑名单里有一条全局规则把这个前缀全挡掉
-（公开池里也混着同样的网关地址）：
+现在改成 `scripts/gslbgate.py` 的多轮抽样门禁，判据是**稳定性**：
 
-```json
-{"url_contains": ["/gslb/"]}
+```
+连续 N 轮 (=4)，每轮都必须
+  1. 真的取到可解码分片        (hlslive.probe_live，分片级)
+  2. 302 后的流不属于广告池     (applive/* / status/* / 黑名单 stream 段)
+  3. 最终流的 path 形状一致     (只比路径，不比主机——网关会在多个边缘 IP 间轮换)
+任何一轮不满足 → 整条 URL 判死
 ```
 
-代价是央视/卫视的线路数变少。补救见下面的「人工确认源」。
+- 判稳时**必须去主机**：`/live/cctv6md` 会在 `142.54.162.26` / `204.12.241.18` /
+  `63.141.250.98` 之间轮换，带主机比会把正常轮换误判成 unstable。
+- 命中广告或指向不稳的 URL 记进 `data/gslb_gate.json` 的 `deny`，**14 天内不再重测**；
+  通过的记录 1 天内沿用。既省请求，也避免"这次撞上真源就放进来"的反复试探。
+- 死链（错误 JSON / HTTP 404）不记 deny——那只是这轮没通，下轮构建还会再试。
+- 门禁放行的 URL 走 `adfilter.apply(items, allow=...)` 穿过 `url_contains`；
+  但**点了名的 url / channel 仍然优先**，人工确认的黑名单永远不会被门禁翻案。
+
+代价是构建多 3–5 分钟，以及残存风险：某天网关临时改比例、4 轮全抽到好分支，
+播放时仍可能落广告。所以 `data/extra_sources.txt` 里那几条人工源继续保留。
 
 ### 人工确认源：`data/extra_sources.txt`
 
@@ -297,7 +313,9 @@ python -m unittest discover -s tests -v      # 单元测试
 python scripts/build.py --out out            # 拉表 + gslb + 验活
 python scripts/build.py --local table.zip    # 用本地频道表
 python scripts/build.py --no-probe           # 跳过验活，快速生成
-python scripts/build.py --no-gslb            # 跳过 gslb 网关
+python scripts/build.py --no-gslb            # 跳过 gslb 网关 (央视会只剩 1~2 条)
+python scripts/build.py --gslb-rounds 6      # 门禁抽 6 轮, 更严也更慢
+python scripts/build.py --no-gslb-gate       # 关掉门禁 (危险, 等于灌广告)
 python scripts/gslb.py --list                # 单独看 gslb 可用频道
 python scripts/merge_public.py --base out/live.m3u --out out/live.m3u
 ```
@@ -329,7 +347,7 @@ git sync        # = git fetch origin main && git merge --no-edit origin/main
 
 过归并的坑（一个台变多个台 / 多个台塌成一个）连续踩过三轮，所以现在有两道闸：
 
-1. **单元测试** `tests/`（47 个用例）覆盖：CCTV-4K 不等于 CCTV-4、`浙江新闻` 不能被
+1. **单元测试** `tests/`（59 个用例）覆盖：CCTV-4K 不等于 CCTV-4、`浙江新闻` 不能被
    `浙江` 前缀吞进浙江卫视、纯数字 tvg-id 必须丢弃、`EXTINF` 与 URL 之间的
    `#EXTVLCOPT` 不能被当成分片、带 `[1080P]` 的名字回读后仍归到卫视……
    每一条都对应一次真实事故。

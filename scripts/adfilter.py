@@ -49,10 +49,20 @@ def load(path='data/ad_blocklist.json'):
     return {}, {}, {}, []
 
 
-def should_block(url, host_map, url_map, name='', ch_map=None, patterns=None):
-    """返回 (是否拉黑, 原因)"""
+def should_block(url, host_map, url_map, name='', ch_map=None, patterns=None,
+                 allow=None):
+    """返回 (是否拉黑, 原因)
+
+    allow: 逐条放行的 URL 集合 (gslbgate 抽样门禁通过的线路)。
+           优先级低于点了名的 url / channel —— 手工钉死的黑名单永远有效,
+           只用来穿过 url_contains / host 这类"整类不可信"的宽判据。
+    """
     if url in url_map:
         return True, url_map[url].get('reason') or 'url-blocklist'
+    if name and ch_map and name in ch_map:
+        return True, ch_map[name].get('reason') or 'channel-blocklist'
+    if allow and url in allow:
+        return False, ''
     for pat in (patterns or []):
         if pat and pat in url:
             return True, 'url-contains:%s' % pat
@@ -62,20 +72,22 @@ def should_block(url, host_map, url_map, name='', ch_map=None, patterns=None):
         host = ''
     if host and host in host_map:
         return True, host_map[host].get('reason') or 'host-blocklist'
-    if name and ch_map and name in ch_map:
-        return True, ch_map[name].get('reason') or 'channel-blocklist'
     return False, ''
 
 
-def apply(items, path='data/ad_blocklist.json', verbose=True):
-    """就地剔除命中黑名单的线路, 返回被剔除的条数"""
+def apply(items, path='data/ad_blocklist.json', verbose=True, allow=None):
+    """就地剔除命中黑名单的线路, 返回被剔除的条数
+
+    allow: 抽样门禁放行的 URL 集合, 可穿过 url_contains / host 宽判据
+    """
     host_map, url_map, ch_map, patterns = load(path)
     if not host_map and not url_map and not ch_map and not patterns:
         return 0
     keep, dropped = [], []
     for it in items:
         hit, reason = should_block(it.get('url') or '', host_map, url_map,
-                                   it.get('name') or '', ch_map, patterns)
+                                   it.get('name') or '', ch_map, patterns,
+                                   allow)
         if hit:
             dropped.append((it, reason))
         else:

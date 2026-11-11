@@ -83,6 +83,24 @@ class AdFilterTest(unittest.TestCase):
         self.assertEqual(n, 1)
         self.assertEqual([i['name'] for i in items], ['B'])
 
+    def test_allow_bypasses_pattern_only(self):
+        """门禁放行的 URL 能穿过 url_contains, 但点了名的 url/channel 仍然有效"""
+        bl = {'url_contains': ['/gslb/'],
+              'url': {'http://h:98/gslb/dsdqbv/bad.m3u8?auth=x': {'reason': '点名的'}},
+              'channel': {'大湾区卫视': {'reason': '整台广告'}}}
+        with open(self.path, 'w', encoding='utf-8') as f:
+            json.dump(bl, f, ensure_ascii=False)
+        good = 'http://h:98/gslb/dsdqbv/cctv6hd.m3u8?auth=x'
+        named = 'http://h:98/gslb/dsdqbv/bad.m3u8?auth=x'
+        items = [
+            {'name': 'A', 'url': good},
+            {'name': 'B', 'url': named},
+            {'name': '大湾区卫视', 'url': good},
+        ]
+        n = adfilter.apply(items, self.path, verbose=False, allow={good})
+        self.assertEqual(n, 2)                  # 点名的 url + 整台 channel
+        self.assertEqual([i['name'] for i in items], ['A'])
+
     def test_missing_channel_key_is_fine(self):
         """老版本黑名单只有 host/url 两个键, 不能因为少 channel 就崩"""
         bl = {'host': {}, 'url': {}}

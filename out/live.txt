@@ -262,9 +262,6 @@
 北京|中国教育4 [720P],http://38.75.136.137:98/gslb/dsdqbv/cetv4.m3u8?auth=test20251009
 北京|中国教育4 [720P],http://38.75.136.137:98/gslb/dsdqpub/cetv4.m3u8?auth=testpub
 北京|党员教育频道,https://12371wbndali.v.myalicdn.com/12371wbnd/dangyuanwang_2hd.m3u8
-北京|中国国际教育1,http://play.cec-tv.com.cn/channel/cec-tv1.m3u8
-北京|中国国际教育3,http://play.cec-tv.com.cn/channel/cec-tv3.m3u8
-北京|中国国际教育4,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8
 天津|津南一套,https://play.jinnantv.top/live/JNTV1/playlist.m3u8
 天津|滨海新闻,http://traffic.jbh.tjbh.com/live/bhtv10/playlist.m3u8
 河北|任丘综合,https://jwcdnqx.hebyun.com.cn/live/rqtv1/1500k/tzwj_video.m3u8
@@ -296,7 +293,6 @@
 山西|古交综合,http://pili-live-hls.189.i2863.com/i2863-189/live_189_170656.m3u8
 山西|古县综合,https://l2fpdktp.live.sxmty.com/live/hls/e4c3b363cc4549788e2d983f403e07db/d99ce1eb686e41b9afc888110bd95aa7.m3u8
 山西|娄烦综合,https://d2lp2ch2.live.sxmty.com/live/hls/dd05b3d63074444abe815913a24d3a35/4c59b61fb67f4a45b7fa1f8416b9fffb-1.m3u8
-山西|安泽综合,https://qnwjgp6u.live.sxmty.com/live/hls/dbc13d75496d4203ae47dbefbc4ecec2/f6f863a0944346819c63bb413b5bd35c.m3u8
 山西|定襄综合,http://lbyzztfe.live.sxmty.com/live/hls/645ff4c60e0a49f0a203abbd73dd8be9/0720e665f10f48e98c9639f4f492fb4a-1.m3u8
 山西|平顺综合,http://player4.juyun.tv/tv/149466149.m3u8
 山西|晋城新闻,http://live.jinnews.com.cn/xwzh/sd/live.m3u8
@@ -407,14 +403,12 @@
 浙江|浙江新闻,http://ali-m-l.cztv.com/channels/lantian/channel007/1080p.m3u8
 浙江|上虞新商都,http://l.cztvcloud.com/channels/lantian/SXshangyu3/720p.m3u8
 浙江|青田电视台,http://l.cztvcloud.com/channels/lantian/SXqingtian1/720p.m3u8
-浙江|上虞新闻综合,http://l.cztvcloud.com/channels/lantian/SXshangyu1/720p.m3u8
 浙江|东阳新闻综合,http://play-sh13.quklive.com/live/1681113308206040.m3u8?auth_key=2028413158-ad2723c5e94045f393c4ccc595b573f9-0-c75b8d81f4470e67519c154e85115a4e
 浙江|丽水新闻综合,https://l.cztvcloud.com/channels/lantian/sxchannel09/1080p.m3u8
 浙江|义乌公共文艺,https://44911.hlsplay.aodianyun.com/tv_radio_44911/tv_channel_3090.m3u8?auth_key=4830667771-0-0-4d788b80bdc1fa13522a2d10511a62d4&extra_key=2fk3HCWcAsUB_ZsuI_rrUP3hdTqEFaFPai_ZFKXo5njEPrgmFlIRA9tmB7xb-zLryaZ4y-4A5GYToA82EpN6NdveoFiv45QQP6qp6ZHI1kOJff_5KHtRvRocR3iFRzq6k1eIMRcEcYBzpX3_T595uQ9-UVygOh1Sd_dXnlNCAKoSeP5mtY226hlsTAI9rbgN
 浙江|云和新闻综合,http://l.cztvcloud.com/channels/lantian/SXyunhe1/720p.m3u8
 浙江|余杭综合频道,https://29371.hlsplay.aodianyun.com/lms_29371/slow_channel_master_seat_1445826801.m3u8?auth_key=3300411293-0-0-273f15e1d217965ba192be222ea38b2d&extra_key=V8uEmh_EXr1eVHhCsqQdCb2KQpy3kbF4Lfrf1S8rAZfBbea83rMZ6uqfZL74iDr9sfX_YL2E_25HrvU_mbtZh3ifdtd3R0IP_tWpoeTaMP3EUgp-m3whWwmoBhHzmq7QlJkExjuwjfwj_lLUpyUtp6oiMrocqaUoGIgnjsNh9WM
 浙江|台州新闻综合,https://l.cztvcloud.com/channels/lantian/sxchannel10/1080p.m3u8
-浙江|嘉兴新闻综合,https://l.cztvcloud.com/channels/lantian/sxchannel06/1080p.m3u8
 浙江|嘉善新闻综合,https://p2hs.vzan.com/slowlive/633251673265558519/live.m3u8
 浙江|宁波新闻综合,https://l.cztvcloud.com/channels/lantian/sxchannel02/1080p.m3u8
 浙江|宁海新闻综合,http://33658.hlsplay.aodianyun.com/tv_radio_33658/tv_channel_1423.m3u8
@@ -440,10 +434,8 @@
 浙江|湖州新闻综合,http://hzcm-live.media.hugd.com/3f5fa7d64c7c46a38c6bd8ad35e836cc/65128273761b4731ae53729ea6dcf932.m3u8?auth_key=2277598215-9d21c15111244bea8d298c361d31a72e-0-d031198f58d44b0e91ba2e3f3b188865
 浙江|瑞安新闻综合,http://play-sh-21.quklive.com/live/1681269183807252.m3u8?auth_key=2033114999-67ff99bfbe1b4577b013750618ffce6b-0-454401c27452e83159ca9466ef742db2
 浙江|绍兴新闻综合,https://l.cztvcloud.com/channels/lantian/sxchannel04/1080p.m3u8
-浙江|缙云综合频道,http://l.cztvcloud.com/channels/lantian/SXjinyun1/720p.m3u8
 浙江|舟山新闻综合,https://l.cztvcloud.com/channels/lantian/sxchannel11/1080p.m3u8
 浙江|萧山新闻综合,http://l.cztvcloud.com/channels/lantian/SXxiaoshan1/720p.m3u8
-浙江|萧山新闻综合,http://l.cztvcloud.com/channels/lantian/SXxiaoshan2/720p.m3u8
 浙江|衢州新闻综合,https://l.cztvcloud.com/channels/lantian/sxchannel08/1080p.m3u8
 浙江|衢江新闻综合,http://l.cztvcloud.com/channels/lantian/SXqujiang1/720p.m3u8
 浙江|诸暨新闻综合,http://l.cztvcloud.com/channels/lantian/SXzhuji3/720p.m3u8
@@ -461,7 +453,6 @@
 安徽|安庆新闻综合,https://aq-live.media.xinhuamm.net/r/252b77197b104e1aa2456481204fb656.m3u8?auth_key=2341308330-0-0-4e8ffbdb0c0dcfab23e1b8962730f59d
 安徽|安庆经济生活,https://aq-live.media.xinhuamm.net/r/ed093a3514bd4174b1dbd5af8a8e0a9c.m3u8?auth_key=2341308528-0-0-1d8df1d541b495f33875e247c9300fc1
 安徽|广德新闻综合,https://live.gdtv.ah.cn/live/newsTV.m3u8
-安徽|泾县新闻综合,https://apisave.jxnn.cn/hls/xwzonhe/playlist.m3u8
 安徽|涡阳新闻综合,http://220.180.124.18:888/live/ch2.m3u8
 安徽|涡阳新闻综合,http://220.180.124.18:888/live/ch0.m3u8
 安徽|淮北新闻频道,https://vms-x.hbnews.net/video/xwzh/index.m3u8

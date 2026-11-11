@@ -127,7 +127,8 @@ class GateTest(unittest.TestCase):
         gslbgate.hlslive.probe_live = _p
 
         items = [good, bad, direct]
-        passed = gslbgate.gate(items, path=self.store, rounds=2, verbose=False)
+        passed = gslbgate.gate(items, path=self.store, rounds=2, verbose=False,
+                      window_gap=0)
         self.assertEqual(passed, {good['url']})
         self.assertEqual([i['name'] for i in items], ['CCTV-6 电影', 'CCTV-2 财经'])
         self.assertEqual(good['final'], REAL)          # sharedstream 要用
@@ -150,14 +151,16 @@ class GateTest(unittest.TestCase):
         gslbgate.hlslive.probe_live = _p
 
         items = [{'name': 'X', 'tvg_id': 'X', 'url': GW}]
-        gslbgate.gate(items, path=self.store, rounds=2, verbose=False)
+        gslbgate.gate(items, path=self.store, rounds=2, verbose=False,
+                      window_gap=0)
         n1 = len(calls)
         self.assertGreater(n1, 0)
 
         # 第二次构建: deny 命中, 一次请求都不该发
         calls.clear()
         items2 = [{'name': 'X', 'tvg_id': 'X', 'url': GW}]
-        gslbgate.gate(items2, path=self.store, rounds=2, verbose=False)
+        gslbgate.gate(items2, path=self.store, rounds=2, verbose=False,
+                      window_gap=0)
         self.assertEqual(calls, [])
         self.assertEqual(items2, [])
 
@@ -172,16 +175,39 @@ class GateTest(unittest.TestCase):
         gslbgate.hlslive.probe_live = _p
 
         gslbgate.gate([{'name': 'X', 'tvg_id': 'X', 'url': GW}],
-                      path=self.store, rounds=2, verbose=False)
+                      path=self.store, rounds=2, verbose=False, window_gap=0)
         n1 = len(calls)
         calls.clear()
         items = [{'name': 'X', 'tvg_id': 'X', 'url': GW}]
-        passed = gslbgate.gate(items, path=self.store, rounds=2, verbose=False)
+        passed = gslbgate.gate(items, path=self.store, rounds=2, verbose=False,
+                      window_gap=0)
         self.assertEqual(calls, [])
         self.assertEqual(passed, {GW})
         self.assertEqual(len(items), 1)
         self.assertGreater(n1, 0)
 
+
+    def test_second_window_reveals_ad(self):
+        """两窗抽样: 第一窗干净、第二窗落广告池 —— 必须判死
+
+        网关插广告按时间窗发生, 单窗 6 轮挤在几秒内问完会被骗过。
+        """
+        calls = {'n': 0}
+
+        def _p(url, headers=None, timeout=8, depth=0, quality=(0, 0), ctx=None):
+            calls['n'] += 1
+            final = REAL if calls['n'] <= 2 else AD
+            if ctx is not None:
+                ctx['final'] = final
+            return True, 'id', (1080, 0)
+        gslbgate.hlslive.probe_live = _p
+
+        items = [{'name': 'X', 'tvg_id': 'X', 'url': GW}]
+        passed = gslbgate.gate(items, path=self.store, rounds=4, verbose=False,
+                               window_gap=0)
+        self.assertEqual(passed, set())
+        self.assertEqual(items, [])
+        self.assertGreater(calls['n'], 2)      # 确实抽了第二窗
 
 if __name__ == '__main__':
     unittest.main()

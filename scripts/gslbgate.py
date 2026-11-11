@@ -49,6 +49,7 @@ import sharedstream
 # 而不是挤在 1 秒内问 4 次。
 ROUNDS = 6
 GAP = 1.0
+WINDOW_GAP = 75          # 两窗之间的间隔(秒), 让时间窗真正错开
 DENY_TTL_DAYS = 30
 PASS_TTL_DAYS = 1
 DEFAULT_STORE = 'data/gslb_gate.json'
@@ -200,9 +201,40 @@ def _fresh(entry, days):
 
 # ------------------------------------------------------------------ 主流程
 
+def _sample(items, rounds, jobs, timeout, blocked, verbose=False):
+    """并发跑一轮抽样, 返回 {id(item): judge 结果}"""
+    out = {}
+    if not items:
+        return out
+    if rounds <= 0:
+        return {id(it): dict(ok=True, kind='ok', why='', key=None,
+                             quality=(0, 0), final=it.get('url')) for it in items}
+    ex = ThreadPoolExecutor(max_workers=max(1, jobs))
+    futs = {ex.submit(judge, it['url'], rounds, timeout, it.get('headers'),
+                      blocked): it for it in items}
+    done = 0
+    for f in as_completed(futs):
+        it = futs[f]
+        done += 1
+        try:
+            out[id(it)] = f.result()
+        except Exception as e:
+            out[id(it)] = dict(ok=False, kind='dead', why='exc:' + type(e).__name__,
+                               key=None, quality=(0, 0), final=None)
+        if verbose and done % 25 == 0:
+            print('    抽样 %d/%d' % (done, len(futs)), flush=True)
+    ex.shutdown(wait=False)
+    return out
+
+
 def gate(items, path=DEFAULT_STORE, rounds=ROUNDS, jobs=6, timeout=8,
-         verbose=True, save_store=True):
-    """就地裁剪 items, 只留通过门禁的 gslb 线路; 返回通过的 URL 集合"""
+         verbose=True, save_store=True, window_gap=WINDOW_GAP):
+    """就地裁剪 items, 只留通过门禁的 gslb 线路; 返回通过的 URL 集合
+
+    抽样分**两道时间窗**: 先抽一半轮次, 隔 window_gap 秒再抽另一半, 两窗都
+    干净才收录。原因是网关插广告按时间窗发生 —— 实测 6 轮挤在几秒内问完,
+    上线半小时后复核仍有 3/10 条在新时间窗里落 applive。
+    """
     targets = [it for it in items if '/gslb/' in (it.get('url') or '')]
     if not targets:
         return set()
@@ -217,7 +249,9 @@ def gate(items, path=DEFAULT_STORE, rounds=ROUNDS, jobs=6, timeout=8,
             skipped += 1
             continue
         ok = (store.get('pass') or {}).get(u)
-        if _fresh(ok, PASS_TTL_DAYS):
+        # 只有「用同样轮次通过」的结论才能沿用 —— 否则把门禁从 4 轮提到 6 轮后,
+        # 旧结论会继续挡满一天, 等于新策略对存量线路不生效。
+        if _fresh(ok, PASS_TTL_DAYS) and int((ok or {}).get('rounds') or 0) >= rounds:
             it['final'] = (ok or {}).get('final') or u
             it['gate_key'] = (ok or {}).get('key')
             passed.add(u)
@@ -230,44 +264,52 @@ def gate(items, path=DEFAULT_STORE, rounds=ROUNDS, jobs=6, timeout=8,
 
     blocked = sharedstream.load_blocked()
     n_ad = n_unstable = 0
-    if retest:
-        ex = ThreadPoolExecutor(max_workers=max(1, jobs))
-        futs = {ex.submit(judge, it['url'], rounds, timeout, it.get('headers'),
-                          blocked): it for it in retest}
-        done = 0
-        for f in as_completed(futs):
-            it = futs[f]
-            done += 1
-            try:
-                r = f.result()
-            except Exception as e:
-                r = dict(ok=False, kind='dead', why='exc:' + type(e).__name__,
-                         key=None, quality=(0, 0), final=None)
-            u = it['url']
-            if r['ok']:
-                it['final'] = r.get('final') or u
-                it['gate_key'] = r.get('key')
-                q = tuple(r.get('quality') or (0, 0))
-                if q > tuple(it.get('quality') or (0, 0)):
-                    it['quality'] = q
-                passed.add(u)
-                store['pass'][u] = dict(key=r.get('key'), final=r.get('final'),
-                                        ts=_today(), rounds=rounds)
-                store['deny'].pop(u, None)
-            elif r['kind'] in ('ad', 'unstable'):
-                # 广告 / 指向不稳: 记 deny, 14 天内不再试
-                store['deny'][u] = dict(why=(r.get('why') or '')[:120],
-                                        ts=_today())
-                store['pass'].pop(u, None)
-                if r['kind'] == 'ad':
-                    n_ad += 1
-                else:
-                    n_unstable += 1
-            # dead: 只代表这次没通, 不写 deny, 下轮构建还会再试
-            if verbose and done % 25 == 0:
-                print('    门禁 %d/%d (通过 %d)' % (done, len(futs), len(passed)),
-                      flush=True)
-        ex.shutdown(wait=False)
+
+    half = max(1, rounds // 2)
+    first = _sample(retest, half, jobs, timeout, blocked, verbose)
+    alive = [it for it in retest if first.get(id(it), {}).get('ok')]
+    if alive and rounds - half > 0 and window_gap:
+        if verbose:
+            print('  第一窗干净 %d 条, 隔 %ds 复抽第二窗'
+                  % (len(alive), window_gap), flush=True)
+        time.sleep(window_gap)
+    second = _sample(alive, rounds - half, jobs, timeout, blocked, verbose)
+
+    for it in retest:
+        u = it['url']
+        r = first.get(id(it)) or dict(ok=False, kind='dead', why='no-result',
+                                      key=None, quality=(0, 0), final=None)
+        if r.get('ok'):
+            r2 = second.get(id(it))
+            if r2 is not None and not r2.get('ok'):
+                r = r2                      # 第二窗露馅
+            elif r2 is not None:
+                r = dict(ok=True, kind='ok', why='',
+                         key=r2.get('key') or r.get('key'),
+                         quality=max(tuple(r2.get('quality') or (0, 0)),
+                                     tuple(r.get('quality') or (0, 0))),
+                         final=r2.get('final') or r.get('final'))
+        if r['ok']:
+            it['final'] = r.get('final') or u
+            it['gate_key'] = r.get('key')
+            q = tuple(r.get('quality') or (0, 0))
+            if q > tuple(it.get('quality') or (0, 0)):
+                it['quality'] = q
+            passed.add(u)
+            old = (store.get('pass') or {}).get(u) or {}
+            hits = int(old.get('hits') or 0) + 1
+            store['pass'][u] = dict(key=r.get('key'), final=r.get('final'),
+                                    ts=_today(), rounds=rounds, hits=hits)
+            store['deny'].pop(u, None)
+        elif r['kind'] in ('ad', 'unstable'):
+            # 广告 / 指向不稳: 记 deny, 30 天内不再试
+            store['deny'][u] = dict(why=(r.get('why') or '')[:120], ts=_today())
+            store['pass'].pop(u, None)
+            if r['kind'] == 'ad':
+                n_ad += 1
+            else:
+                n_unstable += 1
+        # dead: 只代表这次没通, 不写 deny, 下轮构建还会再试
 
     items[:] = [it for it in items
                 if '/gslb/' not in (it.get('url') or '') or it['url'] in passed]

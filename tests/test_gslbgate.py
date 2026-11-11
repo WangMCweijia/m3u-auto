@@ -133,6 +133,12 @@ class GateTest(unittest.TestCase):
         self.assertEqual(good['final'], REAL)          # sharedstream 要用
         self.assertEqual(good['gate_key'], 'live/cctv6md')
 
+    def test_explicit_path_does_not_fall_back_to_repo_store(self):
+        """显式路径不存在时必须当成空表 —— 否则会读到仓库里真实的 deny 表"""
+        self.assertFalse(os.path.exists(self.store))
+        d = gslbgate.load(self.store)
+        self.assertEqual(d, {'pass': {}, 'deny': {}})
+
     def test_deny_survives_next_build(self):
         calls = []
 

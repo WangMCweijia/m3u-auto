@@ -129,28 +129,56 @@ def _candidates(path):
     yield os.path.join(here, '..', 'data', 'gslb_gate.json')
 
 
+def _read(p):
+    try:
+        with open(p, encoding='utf-8') as f:
+            d = json.load(f)
+    except Exception:
+        return None
+    if not isinstance(d, dict):
+        return None
+    d.setdefault('pass', {})
+    d.setdefault('deny', {})
+    return d
+
+
 def load(path=DEFAULT_STORE):
-    for p in _candidates(path):
-        try:
-            with open(p, encoding='utf-8') as f:
-                d = json.load(f)
-            if isinstance(d, dict):
-                d.setdefault('pass', {})
-                d.setdefault('deny', {})
-                return d
-        except Exception:
-            continue
+    """读存档。
+
+    只有默认路径才回退到仓库根 —— 显式传入的路径(测试/调试)必须严格按它,
+    否则测试会读到仓库里真实的 deny 表, 表现成"一条 URL 都不测"。
+    """
+    d = _read(path)
+    if d is not None:
+        return d
+    if path != DEFAULT_STORE:
+        return {'pass': {}, 'deny': {}}
+    for p in _candidates(DEFAULT_STORE):
+        d = _read(p)
+        if d is not None:
+            return d
     return {'pass': {}, 'deny': {}}
 
 
+def _write(store, p):
+    os.makedirs(os.path.dirname(os.path.abspath(p)), exist_ok=True)
+    tmp = p + '.tmp'
+    with open(tmp, 'w', encoding='utf-8') as f:
+        json.dump(store, f, ensure_ascii=False, indent=1, sort_keys=True)
+    os.replace(tmp, p)
+
+
 def save(store, path=DEFAULT_STORE):
-    for p in _candidates(path):
+    try:
+        _write(store, path)
+        return True
+    except Exception:
+        pass
+    if path != DEFAULT_STORE:
+        return False
+    for p in _candidates(DEFAULT_STORE):
         try:
-            os.makedirs(os.path.dirname(os.path.abspath(p)), exist_ok=True)
-            tmp = p + '.tmp'
-            with open(tmp, 'w', encoding='utf-8') as f:
-                json.dump(store, f, ensure_ascii=False, indent=1, sort_keys=True)
-            os.replace(tmp, p)
+            _write(store, p)
             return True
         except Exception:
             continue

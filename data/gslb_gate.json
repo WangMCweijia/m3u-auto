@@ -16,10 +16,6 @@
    "ts": "2026-11-18",
    "why": "round1:ad:applive/byt"
   },
-  "http://38.75.136.137:98/gslb/dsdqbv/bjwsmd.m3u8?auth=test20251009": {
-   "ts": "2026-11-18",
-   "why": "round1:ad:applive/102"
-  },
   "http://38.75.136.137:98/gslb/dsdqbv/btws.m3u8?auth=test20251009": {
    "ts": "2026-11-12",
    "why": "round1:ad:applive/yss"
@@ -56,10 +52,6 @@
    "ts": "2026-11-17",
    "why": "round1:ad:applive/mkt"
   },
-  "http://38.75.136.137:98/gslb/dsdqbv/cctv13.m3u8?auth=test20251009": {
-   "ts": "2026-11-18",
-   "why": "round1:ad:applive/mkt"
-  },
   "http://38.75.136.137:98/gslb/dsdqbv/cctv13hd.m3u8?auth=test20251009": {
    "ts": "2026-11-12",
    "why": "round1:ad:applive/yss"
@@ -75,10 +67,6 @@
   "http://38.75.136.137:98/gslb/dsdqbv/cctv14md.m3u8?auth=test20251009": {
    "ts": "2026-11-11",
    "why": "round4:ad:applive/102"
-  },
-  "http://38.75.136.137:98/gslb/dsdqbv/cctv15.m3u8?auth=test20251009": {
-   "ts": "2026-11-18",
-   "why": "round1:ad:applive/102"
   },
   "http://38.75.136.137:98/gslb/dsdqbv/cctv15hd.m3u8?auth=test20251009": {
    "ts": "2026-11-13",
@@ -155,6 +143,10 @@
   "http://38.75.136.137:98/gslb/dsdqbv/cctv4o.m3u8?auth=test20251009": {
    "ts": "2026-11-13",
    "why": "round1:ad:applive/mkt"
+  },
+  "http://38.75.136.137:98/gslb/dsdqbv/cctv5hd.m3u8?auth=test20251009": {
+   "ts": "2026-11-19",
+   "why": "round1:ad:applive/105"
   },
   "http://38.75.136.137:98/gslb/dsdqbv/cctv5md.m3u8?auth=test20251009": {
    "ts": "2026-11-14",
@@ -364,17 +356,9 @@
    "ts": "2026-11-18",
    "why": "round1:ad:applive/102"
   },
-  "http://38.75.136.137:98/gslb/dsdqbv/hljws.m3u8?auth=test20251009": {
-   "ts": "2026-11-18",
-   "why": "round1:ad:applive/yss"
-  },
   "http://38.75.136.137:98/gslb/dsdqbv/hljwshd.m3u8?auth=test20251009": {
    "ts": "2026-11-13",
    "why": "round1:ad:applive/102"
-  },
-  "http://38.75.136.137:98/gslb/dsdqbv/hljwsmd.m3u8?auth=test20251009": {
-   "ts": "2026-11-18",
-   "why": "round1:ad:applive/yss"
   },
   "http://38.75.136.137:98/gslb/dsdqbv/hnws4k.m3u8?auth=test20251009": {
    "ts": "2026-11-12",
@@ -484,10 +468,6 @@
    "ts": "2026-11-14",
    "why": "round2:ad:applive/mkt"
   },
-  "http://38.75.136.137:98/gslb/dsdqbv/snnlmd.m3u8?auth=test20251009": {
-   "ts": "2026-11-18",
-   "why": "round1:ad:applive/mkt"
-  },
   "http://38.75.136.137:98/gslb/dsdqbv/snwshd.m3u8?auth=test20251009": {
    "ts": "2026-11-18",
    "why": "round1:ad:applive/byt"
@@ -519,10 +499,6 @@
   "http://38.75.136.137:98/gslb/dsdqbv/wsjk.m3u8?auth=test20251009": {
    "ts": "2026-11-18",
    "why": "round1:ad:applive/yss"
-  },
-  "http://38.75.136.137:98/gslb/dsdqbv/wsjkmd.m3u8?auth=test20251009": {
-   "ts": "2026-11-18",
-   "why": "round1:ad:applive/105"
   },
   "http://38.75.136.137:98/gslb/dsdqbv/xjws.m3u8?auth=test20251009": {
    "ts": "2026-11-18",
@@ -608,14 +584,6 @@
    "ts": "2026-11-12",
    "why": "round1:ad:applive/mkt"
   },
-  "http://38.75.136.137:98/gslb/dsdqpub/bxjk.m3u8?auth=testpub": {
-   "ts": "2026-11-15",
-   "why": "round1:ad:applive/mkt"
-  },
-  "http://38.75.136.137:98/gslb/dsdqpub/cctv1.m3u8?auth=testpub": {
-   "ts": "2026-11-17",
-   "why": "round1:ad:applive/byt"
-  },
   "http://38.75.136.137:98/gslb/dsdqpub/cctv10hd.m3u8?auth=testpub": {
    "ts": "2026-11-17",
    "why": "round1:ad:applive/mkt"
@@ -623,10 +591,6 @@
   "http://38.75.136.137:98/gslb/dsdqpub/cctv10md.m3u8?auth=testpub": {
    "ts": "2026-11-16",
    "why": "round2:ad:applive/mkt"
-  },
-  "http://38.75.136.137:98/gslb/dsdqpub/cctv11.m3u8?auth=testpub": {
-   "ts": "2026-11-15",
-   "why": "round1:ad:applive/102"
   },
   "http://38.75.136.137:98/gslb/dsdqpub/cctv11hd.m3u8?auth=testpub": {
    "ts": "2026-11-17",
@@ -643,10 +607,6 @@
   "http://38.75.136.137:98/gslb/dsdqpub/cctv12md.m3u8?auth=testpub": {
    "ts": "2026-11-11",
    "why": "round3:ad:applive/mkt"
-  },
-  "http://38.75.136.137:98/gslb/dsdqpub/cctv13.m3u8?auth=testpub": {
-   "ts": "2026-11-17",
-   "why": "round1:ad:applive/mkt"
   },
   "http://38.75.136.137:98/gslb/dsdqpub/cctv13hd.m3u8?auth=testpub": {
    "ts": "2026-11-13",
@@ -715,6 +675,10 @@
   "http://38.75.136.137:98/gslb/dsdqpub/cctv4o.m3u8?auth=testpub": {
    "ts": "2026-11-17",
    "why": "round1:ad:applive/mkt"
+  },
+  "http://38.75.136.137:98/gslb/dsdqpub/cctv5hd.m3u8?auth=testpub": {
+   "ts": "2026-11-19",
+   "why": "round2:ad:applive/105"
   },
   "http://38.75.136.137:98/gslb/dsdqpub/cctv5md.m3u8?auth=testpub": {
    "ts": "2026-11-17",
@@ -936,6 +900,10 @@
    "ts": "2026-11-17",
    "why": "round1:ad:applive/byt"
   },
+  "http://38.75.136.137:98/gslb/dsdqpub/qhzymd.m3u8?auth=testpub": {
+   "ts": "2026-11-19",
+   "why": "round1:ad:applive/102"
+  },
   "http://38.75.136.137:98/gslb/dsdqpub/scws4k.m3u8?auth=testpub": {
    "ts": "2026-11-15",
    "why": "round2:ad:applive/mkt"
@@ -1072,16 +1040,8 @@
    "ts": "2026-11-11",
    "why": "round1:ad:applive/mkt"
   },
-  "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=bxjk": {
-   "ts": "2026-11-11",
-   "why": "round1:ad:applive/yss"
-  },
   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=bxjkmd": {
    "ts": "2026-11-11",
-   "why": "round1:ad:applive/yss"
-  },
-  "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv1": {
-   "ts": "2026-11-12",
    "why": "round1:ad:applive/yss"
   },
   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv10": {
@@ -1094,10 +1054,6 @@
   },
   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv10md": {
    "ts": "2026-11-14",
-   "why": "round1:ad:applive/mkt"
-  },
-  "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv11": {
-   "ts": "2026-11-11",
    "why": "round1:ad:applive/mkt"
   },
   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv11hd": {
@@ -1119,10 +1075,6 @@
   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv12md": {
    "ts": "2026-11-15",
    "why": "round1:ad:applive/102"
-  },
-  "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv13": {
-   "ts": "2026-11-11",
-   "why": "round1:ad:applive/mkt"
   },
   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv13hd": {
    "ts": "2026-11-17",
@@ -1223,6 +1175,10 @@
   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv4o": {
    "ts": "2026-11-17",
    "why": "round1:ad:applive/mkt"
+  },
+  "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv5hd": {
+   "ts": "2026-11-19",
+   "why": "round1:ad:applive/cctv5"
   },
   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv5md": {
    "ts": "2026-11-17",
@@ -1608,6 +1564,10 @@
    "ts": "2026-11-12",
    "why": "round1:ad:applive/xmws"
   },
+  "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=xmwshd": {
+   "ts": "2026-11-19",
+   "why": "round1:ad:applive/byt"
+  },
   "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=xmwsmd": {
    "ts": "2026-11-18",
    "why": "round1:ad:applive/105"
@@ -1669,5 +1629,48 @@
    "why": "round1:ad:applive/yss"
   }
  },
- "pass": {}
+ "pass": {
+  "http://38.75.136.137:98/gslb/dsdqbv/cctv16hd.m3u8?auth=test20251009": {
+   "final": "http://63.141.250.98:82/live/cctv16md.m3u8?jsbt=1795063246&jsbk=433439875a2b4da2b4e2c82f6fad9659",
+   "hits": 1,
+   "key": "live/cctv16md",
+   "rounds": 4,
+   "ts": "2026-11-19"
+  },
+  "http://38.75.136.137:98/gslb/dsdqbv/cctv5p.m3u8?auth=test20251009": {
+   "final": "http://63.141.250.98:82/live/cctv5pmd.m3u8?jsbt=1795063246&jsbk=742646e98ef12e336e9fdb14552a8885",
+   "hits": 1,
+   "key": "live/cctv5pmd",
+   "rounds": 4,
+   "ts": "2026-11-19"
+  },
+  "http://38.75.136.137:98/gslb/dsdqpub/cctv16hd.m3u8?auth=testpub": {
+   "final": "http://204.12.207.154:82/live/cctv16.m3u8?jsbt=1795063245&jsbk=444c58643345f881a2e1e84fd0587359",
+   "hits": 1,
+   "key": "live/cctv16",
+   "rounds": 4,
+   "ts": "2026-11-19"
+  },
+  "http://38.75.136.137:98/gslb/dsdqpub/cctv5p.m3u8?auth=testpub": {
+   "final": "http://204.12.224.154:82/live/cctv5p.m3u8?jsbt=1795063246&jsbk=44b35ec1b0098967e257c64e00dcf71d",
+   "hits": 1,
+   "key": "live/cctv5p",
+   "rounds": 4,
+   "ts": "2026-11-19"
+  },
+  "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv16hd": {
+   "final": "http://63.141.250.98:82/live/cctv16md.m3u8?jsbt=1795063247&jsbk=fdadfd351de902205cef8da5b4cc2e8c&from=zbdq5",
+   "hits": 1,
+   "key": "live/cctv16md",
+   "rounds": 4,
+   "ts": "2026-11-19"
+  },
+  "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv5p": {
+   "final": "http://63.141.250.98:82/live/cctv5pmd.m3u8?jsbt=1795063248&jsbk=2a46911280a15d46b461f80850b36a28&from=zbdq5",
+   "hits": 1,
+   "key": "live/cctv5pmd",
+   "rounds": 4,
+   "ts": "2026-11-19"
+  }
+ }
 }

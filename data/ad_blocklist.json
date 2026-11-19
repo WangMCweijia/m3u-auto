@@ -45,6 +45,30 @@
   "http://38.75.136.137:98/gslb/dsdqpub/gdgj.m3u8?auth=testpub": {
    "reason": "大湾区卫视 — 020-22625388 便秘药品广告, 无真信号",
    "seen": "2026-10-27"
+  },
+  "http://play.kankanlive.com/live/1698234869325962.m3u8": {
+   "reason": "CCTV-1 — 用户真机实测播放失败 (二级列表取不到), 换条直连源",
+   "seen": "2026-11-19"
+  },
+  "http://play.kankanlive.com/live/1720408280309109.m3u8": {
+   "reason": "CCTV-1 — 用户真机实测播放失败 (二级列表取不到), 换条直连源",
+   "seen": "2026-11-19"
+  },
+  "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv1hd": {
+   "reason": "CCTV-1 — 用户真机实测画面为广告",
+   "seen": "2026-11-19"
+  },
+  "http://38.75.136.137:98/gslb/dsdqpub/cctv1hd.m3u8?auth=testpub": {
+   "reason": "CCTV-1 — 用户真机实测播放失败",
+   "seen": "2026-11-19"
+  },
+  "http://204.12.221.218:8181/3m1080p/cctv15.m3u8": {
+   "reason": "CCTV-15 — 抽帧为 400-681-6969 保健品广告 (2026-11-19 四台镜像同时段全部是广告)",
+   "seen": "2026-11-19"
+  },
+  "http://198.204.228.26/live/cctv15hd.m3u8": {
+   "reason": "CCTV-15 — 抽帧为 400-681-6969 保健品广告",
+   "seen": "2026-11-19"
   }
  },
  "channel": {

@@ -178,6 +178,34 @@ def load_extras(path='data/extra_sources.txt'):
     return out
 
 
+def load_besteffort(path='data/extra_besteffort.txt'):
+    """构建机验不了、但国内可能可播的线路: 每行 `频道名|URL`
+
+    两类东西放这里: 运营商组播代理 (只在对应宽带的城域网内通) 和
+    轮盘网关 (构建时抽到广告就会被门禁拒掉, 但用户点开常常是真源)。
+    它们不参与验活与广告池判定, 直接进订阅, status='besteffort'
+    让 m3uio.line_key 把它们排在同台最后。
+    """
+    out = []
+    if not path or not os.path.exists(path):
+        return out
+    for line in open(path, encoding='utf-8', errors='replace'):
+        line = line.strip()
+        if not line or line.startswith('#'):
+            continue
+        name, sep, url = line.partition('|')
+        name, url = name.strip(), url.strip()
+        if not sep or not url.startswith(('http://', 'https://')):
+            continue
+        tvg_id, disp, group = cm.canonical('', name)
+        if group in ('地方', '', cm.OTHER_GROUP):
+            group = cm.prov_of(name)
+        out.append(dict(ename='', tvg_id=tvg_id, name=disp, raw_name=name,
+                        group=group, icon='', logo='', url=url, headers={},
+                        status='besteffort', quality=(0, 0)))
+    return out
+
+
 def iter_sources(data):
     """展开为线路列表。
 
@@ -230,6 +258,12 @@ def probe(item, timeout=8):
         item['final'] = ctx['final']
     if ok:
         return 'ok', detail, q or (0, 0)
+    # kankan 的一级 m3u8 有效, 但二级播放列表固定落在 livehwc4.com:
+    # 国内可达, 海外 CI/沙箱不可达。master 能解析出 variant 却取不到分片时
+    # 按 playlist-only 保留 (国内用户可播), 不当死链删掉。
+    if (detail in ('TimeoutError', 'URLError', 'timeout', 'socket.timeout')
+            and 'kankanlive.com' in item['url']):
+        return 'playlist-only', 'kankan-edge-blocked', (0, 0)
     # 超时/域名解析失败留到下一轮重试; 网关偶尔会回 HTML 错误页(限流),
     # 这类也按可重试处理, 否则会把好线路误判成死链
     if (detail in ('TimeoutError', 'URLError', 'timeout', 'socket.timeout')
@@ -444,6 +478,8 @@ def main():
     ap.add_argument('--limit', type=int, default=0, help='限制线路数, 调试用')
     ap.add_argument('--no-gslb', dest='gslb', action='store_false',
                     help='跳过 gslb 网关采集')
+    ap.add_argument('--no-kdsapi', dest='kdsapi', action='store_false',
+                    help='跳过 91kds API 直连源采集')
     ap.add_argument('--no-gslb-gate', dest='gslb_gate', action='store_false',
                     help='关掉 gslb 抽样门禁 (危险: /gslb/ 线路会全被黑名单挡掉)')
     ap.add_argument('--gslb-rounds', type=int, default=4,
@@ -513,6 +549,39 @@ def main():
         ex = [e for e in ex if e['url'] not in have]
         items = items + ex
         print('  人工确认源 %d 条' % len(ex), flush=True)
+    if args.kdsapi:
+        # 官方 get_source 接口里除了 kdsvod 私有协议, 还有一批可直接播放的
+        # HLS (kankan / cctv.cn / hunancatv), 按央视抓回来补线路
+        try:
+            import kdsapi
+            api_ch = [dict(ch, group=guess_group(ch)) for ch in data
+                      if guess_group(ch) == '央视']
+            api_items = kdsapi.collect(
+                api_ch, cache_path='data/kdsapi_cache.json', timeout=8)
+            if api_items:
+                # 接口的 ename 归属比频道表新: 频道表是某个时间点的快照,
+                # 实测 1720408280309109 在表里被标成 gsbytv2「白银文化教育」,
+                # 而 get_source?ename=cctv1hd 把它作为 cctv1hd 的 cdn1080p
+                # 返回, 且 gsbytv2 的接口已返回空 —— 表里那条是旧映射。
+                # 冲突时以接口为准, 把旧台名下的同一 URL 摘掉。
+                have = {(i['tvg_id'], i['url']) for i in items}
+                add = []
+                for it in api_items:
+                    if (it['tvg_id'], it['url']) in have:
+                        continue
+                    clash = [x for x in items if x['url'] == it['url']]
+                    for x in clash:
+                        items.remove(x)
+                        print('  归属改判: %s -> %s (%s)'
+                              % (x['name'], it['name'], it['url'][:60]),
+                              flush=True)
+                    items.append(it)
+                    have.add((it['tvg_id'], it['url']))
+                    add.append(it)
+                print('  91kds API 直连源 %d 条' % len(add), flush=True)
+        except Exception as e:
+            print('  kdsapi 采集失败: %s: %s' % (type(e).__name__, e),
+                  flush=True)
     if args.limit:
         items = items[:args.limit]
     print('  直连线路 %d 条' % len(items), flush=True)
@@ -584,6 +653,15 @@ def main():
     import sharedstream
     n_pool = sharedstream.apply(alive)
     meta['poolDropped'] = n_pool
+
+    # 尽力而为线路: 构建机到不了 (运营商组播/轮盘网关), 但国内网络可能可播。
+    # 不参与验活与广告池判定, 直接进订阅; status='besteffort' 排在同台最后。
+    soft = load_besteffort()
+    if soft:
+        have = {it['url'] for it in alive}
+        soft = [it for it in soft if it['url'] not in have]
+        alive += soft
+        print('  尽力而为线路 %d 条 (未验活, 排同台最后)' % len(soft), flush=True)
 
     epg_map, epg_url = {}, ''
     if args.epg:

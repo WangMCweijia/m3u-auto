@@ -82,11 +82,18 @@
 ## 数据来源
 
 1. **公开频道表** `sj.91kds.cn` —— 拉取频道清单与线路，无鉴权
-2. **gslb 网关** —— 见下节，把 91kds 的 `ename` 转成可用地址
-3. **iptv-api / zbefine / iptv-org / fanmingming / vbskycn** —— 补充备选线路
+2. **91kds `get_source.php` 签名接口** —— 按 ename 取 kankan / cctv.cn / hunancatv 等直连 HLS
+3. **gslb 网关** —— 见下节，把 91kds 的 `ename` 转成可用地址
+4. **iptv-api / zbefine / iptv-org / fanmingming / vbskycn** —— 补充备选线路
 
 所有线路在构建时逐条 HTTP 实测，**必须真的取到一个分片（.ts）**才保留；
 同频道内按解析出的 `RESOLUTION` / `BANDWIDTH` 降序排列，高清线路优先。
+例外：kankan 一级 m3u8 有效、但二级列表落在 `livehwc4.com`（海外构建机不可达）时，
+按 `playlist-only` 保留，国内播放器可正常播放。
+
+还有一类线路在 `data/extra_besteffort.txt` 里**不验活直接进订阅**：
+运营商组播代理（`/udp/`，只在对应宽带城域网内通）和轮盘网关（构建时抽到广告
+就会被门禁拒掉，但用户点开常常是真源）。它们排在同台最后，`status='besteffort'`。
 
 ### 为什么必须验到分片
 
@@ -142,6 +149,7 @@ scripts/m3uio.py          M3U 读写 + 按 tvg-id 聚合排序
 scripts/hlslive.py        直播性判定 (必须取到分片才算活)
 scripts/adfilter.py       广告主机黑名单过滤 (url/host/channel 三级)
 scripts/sharedstream.py   广告池识别 (多频道共用一个流 -> 整组剔除)
+scripts/kdsapi.py         get_source 签名接口采集直连 HLS (央视/卫视)
 scripts/gslb.py           gslb 网关采集 (央视/卫视线路主力)
 scripts/gslbgate.py       gslb 轮盘抽样门禁 (连续 N 轮同源才算数)
 scripts/build.py          拉频道表 -> 解析 -> 验活 -> 生成订阅
@@ -153,6 +161,8 @@ scripts/local_run.py      本地一键跑完整流水线 (Actions 兜底)
 scripts/probeurls.py      按线路连抽多帧的时序联系表 (查间歇插播)
 scripts/chansheet.py      按频道出全部线路联系表 (查整台广告)
 tests/                    单元测试 (64 个用例, CI 每次跑)
+data/kdsapi_cache.json    get_source 直连源缓存 (按 URL 累积, 4 小时有效)
+data/extra_besteffort.txt 构建机验不了的线路 (运营商组播/轮盘网关), 不验活直接进订阅
 data/gslb_cache.json      gslb 命中缓存
 data/gslb_gate.json       gslb 门禁结论 (pass 1 天 / deny 30 天)
 data/prov_map.json        地名前缀 -> 省份 (构建时自动生成)

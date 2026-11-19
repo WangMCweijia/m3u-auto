@@ -44,8 +44,18 @@ def parse_m3u(text):
         # endswith('卫视') 判不出来, 卫视会被当成地方台
         name = re.sub(r'\s*\[(?:4K|8K|\d{3,4}[Pp])\]\s*$', '', name).strip()
         j = i + 1
+        headers = {}
         while j < len(lines) and (not lines[j].strip()
                                   or lines[j].lstrip().startswith('#')):
+            # 需要 referer/UA 的线路是带着 #EXTVLCOPT 写出去的;
+            # 读回来时必须还原, 否则 merge_public 合并一次就把头丢了,
+            # 线路从"能播"变成 403 (CCTV-2 官方源就是这样被写坏的)
+            m_opt = re.match(r'\s*#EXTVLCOPT:http-(referrer|referer|user-agent)=(.+)$',
+                             lines[j], re.I)
+            if m_opt:
+                k = m_opt.group(1).lower()
+                headers['referer' if k.startswith('refer') else 'user-agent'] = \
+                    m_opt.group(2).strip()
             j += 1
         url = lines[j].strip() if j < len(lines) else ''
         if url.startswith(('http://', 'https://')):
@@ -58,7 +68,8 @@ def parse_m3u(text):
                     tid2, disp, grp = tid3, disp3, grp3
             out.append(dict(tvg_id=tid2, name=disp or name,
                             group=group or grp, logo=logo, url=url,
-                            ename=tvg_id_raw, order=len(out)))
+                            ename=tvg_id_raw, order=len(out),
+                            headers=headers))
         i = j + 1
     return out
 

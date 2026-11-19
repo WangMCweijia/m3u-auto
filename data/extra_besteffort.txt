@@ -3,5 +3,9 @@
 # 不参与验活与广告池判定, 直接进订阅, 排在同台最后
 # 2026-11-19 实测: 5 条运营商组播代理在用户宽带上全部转圈, zbdq5 是广告,
 # dsdqpub 打不开, 已全部移除; 只留 dsdqbv 一条 (用户实测可播).
+# 2026-11-19 补充: CCTV-15/CCTV-5+ 的 dsdqbv 网关线路抽帧为真节目
+# (民歌中国 / 花样滑冰), 农场与 kankan 只有广告, 用这两条兜底.
 
 CCTV-1 综合|http://38.75.136.137:98/gslb/dsdqbv/cctv1hd.m3u8?auth=test20251009
+CCTV-15 音乐|http://38.75.136.137:98/gslb/dsdqbv/cctv15hd.m3u8?auth=test20251009
+CCTV-5+ 体育赛事|http://38.75.136.137:98/gslb/dsdqbv/cctv5p.m3u8?auth=test20251009

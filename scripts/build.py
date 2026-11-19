@@ -174,7 +174,8 @@ def load_extras(path='data/extra_sources.txt'):
         if group in ('地方', '', cm.OTHER_GROUP):
             group = cm.prov_of(name)
         out.append(dict(ename='', tvg_id=tvg_id, name=disp, raw_name=name,
-                        group=group, icon='', logo='', url=url, headers={}))
+                        group=group, icon='', logo='', url=url, headers={},
+                        manual=True))
     return out
 
 
@@ -258,12 +259,10 @@ def probe(item, timeout=8):
         item['final'] = ctx['final']
     if ok:
         return 'ok', detail, q or (0, 0)
-    # kankan 的一级 m3u8 有效, 但二级播放列表固定落在 livehwc4.com:
-    # 国内可达, 海外 CI/沙箱不可达。master 能解析出 variant 却取不到分片时
-    # 按 playlist-only 保留 (国内用户可播), 不当死链删掉。
-    if (detail in ('TimeoutError', 'URLError', 'timeout', 'socket.timeout')
-            and 'kankanlive.com' in item['url']):
-        return 'playlist-only', 'kankan-edge-blocked', (0, 0)
+    # kankan 的一级 m3u8 有效, 但二级播放列表落在 livehwc4.com 边缘。
+    # 边缘恢复后可播, 边缘挂了国内用户也一样黑屏 (真机实测 2 条 CCTV-1
+    # kankan 线路全部播放失败), 所以超时一律按可重试处理, 重试仍失败就丢弃,
+    # 不能再当"国内可播"的无条件保留 —— 那正是坏线路混进订阅的来源。
     # 超时/域名解析失败留到下一轮重试; 网关偶尔会回 HTML 错误页(限流),
     # 这类也按可重试处理, 否则会把好线路误判成死链
     if (detail in ('TimeoutError', 'URLError', 'timeout', 'socket.timeout')
@@ -545,10 +544,23 @@ def main():
     items = list(iter_sources(data))
     ex = load_extras()
     if ex:
-        have = {i['url'] for i in items}
-        ex = [e for e in ex if e['url'] not in have]
-        items = items + ex
-        print('  人工确认源 %d 条' % len(ex), flush=True)
+        # 不能在"地址已存在"时直接丢掉人工源: 频道表本身也带这些农场地址,
+        # 丢掉后那条线路就没有 manual 标记, 高并发漏抽时也不会被补验,
+        # 结果整个 CCTV-1 只剩一条网关线。这里改为给已有条目打标记。
+        have = {i['url']: i for i in items}
+        added = marked = 0
+        for e in ex:
+            old = have.get(e['url'])
+            if old is not None:
+                if not old.get('manual'):
+                    marked += 1
+                old['manual'] = True
+            else:
+                items.append(e)
+                have[e['url']] = e
+                added += 1
+        print('  人工确认源 %d 条 (新增 %d / 标记已存在 %d)'
+              % (len(ex), added, marked), flush=True)
     if args.kdsapi:
         # 官方 get_source 接口里除了 kdsvod 私有协议, 还有一批可直接播放的
         # HLS (kankan / cctv.cn / hunancatv), 按央视抓回来补线路
@@ -645,6 +657,21 @@ def main():
         alive = run_probe(items, jobs=args.jobs, timeout=args.timeout,
                           state_path=args.verify_state)
         print('  存活 %d / %d' % (len(alive), len(items)), flush=True)
+
+        # 人工确认源补验: 这些站(农场镜像)对高并发很敏感, 40 并发时偶尔
+        # 会整批超时, 结果整台只剩一条或直接消失。收紧到 4 并发再试两轮,
+        # 只针对 data/extra_sources.txt 里手工钉住的线路。
+        alive_urls = {it['url'] for it in alive}
+        miss = [it for it in items
+                if it.get('manual') and it['url'] not in alive_urls]
+        if miss:
+            print('  人工源补验 %d 条 (低并发)' % len(miss), flush=True)
+            rescued = run_probe(list(miss), jobs=4, timeout=12, retry=2)
+            if rescued:
+                have = {it['url'] for it in alive}
+                rescued = [it for it in rescued if it['url'] not in have]
+                alive += rescued
+                print('  补验成功 %d 条' % len(rescued), flush=True)
 
     print('[4/4] 生成订阅', flush=True)
 

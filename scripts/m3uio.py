@@ -175,12 +175,15 @@ def group_and_sort(items):
             seen.add(it['url'])
             uniq.append(it)
         rep = uniq[0]
+        # 台标取组内第一个非空值: rep 往往是人工源/网关线路, 没有 icon,
+        # 若只认 rep, 整台会丢 logo (CCTV-1 就出现过 12 条里 10 条无台标)
+        rep_logo = next((x.get('logo') for x in uniq if x.get('logo')), '')
         grp = normalize_group(rep['tvg_id'], rep['name'], rep.get('group'))
         for it in uniq:
             d = dict(it)
             d['name'] = rep['name']
             d['group'] = grp
-            d['logo'] = d.get('logo') or rep.get('logo') or ''
+            d['logo'] = d.get('logo') or rep_logo
             out.append(d)
 
     def sk(it):

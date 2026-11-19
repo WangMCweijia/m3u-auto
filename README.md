@@ -91,6 +91,10 @@
 例外：kankan 一级 m3u8 有效、但二级列表落在 `livehwc4.com`（海外构建机不可达）时，
 按 `playlist-only` 保留，国内播放器可正常播放。
 
+还有一类线路在 `data/extra_besteffort.txt` 里**不验活直接进订阅**：
+运营商组播代理（`/udp/`，只在对应宽带城域网内通）和轮盘网关（构建时抽到广告
+就会被门禁拒掉，但用户点开常常是真源）。它们排在同台最后，`status='besteffort'`。
+
 ### 为什么必须验到分片
 
 只看「能不能取到 m3u8」会放过大量**空壳线路**：播放列表合法、
@@ -158,6 +162,7 @@ scripts/probeurls.py      按线路连抽多帧的时序联系表 (查间歇插�
 scripts/chansheet.py      按频道出全部线路联系表 (查整台广告)
 tests/                    单元测试 (64 个用例, CI 每次跑)
 data/kdsapi_cache.json    get_source 直连源缓存 (按 URL 累积, 4 小时有效)
+data/extra_besteffort.txt 构建机验不了的线路 (运营商组播/轮盘网关), 不验活直接进订阅
 data/gslb_cache.json      gslb 命中缓存
 data/gslb_gate.json       gslb 门禁结论 (pass 1 天 / deny 30 天)
 data/prov_map.json        地名前缀 -> 省份 (构建时自动生成)

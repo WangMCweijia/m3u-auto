@@ -178,6 +178,34 @@ def load_extras(path='data/extra_sources.txt'):
     return out
 
 
+def load_besteffort(path='data/extra_besteffort.txt'):
+    """构建机验不了、但国内可能可播的线路: 每行 `频道名|URL`
+
+    两类东西放这里: 运营商组播代理 (只在对应宽带的城域网内通) 和
+    轮盘网关 (构建时抽到广告就会被门禁拒掉, 但用户点开常常是真源)。
+    它们不参与验活与广告池判定, 直接进订阅, status='besteffort'
+    让 m3uio.line_key 把它们排在同台最后。
+    """
+    out = []
+    if not path or not os.path.exists(path):
+        return out
+    for line in open(path, encoding='utf-8', errors='replace'):
+        line = line.strip()
+        if not line or line.startswith('#'):
+            continue
+        name, sep, url = line.partition('|')
+        name, url = name.strip(), url.strip()
+        if not sep or not url.startswith(('http://', 'https://')):
+            continue
+        tvg_id, disp, group = cm.canonical('', name)
+        if group in ('地方', '', cm.OTHER_GROUP):
+            group = cm.prov_of(name)
+        out.append(dict(ename='', tvg_id=tvg_id, name=disp, raw_name=name,
+                        group=group, icon='', logo='', url=url, headers={},
+                        status='besteffort', quality=(0, 0)))
+    return out
+
+
 def iter_sources(data):
     """展开为线路列表。
 
@@ -625,6 +653,15 @@ def main():
     import sharedstream
     n_pool = sharedstream.apply(alive)
     meta['poolDropped'] = n_pool
+
+    # 尽力而为线路: 构建机到不了 (运营商组播/轮盘网关), 但国内网络可能可播。
+    # 不参与验活与广告池判定, 直接进订阅; status='besteffort' 排在同台最后。
+    soft = load_besteffort()
+    if soft:
+        have = {it['url'] for it in alive}
+        soft = [it for it in soft if it['url'] not in have]
+        alive += soft
+        print('  尽力而为线路 %d 条 (未验活, 排同台最后)' % len(soft), flush=True)
 
     epg_map, epg_url = {}, ''
     if args.epg:

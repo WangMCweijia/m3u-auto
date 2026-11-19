@@ -400,6 +400,10 @@
    "ts": "2026-11-16",
    "why": "round2:ad:applive/102"
   },
+  "http://38.75.136.137:98/gslb/dsdqbv/tjwsmd.m3u8?auth=test20251009": {
+   "ts": "2026-11-19",
+   "why": "round1:ad:applive/mkt"
+  },
   "http://38.75.136.137:98/gslb/dsdqbv/wsjk.m3u8?auth=test20251009": {
    "ts": "2026-11-18",
    "why": "round1:ad:applive/yss"
@@ -559,10 +563,6 @@
   "http://38.75.136.137:98/gslb/dsdqpub/cctv15.m3u8?auth=testpub": {
    "ts": "2026-11-19",
    "why": "round1:ad:applive/105"
-  },
-  "http://38.75.136.137:98/gslb/dsdqpub/cctv15hd.m3u8?auth=testpub": {
-   "ts": "2026-11-19",
-   "why": "round1:ad:applive/byt"
   },
   "http://38.75.136.137:98/gslb/dsdqpub/cctv15md.m3u8?auth=testpub": {
    "ts": "2026-11-12",
@@ -764,6 +764,10 @@
    "ts": "2026-11-19",
    "why": "round1:ad:applive/105"
   },
+  "http://38.75.136.137:98/gslb/dsdqpub/cctvr.m3u8?auth=testpub": {
+   "ts": "2026-11-19",
+   "why": "round1:ad:applive/mkt"
+  },
   "http://38.75.136.137:98/gslb/dsdqpub/cctvrmd.m3u8?auth=testpub": {
    "ts": "2026-11-19",
    "why": "round1:ad:applive/105"
@@ -818,10 +822,6 @@
   },
   "http://38.75.136.137:98/gslb/dsdqpub/chcdz.m3u8?auth=testpub": {
    "ts": "2026-11-12",
-   "why": "round1:ad:applive/102"
-  },
-  "http://38.75.136.137:98/gslb/dsdqpub/chcdzmd.m3u8?auth=testpub": {
-   "ts": "2026-11-19",
    "why": "round1:ad:applive/102"
   },
   "http://38.75.136.137:98/gslb/dsdqpub/chchc.m3u8?auth=testpub": {

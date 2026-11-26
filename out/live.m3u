@@ -17,10 +17,8 @@ http://192.151.150.154/live/cctv2hd.m3u8
 http://204.12.221.218:8181/3m1080p/cctv3.m3u8
 #EXTINF:-1 tvg-id="CCTV3" tvg-name="CCTV-3 综艺" group-title="央视" tvg-logo="https://www.xn--rgv465a.top/tvlogo/CCTV-3.png",CCTV-3 综艺
 http://198.204.228.26/live/cctv3hd.m3u8
-#EXTINF:-1 tvg-id="CCTV3" tvg-name="CCTV-3 综艺" group-title="央视" tvg-logo="https://www.xn--rgv465a.top/tvlogo/CCTV-3.png",CCTV-3 综艺
+#EXTINF:-1 tvg-id="CCTV3" tvg-name="CCTV-3 综艺" group-title="央视",CCTV-3 综艺
 http://192.151.150.154/live/cctv3hd.m3u8
-#EXTINF:-1 tvg-id="CCTV3" tvg-name="CCTV-3 综艺" group-title="央视" tvg-logo="https://www.xn--rgv465a.top/tvlogo/CCTV-3.png",CCTV-3 综艺
-http://69.30.245.50/live/cctv3.m3u8
 #EXTINF:-1 tvg-id="CCTV4" tvg-name="CCTV-4 中文国际" group-title="央视",CCTV-4 中文国际
 http://198.204.228.26/live/cctv4hd.m3u8
 #EXTINF:-1 tvg-id="CCTV4" tvg-name="CCTV-4 中文国际" group-title="央视",CCTV-4 中文国际
@@ -46,8 +44,6 @@ http://192.151.150.154/live/cctv7hd.m3u8
 #EXTINF:-1 tvg-id="CCTV7" tvg-name="CCTV-7 国防军事" group-title="央视" tvg-logo="https://www.xn--rgv465a.top/tvlogo/CCTV-7.png",CCTV-7 国防军事
 http://69.30.245.50/live/cctv7.m3u8
 #EXTINF:-1 tvg-id="CCTV8" tvg-name="CCTV-8 电视剧" group-title="央视" tvg-logo="https://www.xn--rgv465a.top/tvlogo/CCTV-8.png",CCTV-8 电视剧
-http://204.12.221.218:8181/3m1080p/cctv8.m3u8
-#EXTINF:-1 tvg-id="CCTV8" tvg-name="CCTV-8 电视剧" group-title="央视" tvg-logo="https://www.xn--rgv465a.top/tvlogo/CCTV-8.png",CCTV-8 电视剧
 http://192.151.150.154/live/cctv8hd.m3u8
 #EXTINF:-1 tvg-id="CCTV8" tvg-name="CCTV-8 电视剧" group-title="央视" tvg-logo="https://www.xn--rgv465a.top/tvlogo/CCTV-8.png",CCTV-8 电视剧
 http://198.204.228.26/live/cctv8hd.m3u8
@@ -69,9 +65,7 @@ http://204.12.221.218:8181/3m1080p/cctv10.m3u8
 http://69.30.245.50/live/cctv10.m3u8
 #EXTINF:-1 tvg-id="CCTV11" tvg-name="CCTV-11 戏曲" group-title="央视",CCTV-11 戏曲
 http://192.151.150.154/live/cctv11hd.m3u8
-#EXTINF:-1 tvg-id="CCTV12" tvg-name="CCTV-12 社会与法" group-title="央视" tvg-logo="https://tb.zbds.top/logo/CCTV12.png",CCTV-12 社会与法
-http://124.165.251.82:85/tsfile/live/0012_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-id="CCTV12" tvg-name="CCTV-12 社会与法" group-title="央视" tvg-logo="https://tb.zbds.top/logo/CCTV12.png",CCTV-12 社会与法
+#EXTINF:-1 tvg-id="CCTV12" tvg-name="CCTV-12 社会与法" group-title="央视",CCTV-12 社会与法
 http://192.151.150.154/live/cctv12hd.m3u8
 #EXTINF:-1 tvg-id="CCTV13" tvg-name="CCTV-13 新闻" group-title="央视" tvg-logo="https://tb.zbds.top/logo/CCTV13.png",CCTV-13 新闻
 http://ali-m-l.cztv.com/channels/lantian/channel21/1080p.m3u8
@@ -179,9 +173,7 @@ http://l.cztvcloud.com/channels/lantian/SXxinchang2/720p.m3u8#
 https://srs.iyb983.cn/video/CYS/index.m3u8
 #EXTINF:-1 tvg-id="延边卫视" tvg-name="延边卫视" group-title="卫视" tvg-logo="https://www.xn--rgv465a.top/tvlogo/延边卫视.png",延边卫视
 https://srs.iyb983.cn:443/video/CYS/index.m3u8
-#EXTINF:-1 tvg-id="新疆卫视" tvg-name="新疆卫视" group-title="卫视" tvg-logo="https://tb.zbds.top/logo/新疆卫视.png",新疆卫视
-http://218.84.12.186:8001/hls/main/playlist.m3u8?zxinjd;http://218.84.12.186:8001/hls/main/playlist.m3u8zxinjd
-#EXTINF:-1 tvg-id="新疆卫视" tvg-name="新疆卫视" group-title="卫视" tvg-logo="https://tb.zbds.top/logo/新疆卫视.png",新疆卫视
+#EXTINF:-1 tvg-id="新疆卫视" tvg-name="新疆卫视" group-title="卫视",新疆卫视
 http://198.204.228.26/live/xjws.m3u8
 #EXTINF:-1 tvg-id="江西卫视" tvg-name="江西卫视" group-title="卫视" tvg-logo="https://www.xn--rgv465a.top/tvlogo/江西卫视.png",江西卫视
 http://112.27.5.218:9901/tsfile/live/faacts/0138_1.m3u8?key=txiptv&playlive=1&authid=0
@@ -327,8 +319,6 @@ https://d2lp2ch2.live.sxmty.com/live/hls/dd05b3d63074444abe815913a24d3a35/4c59b6
 https://qnwjgp6u.live.sxmty.com/live/hls/dbc13d75496d4203ae47dbefbc4ecec2/f6f863a0944346819c63bb413b5bd35c.m3u8
 #EXTINF:-1 tvg-id="定襄综合" tvg-name="定襄综合" group-title="山西" tvg-logo="http://tb.91kds.cn/tb/sxxzdi.jpg",定襄综合
 http://lbyzztfe.live.sxmty.com/live/hls/645ff4c60e0a49f0a203abbd73dd8be9/0720e665f10f48e98c9639f4f492fb4a-1.m3u8
-#EXTINF:-1 tvg-id="定襄综合" tvg-name="定襄综合" group-title="山西" tvg-logo="https://www.xn--rgv465a.top/tvlogo/定襄综合.png",定襄综合
-http://lbyzztfe.live.sxmty.com/live/hls/645ff4c60e0a49f0a203abbd73dd8be9/0720e665f10f48e98c9639f4f492fb4a-1.m3u8?zshanxd
 #EXTINF:-1 tvg-id="sxczps1" tvg-name="平顺综合" group-title="山西" tvg-logo="http://tb.91kds.cn/tb/sxczps.jpg",平顺综合
 http://player4.juyun.tv/tv/149466149.m3u8
 #EXTINF:-1 tvg-id="sxjctv1" tvg-name="晋城新闻" group-title="山西" tvg-logo="http://tb.91kds.cn/tb/sxjctv.jpg",晋城新闻
@@ -455,6 +445,8 @@ http://stream5.jlntv.cn/hn/sd/live.m3u8
 http://stream5.jlntv.cn/hn/sd/live.m3u8?zjild
 #EXTINF:-1 tvg-id="jlthtv1" tvg-name="通化新闻" group-title="吉林" tvg-logo="http://tb.91kds.cn/tb/jlthtv.jpg",通化新闻
 http://stream2.jlntv.cn/tonghua1/sd/live.m3u8
+#EXTINF:-1 tvg-id="长影频道" tvg-name="长影频道" group-title="吉林" tvg-logo="https://tb.zbds.top/logo/长影频道.png",长影频道
+http://tpc.x3322.net:9901/tsfile/live/1010_1.m3u8
 #EXTINF:-1 tvg-id="jlcctv1" tvg-name="长春综合" group-title="吉林" tvg-logo="http://tb.91kds.cn/tb/jlcctv.jpg",长春综合
 http://stream2.jlntv.cn/jlcc/sd/live.m3u8
 #EXTINF:-1 tvg-id="长白朝语" tvg-name="长白朝语" group-title="吉林" tvg-logo="http://tb.91kds.cn/tb/jlbscb.jpg",长白朝语
@@ -517,8 +509,6 @@ http://stream.hrbtv.net/yspd/sd/live.m3u8
 http://stream.hrbtv.net/shpd/sd/live.m3u8?zheild
 #EXTINF:-1 tvg-id="哈尔滨生活" tvg-name="哈尔滨生活" group-title="黑龙江" tvg-logo="http://tb.91kds.cn/tb/hljhebtv.jpg",哈尔滨生活
 http://stream.hrbtv.net/shpd/sd/live.m3u8
-#EXTINF:-1 tvg-id="哈尔滨资讯" tvg-name="哈尔滨资讯" group-title="黑龙江" tvg-logo="https://livecdn.zbds.org/logo/哈尔滨资讯.png",哈尔滨资讯
-http://stream.hrbtv.net/zxpd/sd/live.m3u8
 #EXTINF:-1 tvg-id="甘南县综合" tvg-name="甘南县综合" group-title="黑龙江" tvg-logo="https://livecdn.zbds.org/logo/甘南县综合.png",甘南县综合
 https://stream.hrbtv.net/zxpd/sd/live.m3u8
 #EXTINF:-1 tvg-id="黑龙江少儿" tvg-name="黑龙江少儿" group-title="黑龙江" tvg-logo="https://www.xn--rgv465a.top/tvlogo/黑龙江少儿.png",黑龙江少儿
@@ -571,10 +561,6 @@ http://live.xysrmt.cn/xwzh/sd/live.m3u8
 http://live.xysrmt.cn/shpd/sd/live.m3u8?zjiangsd
 #EXTINF:-1 tvg-id="新沂生活" tvg-name="新沂生活" group-title="江苏" tvg-logo="https://www.xn--rgv465a.top/tvlogo/新沂生活.png",新沂生活
 http://live.xysrmt.cn/shpd/sd/live.m3u8
-#EXTINF:-1 tvg-id="武进生活" tvg-name="武进生活" group-title="江苏" tvg-logo="http://tb.91kds.cn/tb/jswjtv.jpg",武进生活
-https://live.wjyanghu.com/live/CH2.m3u8
-#EXTINF:-1 tvg-id="武进生活" tvg-name="武进生活" group-title="江苏" tvg-logo="https://livecdn.zbds.org/logo/武进生活.png",武进生活
-http://live.wjyanghu.com/live/CH2.m3u8
 #EXTINF:-1 tvg-id="南京新闻综合" tvg-name="南京新闻综合" group-title="江苏" tvg-logo="https://www.xn--rgv465a.top/tvlogo/南京新闻综合.png",南京新闻综合
 http://nklive.nbs.cn/hls/d511bc9d-a694-4453-b3a2-4fc842cc97a1/index.m3u8
 #EXTINF:-1 tvg-id="jszjjr3" tvg-name="句容影视频道" group-title="江苏" tvg-logo="http://tb.91kds.cn/tb/jszjjr.jpg",句容影视频道
@@ -595,6 +581,8 @@ http://stream3.huaihai.tv/xz2t/sd/live.m3u8
 http://m.m3u8.wifiwx.com/live/wifiwx-494.m3u8
 #EXTINF:-1 tvg-id="jsczwj1" tvg-name="武进新闻频道" group-title="江苏" tvg-logo="http://tb.91kds.cn/tb/jswjtv.jpg",武进新闻频道
 https://live.wjyanghu.com/live/CH1.m3u8
+#EXTINF:-1 tvg-id="jsczwj2" tvg-name="武进生活频道" group-title="江苏" tvg-logo="http://tb.91kds.cn/tb/jswjtv.jpg",武进生活频道
+https://live.wjyanghu.com/live/CH2.m3u8
 #EXTINF:-1 tvg-id="jstztv3" tvg-name="泰州影视娱乐" group-title="江苏" tvg-logo="http://tb.91kds.cn/tb/jstztv.jpg",泰州影视娱乐
 http://stream1.mytaizhou.net/ysylnew/playlist.m3u8
 #EXTINF:-1 tvg-id="jstztv1" tvg-name="泰州新闻综合" group-title="江苏" tvg-logo="http://tb.91kds.cn/tb/jstztv.jpg",泰州新闻综合
@@ -661,8 +649,6 @@ http://l.cztvcloud.com/channels/lantian/SXwencheng1/720p.m3u8?zzhed
 http://l.cztvcloud.com/channels/lantian/SXwencheng1/720p.m3u8?zzhed?
 #EXTINF:-1 tvg-id="文成新闻综合" tvg-name="文成综合" group-title="浙江" tvg-logo="https://www.xn--rgv465a.top/tvlogo/文成新闻综合.png",文成综合
 http://l.cztvcloud.com/channels/lantian/SXwencheng1/720p.m3u8
-#EXTINF:-1 tvg-id="新昌生活" tvg-name="新昌生活" group-title="浙江" tvg-logo="http://tb.91kds.cn/tb/zjxctv.jpg",新昌生活
-http://42483.hlsplay.aodianyun.com/tv_radio_42483/tv_channel_1362.m3u8?auth_key=4822775993-0-0-794137d1fe5386cd0af9187b847cdb58&extra_key=Zw98aic2180l9sU6iuh1EbAqdAAz9gnUojG4L1fD4inb17oCEPJU8LKWHJMVnjSVvZCDWJWlTASDNHf4AwEwMgG7Hzu5Y8ACGNRWAmdee6QRIdkXaXQYT4PlpCPyYAHgImjNza-jVrNAg93in556ZH8TXnKE0bIdsa-7XL88cRGKlFEYbgMPXxuXodDQQ5je
 #EXTINF:-1 tvg-id="新昌生活" tvg-name="新昌生活" group-title="浙江" tvg-logo="https://www.xn--rgv465a.top/tvlogo/新昌生活.png",新昌生活
 http://l.cztvcloud.com/channels/lantian/SXxinchang2/720p.m3u8
 #EXTINF:-1 tvg-id="zjhztv1" tvg-name="杭州综合" group-title="浙江" tvg-logo="http://tb.91kds.cn/tb/zjhztv.jpg",杭州综合
@@ -719,11 +705,13 @@ http://ali-m-l.cztv.com/channels/lantian/channel03/720p.m3u8
 http://ali-m-l.cztv.com/channels/lantian/channel003/720p.m3u8
 #EXTINF:-1 tvg-id="浙江遂昌" tvg-name="浙江遂昌" group-title="浙江" tvg-logo="https://www.xn--rgv465a.top/tvlogo/浙江遂昌.png",浙江遂昌
 http://l.cztvcloud.com/channels/lantian/SXsuichang1/720p.m3u8
-#EXTINF:-1 tvg-id="浙江钱江都市" tvg-name="浙江钱江" group-title="浙江" tvg-logo="https://live.fanmingming.cn/tv/钱江都市.png",浙江钱江
+#EXTINF:-1 tvg-id="浙江钱江" tvg-name="浙江钱江" group-title="浙江" tvg-logo="https://live.fanmingming.cn/tv/钱江都市.png",浙江钱江
 https://ali-m-l.cztv.com/channels/lantian/channel002/1080p.m3u8
-#EXTINF:-1 tvg-id="浙江钱江都市" tvg-name="浙江钱江" group-title="浙江" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/浙江钱江频道.png",浙江钱江
+#EXTINF:-1 tvg-id="浙江钱江" tvg-name="浙江钱江" group-title="浙江" tvg-logo="https://livecdn.zbds.org/logo/浙江钱江.png",浙江钱江
+http://l.cztvcloud.com/channels/lantian/SXyuyao2/720p.m3u8
+#EXTINF:-1 tvg-id="浙江钱江" tvg-name="浙江钱江" group-title="浙江" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/浙江钱江频道.png",浙江钱江
 http://ali-m-l.cztv.com/channels/lantian/channel02/1080p.m3u8
-#EXTINF:-1 tvg-id="浙江钱江都市" tvg-name="浙江钱江" group-title="浙江" tvg-logo="https://www.xn--rgv465a.top/tvlogo/浙江钱江.png",浙江钱江
+#EXTINF:-1 tvg-id="浙江钱江" tvg-name="浙江钱江" group-title="浙江" tvg-logo="https://www.xn--rgv465a.top/tvlogo/浙江钱江.png",浙江钱江
 https://ali-m-l.cztv.com/channels/lantian/channel002/1080p.m3u8?
 #EXTINF:-1 tvg-id="缙云新闻综合" tvg-name="缙云综合" group-title="浙江" tvg-logo="http://tb.91kds.cn/tb/zjlsjy.jpg",缙云综合
 http://l.cztvcloud.com/channels/lantian/SXjinyun1/720p.m3u8
@@ -821,8 +809,6 @@ http://l.cztvcloud.com/channels/lantian/SXkaihua2/720p.m3u8?zzhed#http://l.cztvc
 http://l.cztvcloud.com/channels/lantian/SXkaihua1/720p.m3u8?zzhed
 #EXTINF:-1 tvg-id="开化新闻综合" tvg-name="开化新闻综合" group-title="浙江" tvg-logo="https://www.xn--rgv465a.top/tvlogo/开化新闻综合.png",开化新闻综合
 http://l.cztvcloud.com/channels/lantian/SXkaihua1/720p.m3u8
-#EXTINF:-1 tvg-id="新昌新闻综合" tvg-name="新昌新闻综合" group-title="浙江" tvg-logo="http://tb.91kds.cn/tb/zjxctv.jpg",新昌新闻综合
-http://42483.hlsplay.aodianyun.com/tv_radio_42483/tv_channel_1361.m3u8?auth_key=4822776050-0-0-4962c7b74dc899703bfbba3439ce0fe2&extra_key=2vtD8BdG6zU_tdWMbQ3NhQgb0T-EUej6APZOEIIFMIXy-Qo8suohFB31MQ8Yfs4NbDBbjUuK1dm9poPK9TNHJYi1LmeV9yFZW7PGDnAVdPRc8Bfn3G_z-YHOF4oWZDkwlpDzJEnv0XpVyYEvaYWovw2FApRPUzlQ8OMBCXApCo07Yd3A2mNI9LAy51E0B4zV
 #EXTINF:-1 tvg-id="新昌新闻综合" tvg-name="新昌新闻综合" group-title="浙江" tvg-logo="https://www.xn--rgv465a.top/tvlogo/新昌新闻综合.png",新昌新闻综合
 https://l.cztvcloud.com/channels/lantian/SXxinchang1/720p.m3u8
 #EXTINF:-1 tvg-id="zjsxkq1" tvg-name="柯桥新闻综合" group-title="浙江" tvg-logo="http://tb.91kds.cn/tb/zjsxxtv.jpg",柯桥新闻综合
@@ -841,6 +827,8 @@ http://l.cztvcloud.com/channels/lantian/SXyongjia1/720p.m3u8
 http://ali-m-l.cztv.com/channels/lantian/channel012/1080p.m3u8
 #EXTINF:-1 tvg-id="浙江公共新闻" tvg-name="浙江公共新闻" group-title="浙江" tvg-logo="https://www.xn--rgv465a.top/tvlogo/浙江公共新闻.png",浙江公共新闻
 http://ali-m-l.cztv.com/channels/lantian/channel07/1080p.m3u8
+#EXTINF:-1 tvg-id="zjtv4" tvg-name="浙江教科影视" group-title="浙江" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/浙江教科影视.png",浙江教科影视
+http://ali-vl.cztv.com/channels/lantian/channel004/360p.m3u8
 #EXTINF:-1 tvg-id="zjtv4" tvg-name="浙江教科影视" group-title="浙江" tvg-logo="http://tb.91kds.cn/tb/zjws.jpg",浙江教科影视
 http://ali-m-l.cztv.com/channels/lantian/channel004/1080p.m3u8
 #EXTINF:-1 tvg-id="zjtv4" tvg-name="浙江教科影视" group-title="浙江" tvg-logo="https://www.xn--rgv465a.top/tvlogo/浙江教科影视.png",浙江教科影视
@@ -851,6 +839,8 @@ http://ali-m-l.cztv.com/channels/lantian/channel12/720p.m3u8
 http://ali-m-l.cztv.com/channels/lantian/channel12/720p.m3u8?zzhed
 #EXTINF:-1 tvg-id="zjtv6" tvg-name="浙江民生休闲" group-title="浙江" tvg-logo="http://tb.91kds.cn/tb/zjws.jpg",浙江民生休闲
 http://ali-m-l.cztv.com/channels/lantian/channel006/1080p.m3u8
+#EXTINF:-1 tvg-id="zjtv3" tvg-name="浙江经济生活" group-title="浙江" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/浙江经济生活.png",浙江经济生活
+http://ali-vl.cztv.com/channels/lantian/channel003/360p.m3u8
 #EXTINF:-1 tvg-id="zjtv3" tvg-name="浙江经济生活" group-title="浙江" tvg-logo="http://tb.91kds.cn/tb/zjws.jpg",浙江经济生活
 http://ali-m-l.cztv.com/channels/lantian/channel003/1080p.m3u8
 #EXTINF:-1 tvg-id="zjtv3" tvg-name="浙江经济生活" group-title="浙江" tvg-logo="https://www.xn--rgv465a.top/tvlogo/浙江经济生活.png",浙江经济生活
@@ -915,8 +905,6 @@ http://play-a11.quklive.com/live/1689126294179076.m3u8
 http://l.cztvcloud.com/channels/lantian/SXlongquan1/720p.m3u8
 #EXTINF:-1 tvg-id="龙游新闻综合" tvg-name="龙游新闻综合" group-title="浙江" tvg-logo="http://tb.91kds.cn/tb/zjqzly.jpg",龙游新闻综合
 http://l.cztvcloud.com/channels/lantian/SXlongyou1/720p.m3u8
-#EXTINF:-1 tvg-id="龙游新闻综合" tvg-name="龙游新闻综合" group-title="浙江" tvg-logo="https://livecdn.zbds.org/logo/龙游新闻综合.png",龙游新闻综合
-https://l.cztvcloud.com/channels/lantian/SXlongyou1/720p.m3u8
 #EXTINF:-1 tvg-id="龙游新闻综合" tvg-name="龙游新闻综合" group-title="浙江" tvg-logo="https://www.xn--rgv465a.top/tvlogo/龙游新闻综合.png",龙游新闻综合
 http://l.cztvcloud.com/channels/lantian/SXlongyou1/720p.m3u8?zzhed
 #EXTINF:-1 tvg-id="龙游生活娱乐" tvg-name="龙游生活娱乐" group-title="浙江" tvg-logo="http://tb.91kds.cn/tb/zjqzly.jpg",龙游生活娱乐
@@ -953,10 +941,6 @@ https://aq-live.media.xinhuamm.net/r/252b77197b104e1aa2456481204fb656.m3u8?auth_
 https://aq-live.media.xinhuamm.net/r/ed093a3514bd4174b1dbd5af8a8e0a9c.m3u8?auth_key=2341308528-0-0-1d8df1d541b495f33875e247c9300fc1
 #EXTINF:-1 tvg-id="ahxcgd1" tvg-name="广德新闻综合" group-title="安徽" tvg-logo="http://tb.91kds.cn/tb/ahxcgd.jpg",广德新闻综合
 https://live.gdtv.ah.cn/live/newsTV.m3u8
-#EXTINF:-1 tvg-id="ahxcjx2" tvg-name="泾县文化旅游" group-title="安徽" tvg-logo="http://tb.91kds.cn/tb/ahjxtv.jpg",泾县文化旅游
-https://apisave.jxnn.cn/hls/wenlv/playlist.m3u8
-#EXTINF:-1 tvg-id="ahxcjx1" tvg-name="泾县新闻综合" group-title="安徽" tvg-logo="http://tb.91kds.cn/tb/ahjxtv.jpg",泾县新闻综合
-https://apisave.jxnn.cn/hls/xwzonhe/playlist.m3u8
 #EXTINF:-1 tvg-id="ahbzgy1" tvg-name="涡阳新闻综合" group-title="安徽" tvg-logo="http://tb.91kds.cn/tb/ahbzgy.jpg",涡阳新闻综合
 http://220.180.124.18:888/live/ch2.m3u8
 #EXTINF:-1 tvg-id="ahbzgy1" tvg-name="涡阳新闻综合" group-title="安徽" tvg-logo="http://tb.91kds.cn/tb/ahbzgy.jpg",涡阳新闻综合
@@ -997,9 +981,7 @@ http://live.zohi.tv/video/s10001-fztv-1/index.m3u8
 http://satellitepull.cnr.cn/live/wx32fjxwgb/playlist.m3u8
 #EXTINF:-1 tvg-id="福建经济" tvg-name="福建经济" group-title="福建" tvg-logo="https://www.xn--rgv465a.top/tvlogo/福建经济.png",福建经济
 http://satellitepull.cnr.cn/live/wx32fjdnjjgb/playlist.m3u8
-#EXTINF:-1 tvg-id="晋江电视台" tvg-name="晋江电视台" group-title="福建" tvg-logo="https://livecdn.zbds.org/logo/晋江电视台.png",晋江电视台
-http://stream.jinjiang.tv/1/sd/live.m3u8?zfud
-#EXTINF:-1 tvg-id="晋江电视台" tvg-name="晋江电视台" group-title="福建" tvg-logo="http://tb.91kds.cn/tb/fjjjtv.jpg",晋江电视台
+#EXTINF:-1 tvg-id="fjqzjj2" tvg-name="晋江电视台" group-title="福建" tvg-logo="http://tb.91kds.cn/tb/fjjjtv.jpg",晋江电视台
 https://live.ijjnews.com/jjtv/sd/live.m3u8
 #EXTINF:-1 tvg-id="三明新闻综合" tvg-name="三明新闻综合" group-title="福建" tvg-logo="https://www.xn--rgv465a.top/tvlogo/三明新闻综合.png",三明新闻综合
 http://ls.qingting.fm/live/4885.m3u8
@@ -1016,9 +998,6 @@ http://218.64.164.152:5021/live_hls/2/playlist.m3u8
 #EXTINF:-1 tvg-id="sdlytv3" tvg-name="临沂公共频道" group-title="山东" tvg-logo="http://tb.91kds.cn/tb/sdlytv.jpg",临沂公共频道
 #EXTVLCOPT:http-referrer=https://m.lytv.tv/
 https://m3u8-channel.lytv.tv/nmip-media/channellive/channel115062/playlist.m3u8
-#EXTINF:-1 tvg-id="sdlytv2" tvg-name="临沂经济频道" group-title="山东" tvg-logo="http://tb.91kds.cn/tb/sdlytv.jpg",临沂经济频道
-#EXTVLCOPT:http-referrer=https://m.lytv.tv/
-https://m3u8-channel.lytv.tv/nmip-media/channellive/channel113571/playlist.m3u8
 #EXTINF:-1 tvg-id="sdlytv1" tvg-name="临沂综合频道" group-title="山东" tvg-logo="http://tb.91kds.cn/tb/sdlytv.jpg",临沂综合频道
 #EXTVLCOPT:http-referrer=https://m.lytv.tv/
 https://m3u8-channel.lytv.tv/nmip-media/channellive/channel111841/playlist.m3u8
@@ -1052,8 +1031,6 @@ https://liveplay.ycrmt.cn/sxgd/lysh.m3u8
 http://59.175.226.142:280/gb28181/xwzh.m3u8?zhubd
 #EXTINF:-1 tvg-id="江夏新闻综合" tvg-name="江夏新闻综合" group-title="湖北" tvg-logo="http://tb.91kds.cn/tb/hbjxtv.jpg",江夏新闻综合
 http://59.175.226.142:280/gb28181/xwzh.m3u8
-#EXTINF:-1 tvg-id="n_荆门公共频道" tvg-name="荆门公共频道" group-title="湖北",荆门公共频道
-http://stream.jmtv.com.cn/ngpd/sd/live.m3u8
 #EXTINF:-1 tvg-id="荆门新闻综合" tvg-name="荆门新闻综合" group-title="湖北" tvg-logo="http://tb.91kds.cn/tb/hbjmtv.jpg",荆门新闻综合
 http://stream.jmtv.com.cn/xwzh/sd/live.m3u8
 #EXTINF:-1 tvg-id="荆门新闻综合" tvg-name="荆门新闻综合" group-title="湖北" tvg-logo="https://www.xn--rgv465a.top/tvlogo/荆门新闻综合.png",荆门新闻综合
@@ -1479,10 +1456,8 @@ https://player24.juyun.tv/camera/157309154.m3u8?auth_key=1733564583784-0-0-92f97
 https://satellitepull.cnr.cn/live/wxgshhzs/playlist.m3u8
 #EXTINF:-1 tvg-id="甘肃都市" tvg-name="甘肃都市" group-title="甘肃" tvg-logo="https://www.xn--rgv465a.top/tvlogo/甘肃都市.png",甘肃都市
 https://satellitepull.cnr.cn/live/wxgsdstb/playlist.m3u8
-#EXTINF:-1 tvg-id="嘉峪关综合" tvg-name="嘉峪关综合" group-title="甘肃" tvg-logo="http://tb.91kds.cn/tb/gsjygtv.jpg",嘉峪关综合
+#EXTINF:-1 tvg-id="gsjygzh" tvg-name="嘉峪关综合" group-title="甘肃" tvg-logo="http://tb.91kds.cn/tb/gsjygtv.jpg",嘉峪关综合
 https://play.kankanlive.com/live/1754465670263218.m3u8
-#EXTINF:-1 tvg-id="嘉峪关综合" tvg-name="嘉峪关综合" group-title="甘肃" tvg-logo="https://www.xn--rgv465a.top/tvlogo/嘉峪关综合.png",嘉峪关综合
-http://play.kankanlive.com/live/1720583434627241.m3u8
 #EXTINF:-1 tvg-id="gslxlx1" tvg-name="临夏市电视台" group-title="甘肃" tvg-logo="http://tb.91kds.cn/tb/gslxlx.jpg",临夏市电视台
 http://124.152.34.102:8030/wCMq71/wCMq71_0.m3u8
 #EXTINF:-1 tvg-id="gslzty" tvg-name="兰州文旅频道" group-title="甘肃" tvg-logo="http://tb.91kds.cn/tb/gslztv.jpg",兰州文旅频道
@@ -1571,6 +1546,8 @@ http://r.jdshipin.com/qClQf
 http://r.jdshipin.com/qrfbg
 #EXTINF:-1 tvg-id="翡翠台" tvg-name="翡翠台" group-title="其他" tvg-logo="https://gitee.com/suxuang/logo/raw/master/mylogo/翡翠台.png",翡翠台
 http://r.jdshipin.com/62WM7
+#EXTINF:-1 tvg-id="翡翠台" tvg-name="翡翠台" group-title="其他" tvg-logo="https://gitee.com/suxuang/logo/raw/master/mylogo/翡翠台.png",翡翠台
+http://r.jdshipin.com/n90gt
 #EXTINF:-1 tvg-id="翡翠台" tvg-name="翡翠台" group-title="其他" tvg-logo="https://gitee.com/suxuang/logo/raw/master/mylogo/翡翠台.png",翡翠台
 http://r.jdshipin.com/GeWKr
 #EXTINF:-1 tvg-id="西游记" tvg-name="西游记" group-title="其他" tvg-logo="https://www.xn--rgv465a.top/tvlogo/西游记.png",西游记

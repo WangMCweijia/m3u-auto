@@ -101,7 +101,6 @@
    "logo": "",
    "ename": "",
    "urls": [
-    "http://204.12.221.218:8181/3m1080p/cctv8.m3u8",
     "http://192.151.150.154/live/cctv8hd.m3u8",
     "http://198.204.228.26/live/cctv8hd.m3u8",
     "http://173.208.212.130:8181/1080p/cctv8.m3u8"
@@ -800,16 +799,6 @@
    "ename": "sxszpl1",
    "urls": [
     "http://player4.juyun.tv/tv/167019161.m3u8"
-   ]
-  },
-  {
-   "tvgId": "sxszhr1",
-   "name": "怀仁综合频道",
-   "group": "山西",
-   "logo": "http://tb.91kds.cn/tb/sxszhr.jpg",
-   "ename": "sxszhr1",
-   "urls": [
-    "http://1yp7hc5p.live.sxmty.com/live/hls/bff8529922344209985b6e49baa9555a/efa2543628fc4a7ea93d3d6c975f77dc.m3u8"
    ]
   },
   {
@@ -1849,26 +1838,6 @@
    ]
   },
   {
-   "tvgId": "zjsxxc1",
-   "name": "新昌新闻综合",
-   "group": "浙江",
-   "logo": "http://tb.91kds.cn/tb/zjxctv.jpg",
-   "ename": "zjsxxc1",
-   "urls": [
-    "http://42483.hlsplay.aodianyun.com/tv_radio_42483/tv_channel_1361.m3u8?auth_key=4822776050-0-0-4962c7b74dc899703bfbba3439ce0fe2&extra_key=2vtD8BdG6zU_tdWMbQ3NhQgb0T-EUej6APZOEIIFMIXy-Qo8suohFB31MQ8Yfs4NbDBbjUuK1dm9poPK9TNHJYi1LmeV9yFZW7PGDnAVdPRc8Bfn3G_z-YHOF4oWZDkwlpDzJEnv0XpVyYEvaYWovw2FApRPUzlQ8OMBCXApCo07Yd3A2mNI9LAy51E0B4zV"
-   ]
-  },
-  {
-   "tvgId": "zjsxxc2",
-   "name": "新昌生活频道",
-   "group": "浙江",
-   "logo": "http://tb.91kds.cn/tb/zjxctv.jpg",
-   "ename": "zjsxxc2",
-   "urls": [
-    "http://42483.hlsplay.aodianyun.com/tv_radio_42483/tv_channel_1362.m3u8?auth_key=4822775993-0-0-794137d1fe5386cd0af9187b847cdb58&extra_key=Zw98aic2180l9sU6iuh1EbAqdAAz9gnUojG4L1fD4inb17oCEPJU8LKWHJMVnjSVvZCDWJWlTASDNHf4AwEwMgG7Hzu5Y8ACGNRWAmdee6QRIdkXaXQYT4PlpCPyYAHgImjNza-jVrNAg93in556ZH8TXnKE0bIdsa-7XL88cRGKlFEYbgMPXxuXodDQQ5je"
-   ]
-  },
-  {
    "tvgId": "zjlssy1",
    "name": "松阳综合频道",
    "group": "浙江",
@@ -2242,26 +2211,6 @@
    ]
   },
   {
-   "tvgId": "ahxcjx2",
-   "name": "泾县文化旅游",
-   "group": "安徽",
-   "logo": "http://tb.91kds.cn/tb/ahjxtv.jpg",
-   "ename": "ahxcjx2",
-   "urls": [
-    "https://apisave.jxnn.cn/hls/wenlv/playlist.m3u8"
-   ]
-  },
-  {
-   "tvgId": "ahxcjx1",
-   "name": "泾县新闻综合",
-   "group": "安徽",
-   "logo": "http://tb.91kds.cn/tb/ahjxtv.jpg",
-   "ename": "ahxcjx1",
-   "urls": [
-    "https://apisave.jxnn.cn/hls/xwzonhe/playlist.m3u8"
-   ]
-  },
-  {
    "tvgId": "ahbzgy1",
    "name": "涡阳新闻综合",
    "group": "安徽",
@@ -2440,16 +2389,6 @@
    "ename": "sdlytv3",
    "urls": [
     "https://m3u8-channel.lytv.tv/nmip-media/channellive/channel115062/playlist.m3u8"
-   ]
-  },
-  {
-   "tvgId": "sdlytv2",
-   "name": "临沂经济频道",
-   "group": "山东",
-   "logo": "http://tb.91kds.cn/tb/sdlytv.jpg",
-   "ename": "sdlytv2",
-   "urls": [
-    "https://m3u8-channel.lytv.tv/nmip-media/channellive/channel113571/playlist.m3u8"
    ]
   },
   {
